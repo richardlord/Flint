@@ -1,0 +1,334 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<meta content="SpriteRendererBase,org.flintparticles.common.renderers.SpriteRendererBase,emitters,addEmitter,addParticle,emitterUpdated,removeEmitter,removeParticle,renderParticles,updateParticles" name="keywords">
+<title>org.flintparticles.common.renderers.SpriteRendererBase</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'SpriteRendererBase - Flint Particles documentation';
+				var baseRef = '../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flint Particles documentation v2.2.0</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?org/flintparticles/common/renderers/SpriteRendererBase.html&amp;org/flintparticles/common/renderers/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;SpriteRendererBase</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class SpriteRendererBase"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.flintparticles.common.renderers</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class SpriteRendererBase</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">SpriteRendererBase <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../images/inherit-arrow.gif"> flash.display.Sprite</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td><a href="Renderer.html">Renderer</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Subclasses</td><td><a href="../../threeD/renderers/BitmapRenderer.html">BitmapRenderer</a>, <a href="../../twoD/renderers/BitmapRenderer.html">BitmapRenderer</a>, <a href="../../twoD/renderers/DisplayObjectRenderer.html">DisplayObjectRenderer</a>, <a href="../../threeD/renderers/DisplayObjectRenderer.html">DisplayObjectRenderer</a>, <a href="../../twoD/renderers/VectorLineRenderer.html">VectorLineRenderer</a></td>
+</tr>
+</table>
+<p></p>
+  The base class used by all the Flint renderers. This class manages
+  various aspects of the rendering process.
+  
+  <p>The class will add every emitter it should renderer to it's internal
+  array of emitters. It will listen for the appropriate events on the 
+  emitter and will then call the protected methods addParticle, removeParticle
+  and renderParticles at the appropriate times. Many derived classes need 
+  only implement these three methods to manage the rendering of the particles.</p>
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#emitters">emitters</a> : Array<div class="summaryTableDescription">
+   The array of all emitters being rendered by this renderer.</div>
+</td><td class="summaryTableOwnerCol">SpriteRendererBase</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#SpriteRendererBase()">SpriteRendererBase</a>()</div>
+<div class="summaryTableDescription">
+   The constructor creates a RendererBase class.</div>
+</td><td class="summaryTableOwnerCol">SpriteRendererBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addEmitter()">addEmitter</a>(emitter:<a href="../emitters/Emitter.html">Emitter</a>):void</div>
+<div class="summaryTableDescription">
+   Adds the emitter to the renderer.</div>
+</td><td class="summaryTableOwnerCol">SpriteRendererBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removeEmitter()">removeEmitter</a>(emitter:<a href="../emitters/Emitter.html">Emitter</a>):void</div>
+<div class="summaryTableDescription">
+   Removes the emitter from the renderer.</div>
+</td><td class="summaryTableOwnerCol">SpriteRendererBase</td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addParticle()">addParticle</a>(particle:<a href="../particles/Particle.html">Particle</a>):void</div>
+<div class="summaryTableDescription">
+   The addParticle method is called when a particle is added to one of
+   the emitters that is being rendered by this renderer.</div>
+</td><td class="summaryTableOwnerCol">SpriteRendererBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#emitterUpdated()">emitterUpdated</a>(ev:<a href="../events/EmitterEvent.html">EmitterEvent</a>):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">SpriteRendererBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removeParticle()">removeParticle</a>(particle:<a href="../particles/Particle.html">Particle</a>):void</div>
+<div class="summaryTableDescription">
+   The removeParticle method is called when a particle is removed from one
+   of the emitters that is being rendered by this renderer.</div>
+</td><td class="summaryTableOwnerCol">SpriteRendererBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#renderParticles()">renderParticles</a>(particles:Array):void</div>
+<div class="summaryTableDescription">
+   The renderParticles method is called during the render phase of 
+   every frame if the state of one of the emitters being rendered
+   by this renderer has changed.</div>
+</td><td class="summaryTableOwnerCol">SpriteRendererBase</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#updateParticles()">updateParticles</a>(ev:Event):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">SpriteRendererBase</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="emitters"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">emitters</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>emitters:Array</code>&nbsp;&nbsp;[read-write]<p>
+   The array of all emitters being rendered by this renderer.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get emitters():Array</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set emitters(value:Array):void</code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="SpriteRendererBase()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">SpriteRendererBase</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function SpriteRendererBase()</code><p>
+   The constructor creates a RendererBase class.
+   </p></div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="addEmitter()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addEmitter</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function addEmitter(emitter:<a href="../emitters/Emitter.html">Emitter</a>):void</code><p>
+   Adds the emitter to the renderer. When an emitter is added, the renderer
+   invalidates its display so the renderParticles method will be called
+   on the next render event in the frame update.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">emitter</span>:<a href="../emitters/Emitter.html">Emitter</a></code> &mdash; The emitter that is added to the renderer.
+   </td>
+</tr>
+</table>
+</div>
+<a name="addParticle()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addParticle</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function addParticle(particle:<a href="../particles/Particle.html">Particle</a>):void</code><p>
+   The addParticle method is called when a particle is added to one of
+   the emitters that is being rendered by this renderer.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">particle</span>:<a href="../particles/Particle.html">Particle</a></code> &mdash; The particle.
+   </td>
+</tr>
+</table>
+</div>
+<a name="emitterUpdated()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">emitterUpdated</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function emitterUpdated(ev:<a href="../events/EmitterEvent.html">EmitterEvent</a>):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">ev</span>:<a href="../events/EmitterEvent.html">EmitterEvent</a></code></td>
+</tr>
+</table>
+</div>
+<a name="removeEmitter()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeEmitter</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function removeEmitter(emitter:<a href="../emitters/Emitter.html">Emitter</a>):void</code><p>
+   Removes the emitter from the renderer. When an emitter is removed, the renderer
+   invalidates its display so the renderParticles method will be called
+   on the next render event in the frame update.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">emitter</span>:<a href="../emitters/Emitter.html">Emitter</a></code> &mdash; The emitter that is removed from the renderer.
+   </td>
+</tr>
+</table>
+</div>
+<a name="removeParticle()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeParticle</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function removeParticle(particle:<a href="../particles/Particle.html">Particle</a>):void</code><p>
+   The removeParticle method is called when a particle is removed from one
+   of the emitters that is being rendered by this renderer.
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">particle</span>:<a href="../particles/Particle.html">Particle</a></code> &mdash; The particle.
+   </td>
+</tr>
+</table>
+</div>
+<a name="renderParticles()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">renderParticles</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function renderParticles(particles:Array):void</code><p>
+   The renderParticles method is called during the render phase of 
+   every frame if the state of one of the emitters being rendered
+   by this renderer has changed.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">particles</span>:Array</code> &mdash; The particles being managed by all the emitters
+   being rendered by this renderer. The particles are in no particular
+   order.
+   </td>
+</tr>
+</table>
+</div>
+<a name="updateParticles()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">updateParticles</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function updateParticles(ev:Event):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">ev</span>:Event</code></td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">&copy; Richard Lord 2010</center>
+</div>
+</body>
+</html>
+<!--© Richard Lord 2010-->

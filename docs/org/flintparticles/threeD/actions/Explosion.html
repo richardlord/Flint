@@ -1,0 +1,542 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<meta content="Explosion,org.flintparticles.threeD.actions.Explosion,center,depth,epsilon,expansionRate,power,x,y,z,addedToEmitter,frameUpdate,removedFromEmitter,reset,update" name="keywords">
+<title>org.flintparticles.threeD.actions.Explosion</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'Explosion - Flint Particles documentation';
+				var baseRef = '../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flint Particles documentation v2.2.0</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?org/flintparticles/threeD/actions/Explosion.html&amp;org/flintparticles/threeD/actions/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;Explosion</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class Explosion"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.flintparticles.threeD.actions</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class Explosion</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">Explosion <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../images/inherit-arrow.gif"> <a href="../../common/actions/ActionBase.html">ActionBase</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td><a href="../../common/activities/FrameUpdatable.html">FrameUpdatable</a>, <a href="../../common/behaviours/Resetable.html">Resetable</a></td>
+</tr>
+</table>
+<p></p>
+  The Explosion action applies a force on the particle to push it away from
+  a single point - the center of the explosion. The force occurs instantaneously at the central point 
+  of the explosion and then ripples out in a shock wave.
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProperty" id="hideInheritedProperty">
+<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
+</div>
+<div class="showInheritedProperty" id="showInheritedProperty">
+<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
+</div>
+</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#center">center</a> : <a href="../geom/Point3D.html">Point3D</a>
+<div class="summaryTableDescription">
+   The center of the explosion.</div>
+</td><td class="summaryTableOwnerCol">Explosion</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#depth">depth</a> : Number<div class="summaryTableDescription">
+   The strength of the explosion - larger numbers produce a stronger force.</div>
+</td><td class="summaryTableOwnerCol">Explosion</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#epsilon">epsilon</a> : Number<div class="summaryTableDescription">
+   The minimum distance for which the explosion force is calculated.</div>
+</td><td class="summaryTableOwnerCol">Explosion</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#expansionRate">expansionRate</a> : Number<div class="summaryTableDescription">
+   The strength of the explosion - larger numbers produce a stronger force.</div>
+</td><td class="summaryTableOwnerCol">Explosion</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#power">power</a> : Number<div class="summaryTableDescription">
+   The strength of the explosion - larger numbers produce a stronger force.</div>
+</td><td class="summaryTableOwnerCol">Explosion</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../common/actions/ActionBase.html#priority">priority</a> : int<div class="summaryTableDescription">
+   Returns a default priority of 0 for this action.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/actions/ActionBase.html">ActionBase</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#x">x</a> : Number<div class="summaryTableDescription">
+   The x coordinate of the center of the explosion.</div>
+</td><td class="summaryTableOwnerCol">Explosion</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#y">y</a> : Number<div class="summaryTableDescription">
+   The y coordinate of  the center of the explosion.</div>
+</td><td class="summaryTableOwnerCol">Explosion</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#z">z</a> : Number<div class="summaryTableDescription">
+   The z coordinate of the center of the explosion.</div>
+</td><td class="summaryTableOwnerCol">Explosion</td>
+</tr>
+</table>
+</div>
+<a name="protectedPropertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProtectedProperty" id="hideInheritedProtectedProperty">
+<a onclick="javascript:setInheritedVisible(false,'ProtectedProperty');" href="#protectedPropertySummary" class="showHideLink"><img src="../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Protected Properties</a>
+</div>
+<div class="showInheritedProtectedProperty" id="showInheritedProtectedProperty">
+<a onclick="javascript:setInheritedVisible(true,'ProtectedProperty');" href="#protectedPropertySummary" class="showHideLink"><img src="../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Properties</a>
+</div>
+</div>
+<table id="summaryTableProtectedProperty" class="summaryTable hideInheritedProtectedProperty" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../common/actions/ActionBase.html#_priority">_priority</a> : int = 0<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/actions/ActionBase.html">ActionBase</a></td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#Explosion()">Explosion</a>(power:Number = 0, center:<a href="../geom/Point3D.html">Point3D</a> = null, expansionRate:Number = 300, depth:Number = 10, epsilon:Number = 1)</div>
+<div class="summaryTableDescription">
+   The constructor creates an Explosion action for use by 
+   an emitter.</div>
+</td><td class="summaryTableOwnerCol">Explosion</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addedToEmitter()">addedToEmitter</a>(emitter:<a href="../../common/emitters/Emitter.html">Emitter</a>):void</div>
+<div class="summaryTableDescription">
+   Adds an UpdateOnFrame activity to the emitter to call this objects
+   frameUpdate method once per frame.</div>
+</td><td class="summaryTableOwnerCol">Explosion</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#frameUpdate()">frameUpdate</a>(emitter:<a href="../../common/emitters/Emitter.html">Emitter</a>, time:Number):void</div>
+<div class="summaryTableDescription">
+   Called every frame before the particles are updated.</div>
+</td><td class="summaryTableOwnerCol">Explosion</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removedFromEmitter()">removedFromEmitter</a>(emitter:<a href="../../common/emitters/Emitter.html">Emitter</a>):void</div>
+<div class="summaryTableDescription">
+   Removes the UpdateOnFrame activity that was added to the emitter in the
+   addedToEmitter method.</div>
+</td><td class="summaryTableOwnerCol">Explosion</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#reset()">reset</a>():void</div>
+<div class="summaryTableDescription">
+   Resets the explosion to its initial state, so it can start again.</div>
+</td><td class="summaryTableOwnerCol">Explosion</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#update()">update</a>(emitter:<a href="../../common/emitters/Emitter.html">Emitter</a>, particle:<a href="../../common/particles/Particle.html">Particle</a>, time:Number):void</div>
+<div class="summaryTableDescription">
+   Calculates the effect of the blast and shockwave on the particle at this
+   time.</div>
+</td><td class="summaryTableOwnerCol">Explosion</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="center"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">center</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>center:<a href="../geom/Point3D.html">Point3D</a></code>&nbsp;&nbsp;[read-write]<p>
+   The center of the explosion.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get center():<a href="../geom/Point3D.html">Point3D</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set center(value:<a href="../geom/Point3D.html">Point3D</a>):void</code>
+<br>
+</div>
+<a name="depth"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">depth</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>depth:Number</code>&nbsp;&nbsp;[read-write]<p>
+   The strength of the explosion - larger numbers produce a stronger force.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get depth():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set depth(value:Number):void</code>
+<br>
+</div>
+<a name="epsilon"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">epsilon</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>epsilon:Number</code>&nbsp;&nbsp;[read-write]<p>
+   The minimum distance for which the explosion force is calculated. 
+   Particles closer than this distance experience the explosion as it they were 
+   this distance away. This stops the explosion effect blowing up as distances get 
+   small.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get epsilon():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set epsilon(value:Number):void</code>
+<br>
+</div>
+<a name="expansionRate"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">expansionRate</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>expansionRate:Number</code>&nbsp;&nbsp;[read-write]<p>
+   The strength of the explosion - larger numbers produce a stronger force.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get expansionRate():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set expansionRate(value:Number):void</code>
+<br>
+</div>
+<a name="power"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">power</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>power:Number</code>&nbsp;&nbsp;[read-write]<p>
+   The strength of the explosion - larger numbers produce a stronger force.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get power():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set power(value:Number):void</code>
+<br>
+</div>
+<a name="x"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">x</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>x:Number</code>&nbsp;&nbsp;[read-write]<p>
+   The x coordinate of the center of the explosion.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get x():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set x(value:Number):void</code>
+<br>
+</div>
+<a name="y"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">y</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>y:Number</code>&nbsp;&nbsp;[read-write]<p>
+   The y coordinate of  the center of the explosion.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get y():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set y(value:Number):void</code>
+<br>
+</div>
+<a name="z"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">z</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>z:Number</code>&nbsp;&nbsp;[read-write]<p>
+   The z coordinate of the center of the explosion.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get z():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set z(value:Number):void</code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="Explosion()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">Explosion</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function Explosion(power:Number = 0, center:<a href="../geom/Point3D.html">Point3D</a> = null, expansionRate:Number = 300, depth:Number = 10, epsilon:Number = 1)</code><p>
+   The constructor creates an Explosion action for use by 
+   an emitter. To add an Explosion to all particles created by an emitter, use the
+   emitter's addAction method.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">power</span>:Number</code> (default = <code>0</code>)<code></code> &mdash; The strength of the explosion - larger numbers produce a stronger 
+   force.  (The scale of value has been altered from previous versions
+   so small numbers now produce a visible effect.)
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">center</span>:<a href="../geom/Point3D.html">Point3D</a></code> (default = <code>null</code>)<code></code> &mdash; The center of the explosion.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">expansionRate</span>:Number</code> (default = <code>300</code>)<code></code> &mdash; The rate at which the shockwave moves out from the explosion, in pixels per second.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">depth</span>:Number</code> (default = <code>10</code>)<code></code> &mdash; The depth (front-edge to back-edge) of the shock wave.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">epsilon</span>:Number</code> (default = <code>1</code>)<code></code> &mdash; The minimum distance for which the explosion force is calculated. 
+   Particles closer than this distance experience the explosion as it they were 
+   this distance away. This stops the explosion effect blowing up as distances get 
+   small.
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../common/emitters/Emitter.html#addAction()" target="">org.flintparticles.common.emitters.Emitter.addAction()</a>
+</div>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="addedToEmitter()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addedToEmitter</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public override function addedToEmitter(emitter:<a href="../../common/emitters/Emitter.html">Emitter</a>):void</code><p>
+   Adds an UpdateOnFrame activity to the emitter to call this objects
+   frameUpdate method once per frame.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">emitter</span>:<a href="../../common/emitters/Emitter.html">Emitter</a></code> &mdash; The emitter this action has been added to.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">frameUpdate()<br>
+<a href="../../common/activities/UpdateOnFrame.html" target="">org.flintparticles.common.activities.UpdateOnFrame</a>
+<br>
+<a href="../../common/actions/Action.html#addedToEmitter()" target="">org.flintparticles.common.actions.Action.addedToEmitter()</a>
+</div>
+</div>
+<a name="frameUpdate()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">frameUpdate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function frameUpdate(emitter:<a href="../../common/emitters/Emitter.html">Emitter</a>, time:Number):void</code><p>
+   Called every frame before the particles are updated. This method is called via the FrameUpdateable
+   interface which is called by the emitter by using an UpdateOnFrame activity.
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">emitter</span>:<a href="../../common/emitters/Emitter.html">Emitter</a></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">time</span>:Number</code></td>
+</tr>
+</table>
+</div>
+<a name="removedFromEmitter()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removedFromEmitter</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public override function removedFromEmitter(emitter:<a href="../../common/emitters/Emitter.html">Emitter</a>):void</code><p>
+   Removes the UpdateOnFrame activity that was added to the emitter in the
+   addedToEmitter method.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">emitter</span>:<a href="../../common/emitters/Emitter.html">Emitter</a></code> &mdash; The emitter this action has been added to.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">addedToEmitter()<br>
+<a href="../../common/activities/UpdateOnFrame.html" target="">org.flintparticles.common.activities.UpdateOnFrame</a>
+<br>
+<a href="../../common/actions/Action.html#removedFromEmitter()" target="">org.flintparticles.common.actions.Action.removedFromEmitter()</a>
+</div>
+</div>
+<a name="reset()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">reset</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function reset():void</code><p>
+   Resets the explosion to its initial state, so it can start again.
+   </p></div>
+<a name="update()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">update</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public override function update(emitter:<a href="../../common/emitters/Emitter.html">Emitter</a>, particle:<a href="../../common/particles/Particle.html">Particle</a>, time:Number):void</code><p>
+   Calculates the effect of the blast and shockwave on the particle at this
+   time.
+   
+   </p><p>This method is called by the emitter and need not be called by the 
+   user.</p>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">emitter</span>:<a href="../../common/emitters/Emitter.html">Emitter</a></code> &mdash; The Emitter that created the particle.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">particle</span>:<a href="../../common/particles/Particle.html">Particle</a></code> &mdash; The particle to be updated.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">time</span>:Number</code> &mdash; The duration of the frame - used for time based updates.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../../common/actions/Action.html#update()" target="">org.flintparticles.common.actions.Action.update()</a>
+</div>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">&copy; Richard Lord 2010</center>
+</div>
+</body>
+</html>
+<!--© Richard Lord 2010-->

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<componentPackage>
+
+	<!--  RENDERERS -->
+    <component class="org.flintparticles.twoD.renderers.mxml.BitmapLineRenderer"/>
+    <component class="org.flintparticles.twoD.renderers.mxml.BitmapRenderer"/>
+    <component class="org.flintparticles.twoD.renderers.mxml.DisplayObjectRenderer"/>
+    <component class="org.flintparticles.twoD.renderers.mxml.PixelRenderer"/>
+    <component class="org.flintparticles.twoD.renderers.mxml.VectorLineRenderer"/>
+
+    <!-- EMITTER -->
+    <component id="Emitter" class="org.flintparticles.twoD.emitters.mxml.Emitter2D"/>
+    
+    <!-- COUNTERS -->
+    <component class="org.flintparticles.common.counters.Blast"/>
+    <component class="org.flintparticles.common.counters.KeyDownCounter"/>
+    <component class="org.flintparticles.common.counters.PerformanceAdjusted"/>
+    <component class="org.flintparticles.common.counters.Pulse"/>
+    <component class="org.flintparticles.common.counters.Random"/>
+    <component class="org.flintparticles.common.counters.SineCounter"/>
+    <component class="org.flintparticles.common.counters.Steady"/>
+    <component class="org.flintparticles.common.counters.TimePeriod"/>
+    <component class="org.flintparticles.common.counters.ZeroCounter"/>
+
+    <!-- ACTIONS -->
+    <component class="org.flintparticles.common.actions.Age"/>
+    <component class="org.flintparticles.common.actions.ChangeCollisionRadius"/>
+    <component class="org.flintparticles.common.actions.ChangeMass"/>
+    <component class="org.flintparticles.common.actions.ColorChange"/>
+    <component class="org.flintparticles.common.actions.Fade"/>
+    <component class="org.flintparticles.common.actions.KeyDownAction"/>
+    <component class="org.flintparticles.common.actions.ScaleImage"/>
+    <component class="org.flintparticles.common.actions.TargetColor"/>
+    <component class="org.flintparticles.common.actions.TargetScale"/>
+
+    <component class="org.flintparticles.twoD.actions.Accelerate"/>
+    <component class="org.flintparticles.twoD.actions.AntiGravity"/>
+    <component class="org.flintparticles.twoD.actions.ApproachNeighbours"/>
+    <component class="org.flintparticles.twoD.actions.BoundingBox"/>
+    <component class="org.flintparticles.twoD.actions.Collide"/>
+    <component class="org.flintparticles.twoD.actions.CollisionZone"/>
+    <component class="org.flintparticles.twoD.actions.DeathSpeed"/>
+    <component class="org.flintparticles.twoD.actions.DeathZone"/>
+    <component class="org.flintparticles.twoD.actions.Explosion"/>
+    <component class="org.flintparticles.twoD.actions.Friction"/>
+    <component class="org.flintparticles.twoD.actions.GravityWell"/>
+    <component class="org.flintparticles.twoD.actions.Jet"/>
+    <component class="org.flintparticles.twoD.actions.LinearDrag"/>
+    <component class="org.flintparticles.twoD.actions.MatchRotateVelocity"/>
+    <component class="org.flintparticles.twoD.actions.MatchVelocity"/>
+    <component class="org.flintparticles.twoD.actions.MinimumDistance"/>
+    <component class="org.flintparticles.twoD.actions.MouseAntiGravity"/>
+    <component class="org.flintparticles.twoD.actions.MouseGravity"/>
+    <component class="org.flintparticles.twoD.actions.Move"/>
+    <component class="org.flintparticles.twoD.actions.MutualGravity"/>
+    <component class="org.flintparticles.twoD.actions.QuadraticDrag"/>
+    <component class="org.flintparticles.twoD.actions.RandomDrift"/>
+    <component class="org.flintparticles.twoD.actions.Rotate"/>
+    <component class="org.flintparticles.twoD.actions.RotateToDirection"/>
+    <component class="org.flintparticles.twoD.actions.RotationalFriction"/>
+    <component class="org.flintparticles.twoD.actions.RotationalLinearDrag"/>
+    <component class="org.flintparticles.twoD.actions.RotationalQuadraticDrag"/>
+    <component class="org.flintparticles.twoD.actions.ScaleAll"/>
+    <component class="org.flintparticles.twoD.actions.SpeedLimit"/>
+    <component class="org.flintparticles.twoD.actions.TargetRotateVelocity"/>
+    <component class="org.flintparticles.twoD.actions.TargetVelocity"/>
+    <component class="org.flintparticles.twoD.actions.TurnAwayFromMouse"/>
+    <component class="org.flintparticles.twoD.actions.TurnTowardsMouse"/>
+    <component class="org.flintparticles.twoD.actions.TurnTowardsPoint"/>
+    <component class="org.flintparticles.twoD.actions.TweenPosition"/>
+    <component class="org.flintparticles.twoD.actions.TweenToZone"/>
+    <component class="org.flintparticles.twoD.actions.ZonedAction"/>
+
+    <!-- INITIALIZERS -->
+    <component class="org.flintparticles.common.initializers.AlphaInit"/>
+    <component class="org.flintparticles.common.initializers.ApplyFilter"/>
+    <component class="org.flintparticles.common.initializers.ChooseInitializer"/>
+    <component class="org.flintparticles.common.initializers.CollisionRadiusInit"/>
+    <component class="org.flintparticles.common.initializers.ColorInit"/>
+    <component class="org.flintparticles.common.initializers.ColorsInit"/>
+    <component class="org.flintparticles.common.initializers.DictionaryInitializer"/>
+    <component class="org.flintparticles.common.initializers.ImageClass"/>
+    <component class="org.flintparticles.common.initializers.ImageClasses"/>
+    <component class="org.flintparticles.common.initializers.InitializerGroup"/>
+    <component class="org.flintparticles.common.initializers.Lifetime"/>
+    <component class="org.flintparticles.common.initializers.MassInit"/>
+    <component class="org.flintparticles.common.initializers.MouseEventHandlers"/>
+    <component class="org.flintparticles.common.initializers.ScaleImageInit"/>
+    <component class="org.flintparticles.common.initializers.ScaleImagesInit"/>
+    <component class="org.flintparticles.common.initializers.SharedImage"/>
+    <component class="org.flintparticles.common.initializers.SharedImages"/>
+
+    <component class="org.flintparticles.twoD.initializers.Position"/>
+    <component class="org.flintparticles.twoD.initializers.PositionAbsolute"/>
+    <component class="org.flintparticles.twoD.initializers.RotateVelocity"/>
+    <component class="org.flintparticles.twoD.initializers.Rotation"/>
+    <component class="org.flintparticles.twoD.initializers.RotationAbsolute"/>
+    <component class="org.flintparticles.twoD.initializers.ScaleAllInit"/>
+    <component class="org.flintparticles.twoD.initializers.ScaleAllsInit"/>
+    <component class="org.flintparticles.twoD.initializers.Velocity"/>
+
+    <!-- ACTIVITIES -->
+    <component class="org.flintparticles.twoD.activities.FollowMouse"/>
+    <component class="org.flintparticles.twoD.activities.FollowDisplayObject"/>
+    <component class="org.flintparticles.twoD.activities.MoveEmitter"/>
+    <component class="org.flintparticles.twoD.activities.RotateEmitter"/>
+    
+    <!-- ZONES -->
+    <component class="org.flintparticles.twoD.zones.BitmapDataZone"/>
+    <component class="org.flintparticles.twoD.zones.DiscSectorZone"/>
+    <component class="org.flintparticles.twoD.zones.DiscZone"/>
+    <component class="org.flintparticles.twoD.zones.DisplayObjectZone"/>
+    <component class="org.flintparticles.twoD.zones.GreyscaleZone"/>
+    <component class="org.flintparticles.twoD.zones.LineZone"/>
+    <component class="org.flintparticles.twoD.zones.MultiZone"/>
+    <component class="org.flintparticles.twoD.zones.PointZone"/>
+    <component class="org.flintparticles.twoD.zones.RectangleZone"/>
+    
+    <!-- DISPLAY OBJECTS -->
+    <component class="org.flintparticles.common.displayObjects.Dot"/>
+    <component class="org.flintparticles.common.displayObjects.Ellipse"/>
+    <component class="org.flintparticles.common.displayObjects.Line"/>
+    <component class="org.flintparticles.common.displayObjects.RadialDot"/>
+    <component class="org.flintparticles.common.displayObjects.Rect"/>
+    <component class="org.flintparticles.common.displayObjects.Star"/>
+    
+</componentPackage>

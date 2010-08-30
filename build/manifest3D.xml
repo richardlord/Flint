@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<componentPackage>
+
+	<!-- GEOMETRY -->
+    <component class="org.flintparticles.threeD.geom.Point3D"/>
+    <component class="org.flintparticles.threeD.geom.Vector3D"/>
+
+	<!-- RENDERERS -->
+    <component class="org.flintparticles.threeD.renderers.mxml.BitmapRenderer"/>
+    <component class="org.flintparticles.threeD.renderers.mxml.DisplayObjectRenderer"/>
+    <component class="org.flintparticles.threeD.renderers.mxml.PixelRenderer"/>
+    
+    <!-- CAMERA -->
+    <component class="org.flintparticles.threeD.renderers.Camera"/>
+    <component class="org.flintparticles.threeD.renderers.controllers.mxml.OrbitCamera"/>
+    <component class="org.flintparticles.threeD.renderers.controllers.mxml.FirstPersonCamera"/>
+
+    <!-- EMITTER -->
+    <component id="Emitter" class="org.flintparticles.threeD.emitters.mxml.Emitter3D"/>
+    
+    <!-- COUNTERS -->
+    <component class="org.flintparticles.common.counters.Blast"/>
+    <component class="org.flintparticles.common.counters.KeyDownCounter"/>
+    <component class="org.flintparticles.common.counters.PerformanceAdjusted"/>
+    <component class="org.flintparticles.common.counters.Pulse"/>
+    <component class="org.flintparticles.common.counters.Random"/>
+    <component class="org.flintparticles.common.counters.SineCounter"/>
+    <component class="org.flintparticles.common.counters.Steady"/>
+    <component class="org.flintparticles.common.counters.TimePeriod"/>
+    <component class="org.flintparticles.common.counters.ZeroCounter"/>
+
+    <!-- ACTIONS -->
+    <component class="org.flintparticles.common.actions.Age"/>
+    <component class="org.flintparticles.common.actions.ChangeCollisionRadius"/>
+    <component class="org.flintparticles.common.actions.ChangeMass"/>
+    <component class="org.flintparticles.common.actions.ColorChange"/>
+    <component class="org.flintparticles.common.actions.Fade"/>
+    <component class="org.flintparticles.common.actions.KeyDownAction"/>
+    <component class="org.flintparticles.common.actions.ScaleImage"/>
+    <component class="org.flintparticles.common.actions.TargetColor"/>
+    <component class="org.flintparticles.common.actions.TargetScale"/>
+
+    <component class="org.flintparticles.threeD.actions.Accelerate"/>
+    <component class="org.flintparticles.threeD.actions.AntiGravity"/>
+    <component class="org.flintparticles.threeD.actions.ApproachNeighbours"/>
+    <component class="org.flintparticles.threeD.actions.BoundingBox"/>
+    <component class="org.flintparticles.threeD.actions.Collide"/>
+    <component class="org.flintparticles.threeD.actions.DeathSpeed"/>
+    <component class="org.flintparticles.threeD.actions.DeathZone"/>
+    <component class="org.flintparticles.threeD.actions.Explosion"/>
+    <component class="org.flintparticles.threeD.actions.Friction"/>
+    <component class="org.flintparticles.threeD.actions.GravityWell"/>
+    <component class="org.flintparticles.threeD.actions.Jet"/>
+    <component class="org.flintparticles.threeD.actions.LinearDrag"/>
+    <component class="org.flintparticles.threeD.actions.MatchRotateVelocity"/>
+    <component class="org.flintparticles.threeD.actions.MatchVelocity"/>
+    <component class="org.flintparticles.threeD.actions.MinimumDistance"/>
+    <component class="org.flintparticles.threeD.actions.Move"/>
+    <component class="org.flintparticles.threeD.actions.MutualGravity"/>
+    <component class="org.flintparticles.threeD.actions.QuadraticDrag"/>
+    <component class="org.flintparticles.threeD.actions.RandomDrift"/>
+    <component class="org.flintparticles.threeD.actions.Rotate"/>
+    <component class="org.flintparticles.threeD.actions.RotateToDirection"/>
+    <component class="org.flintparticles.threeD.actions.RotationalFriction"/>
+    <component class="org.flintparticles.threeD.actions.RotationalLinearDrag"/>
+    <component class="org.flintparticles.threeD.actions.RotationalQuadraticDrag"/>
+    <component class="org.flintparticles.threeD.actions.ScaleAll"/>
+    <component class="org.flintparticles.threeD.actions.SpeedLimit"/>
+    <component class="org.flintparticles.threeD.actions.TargetRotateVelocity"/>
+    <component class="org.flintparticles.threeD.actions.TargetVelocity"/>
+    <component class="org.flintparticles.threeD.actions.TurnTowardsPoint"/>
+    <component class="org.flintparticles.threeD.actions.TweenPosition"/>
+    <component class="org.flintparticles.threeD.actions.TweenToZone"/>
+    <component class="org.flintparticles.threeD.actions.ZonedAction"/>
+
+    <!-- INITIALIZERS -->
+    <component class="org.flintparticles.common.initializers.AlphaInit"/>
+    <component class="org.flintparticles.common.initializers.ApplyFilter"/>
+    <component class="org.flintparticles.common.initializers.ChooseInitializer"/>
+    <component class="org.flintparticles.common.initializers.CollisionRadiusInit"/>
+    <component class="org.flintparticles.common.initializers.ColorInit"/>
+    <component class="org.flintparticles.common.initializers.ColorsInit"/>
+    <component class="org.flintparticles.common.initializers.DictionaryInitializer"/>
+    <component class="org.flintparticles.common.initializers.ImageClass"/>
+    <component class="org.flintparticles.common.initializers.ImageClasses"/>
+    <component class="org.flintparticles.common.initializers.InitializerGroup"/>
+    <component class="org.flintparticles.common.initializers.Lifetime"/>
+    <component class="org.flintparticles.common.initializers.MassInit"/>
+    <component class="org.flintparticles.common.initializers.MouseEventHandlers"/>
+    <component class="org.flintparticles.common.initializers.ScaleImageInit"/>
+    <component class="org.flintparticles.common.initializers.ScaleImagesInit"/>
+    <component class="org.flintparticles.common.initializers.SharedImage"/>
+    <component class="org.flintparticles.common.initializers.SharedImages"/>
+
+    <component class="org.flintparticles.threeD.initializers.FaceAxis"/>
+    <component class="org.flintparticles.threeD.initializers.Position"/>
+    <component class="org.flintparticles.threeD.initializers.PositionAbsolute"/>
+    <component class="org.flintparticles.threeD.initializers.RotateVelocity"/>
+    <component class="org.flintparticles.threeD.initializers.Rotation"/>
+    <component class="org.flintparticles.threeD.initializers.RotationAbsolute"/>
+    <component class="org.flintparticles.threeD.initializers.ScaleAllInit"/>
+    <component class="org.flintparticles.threeD.initializers.ScaleAllsInit"/>
+    <component class="org.flintparticles.threeD.initializers.Velocity"/>
+
+    <!-- ACTIVITIES -->
+    <component class="org.flintparticles.threeD.activities.MoveEmitter"/>
+    <component class="org.flintparticles.threeD.activities.RotateEmitter"/>
+    
+    <!-- ZONES -->
+    <component class="org.flintparticles.threeD.zones.BitmapDataZone"/>
+    <component class="org.flintparticles.threeD.zones.BoxZone"/>
+    <component class="org.flintparticles.threeD.zones.ConeZone"/>
+    <component class="org.flintparticles.threeD.zones.CylinderZone"/>
+    <component class="org.flintparticles.threeD.zones.DiscZone"/>
+    <component class="org.flintparticles.threeD.zones.FrustrumZone"/>
+    <component class="org.flintparticles.threeD.zones.GreyscaleZone"/>
+    <component class="org.flintparticles.threeD.zones.LineZone"/>
+    <component class="org.flintparticles.threeD.zones.MultiZone"/>
+    <component class="org.flintparticles.threeD.zones.ParallelogramZone"/>
+    <component class="org.flintparticles.threeD.zones.PointZone"/>
+    <component class="org.flintparticles.threeD.zones.SphereZone"/>
+    
+    <!-- DISPLAY OBJECTS -->
+    <component class="org.flintparticles.common.displayObjects.Dot"/>
+    <component class="org.flintparticles.common.displayObjects.Ellipse"/>
+    <component class="org.flintparticles.common.displayObjects.Line"/>
+    <component class="org.flintparticles.common.displayObjects.RadialDot"/>
+    <component class="org.flintparticles.common.displayObjects.Rect"/>
+    <component class="org.flintparticles.common.displayObjects.Star"/>
+    
+</componentPackage>

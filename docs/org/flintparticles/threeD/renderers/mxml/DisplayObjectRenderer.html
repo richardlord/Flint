@@ -1,0 +1,382 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../../print.css" type="text/css" media="print">
+<meta content="DisplayObjectRenderer,org.flintparticles.threeD.renderers.mxml.DisplayObjectRenderer,camera,zSort,height,width,addParticle,removeParticle,renderParticles" name="keywords">
+<title>org.flintparticles.threeD.renderers.mxml.DisplayObjectRenderer</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'DisplayObjectRenderer - Flint Particles documentation';
+				var baseRef = '../../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flint Particles documentation v2.2.0</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../../all-classes.html')" href="../../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../../all-classes.html')" href="../../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../../index-list.html')" href="../../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../../index.html?org/flintparticles/threeD/renderers/mxml/DisplayObjectRenderer.html&amp;org/flintparticles/threeD/renderers/mxml/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;DisplayObjectRenderer</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class DisplayObjectRenderer"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.flintparticles.threeD.renderers.mxml</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class DisplayObjectRenderer</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">DisplayObjectRenderer <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../../images/inherit-arrow.gif"> <a href="../../../common/renderers/FlexRendererBase.html">FlexRendererBase</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../../images/inherit-arrow.gif"> mx.core.UIComponent</td>
+</tr>
+</table>
+<p></p>
+  The DisplayObjectRenderer is a native Flint 3D renderer that draws particles
+  as display objects in the renderer. The particles are drawn face-on to the
+  camera, with perspective applied to position and scale the particles.
+  
+  <p>Particles may be represented by any DisplayObject and each particle 
+  must use a different DisplayObject instance. The DisplayObject
+  to be used should not be defined using the SharedImage initializer
+  because this shares one DisplayObject instance between all the particles.
+  The ImageClass initializer is commonly used because this creates a new 
+  DisplayObject for each particle.</p>
+  
+  <p>The DisplayObjectRenderer has mouse events disabled for itself and any 
+  display objects in its display list. To enable mouse events for the renderer
+  or its children set the mouseEnabled or mouseChildren properties to true.</p>
+  
+  <p>Because the DisplayObject3DRenderer directly uses the particle's image,
+  it is not suitable in situations where the same particle will be displayed 
+  by two different renderers.</p> 
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProperty" id="hideInheritedProperty">
+<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
+</div>
+<div class="showInheritedProperty" id="showInheritedProperty">
+<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
+</div>
+</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#camera">camera</a> : <a href="../../renderers/Camera.html">Camera</a>
+<div class="summaryTableDescription">
+   The camera controls the view for the renderer
+   </div>
+</td><td class="summaryTableOwnerCol">DisplayObjectRenderer</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../../common/renderers/FlexRendererBase.html#emitters">emitters</a> : Array<div class="summaryTableDescription">
+   The array of all emitters being rendered by this renderer.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../common/renderers/FlexRendererBase.html">FlexRendererBase</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#height">height</a> : Number<div class="summaryTableDescription">[write-only]</div>
+</td><td class="summaryTableOwnerCol">DisplayObjectRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#width">width</a> : Number<div class="summaryTableDescription">[write-only]</div>
+</td><td class="summaryTableOwnerCol">DisplayObjectRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#zSort">zSort</a> : Boolean<div class="summaryTableDescription">
+   Indicates whether the particles should be sorted in distance order for display.</div>
+</td><td class="summaryTableOwnerCol">DisplayObjectRenderer</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedMethod" id="hideInheritedMethod">
+<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
+</div>
+<div class="showInheritedMethod" id="showInheritedMethod">
+<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
+</div>
+</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#DisplayObjectRenderer()">DisplayObjectRenderer</a>(zSort:Boolean = true)</div>
+<div class="summaryTableDescription">
+   The constructor creates a DisplayObject3DRenderer.</div>
+</td><td class="summaryTableOwnerCol">DisplayObjectRenderer</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../common/renderers/FlexRendererBase.html#addEmitter()">addEmitter</a>(emitter:<a href="../../../common/emitters/Emitter.html">Emitter</a>):void</div>
+<div class="summaryTableDescription">
+   Adds the emitter to the renderer.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../common/renderers/FlexRendererBase.html">FlexRendererBase</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../common/renderers/FlexRendererBase.html#removeEmitter()">removeEmitter</a>(emitter:<a href="../../../common/emitters/Emitter.html">Emitter</a>):void</div>
+<div class="summaryTableDescription">
+   Removes the emitter from the renderer.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../../common/renderers/FlexRendererBase.html">FlexRendererBase</a></td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedProtectedMethod" id="hideInheritedProtectedMethod">
+<a onclick="javascript:setInheritedVisible(false,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Protected Methods</a>
+</div>
+<div class="showInheritedProtectedMethod" id="showInheritedProtectedMethod">
+<a onclick="javascript:setInheritedVisible(true,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Methods</a>
+</div>
+</div>
+<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addParticle()">addParticle</a>(particle:<a href="../../../common/particles/Particle.html">Particle</a>):void</div>
+<div class="summaryTableDescription">
+   This method is called when a particle is added to an emitter -
+   usually becaus ethe emitter has just created the particle.</div>
+</td><td class="summaryTableOwnerCol">DisplayObjectRenderer</td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../common/renderers/FlexRendererBase.html#emitterUpdated()">emitterUpdated</a>(ev:<a href="../../../common/events/EmitterEvent.html">EmitterEvent</a>):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../../../common/renderers/FlexRendererBase.html">FlexRendererBase</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../common/renderers/FlexRendererBase.html#measure()">measure</a>():void</div>
+<div class="summaryTableDescription">
+   private
+   </div>
+</td><td class="summaryTableOwnerCol"><a href="../../../common/renderers/FlexRendererBase.html">FlexRendererBase</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removeParticle()">removeParticle</a>(particle:<a href="../../../common/particles/Particle.html">Particle</a>):void</div>
+<div class="summaryTableDescription">
+   This method is called when a particle is removed from an emitter -
+   usually because the particle is dying.</div>
+</td><td class="summaryTableOwnerCol">DisplayObjectRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#renderParticles()">renderParticles</a>(particles:Array):void</div>
+<div class="summaryTableDescription">
+   This method positions and scales the particles according to the
+   particles' positions relative to the camera viewport.</div>
+</td><td class="summaryTableOwnerCol">DisplayObjectRenderer</td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../../common/renderers/FlexRendererBase.html#updateParticles()">updateParticles</a>(ev:Event):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../../../common/renderers/FlexRendererBase.html">FlexRendererBase</a></td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="camera"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">camera</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>camera:<a href="../../renderers/Camera.html">Camera</a></code>&nbsp;&nbsp;[read-write]<p>
+   The camera controls the view for the renderer
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get camera():<a href="../../renderers/Camera.html">Camera</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set camera(value:<a href="../../renderers/Camera.html">Camera</a>):void</code>
+<br>
+</div>
+<a name="height"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">height</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>height:Number</code>&nbsp;&nbsp;[write-only]<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set height(value:Number):void</code>
+<br>
+</div>
+<a name="width"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">width</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>width:Number</code>&nbsp;&nbsp;[write-only]<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set width(value:Number):void</code>
+<br>
+</div>
+<a name="zSort"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">zSort</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>zSort:Boolean</code>&nbsp;&nbsp;[read-write]<p>
+   Indicates whether the particles should be sorted in distance order for display.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get zSort():Boolean</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set zSort(value:Boolean):void</code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="DisplayObjectRenderer()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">DisplayObjectRenderer</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function DisplayObjectRenderer(zSort:Boolean = true)</code><p>
+   The constructor creates a DisplayObject3DRenderer. After creation the
+   renderer should be added to the display list of a DisplayObjectContainer 
+   to place it on the stage.
+   
+   </p><p>Emitter's should be added to the renderer using the renderer's
+   addEmitter method. The renderer displays all the particles created
+   by the emitter's that have been added to it.</p>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">zSort</span>:Boolean</code> (default = <code>true</code>)<code></code> &mdash; Whether to sort the particles according to their
+   z order when rendering them or not.
+   </td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="addParticle()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addParticle</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected override function addParticle(particle:<a href="../../../common/particles/Particle.html">Particle</a>):void</code><p>
+   This method is called when a particle is added to an emitter -
+   usually becaus ethe emitter has just created the particle. The
+   method adds the particle's image to the renderer's display list.
+   It is called internally by Flint and need not be called by the user.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">particle</span>:<a href="../../../common/particles/Particle.html">Particle</a></code> &mdash; The particle being added to the emitter.
+   </td>
+</tr>
+</table>
+</div>
+<a name="removeParticle()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeParticle</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected override function removeParticle(particle:<a href="../../../common/particles/Particle.html">Particle</a>):void</code><p>
+   This method is called when a particle is removed from an emitter -
+   usually because the particle is dying. The method removes the 
+   particle's image from the renderer's display list. It is called 
+   internally by Flint and need not be called by the user.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">particle</span>:<a href="../../../common/particles/Particle.html">Particle</a></code> &mdash; The particle being removed from the emitter.
+   </td>
+</tr>
+</table>
+</div>
+<a name="renderParticles()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">renderParticles</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected override function renderParticles(particles:Array):void</code><p>
+   This method positions and scales the particles according to the
+   particles' positions relative to the camera viewport.
+   
+   </p><p>This method is called internally by Flint and shouldn't need to be called
+   by the user.</p>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">particles</span>:Array</code> &mdash; The particles to be rendered.
+   </td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">&copy; Richard Lord 2010</center>
+</div>
+</body>
+</html>
+<!--© Richard Lord 2010-->

@@ -1,0 +1,1283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<meta content="Emitter,org.flintparticles.common.emitters.Emitter,_dispatchCounterComplete,actions,activities,counter,fixedFrameTime,initializers,maximumFrameTime,particleFactory,particles,running,useInternalTick,addAction,addActivity,addExistingParticles,addInitializer,createParticle,dispatchCounterComplete,hasAction,hasActionOfType,hasActivity,hasActivityOfType,hasInitializer,hasInitializerOfType,initParticle,killAllParticles,pause,removeAction,removeActivity,removeInitializer,resume,runAhead,sortParticles,start,stop,update" name="keywords">
+<title>org.flintparticles.common.emitters.Emitter</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'Emitter - Flint Particles documentation';
+				var baseRef = '../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flint Particles documentation v2.2.0</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?org/flintparticles/common/emitters/Emitter.html&amp;org/flintparticles/common/emitters/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;Emitter</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class Emitter"); titleBar_setSubNav(false,true,false,false,true,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.flintparticles.common.emitters</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class Emitter</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">Emitter <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../images/inherit-arrow.gif"> flash.events.EventDispatcher</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Subclasses</td><td><a href="../../twoD/emitters/Emitter2D.html">Emitter2D</a>, <a href="../../threeD/emitters/Emitter3D.html">Emitter3D</a></td>
+</tr>
+</table>
+<p></p>
+  The Emitter class is the base class for the Emitter2D and Emitter3D classes.
+  The emitter class contains the common behavioour used by these two concrete
+  classes.
+  
+  <p>An Emitter manages the creation and ongoing state of particles. It uses 
+  a number of utility classes to customise its behaviour.</p>
+  
+  <p>An emitter uses Initializers to customise the initial state of particles
+  that it creates; their position, velocity, color etc. These are added to the 
+  emitter using the addInitializer method.</p>
+  
+  <p>An emitter uses Actions to customise the behaviour of particles that
+  it creates; to apply gravity, drag, fade etc. These are added to the emitter 
+  using the addAction method.</p>
+  
+  <p>An emitter uses Activities to customise its own behaviour in an ongoing
+  manner, to move it or rotate it for example.</p>
+  
+  <p>An emitter uses a Counter to know when and how many particles to emit.</p>
+  
+  <p>All timings in the emitter are based on actual time passed, 
+  independent of the frame rate of the flash movie.</p>
+  
+  <p>Most functionality is best added to an emitter using Actions,
+  Initializers, Activities and Counters. This offers greater 
+  flexibility to combine behaviours without needing to subclass 
+  the Emitter classes.</p>
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#actions">actions</a> : Array<div class="summaryTableDescription">
+   The array of all actions being used by this emitter.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#activities">activities</a> : Array<div class="summaryTableDescription">
+   The array of all actions being used by this emitter.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#counter">counter</a> : <a href="../counters/Counter.html">Counter</a>
+<div class="summaryTableDescription">
+   The Counter for the Emitter.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#fixedFrameTime">fixedFrameTime</a> : Number<div class="summaryTableDescription">
+   Indicates a fixed time (in seconds) to use for every frame.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#initializers">initializers</a> : Array<div class="summaryTableDescription">
+   The array of all initializers being used by this emitter.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#maximumFrameTime">maximumFrameTime</a> : Number<div class="summaryTableDescription">
+   The maximum duration for a single update frame, in seconds.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#particleFactory">particleFactory</a> : <a href="../particles/ParticleFactory.html">ParticleFactory</a>
+<div class="summaryTableDescription">
+   This is the particle factory used by the emitter to create and dispose 
+   of particles.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#particles">particles</a> : Array<div class="summaryTableDescription">
+   The array of all particles created by this emitter.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#running">running</a> : Boolean<div class="summaryTableDescription">[read-only]
+   Indicates if the emitter is currently running.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#useInternalTick">useInternalTick</a> : Boolean<div class="summaryTableDescription">
+   Indicates whether the emitter should manage its own internal update
+   tick.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+</table>
+</div>
+<a name="protectedPropertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Properties</div>
+<table id="summaryTableProtectedProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#_dispatchCounterComplete">_dispatchCounterComplete</a> : Boolean = false<div class="summaryTableDescription">
+   Indicates if the emitter should dispatch a counterComplete event at the
+   end of the next update cycle.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#Emitter()">Emitter</a>()</div>
+<div class="summaryTableDescription">
+   The constructor creates an emitter.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addAction()">addAction</a>(action:<a href="../actions/Action.html">Action</a>):void</div>
+<div class="summaryTableDescription">
+   Adds an Action to the Emitter.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addActivity()">addActivity</a>(activity:<a href="../activities/Activity.html">Activity</a>):void</div>
+<div class="summaryTableDescription">
+   Adds an Activity to the Emitter.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addExistingParticles()">addExistingParticles</a>(particles:Array, applyInitializers:Boolean = false):void</div>
+<div class="summaryTableDescription">
+   Adds existing particles to the emitter.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#addInitializer()">addInitializer</a>(initializer:<a href="../initializers/Initializer.html">Initializer</a>):void</div>
+<div class="summaryTableDescription">
+   Adds an Initializer object to the Emitter.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#dispatchCounterComplete()">dispatchCounterComplete</a>():void</div>
+<div class="summaryTableDescription">
+   Used by counters to tell the emitter to dispatch a counter complete event.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#hasAction()">hasAction</a>(action:<a href="../actions/Action.html">Action</a>):Boolean</div>
+<div class="summaryTableDescription">
+   Detects if the emitter is using a particular action or not.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#hasActionOfType()">hasActionOfType</a>(actionClass:Class):Boolean</div>
+<div class="summaryTableDescription">
+   Detects if the emitter is using an action of a particular class.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#hasActivity()">hasActivity</a>(activity:<a href="../activities/Activity.html">Activity</a>):Boolean</div>
+<div class="summaryTableDescription">
+   Detects if the emitter is using a particular activity or not.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#hasActivityOfType()">hasActivityOfType</a>(activityClass:Class):Boolean</div>
+<div class="summaryTableDescription">
+   Detects if the emitter is using an activity of a particular class.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#hasInitializer()">hasInitializer</a>(initializer:<a href="../initializers/Initializer.html">Initializer</a>):Boolean</div>
+<div class="summaryTableDescription">
+   Detects if the emitter is using a particular initializer or not.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#hasInitializerOfType()">hasInitializerOfType</a>(initializerClass:Class):Boolean</div>
+<div class="summaryTableDescription">
+   Detects if the emitter is using an initializer of a particular class.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#killAllParticles()">killAllParticles</a>():void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#pause()">pause</a>():void</div>
+<div class="summaryTableDescription">
+   Pauses the emitter.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removeAction()">removeAction</a>(action:<a href="../actions/Action.html">Action</a>):void</div>
+<div class="summaryTableDescription">
+   Removes an Action from the Emitter.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removeActivity()">removeActivity</a>(activity:<a href="../activities/Activity.html">Activity</a>):void</div>
+<div class="summaryTableDescription">
+   Removes an Activity from the Emitter.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#removeInitializer()">removeInitializer</a>(initializer:<a href="../initializers/Initializer.html">Initializer</a>):void</div>
+<div class="summaryTableDescription">
+   Removes an Initializer from the Emitter.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#resume()">resume</a>():void</div>
+<div class="summaryTableDescription">
+   Resumes the emitter after a pause.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#runAhead()">runAhead</a>(time:Number, frameRate:Number = 10):void</div>
+<div class="summaryTableDescription">
+   Makes the emitter skip forwards a period of time with a single update.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#start()">start</a>():void</div>
+<div class="summaryTableDescription">
+   Starts the emitter.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#stop()">stop</a>():void</div>
+<div class="summaryTableDescription">
+   Stops the emitter, killing all current particles and returning them to the 
+   particle factory for reuse.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#update()">update</a>(time:Number):void</div>
+<div class="summaryTableDescription">
+   Used to update the emitter.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#createParticle()">createParticle</a>():<a href="../particles/Particle.html">Particle</a>
+</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#initParticle()">initParticle</a>(particle:<a href="../particles/Particle.html">Particle</a>):void</div>
+<div class="summaryTableDescription">
+   Emitters do their own particle initialization here - usually involves 
+   positioning and rotating the particle to match the position and rotation 
+   of the emitter.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#sortParticles()">sortParticles</a>():void</div>
+<div class="summaryTableDescription">
+   Used to sort the particles as required.</div>
+</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+</table>
+</div>
+<a name="eventSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Events</div>
+<table id="summaryTableEvent" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Event</th><th>Summary</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:counterComplete">counterComplete</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when the counter for the particle system has finished its cycle and so
+  the system will not emit any more particles unless the counter is changed or restarted.</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:emitterEmpty">emitterEmpty</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when an emitter attempts to update the particles' state but it 
+  contains no particles.</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:emitterUpdated">emitterUpdated</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when the particle system has updated and the state of the particles
+  has changed.</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:particleAdded">particleAdded</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when a pre-existing particle is added to the emitter.</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:particleCreated">particleCreated</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when a particle is created and has just been added to the emitter.</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#event:particleDead">particleDead</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when a particle dies and is about to be removed from the system.</td><td class="summaryTableOwnerCol">Emitter</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="actions"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">actions</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>actions:Array</code>&nbsp;&nbsp;[read-write]<p>
+   The array of all actions being used by this emitter.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get actions():Array</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set actions(value:Array):void</code>
+<br>
+</div>
+<a name="activities"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">activities</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>activities:Array</code>&nbsp;&nbsp;[read-write]<p>
+   The array of all actions being used by this emitter.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get activities():Array</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set activities(value:Array):void</code>
+<br>
+</div>
+<a name="counter"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">counter</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>counter:<a href="../counters/Counter.html">Counter</a></code>&nbsp;&nbsp;[read-write]<p>
+   The Counter for the Emitter. The counter defines when and
+   with what frequency the emitter emits particles.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get counter():<a href="../counters/Counter.html">Counter</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set counter(value:<a href="../counters/Counter.html">Counter</a>):void</code>
+<br>
+</div>
+<a name="_dispatchCounterComplete"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">_dispatchCounterComplete</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected var _dispatchCounterComplete:Boolean = false</code><p>
+   Indicates if the emitter should dispatch a counterComplete event at the
+   end of the next update cycle.
+   </p></div>
+<a name="fixedFrameTime"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">fixedFrameTime</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>fixedFrameTime:Number</code>&nbsp;&nbsp;[read-write]<p>
+   Indicates a fixed time (in seconds) to use for every frame. Setting 
+   this property causes the emitter to bypass its frame timing 
+   functionality and use the given time for every frame. This enables
+   the particle system to be frame based rather than time based.
+   
+   </p><p>To return to time based animation, set this value to zero (the 
+   default).</p>
+   
+   <p>This feature only works if useInternalTick is true (the default).</p>
+   
+   <span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get fixedFrameTime():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set fixedFrameTime(value:Number):void</code>
+<br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../emitters/Emitter.html#useInternalTick" target="">useInternalTick</a>
+</div>
+</div>
+<a name="initializers"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">initializers</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>initializers:Array</code>&nbsp;&nbsp;[read-write]<p>
+   The array of all initializers being used by this emitter.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get initializers():Array</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set initializers(value:Array):void</code>
+<br>
+</div>
+<a name="maximumFrameTime"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">maximumFrameTime</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>maximumFrameTime:Number</code>&nbsp;&nbsp;[read-write]<p>
+   The maximum duration for a single update frame, in seconds.
+   
+   </p><p>Under some circumstances related to the Flash player (e.g. on MacOSX, when the 
+   user right-clicks on the flash movie) the flash movie will freeze for a period. When the
+   freeze ends, the current frame of the particle system will be calculated as the time since 
+   the previous frame,  which encompases the duration of the freeze. This could cause the 
+   system to generate a single frame update that compensates for a long period of time and 
+   hence moves the particles an unexpected long distance in one go. The result is usually
+   visually unacceptable and certainly unexpected.</p>
+   
+   <p>This property sets a maximum duration for a frame such that any frames longer than 
+   this duration are ignored. The default value is 0.5 seconds. Developers don't usually
+   need to change this from the default value.</p>
+   <span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get maximumFrameTime():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set maximumFrameTime(value:Number):void</code>
+<br>
+</div>
+<a name="particleFactory"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">particleFactory</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>particleFactory:<a href="../particles/ParticleFactory.html">ParticleFactory</a></code>&nbsp;&nbsp;[read-write]<p>
+   This is the particle factory used by the emitter to create and dispose 
+   of particles. The 2D and 3D libraries each have a default particle
+   factory that is used by the Emitter2D and Emitter3D classes. Any custom 
+   particle factory should implement the ParticleFactory interface.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get particleFactory():<a href="../particles/ParticleFactory.html">ParticleFactory</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set particleFactory(value:<a href="../particles/ParticleFactory.html">ParticleFactory</a>):void</code>
+<br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../particles/ParticleFactory.html" target="">org.flintparticles.common.particles.ParticleFactory</a>
+</div>
+</div>
+<a name="particles"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">particles</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>particles:Array</code>&nbsp;&nbsp;[read-write]<p>
+   The array of all particles created by this emitter.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get particles():Array</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set particles(value:Array):void</code>
+<br>
+</div>
+<a name="running"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">running</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>running:Boolean</code>&nbsp;&nbsp;[read-only]<p>
+   Indicates if the emitter is currently running.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get running():Boolean</code>
+<br>
+</div>
+<a name="useInternalTick"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">useInternalTick</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>useInternalTick:Boolean</code>&nbsp;&nbsp;[read-write]<p>
+   Indicates whether the emitter should manage its own internal update
+   tick. The internal update tick is tied to the frame rate and updates
+   the particle system every frame.
+   
+   </p><p>If users choose not to use the internal tick, they have to call
+   the emitter's update method with the appropriate time parameter every
+   time they want the emitter to update the particle system.</p>
+   <span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get useInternalTick():Boolean</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set useInternalTick(value:Boolean):void</code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="Emitter()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">Emitter</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function Emitter()</code><p>
+   The constructor creates an emitter.
+   
+   </p></div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="addAction()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addAction</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function addAction(action:<a href="../actions/Action.html">Action</a>):void</code><p>
+   Adds an Action to the Emitter. Actions set the behaviour of particles 
+   created by the emitter.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">action</span>:<a href="../actions/Action.html">Action</a></code> &mdash; The Action to add
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">removeAction();<br>org.flintParticles.common.actions.Action.getDefaultPriority()</div>
+</div>
+<a name="addActivity()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addActivity</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function addActivity(activity:<a href="../activities/Activity.html">Activity</a>):void</code><p>
+   Adds an Activity to the Emitter. Activities set the behaviour
+   of the Emitter.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">activity</span>:<a href="../activities/Activity.html">Activity</a></code> &mdash; The activity to add
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">removeActivity()<br>org.flintParticles.common.activities.Activity.getDefaultPriority()</div>
+</div>
+<a name="addExistingParticles()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addExistingParticles</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function addExistingParticles(particles:Array, applyInitializers:Boolean = false):void</code><p>
+   Adds existing particles to the emitter. This enables users to create 
+   particles externally to the emitter and then pass the particles to the
+   emitter for management.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">particles</span>:Array</code> &mdash; An array of particles
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">applyInitializers</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; Indicates whether to apply the emitter's
+   initializer behaviours to the particle (true) or not (false).
+   </td>
+</tr>
+</table>
+</div>
+<a name="addInitializer()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">addInitializer</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function addInitializer(initializer:<a href="../initializers/Initializer.html">Initializer</a>):void</code><p>
+   Adds an Initializer object to the Emitter. Initializers set the
+   initial state of particles created by the emitter.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">initializer</span>:<a href="../initializers/Initializer.html">Initializer</a></code> &mdash; The Initializer to add
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">removeInitializer()<br>org.flintParticles.common.initializers.Initializer.getDefaultPriority()</div>
+</div>
+<a name="createParticle()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">createParticle</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function createParticle():<a href="../particles/Particle.html">Particle</a></code>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../particles/Particle.html">Particle</a></code></td>
+</tr>
+</table>
+</div>
+<a name="dispatchCounterComplete()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">dispatchCounterComplete</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function dispatchCounterComplete():void</code><p>
+   Used by counters to tell the emitter to dispatch a counter complete event.
+   </p></div>
+<a name="hasAction()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">hasAction</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function hasAction(action:<a href="../actions/Action.html">Action</a>):Boolean</code><p>
+   Detects if the emitter is using a particular action or not.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">action</span>:<a href="../actions/Action.html">Action</a></code> &mdash; The action to look for.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; true if the action is being used by the emitter, false 
+   otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="hasActionOfType()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">hasActionOfType</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function hasActionOfType(actionClass:Class):Boolean</code><p>
+   Detects if the emitter is using an action of a particular class.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">actionClass</span>:Class</code> &mdash; The type of action to look for.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; true if the emitter is using an instance of the class as an
+   action, false otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="hasActivity()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">hasActivity</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function hasActivity(activity:<a href="../activities/Activity.html">Activity</a>):Boolean</code><p>
+   Detects if the emitter is using a particular activity or not.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">activity</span>:<a href="../activities/Activity.html">Activity</a></code> &mdash; The activity to look for.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; true if the activity is being used by the emitter, false 
+   otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="hasActivityOfType()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">hasActivityOfType</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function hasActivityOfType(activityClass:Class):Boolean</code><p>
+   Detects if the emitter is using an activity of a particular class.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">activityClass</span>:Class</code> &mdash; The type of activity to look for.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; true if the emitter is using an instance of the class as an
+   activity, false otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="hasInitializer()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">hasInitializer</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function hasInitializer(initializer:<a href="../initializers/Initializer.html">Initializer</a>):Boolean</code><p>
+   Detects if the emitter is using a particular initializer or not.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">initializer</span>:<a href="../initializers/Initializer.html">Initializer</a></code> &mdash; The initializer to look for.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; true if the initializer is being used by the emitter, false 
+   otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="hasInitializerOfType()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">hasInitializerOfType</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function hasInitializerOfType(initializerClass:Class):Boolean</code><p>
+   Detects if the emitter is using an initializer of a particular class.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">initializerClass</span>:Class</code> &mdash; The type of initializer to look for.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; true if the emitter is using an instance of the class as an
+   initializer, false otherwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="initParticle()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">initParticle</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function initParticle(particle:<a href="../particles/Particle.html">Particle</a>):void</code><p>
+   Emitters do their own particle initialization here - usually involves 
+   positioning and rotating the particle to match the position and rotation 
+   of the emitter. This method is called before any initializers that are
+   assigned to the emitter, so initializers can override any properties set 
+   here.
+   
+   </p><p>The implementation of this method in this base class does nothing.</p>
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">particle</span>:<a href="../particles/Particle.html">Particle</a></code></td>
+</tr>
+</table>
+</div>
+<a name="killAllParticles()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">killAllParticles</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function killAllParticles():void</code>
+</div>
+<a name="pause()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">pause</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function pause():void</code><p>
+   Pauses the emitter.
+   </p></div>
+<a name="removeAction()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeAction</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function removeAction(action:<a href="../actions/Action.html">Action</a>):void</code><p>
+   Removes an Action from the Emitter.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">action</span>:<a href="../actions/Action.html">Action</a></code> &mdash; The Action to remove
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">addAction()</div>
+</div>
+<a name="removeActivity()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeActivity</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function removeActivity(activity:<a href="../activities/Activity.html">Activity</a>):void</code><p>
+   Removes an Activity from the Emitter.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">activity</span>:<a href="../activities/Activity.html">Activity</a></code> &mdash; The Activity to remove
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">addActivity()</div>
+</div>
+<a name="removeInitializer()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">removeInitializer</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function removeInitializer(initializer:<a href="../initializers/Initializer.html">Initializer</a>):void</code><p>
+   Removes an Initializer from the Emitter.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">initializer</span>:<a href="../initializers/Initializer.html">Initializer</a></code> &mdash; The Initializer to remove
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">addInitializer()</div>
+</div>
+<a name="resume()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">resume</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function resume():void</code><p>
+   Resumes the emitter after a pause.
+   </p></div>
+<a name="runAhead()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">runAhead</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function runAhead(time:Number, frameRate:Number = 10):void</code><p>
+   Makes the emitter skip forwards a period of time with a single update.
+   Used when you want the emitter to look like it's been running for a while.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">time</span>:Number</code> &mdash; The time, in seconds, to skip ahead.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">frameRate</span>:Number</code> (default = <code>10</code>)<code></code> &mdash; The frame rate for calculating the new positions. The
+   emitter will calculate each frame over the time period to get the new state
+   for the emitter and its particles. A higher frameRate will be more
+   accurate but will take longer to calculate.
+   </td>
+</tr>
+</table>
+</div>
+<a name="sortParticles()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">sortParticles</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected function sortParticles():void</code><p>
+   Used to sort the particles as required. In this base class this method 
+   does nothing.
+   </p></div>
+<a name="start()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">start</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function start():void</code><p>
+   Starts the emitter. Until start is called, the emitter will not emit or 
+   update any particles.
+   </p></div>
+<a name="stop()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">stop</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function stop():void</code><p>
+   Stops the emitter, killing all current particles and returning them to the 
+   particle factory for reuse.
+   </p></div>
+<a name="update()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">update</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function update(time:Number):void</code><p>
+   Used to update the emitter. If using the internal tick, this method
+   will be called every frame without any action by the user. If not
+   using the internal tick, the user should call this method on a regular
+   basis to update the particle system.
+   
+   </p><p>The method asks the counter how many particles to create then creates 
+   those particles. Then it calls sortParticles, applies the activities to 
+   the emitter, applies the Actions to all the particles, removes all dead 
+   particles, and finally dispatches an emitterUpdated event which tells 
+   any renderers to redraw the particles.
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">time</span>:Number</code> &mdash; The duration, in seconds, to be applied in the update step.
+   
+   </td>
+</tr>
+</table>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">sortParticles();</div>
+</div>
+<div class="detailSectionHeader">Event detail</div>
+<a name="event:counterComplete"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">counterComplete</td><td class="detailHeaderType">event&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/EmitterEvent.html"><code>org.flintparticles.common.events.EmitterEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when the counter for the particle system has finished its cycle and so
+  the system will not emit any more particles unless the counter is changed or restarted.
+  
+  </p></div>
+<a name="event:emitterEmpty"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">emitterEmpty</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/EmitterEvent.html"><code>org.flintparticles.common.events.EmitterEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when an emitter attempts to update the particles' state but it 
+  contains no particles. This event will be dispatched every time the update 
+  occurs and there are no particles in the emitter. The update does not occur
+  when the emitter has not yet been started, when the emitter is paused, and
+  after the emitter has been stopped, so the event will not be dispatched 
+  at these times.
+  
+  </p><p>See the firework example for an example that uses this event.</p>
+  
+  <p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">start();<br>pause();<br>stop();</div>
+</div>
+<a name="event:emitterUpdated"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">emitterUpdated</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/EmitterEvent.html"><code>org.flintparticles.common.events.EmitterEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when the particle system has updated and the state of the particles
+  has changed.
+  
+  </p></div>
+<a name="event:particleAdded"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">particleAdded</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/ParticleEvent.html"><code>org.flintparticles.common.events.ParticleEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when a pre-existing particle is added to the emitter.
+  
+  </p></div>
+<a name="event:particleCreated"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">particleCreated</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/ParticleEvent.html"><code>org.flintparticles.common.events.ParticleEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when a particle is created and has just been added to the emitter.
+  
+  </p></div>
+<a name="event:particleDead"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">particleDead</td><td class="detailHeaderType">event&nbsp;</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<span class="label">Event object type: </span><a href="../events/ParticleEvent.html"><code>org.flintparticles.common.events.ParticleEvent</code></a>
+<br>
+<p></p><p>
+  Dispatched when a particle dies and is about to be removed from the system.
+  As soon as the event has been handled the particle will be removed but at the
+  time of the event it still exists so its properties (e.g. its location) can be
+  read from it.
+  
+  </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">&copy; Richard Lord 2010</center>
+</div>
+</body>
+</html>
+<!--© Richard Lord 2010-->

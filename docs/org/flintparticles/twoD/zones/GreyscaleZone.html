@@ -1,0 +1,420 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<meta content="GreyscaleZone,org.flintparticles.twoD.zones.GreyscaleZone,bitmapData,offsetX,offsetY,scaleX,scaleY,collideParticle,contains,getArea,getLocation,invalidate" name="keywords">
+<title>org.flintparticles.twoD.zones.GreyscaleZone</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'GreyscaleZone - Flint Particles documentation';
+				var baseRef = '../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flint Particles documentation v2.2.0</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?org/flintparticles/twoD/zones/GreyscaleZone.html&amp;org/flintparticles/twoD/zones/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;GreyscaleZone</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class GreyscaleZone"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.flintparticles.twoD.zones</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class GreyscaleZone</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td><a href="Zone2D.html">Zone2D</a></td>
+</tr>
+</table>
+<p></p>
+  The Greyscale zone defines a shaped zone based on a BitmapData object.
+  The zone contains all pixels in the bitmap that are not black, with a weighting
+  such that lighter pixels are more likely to be selected than darker pixels
+  when creating particles inside the zone.
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#bitmapData">bitmapData</a> : BitmapData<div class="summaryTableDescription">
+   The bitmapData object that defines the zone.</div>
+</td><td class="summaryTableOwnerCol">GreyscaleZone</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#offsetX">offsetX</a> : Number<div class="summaryTableDescription">
+   A horizontal offset to apply to the pixels in the BitmapData object 
+   to reposition the zone
+   </div>
+</td><td class="summaryTableOwnerCol">GreyscaleZone</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#offsetY">offsetY</a> : Number<div class="summaryTableDescription">
+   A vertical offset to apply to the pixels in the BitmapData object 
+   to reposition the zone
+   </div>
+</td><td class="summaryTableOwnerCol">GreyscaleZone</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#scaleX">scaleX</a> : Number<div class="summaryTableDescription">
+   A scale factor to stretch the bitmap horizontally
+   </div>
+</td><td class="summaryTableOwnerCol">GreyscaleZone</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#scaleY">scaleY</a> : Number<div class="summaryTableDescription">
+   A scale factor to stretch the bitmap vertically
+   </div>
+</td><td class="summaryTableOwnerCol">GreyscaleZone</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#GreyscaleZone()">GreyscaleZone</a>(bitmapData:BitmapData = null, offsetX:Number = 0, offsetY:Number = 0, scaleX:Number = 1, scaleY:Number = 1)</div>
+<div class="summaryTableDescription">
+   The constructor creates a GreyscaleZone object.</div>
+</td><td class="summaryTableOwnerCol">GreyscaleZone</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#collideParticle()">collideParticle</a>(particle:<a href="../particles/Particle2D.html">Particle2D</a>, bounce:Number = 1):Boolean</div>
+<div class="summaryTableDescription">
+   Manages collisions between a particle and the zone.</div>
+</td><td class="summaryTableOwnerCol">GreyscaleZone</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#contains()">contains</a>(x:Number, y:Number):Boolean</div>
+<div class="summaryTableDescription">
+   The contains method determines whether a point is inside the zone.</div>
+</td><td class="summaryTableOwnerCol">GreyscaleZone</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getArea()">getArea</a>():Number</div>
+<div class="summaryTableDescription">
+   The getArea method returns the size of the zone.</div>
+</td><td class="summaryTableOwnerCol">GreyscaleZone</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getLocation()">getLocation</a>():Point</div>
+<div class="summaryTableDescription">
+   The getLocation method returns a random point inside the zone.</div>
+</td><td class="summaryTableOwnerCol">GreyscaleZone</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#invalidate()">invalidate</a>():void</div>
+<div class="summaryTableDescription">
+   This method forces the zone to revaluate itself.</div>
+</td><td class="summaryTableOwnerCol">GreyscaleZone</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="bitmapData"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">bitmapData</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>bitmapData:BitmapData</code>&nbsp;&nbsp;[read-write]<p>
+   The bitmapData object that defines the zone.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get bitmapData():BitmapData</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set bitmapData(value:BitmapData):void</code>
+<br>
+</div>
+<a name="offsetX"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">offsetX</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>offsetX:Number</code>&nbsp;&nbsp;[read-write]<p>
+   A horizontal offset to apply to the pixels in the BitmapData object 
+   to reposition the zone
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get offsetX():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set offsetX(value:Number):void</code>
+<br>
+</div>
+<a name="offsetY"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">offsetY</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>offsetY:Number</code>&nbsp;&nbsp;[read-write]<p>
+   A vertical offset to apply to the pixels in the BitmapData object 
+   to reposition the zone
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get offsetY():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set offsetY(value:Number):void</code>
+<br>
+</div>
+<a name="scaleX"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">scaleX</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>scaleX:Number</code>&nbsp;&nbsp;[read-write]<p>
+   A scale factor to stretch the bitmap horizontally
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get scaleX():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set scaleX(value:Number):void</code>
+<br>
+</div>
+<a name="scaleY"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">scaleY</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>scaleY:Number</code>&nbsp;&nbsp;[read-write]<p>
+   A scale factor to stretch the bitmap vertically
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get scaleY():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set scaleY(value:Number):void</code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="GreyscaleZone()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">GreyscaleZone</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function GreyscaleZone(bitmapData:BitmapData = null, offsetX:Number = 0, offsetY:Number = 0, scaleX:Number = 1, scaleY:Number = 1)</code><p>
+   The constructor creates a GreyscaleZone object.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">bitmapData</span>:BitmapData</code> (default = <code>null</code>)<code></code> &mdash; The bitmapData object that defines the zone.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">offsetX</span>:Number</code> (default = <code>0</code>)<code></code> &mdash; A horizontal offset to apply to the pixels in the BitmapData object 
+   to reposition the zone
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">offsetY</span>:Number</code> (default = <code>0</code>)<code></code> &mdash; A vertical offset to apply to the pixels in the BitmapData object 
+   to reposition the zone
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">scaleX</span>:Number</code> (default = <code>1</code>)<code></code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">scaleY</span>:Number</code> (default = <code>1</code>)<code></code></td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="collideParticle()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">collideParticle</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function collideParticle(particle:<a href="../particles/Particle2D.html">Particle2D</a>, bounce:Number = 1):Boolean</code><p>
+   Manages collisions between a particle and the zone. The particle will collide with the edges of
+   the zone, from the inside or outside. In the interests of speed, these collisions do not take 
+   account of the collisionRadius of the particle and they do not calculate an accurate bounce
+   direction from the shape of the zone. Priority is placed on keeping particles inside 
+   or outside the zone.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">particle</span>:<a href="../particles/Particle2D.html">Particle2D</a></code> &mdash; The particle to be tested for collision with the zone.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">bounce</span>:Number</code> (default = <code>1</code>)<code></code> &mdash; The coefficient of restitution for the collision.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; Whether a collision occured.
+   </td>
+</tr>
+</table>
+</div>
+<a name="contains()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">contains</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function contains(x:Number, y:Number):Boolean</code><p>
+   The contains method determines whether a point is inside the zone.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">x</span>:Number</code> &mdash; The location to test for.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">y</span>:Number</code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; true if point is inside the zone, false if it is outside.
+   </td>
+</tr>
+</table>
+</div>
+<a name="getArea()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getArea</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getArea():Number</code><p>
+   The getArea method returns the size of the zone.
+   It's used by the MultiZone class to manage the balancing between the
+   different zones.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Number</code> &mdash; the size of the zone.
+   </td>
+</tr>
+</table>
+</div>
+<a name="getLocation()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getLocation</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getLocation():Point</code><p>
+   The getLocation method returns a random point inside the zone.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Point</code> &mdash; a random point inside the zone.
+   </td>
+</tr>
+</table>
+</div>
+<a name="invalidate()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">invalidate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function invalidate():void</code><p>
+   This method forces the zone to revaluate itself. It should be called whenever the 
+   contents of the BitmapData object change. However, it is an intensive method and 
+   calling it frequently will likely slow your application down.
+   </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">&copy; Richard Lord 2010</center>
+</div>
+</body>
+</html>
+<!--© Richard Lord 2010-->

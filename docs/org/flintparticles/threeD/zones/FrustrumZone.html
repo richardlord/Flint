@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<meta content="FrustrumZone,org.flintparticles.threeD.zones.FrustrumZone,camera,viewRect,contains,getLocation,getVolume" name="keywords">
+<title>org.flintparticles.threeD.zones.FrustrumZone</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'FrustrumZone - Flint Particles documentation';
+				var baseRef = '../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flint Particles documentation v2.2.0</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?org/flintparticles/threeD/zones/FrustrumZone.html&amp;org/flintparticles/threeD/zones/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;FrustrumZone</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class FrustrumZone"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.flintparticles.threeD.zones</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class FrustrumZone</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Implements</td><td><a href="Zone3D.html">Zone3D</a></td>
+</tr>
+</table>
+<p></p>
+  The FrustrumZone zone defines a zone in the shape of a camera frustrum. The
+  frustrum is the area of space visible using the camera. Everything in the
+  camera's field of view is inside the frustrum and everything outside the
+  camera's field of view is outside the frustrum.
+  
+  <p>When using this zone, it is possible to adjust the view rect used when
+  calculating the frustrum so that the frustrum is slightly larger (or smaller)
+  than the camera's actual view frustrum.</p>
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#camera">camera</a> : <a href="../renderers/Camera.html">Camera</a>
+<div class="summaryTableDescription">
+   The flint camera whose frustrum should be used.</div>
+</td><td class="summaryTableOwnerCol">FrustrumZone</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#viewRect">viewRect</a> : Rectangle<div class="summaryTableDescription">
+   The rectangle describing the size and position
+   of the viewing window.</div>
+</td><td class="summaryTableOwnerCol">FrustrumZone</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#FrustrumZone()">FrustrumZone</a>(camera:<a href="../renderers/Camera.html">Camera</a> = null, viewRect:Rectangle = null)</div>
+<div class="summaryTableDescription">
+   The constructor creates a FrustrumZone zone.</div>
+</td><td class="summaryTableOwnerCol">FrustrumZone</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#contains()">contains</a>(p:<a href="../geom/Point3D.html">Point3D</a>):Boolean</div>
+<div class="summaryTableDescription">
+   The contains method determines whether a point is inside the box.</div>
+</td><td class="summaryTableOwnerCol">FrustrumZone</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getLocation()">getLocation</a>():<a href="../geom/Point3D.html">Point3D</a>
+</div>
+<div class="summaryTableDescription">
+   The getLocation method returns a random point inside the box.</div>
+</td><td class="summaryTableOwnerCol">FrustrumZone</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#getVolume()">getVolume</a>():Number</div>
+<div class="summaryTableDescription">
+   The getArea method returns the volume of the box.</div>
+</td><td class="summaryTableOwnerCol">FrustrumZone</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="camera"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">camera</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>camera:<a href="../renderers/Camera.html">Camera</a></code>&nbsp;&nbsp;[read-write]<p>
+   The flint camera whose frustrum should be used.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get camera():<a href="../renderers/Camera.html">Camera</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set camera(value:<a href="../renderers/Camera.html">Camera</a>):void</code>
+<br>
+</div>
+<a name="viewRect"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">viewRect</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>viewRect:Rectangle</code>&nbsp;&nbsp;[read-write]<p>
+   The rectangle describing the size and position
+   of the viewing window. The camera points at position 0,0 in
+   this rectangle, so a normal frustrum would have the form
+   new Rectangle( -w/2, -h/2, w, h ). If using a BitmapRenderer,
+   you could use the renderer's canvas as the viewRect, but you
+   may want a slightly larger rectangle if this zone is used for
+   removing particles via a DeathZone action to allow for the
+   size of the particles.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get viewRect():Rectangle</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set viewRect(value:Rectangle):void</code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="FrustrumZone()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">FrustrumZone</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function FrustrumZone(camera:<a href="../renderers/Camera.html">Camera</a> = null, viewRect:Rectangle = null)</code><p>
+   The constructor creates a FrustrumZone zone.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">camera</span>:<a href="../renderers/Camera.html">Camera</a></code> (default = <code>null</code>)<code></code> &mdash; The flint camera whose frustrum should be used.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">viewRect</span>:Rectangle</code> (default = <code>null</code>)<code></code> &mdash; The rectangle describing the size and position
+   of the viewing window. The camera points at position 0,0 in
+   this rectangle, so a normal frustrum would have the form
+   new Rectangle( -w/2, -h/2, w, h ). If using a BitmapRenderer,
+   you could use the renderer's canvas as the viewRect, but you
+   may want a slightly larger rectangle if this zone is used for
+   removing particles via a DeathZone action.
+   </td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="contains()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">contains</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function contains(p:<a href="../geom/Point3D.html">Point3D</a>):Boolean</code><p>
+   The contains method determines whether a point is inside the box.
+   This method is used by the initializers and actions that
+   use the zone. Usually, it need not be called directly by the user.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">p</span>:<a href="../geom/Point3D.html">Point3D</a></code> &mdash; The x coordinate of the location to test for.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; true if point is inside the zone, false if it is outside.
+   </td>
+</tr>
+</table>
+</div>
+<a name="getLocation()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getLocation</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getLocation():<a href="../geom/Point3D.html">Point3D</a></code><p>
+   The getLocation method returns a random point inside the box.
+   This method is used by the initializers and actions that
+   use the zone. Usually, it need not be called directly by the user.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Point3D.html">Point3D</a></code> &mdash; 
+                        a random point inside the zone.
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="getVolume()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">getVolume</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function getVolume():Number</code><p>
+   The getArea method returns the volume of the box.
+   This method is used by the MultiZone class. Usually, 
+   it need not be called directly by the user.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Number</code> &mdash; the volume of the box.
+   </td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">&copy; Richard Lord 2010</center>
+</div>
+</body>
+</html>
+<!--© Richard Lord 2010-->

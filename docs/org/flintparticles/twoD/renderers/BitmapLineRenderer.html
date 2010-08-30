@@ -1,0 +1,382 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<meta content="BitmapLineRenderer,org.flintparticles.twoD.renderers.BitmapLineRenderer,drawParticle,emitterUpdated,updateParticles" name="keywords">
+<title>org.flintparticles.twoD.renderers.BitmapLineRenderer</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'BitmapLineRenderer - Flint Particles documentation';
+				var baseRef = '../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flint Particles documentation v2.2.0</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?org/flintparticles/twoD/renderers/BitmapLineRenderer.html&amp;org/flintparticles/twoD/renderers/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;BitmapLineRenderer</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class BitmapLineRenderer"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.flintparticles.twoD.renderers</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class BitmapLineRenderer</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">BitmapLineRenderer <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../images/inherit-arrow.gif"> <a href="BitmapRenderer.html">BitmapRenderer</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../images/inherit-arrow.gif"> <a href="../../common/renderers/SpriteRendererBase.html">SpriteRendererBase</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../images/inherit-arrow.gif"> flash.display.Sprite</td>
+</tr>
+</table>
+<p></p>
+  The BitmapLineRenderer draws particles as continuous lines on a Bitmap display object.
+  This is useful for effects like hair and grass.
+  
+  <p>The BitmapLineRenderer uses the color and alpha of the particle
+  for the color of the current line segment, and uses the scale of
+  the particle for the line width.</p>
+  
+  <b>The region of the particle system covered by this bitmap object must be defined
+  in the canvas property of the BitmapLineRenderer. Particles outside this region
+  are not drawn.
+  
+  <p>The BitmapLineRenderer allows the use of BitmapFilters to modify the appearance
+  of the bitmap.</p>
+  
+  <p></p>
+<p>
+<span class="classHeaderTableLabel">See also</span>
+</p>
+<div class="seeAlso">org.flintparticles.twoD.renderers.FullStagePixelRenderer<br>
+<a href="../../common/emitters/Emitter.html#runAhead()" target="">org.flintparticles.common.emitters.Emitter.runAhead()</a>
+</div>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProperty" id="hideInheritedProperty">
+<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
+</div>
+<div class="showInheritedProperty" id="showInheritedProperty">
+<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
+</div>
+</div>
+<table id="summaryTableProperty" class="summaryTable hideInheritedProperty" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="BitmapRenderer.html#bitmapData">bitmapData</a> : BitmapData<div class="summaryTableDescription">
+   The bitmap data of the renderer.</div>
+</td><td class="summaryTableOwnerCol"><a href="BitmapRenderer.html">BitmapRenderer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="BitmapRenderer.html#canvas">canvas</a> : Rectangle<div class="summaryTableDescription">
+   The canvas is the area within the renderer on which particles can be drawn.</div>
+</td><td class="summaryTableOwnerCol"><a href="BitmapRenderer.html">BitmapRenderer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="BitmapRenderer.html#clearBetweenFrames">clearBetweenFrames</a> : Boolean<div class="summaryTableDescription">
+   Controls whether the display is cleared between each render frame.</div>
+</td><td class="summaryTableOwnerCol"><a href="BitmapRenderer.html">BitmapRenderer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../common/renderers/SpriteRendererBase.html#emitters">emitters</a> : Array<div class="summaryTableDescription">
+   The array of all emitters being rendered by this renderer.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/renderers/SpriteRendererBase.html">SpriteRendererBase</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="BitmapRenderer.html#postFilters">postFilters</a> : Array<div class="summaryTableDescription">
+   The array of all filters being applied before rendering.</div>
+</td><td class="summaryTableOwnerCol"><a href="BitmapRenderer.html">BitmapRenderer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="BitmapRenderer.html#preFilters">preFilters</a> : Array<div class="summaryTableDescription">
+   The array of all filters being applied before rendering.</div>
+</td><td class="summaryTableOwnerCol"><a href="BitmapRenderer.html">BitmapRenderer</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="BitmapRenderer.html#smoothing">smoothing</a> : Boolean<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="BitmapRenderer.html">BitmapRenderer</a></td>
+</tr>
+</table>
+</div>
+<a name="protectedPropertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProtectedProperty" id="hideInheritedProtectedProperty">
+<a onclick="javascript:setInheritedVisible(false,'ProtectedProperty');" href="#protectedPropertySummary" class="showHideLink"><img src="../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Protected Properties</a>
+</div>
+<div class="showInheritedProtectedProperty" id="showInheritedProtectedProperty">
+<a onclick="javascript:setInheritedVisible(true,'ProtectedProperty');" href="#protectedPropertySummary" class="showHideLink"><img src="../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Properties</a>
+</div>
+</div>
+<table id="summaryTableProtectedProperty" class="summaryTable hideInheritedProtectedProperty" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="BitmapRenderer.html#_bitmapData">_bitmapData</a> : BitmapData<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="BitmapRenderer.html">BitmapRenderer</a></td>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="BitmapRenderer.html#ZERO_POINT">ZERO_POINT</a> : Point<div class="summaryTableDescription">[static]</div>
+</td><td class="summaryTableOwnerCol"><a href="BitmapRenderer.html">BitmapRenderer</a></td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedMethod" id="hideInheritedMethod">
+<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
+</div>
+<div class="showInheritedMethod" id="showInheritedMethod">
+<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
+</div>
+</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#BitmapLineRenderer()">BitmapLineRenderer</a>(canvas:Rectangle, smoothing:Boolean = false)</div>
+<div class="summaryTableDescription">
+   The constructor creates a PixelRenderer.</div>
+</td><td class="summaryTableOwnerCol">BitmapLineRenderer</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/renderers/SpriteRendererBase.html#addEmitter()">addEmitter</a>(emitter:<a href="../../common/emitters/Emitter.html">Emitter</a>):void</div>
+<div class="summaryTableDescription">
+   Adds the emitter to the renderer.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/renderers/SpriteRendererBase.html">SpriteRendererBase</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="BitmapRenderer.html#addFilter()">addFilter</a>(filter:BitmapFilter, postRender:Boolean = false):void</div>
+<div class="summaryTableDescription">
+   The addFilter method adds a BitmapFilter to the renderer.</div>
+</td><td class="summaryTableOwnerCol"><a href="BitmapRenderer.html">BitmapRenderer</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="BitmapRenderer.html#clearPaletteMap()">clearPaletteMap</a>():void</div>
+<div class="summaryTableDescription">
+   Clears any palette map that has been set for the renderer.</div>
+</td><td class="summaryTableOwnerCol"><a href="BitmapRenderer.html">BitmapRenderer</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/renderers/SpriteRendererBase.html#removeEmitter()">removeEmitter</a>(emitter:<a href="../../common/emitters/Emitter.html">Emitter</a>):void</div>
+<div class="summaryTableDescription">
+   Removes the emitter from the renderer.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/renderers/SpriteRendererBase.html">SpriteRendererBase</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="BitmapRenderer.html#removeFilter()">removeFilter</a>(filter:BitmapFilter):void</div>
+<div class="summaryTableDescription">
+   Removes a BitmapFilter object from the Renderer.</div>
+</td><td class="summaryTableOwnerCol"><a href="BitmapRenderer.html">BitmapRenderer</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="BitmapRenderer.html#setPaletteMap()">setPaletteMap</a>(red:Array = null, green:Array = null, blue:Array = null, alpha:Array = null):void</div>
+<div class="summaryTableDescription">
+   Sets a palette map for the renderer.</div>
+</td><td class="summaryTableOwnerCol"><a href="BitmapRenderer.html">BitmapRenderer</a></td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedProtectedMethod" id="hideInheritedProtectedMethod">
+<a onclick="javascript:setInheritedVisible(false,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Protected Methods</a>
+</div>
+<div class="showInheritedProtectedMethod" id="showInheritedProtectedMethod">
+<a onclick="javascript:setInheritedVisible(true,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Methods</a>
+</div>
+</div>
+<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/renderers/SpriteRendererBase.html#addParticle()">addParticle</a>(particle:<a href="../../common/particles/Particle.html">Particle</a>):void</div>
+<div class="summaryTableDescription">
+   The addParticle method is called when a particle is added to one of
+   the emitters that is being rendered by this renderer.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/renderers/SpriteRendererBase.html">SpriteRendererBase</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="BitmapRenderer.html#createBitmap()">createBitmap</a>():void</div>
+<div class="summaryTableDescription">
+   Create the Bitmap and BitmapData objects
+   </div>
+</td><td class="summaryTableOwnerCol"><a href="BitmapRenderer.html">BitmapRenderer</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#drawParticle()">drawParticle</a>(particle:<a href="../particles/Particle2D.html">Particle2D</a>):void</div>
+<div class="summaryTableDescription">
+   Used internally to draw the particles.</div>
+</td><td class="summaryTableOwnerCol">BitmapLineRenderer</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#emitterUpdated()">emitterUpdated</a>(ev:<a href="../../common/events/EmitterEvent.html">EmitterEvent</a>):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">BitmapLineRenderer</td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/renderers/SpriteRendererBase.html#removeParticle()">removeParticle</a>(particle:<a href="../../common/particles/Particle.html">Particle</a>):void</div>
+<div class="summaryTableDescription">
+   The removeParticle method is called when a particle is removed from one
+   of the emitters that is being rendered by this renderer.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/renderers/SpriteRendererBase.html">SpriteRendererBase</a></td>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="BitmapRenderer.html#renderParticles()">renderParticles</a>(particles:Array):void</div>
+<div class="summaryTableDescription">
+   
+   The renderParticles method is called during the render phase of 
+   every frame if the state of one of the emitters being rendered
+   by this renderer has changed.</div>
+</td><td class="summaryTableOwnerCol"><a href="BitmapRenderer.html">BitmapRenderer</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#updateParticles()">updateParticles</a>(ev:Event):void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">BitmapLineRenderer</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="BitmapLineRenderer()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">BitmapLineRenderer</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function BitmapLineRenderer(canvas:Rectangle, smoothing:Boolean = false)</code><p>
+   The constructor creates a PixelRenderer. After creation it should be
+   added to the display list of a DisplayObjectContainer to place it on 
+   the stage and should be applied to an Emitter using the Emitter's
+   renderer property.
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">canvas</span>:Rectangle</code></td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">smoothing</span>:Boolean</code> (default = <code>false</code>)<code></code></td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="drawParticle()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">drawParticle</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected override function drawParticle(particle:<a href="../particles/Particle2D.html">Particle2D</a>):void</code><p>
+   Used internally to draw the particles.
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">particle</span>:<a href="../particles/Particle2D.html">Particle2D</a></code></td>
+</tr>
+</table>
+</div>
+<a name="emitterUpdated()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">emitterUpdated</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected override function emitterUpdated(ev:<a href="../../common/events/EmitterEvent.html">EmitterEvent</a>):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">ev</span>:<a href="../../common/events/EmitterEvent.html">EmitterEvent</a></code></td>
+</tr>
+</table>
+</div>
+<a name="updateParticles()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">updateParticles</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected override function updateParticles(ev:Event):void</code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">ev</span>:Event</code></td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">&copy; Richard Lord 2010</center>
+</div>
+</body>
+</html>
+<!--© Richard Lord 2010-->

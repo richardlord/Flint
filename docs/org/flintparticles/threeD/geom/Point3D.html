@@ -1,0 +1,943 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<meta content="Point3D,org.flintparticles.threeD.geom.Point3D,ZERO,classType,add,assign,clone,decrementBy,distance,distanceSquared,divide,divideBy,equals,incrementBy,multiply,nearTo,project,reset,scaleBy,subtract,toString,toVector3D,vectorTo" name="keywords">
+<title>org.flintparticles.threeD.geom.Point3D</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'Point3D - Flint Particles documentation';
+				var baseRef = '../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flint Particles documentation v2.2.0</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?org/flintparticles/threeD/geom/Point3D.html&amp;org/flintparticles/threeD/geom/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;Point3D</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class Point3D"); titleBar_setSubNav(true,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.flintparticles.threeD.geom</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class Point3D</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">Point3D <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../images/inherit-arrow.gif"> org.flintparticles.threeD.geom.Transformable3D</td>
+</tr>
+</table>
+<p></p>
+  Point3D represents a point in three-dimensional cartesian 
+  coordinate space.
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#classType">classType</a> : Class<div class="summaryTableDescription">[read-only]
+   
+   Returns the actual type of the object - Point3D or Vector3D.</div>
+</td><td class="summaryTableOwnerCol">Point3D</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#Point3D()">Point3D</a>(x:Number = 0, y:Number = 0, z:Number = 0)</div>
+<div class="summaryTableDescription">
+   Constructor
+      </div>
+</td><td class="summaryTableOwnerCol">Point3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#add()">add</a>(v:<a href="Vector3D.html">Vector3D</a>, result:<a href="Point3D.html">Point3D</a> = null):<a href="../geom/Point3D.html">Point3D</a>
+</div>
+<div class="summaryTableDescription">
+   Adds a vector to this point, translating this point according to the vector, 
+   and returns the result.</div>
+</td><td class="summaryTableOwnerCol">Point3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#assign()">assign</a>(p:<a href="Point3D.html">Point3D</a>):<a href="../geom/Point3D.html">Point3D</a>
+</div>
+<div class="summaryTableDescription">
+   Copies another point into this one.</div>
+</td><td class="summaryTableOwnerCol">Point3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#clone()">clone</a>(result:<a href="Point3D.html">Point3D</a> = null):<a href="../geom/Point3D.html">Point3D</a>
+</div>
+<div class="summaryTableDescription">
+   Makes a copy of this point.</div>
+</td><td class="summaryTableOwnerCol">Point3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#decrementBy()">decrementBy</a>(v:<a href="Vector3D.html">Vector3D</a>):<a href="../geom/Point3D.html">Point3D</a>
+</div>
+<div class="summaryTableDescription">
+   Subtract a vector from this point.</div>
+</td><td class="summaryTableOwnerCol">Point3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#distance()">distance</a>(p:<a href="Point3D.html">Point3D</a>):Number</div>
+<div class="summaryTableDescription">
+   Calculates the distance between two points.</div>
+</td><td class="summaryTableOwnerCol">Point3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#distanceSquared()">distanceSquared</a>(p:<a href="Point3D.html">Point3D</a>):Number</div>
+<div class="summaryTableDescription">
+   Calculates the square of the distance between two points.</div>
+</td><td class="summaryTableOwnerCol">Point3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#divide()">divide</a>(s:Number, result:<a href="Point3D.html">Point3D</a> = null):<a href="../geom/Point3D.html">Point3D</a>
+</div>
+<div class="summaryTableDescription">
+   Divide this point by a number, returning the result.</div>
+</td><td class="summaryTableOwnerCol">Point3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#divideBy()">divideBy</a>(s:Number):<a href="../geom/Point3D.html">Point3D</a>
+</div>
+<div class="summaryTableDescription">
+   Divide this point by a number.</div>
+</td><td class="summaryTableOwnerCol">Point3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#equals()">equals</a>(p:<a href="Point3D.html">Point3D</a>):Boolean</div>
+<div class="summaryTableDescription">
+   Compare this point to another.</div>
+</td><td class="summaryTableOwnerCol">Point3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#incrementBy()">incrementBy</a>(v:<a href="Vector3D.html">Vector3D</a>):<a href="../geom/Point3D.html">Point3D</a>
+</div>
+<div class="summaryTableDescription">
+   Add a vector to this point.</div>
+</td><td class="summaryTableOwnerCol">Point3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#multiply()">multiply</a>(s:Number, result:<a href="Point3D.html">Point3D</a> = null):<a href="../geom/Point3D.html">Point3D</a>
+</div>
+<div class="summaryTableDescription">
+   Multiply this point by a number, returning the result.</div>
+</td><td class="summaryTableOwnerCol">Point3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#nearTo()">nearTo</a>(p:<a href="Point3D.html">Point3D</a>, e:Number):Boolean</div>
+<div class="summaryTableDescription">
+   Compare this point to another.</div>
+</td><td class="summaryTableOwnerCol">Point3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#project()">project</a>():<a href="../geom/Point3D.html">Point3D</a>
+</div>
+<div class="summaryTableDescription">
+   Divide all the coordinates in this popoint by the w coordinate, 
+   producing a point with a w coordinate of 1.</div>
+</td><td class="summaryTableOwnerCol">Point3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#reset()">reset</a>(x:Number = 0, y:Number = 0, z:Number = 0):<a href="../geom/Point3D.html">Point3D</a>
+</div>
+<div class="summaryTableDescription">
+   Assigns new coordinates to this point
+   
+   </div>
+</td><td class="summaryTableOwnerCol">Point3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#scaleBy()">scaleBy</a>(s:Number):<a href="../geom/Point3D.html">Point3D</a>
+</div>
+<div class="summaryTableDescription">
+   Multiply this point by a number.</div>
+</td><td class="summaryTableOwnerCol">Point3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#subtract()">subtract</a>(v:<a href="Vector3D.html">Vector3D</a>, result:<a href="Point3D.html">Point3D</a> = null):<a href="../geom/Point3D.html">Point3D</a>
+</div>
+<div class="summaryTableDescription">
+   Subtract a vector from this point, returning the result.</div>
+</td><td class="summaryTableOwnerCol">Point3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#toString()">toString</a>():String</div>
+<div class="summaryTableDescription">
+   Get a string representation of this point
+   
+   </div>
+</td><td class="summaryTableOwnerCol">Point3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#toVector3D()">toVector3D</a>(v:<a href="Vector3D.html">Vector3D</a> = null):<a href="../geom/Vector3D.html">Vector3D</a>
+</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">Point3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#vectorTo()">vectorTo</a>(p:<a href="Point3D.html">Point3D</a>, result:<a href="Vector3D.html">Vector3D</a> = null):<a href="../geom/Vector3D.html">Vector3D</a>
+</div>
+<div class="summaryTableDescription">
+   Create the vector from this point to another point.</div>
+</td><td class="summaryTableOwnerCol">Point3D</td>
+</tr>
+</table>
+</div>
+<a name="constantSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Constants</div>
+<table id="summaryTableConstant" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#ZERO">ZERO</a> : <a href="../geom/Point3D.html">Point3D</a>
+<div class="summaryTableDescription">[static]
+   A zero point.</div>
+</td><td class="summaryTableOwnerCol">Point3D</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="classType"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">classType</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>classType:Class</code>&nbsp;&nbsp;[read-only]<p>
+   
+   Returns the actual type of the object - Point3D or Vector3D. Used by some 
+   matrix operations.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get classType():Class</code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="Point3D()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">Point3D</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function Point3D(x:Number = 0, y:Number = 0, z:Number = 0)</code><p>
+   Constructor
+      </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">x</span>:Number</code> (default = <code>0</code>)<code></code> &mdash; the x coordinate of the point
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">y</span>:Number</code> (default = <code>0</code>)<code></code> &mdash; the y coordinate of the point
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">z</span>:Number</code> (default = <code>0</code>)<code></code> &mdash; the z coordinate of the point
+   </td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="add()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">add</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function add(v:<a href="Vector3D.html">Vector3D</a>, result:<a href="Point3D.html">Point3D</a> = null):<a href="../geom/Point3D.html">Point3D</a></code><p>
+   Adds a vector to this point, translating this point according to the vector, 
+   and returns the result.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">v</span>:<a href="Vector3D.html">Vector3D</a></code> &mdash; the vector to add
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">result</span>:<a href="Point3D.html">Point3D</a></code> (default = <code>null</code>)<code></code> &mdash; The point to hold the result of the addition. If
+   no point is passed, a new point is created.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Point3D.html">Point3D</a></code> &mdash; 
+                        the result of the addition
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="assign()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">assign</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function assign(p:<a href="Point3D.html">Point3D</a>):<a href="../geom/Point3D.html">Point3D</a></code><p>
+   Copies another point into this one.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">p</span>:<a href="Point3D.html">Point3D</a></code> &mdash; The point to copy
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Point3D.html">Point3D</a></code> &mdash; 
+                        a reference to this point
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="clone()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">clone</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function clone(result:<a href="Point3D.html">Point3D</a> = null):<a href="../geom/Point3D.html">Point3D</a></code><p>
+   Makes a copy of this point.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">result</span>:<a href="Point3D.html">Point3D</a></code> (default = <code>null</code>)<code></code> &mdash; The point to hold the copy of this point. If
+   no point is passed, a new point is created.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Point3D.html">Point3D</a></code> &mdash; 
+                        A copy of this point
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="decrementBy()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">decrementBy</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function decrementBy(v:<a href="Vector3D.html">Vector3D</a>):<a href="../geom/Point3D.html">Point3D</a></code><p>
+   Subtract a vector from this point.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">v</span>:<a href="Vector3D.html">Vector3D</a></code> &mdash; The vector to subtract
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Point3D.html">Point3D</a></code> &mdash; 
+                        A reference to this point.
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="distance()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">distance</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function distance(p:<a href="Point3D.html">Point3D</a>):Number</code><p>
+   Calculates the distance between two points.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">p</span>:<a href="Point3D.html">Point3D</a></code> &mdash; the other point.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Number</code> &mdash; the distance between the points.
+   </td>
+</tr>
+</table>
+</div>
+<a name="distanceSquared()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">distanceSquared</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function distanceSquared(p:<a href="Point3D.html">Point3D</a>):Number</code><p>
+   Calculates the square of the distance between two points. This is faster than 
+   calculating the actual distance.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">p</span>:<a href="Point3D.html">Point3D</a></code> &mdash; the other point.
+      </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Number</code> &mdash; the square of the distance between the points.
+   </td>
+</tr>
+</table>
+</div>
+<a name="divide()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">divide</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function divide(s:Number, result:<a href="Point3D.html">Point3D</a> = null):<a href="../geom/Point3D.html">Point3D</a></code><p>
+   Divide this point by a number, returning the result.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">s</span>:Number</code> &mdash; The number to divide by
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">result</span>:<a href="Point3D.html">Point3D</a></code> (default = <code>null</code>)<code></code> &mdash; The point to hold the result of the divide. If
+   no point is passed, a new point is created.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Point3D.html">Point3D</a></code> &mdash; 
+                        The result of the division
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="divideBy()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">divideBy</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function divideBy(s:Number):<a href="../geom/Point3D.html">Point3D</a></code><p>
+   Divide this point by a number.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">s</span>:Number</code> &mdash; The number to divide by
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Point3D.html">Point3D</a></code> &mdash; 
+                        A reference to this point.
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="equals()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">equals</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function equals(p:<a href="Point3D.html">Point3D</a>):Boolean</code><p>
+   Compare this point to another.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">p</span>:<a href="Point3D.html">Point3D</a></code> &mdash; The point to compare with
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; true if the points have the same coordinates, false otherwise
+   </td>
+</tr>
+</table>
+</div>
+<a name="incrementBy()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">incrementBy</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function incrementBy(v:<a href="Vector3D.html">Vector3D</a>):<a href="../geom/Point3D.html">Point3D</a></code><p>
+   Add a vector to this point.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">v</span>:<a href="Vector3D.html">Vector3D</a></code> &mdash; The vector to add
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Point3D.html">Point3D</a></code> &mdash; 
+                        A reference to this point.
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="multiply()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">multiply</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function multiply(s:Number, result:<a href="Point3D.html">Point3D</a> = null):<a href="../geom/Point3D.html">Point3D</a></code><p>
+   Multiply this point by a number, returning the result.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">s</span>:Number</code> &mdash; The number to multiply by
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">result</span>:<a href="Point3D.html">Point3D</a></code> (default = <code>null</code>)<code></code> &mdash; The point to hold the result of the multiply. If
+   no point is passed, a new point is created.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Point3D.html">Point3D</a></code> &mdash; 
+                        The result of the multiplication
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="nearTo()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">nearTo</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function nearTo(p:<a href="Point3D.html">Point3D</a>, e:Number):Boolean</code><p>
+   Compare this point to another.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">p</span>:<a href="Point3D.html">Point3D</a></code> &mdash; The point to compare with
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">e</span>:Number</code> &mdash; The distance allowed between the points.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; true if the points are within distance e of each other, false otherwise
+   </td>
+</tr>
+</table>
+</div>
+<a name="project()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">project</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function project():<a href="../geom/Point3D.html">Point3D</a></code><p>
+   Divide all the coordinates in this popoint by the w coordinate, 
+   producing a point with a w coordinate of 1.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Point3D.html">Point3D</a></code> &mdash; 
+                        The projection of this point to a point with a w coordinate 
+   of 1.
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="reset()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">reset</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function reset(x:Number = 0, y:Number = 0, z:Number = 0):<a href="../geom/Point3D.html">Point3D</a></code><p>
+   Assigns new coordinates to this point
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">x</span>:Number</code> (default = <code>0</code>)<code></code> &mdash; The new x coordinate
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">y</span>:Number</code> (default = <code>0</code>)<code></code> &mdash; The new y coordinate
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">z</span>:Number</code> (default = <code>0</code>)<code></code> &mdash; The new z coordinate
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Point3D.html">Point3D</a></code> &mdash; 
+                        a reference to this Point3D object
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="scaleBy()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">scaleBy</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function scaleBy(s:Number):<a href="../geom/Point3D.html">Point3D</a></code><p>
+   Multiply this point by a number.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">s</span>:Number</code> &mdash; The number to multiply by
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Point3D.html">Point3D</a></code> &mdash; 
+                        A reference to this point.
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="subtract()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">subtract</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function subtract(v:<a href="Vector3D.html">Vector3D</a>, result:<a href="Point3D.html">Point3D</a> = null):<a href="../geom/Point3D.html">Point3D</a></code><p>
+   Subtract a vector from this point, returning the result.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">v</span>:<a href="Vector3D.html">Vector3D</a></code> &mdash; The vector to subtract
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">result</span>:<a href="Point3D.html">Point3D</a></code> (default = <code>null</code>)<code></code> &mdash; The point to hold the result of the subtraction. If
+   no point is passed, a new point is created.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Point3D.html">Point3D</a></code> &mdash; 
+                        The result of the subtraction
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="toString()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">toString</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function toString():String</code><p>
+   Get a string representation of this point
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code> &mdash; a string representation of this point
+   </td>
+</tr>
+</table>
+</div>
+<a name="toVector3D()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">toVector3D</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function toVector3D(v:<a href="Vector3D.html">Vector3D</a> = null):<a href="../geom/Vector3D.html">Vector3D</a></code><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">v</span>:<a href="Vector3D.html">Vector3D</a></code> (default = <code>null</code>)<code></code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Vector3D.html">Vector3D</a></code></td>
+</tr>
+</table>
+</div>
+<a name="vectorTo()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">vectorTo</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function vectorTo(p:<a href="Point3D.html">Point3D</a>, result:<a href="Vector3D.html">Vector3D</a> = null):<a href="../geom/Vector3D.html">Vector3D</a></code><p>
+   Create the vector from this point to another point.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">p</span>:<a href="Point3D.html">Point3D</a></code> &mdash; The other point
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">result</span>:<a href="Vector3D.html">Vector3D</a></code> (default = <code>null</code>)<code></code> &mdash; The vector to hold the result. If
+   no vector is passed, a new vector is created.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Vector3D.html">Vector3D</a></code> &mdash; 
+                        The result of the subtraction
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="constantDetail"></a>
+<div class="detailSectionHeader">Constant detail</div>
+<a name="ZERO"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">ZERO</td><td class="detailHeaderType">constant</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const ZERO:<a href="../geom/Point3D.html">Point3D</a></code><p>
+   A zero point.
+   </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">&copy; Richard Lord 2010</center>
+</div>
+</body>
+</html>
+<!--© Richard Lord 2010-->

@@ -1,0 +1,1665 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<meta content="Matrix3D,org.flintparticles.threeD.geom.Matrix3D,IDENTITY,ZERO,n11,n12,n13,n14,n21,n22,n23,n24,n31,n32,n33,n34,n41,n42,n43,n44,determinant,inverse,position,rawData,append,appendBasisTransform,appendRotate,appendScale,appendTranslate,clone,copy,equals,invert,nearEquals,newBasisTransform,newRotate,newScale,newTranslate,prepend,prependBasisTransform,prependRotate,prependScale,prependTranslate,toString,transform,transformArray,transformArraySelf,transformSelf" name="keywords">
+<title>org.flintparticles.threeD.geom.Matrix3D</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'Matrix3D - Flint Particles documentation';
+				var baseRef = '../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flint Particles documentation v2.2.0</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?org/flintparticles/threeD/geom/Matrix3D.html&amp;org/flintparticles/threeD/geom/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;Matrix3D</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class Matrix3D"); titleBar_setSubNav(true,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.flintparticles.threeD.geom</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class Matrix3D</td>
+</tr>
+</table>
+<p></p>
+  <p>Matrix3D represents a 3D transformation matrix. It mimics some aspects of the 
+  flash.geom.Matrix3D class embedded in the Flash Player version 10.</p>
+  
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#determinant">determinant</a> : Number<div class="summaryTableDescription">[read-only]
+   The determinant of the matrix
+   </div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#inverse">inverse</a> : <a href="../geom/Matrix3D.html">Matrix3D</a>
+<div class="summaryTableDescription">[read-only]
+   The inverse of this matrix, or null if no inverse exists
+   </div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#n11">n11</a> : Number<div class="summaryTableDescription">
+   The value in row 1 column 1 of the matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#n12">n12</a> : Number<div class="summaryTableDescription">
+   The value in row 1 column 2 of the matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#n13">n13</a> : Number<div class="summaryTableDescription">
+   The value in row 1 column 3 of the matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#n14">n14</a> : Number<div class="summaryTableDescription">
+   The value in row 1 column 4 of the matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#n21">n21</a> : Number<div class="summaryTableDescription">
+   The value in row 2 column 1 of the matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#n22">n22</a> : Number<div class="summaryTableDescription">
+   The value in row 2 column 2 of the matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#n23">n23</a> : Number<div class="summaryTableDescription">
+   The value in row 2 column 3 of the matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#n24">n24</a> : Number<div class="summaryTableDescription">
+   The value in row 2 column 4 of the matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#n31">n31</a> : Number<div class="summaryTableDescription">
+   The value in row 3 column 1 of the matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#n32">n32</a> : Number<div class="summaryTableDescription">
+   The value in row 3 column 2 of the matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#n33">n33</a> : Number<div class="summaryTableDescription">
+   The value in row 3 column 3 of the matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#n34">n34</a> : Number<div class="summaryTableDescription">
+   The value in row 3 column 4 of the matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#n41">n41</a> : Number<div class="summaryTableDescription">
+   The value in row 4 column 1 of the matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#n42">n42</a> : Number<div class="summaryTableDescription">
+   The value in row 4 column 2 of the matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#n43">n43</a> : Number<div class="summaryTableDescription">
+   The value in row 4 column 3 of the matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#n44">n44</a> : Number<div class="summaryTableDescription">
+   The value in row 4 column 4 of the matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#position">position</a> : <a href="../geom/Point3D.html">Point3D</a>
+<div class="summaryTableDescription">
+   The positionelements of the matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#rawData">rawData</a> : Array<div class="summaryTableDescription">
+   An array containing the sixteen values in the matrix, in row-major form.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#Matrix3D()">Matrix3D</a>(values:Array = null)</div>
+<div class="summaryTableDescription">
+   Creates a Matrix3D object from an array of numbers.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#append()">append</a>(m:<a href="Matrix3D.html">Matrix3D</a>):<a href="../geom/Matrix3D.html">Matrix3D</a>
+</div>
+<div class="summaryTableDescription">
+   Add another transformation matrix to this one, applying the new
+   transformation after the transformations already in this matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#appendBasisTransform()">appendBasisTransform</a>(axisX:<a href="Vector3D.html">Vector3D</a>, axisY:<a href="Vector3D.html">Vector3D</a>, axisZ:<a href="Vector3D.html">Vector3D</a>):<a href="../geom/Matrix3D.html">Matrix3D</a>
+</div>
+<div class="summaryTableDescription">
+   Append a coordinate system transformation such that the vectors
+   indicated are transformed to the x, y and z axes.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#appendRotate()">appendRotate</a>(angle:Number, axis:<a href="Vector3D.html">Vector3D</a>, pivotPoint:<a href="Point3D.html">Point3D</a> = null):<a href="../geom/Matrix3D.html">Matrix3D</a>
+</div>
+<div class="summaryTableDescription">
+   Append a rotation about an axis transformation to this matrix, applying the 
+   rotation after the transformations already in this matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#appendScale()">appendScale</a>(scaleX:Number, scaleY:Number, scaleZ:Number):<a href="../geom/Matrix3D.html">Matrix3D</a>
+</div>
+<div class="summaryTableDescription">
+   Append a scale transformation to this matrix, applying the scale
+   after the transformations already in this matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#appendTranslate()">appendTranslate</a>(x:Number, y:Number, z:Number):<a href="../geom/Matrix3D.html">Matrix3D</a>
+</div>
+<div class="summaryTableDescription">
+   Append a translation transformation to this matrix, applying the 
+   translation after the transformations already in this matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#clone()">clone</a>():<a href="../geom/Matrix3D.html">Matrix3D</a>
+</div>
+<div class="summaryTableDescription">
+   Make a duplicate of this matrix
+   
+   </div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#copy()">copy</a>(m:<a href="Matrix3D.html">Matrix3D</a>):<a href="../geom/Matrix3D.html">Matrix3D</a>
+</div>
+<div class="summaryTableDescription">
+   Copy another matrix into this one
+   
+   </div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#equals()">equals</a>(m:<a href="Matrix3D.html">Matrix3D</a>):Boolean</div>
+<div class="summaryTableDescription">
+   Compare another matrix with this one
+   
+   </div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#invert()">invert</a>():<a href="../geom/Matrix3D.html">Matrix3D</a>
+</div>
+<div class="summaryTableDescription">
+   Invert this matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#nearEquals()">nearEquals</a>(m:<a href="Matrix3D.html">Matrix3D</a>, e:Number):Boolean</div>
+<div class="summaryTableDescription">
+   Compare another matrix with this one
+   
+   </div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#newBasisTransform()">newBasisTransform</a>(axisX:<a href="Vector3D.html">Vector3D</a>, axisY:<a href="Vector3D.html">Vector3D</a>, axisZ:<a href="Vector3D.html">Vector3D</a>):<a href="../geom/Matrix3D.html">Matrix3D</a>
+</div>
+<div class="summaryTableDescription">[static]
+   Creates a coordinate system transformation such that the vectors
+   indicated are transformed to the x, y and z axes.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#newRotate()">newRotate</a>(angle:Number, axis:<a href="Vector3D.html">Vector3D</a>, pivotPoint:<a href="Point3D.html">Point3D</a> = null):<a href="../geom/Matrix3D.html">Matrix3D</a>
+</div>
+<div class="summaryTableDescription">[static]
+   Creates a new Matrix3D for rotation about an axis.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#newScale()">newScale</a>(scaleX:Number, scaleY:Number, scaleZ:Number):<a href="../geom/Matrix3D.html">Matrix3D</a>
+</div>
+<div class="summaryTableDescription">[static]
+   Creates a new Matrix3D for scaling.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#newTranslate()">newTranslate</a>(x:Number, y:Number, z:Number):<a href="../geom/Matrix3D.html">Matrix3D</a>
+</div>
+<div class="summaryTableDescription">[static]
+   Creates a new Matrix3D for translation.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#prepend()">prepend</a>(m:<a href="Matrix3D.html">Matrix3D</a>):<a href="../geom/Matrix3D.html">Matrix3D</a>
+</div>
+<div class="summaryTableDescription">
+   Add another transformation matrix to this one, applying the new
+   transformation before the transformations already in this matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#prependBasisTransform()">prependBasisTransform</a>(axisX:<a href="Vector3D.html">Vector3D</a>, axisY:<a href="Vector3D.html">Vector3D</a>, axisZ:<a href="Vector3D.html">Vector3D</a>):<a href="../geom/Matrix3D.html">Matrix3D</a>
+</div>
+<div class="summaryTableDescription">
+   Prepend a coordinate system transformation such that the vectors
+   indicated are transformed to the x, y and z axes.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#prependRotate()">prependRotate</a>(angle:Number, axis:<a href="Vector3D.html">Vector3D</a>, pivotPoint:<a href="Point3D.html">Point3D</a> = null):<a href="../geom/Matrix3D.html">Matrix3D</a>
+</div>
+<div class="summaryTableDescription">
+   Prepend a rotation about an axis transformation to this matrix, applying the 
+   rotation before the transformations already in this matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#prependScale()">prependScale</a>(scaleX:Number, scaleY:Number, scaleZ:Number):<a href="../geom/Matrix3D.html">Matrix3D</a>
+</div>
+<div class="summaryTableDescription">
+   Prepend a scale transformation to this matrix, applying the scale
+   before the transformations already in this matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#prependTranslate()">prependTranslate</a>(x:Number, y:Number, z:Number):<a href="../geom/Matrix3D.html">Matrix3D</a>
+</div>
+<div class="summaryTableDescription">
+   Prepend a translation transformation to this matrix, applying the 
+   translation before the transformations already in this matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#toString()">toString</a>():String</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#transform()">transform</a>(v:Transformable3D, result:Transformable3D = null):Transformable3D</div>
+<div class="summaryTableDescription">
+   Transform a Vector3D or Point3D using this matrix, returning a new, transformed vector.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#transformArray()">transformArray</a>(vectors:Array):Array</div>
+<div class="summaryTableDescription">
+   Transform an array of Vector3D or Point3D objects using this matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#transformArraySelf()">transformArraySelf</a>(vectors:Array):Array</div>
+<div class="summaryTableDescription">
+   Transform an array of Vector3D or Point3D objects using this matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#transformSelf()">transformSelf</a>(v:Transformable3D):Transformable3D</div>
+<div class="summaryTableDescription">
+   Transform a Vector3D or Point3D using this matrix, storing the result in the original 
+   vector.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+</table>
+</div>
+<a name="constantSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Constants</div>
+<table id="summaryTableConstant" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#IDENTITY">IDENTITY</a> : <a href="../geom/Matrix3D.html">Matrix3D</a>
+<div class="summaryTableDescription">[static]
+   An identity matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#ZERO">ZERO</a> : <a href="../geom/Matrix3D.html">Matrix3D</a>
+<div class="summaryTableDescription">[static]
+   A zero matrix.</div>
+</td><td class="summaryTableOwnerCol">Matrix3D</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="determinant"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">determinant</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>determinant:Number</code>&nbsp;&nbsp;[read-only]<p>
+   The determinant of the matrix
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get determinant():Number</code>
+<br>
+</div>
+<a name="inverse"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">inverse</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>inverse:<a href="../geom/Matrix3D.html">Matrix3D</a></code>&nbsp;&nbsp;[read-only]<p>
+   The inverse of this matrix, or null if no inverse exists
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get inverse():<a href="../geom/Matrix3D.html">Matrix3D</a></code>
+<br>
+</div>
+<a name="n11"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">n11</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var n11:Number</code><p>
+   The value in row 1 column 1 of the matrix.
+   
+   x 0 0 0
+   0 0 0 0
+   0 0 0 0
+   0 0 0 0
+   </p></div>
+<a name="n12"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">n12</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var n12:Number</code><p>
+   The value in row 1 column 2 of the matrix.
+   
+   0 x 0 0
+   0 0 0 0
+   0 0 0 0
+   0 0 0 0
+   </p></div>
+<a name="n13"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">n13</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var n13:Number</code><p>
+   The value in row 1 column 3 of the matrix.
+   
+   0 0 x 0
+   0 0 0 0
+   0 0 0 0
+   0 0 0 0
+   </p></div>
+<a name="n14"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">n14</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var n14:Number</code><p>
+   The value in row 1 column 4 of the matrix.
+   
+   0 0 0 x
+   0 0 0 0
+   0 0 0 0
+   0 0 0 0
+   </p></div>
+<a name="n21"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">n21</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var n21:Number</code><p>
+   The value in row 2 column 1 of the matrix.
+   
+   0 0 0 0
+   x 0 0 0
+   0 0 0 0
+   0 0 0 0
+   </p></div>
+<a name="n22"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">n22</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var n22:Number</code><p>
+   The value in row 2 column 2 of the matrix.
+   
+   0 0 0 0
+   0 x 0 0
+   0 0 0 0
+   0 0 0 0
+   </p></div>
+<a name="n23"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">n23</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var n23:Number</code><p>
+   The value in row 2 column 3 of the matrix.
+   
+   0 0 0 0
+   0 0 x 0
+   0 0 0 0
+   0 0 0 0
+   </p></div>
+<a name="n24"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">n24</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var n24:Number</code><p>
+   The value in row 2 column 4 of the matrix.
+   
+   0 0 0 0
+   0 0 0 x
+   0 0 0 0
+   0 0 0 0
+   </p></div>
+<a name="n31"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">n31</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var n31:Number</code><p>
+   The value in row 3 column 1 of the matrix.
+   
+   0 0 0 0
+   0 0 0 0
+   x 0 0 0
+   0 0 0 0
+   </p></div>
+<a name="n32"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">n32</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var n32:Number</code><p>
+   The value in row 3 column 2 of the matrix.
+   
+   0 0 0 0
+   0 0 0 0
+   0 x 0 0
+   0 0 0 0
+   </p></div>
+<a name="n33"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">n33</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var n33:Number</code><p>
+   The value in row 3 column 3 of the matrix.
+   
+   0 0 0 0
+   0 0 0 0
+   0 0 x 0
+   0 0 0 0
+   </p></div>
+<a name="n34"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">n34</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var n34:Number</code><p>
+   The value in row 3 column 4 of the matrix.
+   
+   0 0 0 0
+   0 0 0 0
+   0 0 0 x
+   0 0 0 0
+   </p></div>
+<a name="n41"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">n41</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var n41:Number</code><p>
+   The value in row 4 column 1 of the matrix.
+   
+   0 0 0 0
+   0 0 0 0
+   0 0 0 0
+   x 0 0 0
+   </p></div>
+<a name="n42"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">n42</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var n42:Number</code><p>
+   The value in row 4 column 2 of the matrix.
+   
+   0 0 0 0
+   0 0 0 0
+   0 0 0 0
+   0 x 0 0
+   </p></div>
+<a name="n43"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">n43</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var n43:Number</code><p>
+   The value in row 4 column 3 of the matrix.
+   
+   0 0 0 0
+   0 0 0 0
+   0 0 0 0
+   0 0 x 0
+   </p></div>
+<a name="n44"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">n44</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var n44:Number</code><p>
+   The value in row 4 column 4 of the matrix.
+   
+   0 0 0 0
+   0 0 0 0
+   0 0 0 0
+   0 0 0 x
+   </p></div>
+<a name="position"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">position</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>position:<a href="../geom/Point3D.html">Point3D</a></code>&nbsp;&nbsp;[read-write]<p>
+   The positionelements of the matrix. This is the last column of the
+   matrix, containing values n14, n24, n34, n44.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get position():<a href="../geom/Point3D.html">Point3D</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set position(value:<a href="../geom/Point3D.html">Point3D</a>):void</code>
+<br>
+</div>
+<a name="rawData"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">rawData</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>rawData:Array</code>&nbsp;&nbsp;[read-write]<p>
+   An array containing the sixteen values in the matrix, in row-major form.
+   
+   </p><p>[n11, n12, n13, n14, n21, n22, n23, n24, n31, n32, n33, n34, n41, n42, n43, n44]</p>
+   <span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get rawData():Array</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set rawData(value:Array):void</code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="Matrix3D()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">Matrix3D</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function Matrix3D(values:Array = null)</code><p>
+   Creates a Matrix3D object from an array of numbers.
+   
+   </p><p>The array may contain 12 or 16 numbers in row major form.
+   If the array contains only 12 values, the values 0,0,0,1 are
+   used to populate the last row of the matrix. If no array is passed
+   in, an identity matrix is created.</p>
+   
+   <span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">values</span>:Array</code> (default = <code>null</code>)<code></code> &mdash; The raw data to populate the matrix with.
+   </td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="append()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">append</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function append(m:<a href="Matrix3D.html">Matrix3D</a>):<a href="../geom/Matrix3D.html">Matrix3D</a></code><p>
+   Add another transformation matrix to this one, applying the new
+   transformation after the transformations already in this matrix.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">m</span>:<a href="Matrix3D.html">Matrix3D</a></code> &mdash; The other transformation matrix
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Matrix3D.html">Matrix3D</a></code> &mdash; 
+                        A reference to this matrix
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="appendBasisTransform()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">appendBasisTransform</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function appendBasisTransform(axisX:<a href="Vector3D.html">Vector3D</a>, axisY:<a href="Vector3D.html">Vector3D</a>, axisZ:<a href="Vector3D.html">Vector3D</a>):<a href="../geom/Matrix3D.html">Matrix3D</a></code><p>
+   Append a coordinate system transformation such that the vectors
+   indicated are transformed to the x, y and z axes. The vectors need
+   not be perpendicular, but they must form a basis for 3D space.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">axisX</span>:<a href="Vector3D.html">Vector3D</a></code> &mdash; The vector that is translated to ( 1, 0, 0 ) by the transform.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">axisY</span>:<a href="Vector3D.html">Vector3D</a></code> &mdash; The vector that is translated to ( 0, 1, 0 ) by the transform.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">axisZ</span>:<a href="Vector3D.html">Vector3D</a></code> &mdash; The vector that is translated to ( 0, 0, 1 ) by the transform.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Matrix3D.html">Matrix3D</a></code> &mdash; 
+                        A reference to this matrix
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="appendRotate()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">appendRotate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function appendRotate(angle:Number, axis:<a href="Vector3D.html">Vector3D</a>, pivotPoint:<a href="Point3D.html">Point3D</a> = null):<a href="../geom/Matrix3D.html">Matrix3D</a></code><p>
+   Append a rotation about an axis transformation to this matrix, applying the 
+   rotation after the transformations already in this matrix.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">angle</span>:Number</code> &mdash; The rotation angle in radians. If this is not set, the
+   w coordinate of the axis is used as the angle.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">axis</span>:<a href="Vector3D.html">Vector3D</a></code> &mdash; The vector to rotate around
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">pivotPoint</span>:<a href="Point3D.html">Point3D</a></code> (default = <code>null</code>)<code></code> &mdash; The point the axis passes through. The default value is the origin.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Matrix3D.html">Matrix3D</a></code> &mdash; 
+                        A reference to this matrix
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="appendScale()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">appendScale</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function appendScale(scaleX:Number, scaleY:Number, scaleZ:Number):<a href="../geom/Matrix3D.html">Matrix3D</a></code><p>
+   Append a scale transformation to this matrix, applying the scale
+   after the transformations already in this matrix.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">scaleX</span>:Number</code> &mdash; The scaling factor in the x direction
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">scaleY</span>:Number</code> &mdash; The scaling factor in the y direction
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">scaleZ</span>:Number</code> &mdash; The scaling factor in the z direction
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Matrix3D.html">Matrix3D</a></code> &mdash; 
+                        A reference to this matrix
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="appendTranslate()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">appendTranslate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function appendTranslate(x:Number, y:Number, z:Number):<a href="../geom/Matrix3D.html">Matrix3D</a></code><p>
+   Append a translation transformation to this matrix, applying the 
+   translation after the transformations already in this matrix.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">x</span>:Number</code> &mdash; The translation along the x axis.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">y</span>:Number</code> &mdash; The translation along the y axis.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">z</span>:Number</code> &mdash; The translation along the z axis.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Matrix3D.html">Matrix3D</a></code> &mdash; 
+                        A reference to this matrix
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="clone()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">clone</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function clone():<a href="../geom/Matrix3D.html">Matrix3D</a></code><p>
+   Make a duplicate of this matrix
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Matrix3D.html">Matrix3D</a></code> &mdash; 
+                        The new matrix
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="copy()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">copy</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function copy(m:<a href="Matrix3D.html">Matrix3D</a>):<a href="../geom/Matrix3D.html">Matrix3D</a></code><p>
+   Copy another matrix into this one
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">m</span>:<a href="Matrix3D.html">Matrix3D</a></code> &mdash; the matrix to copy
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Matrix3D.html">Matrix3D</a></code> &mdash; 
+                        a reference to this matrix
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="equals()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">equals</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function equals(m:<a href="Matrix3D.html">Matrix3D</a>):Boolean</code><p>
+   Compare another matrix with this one
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">m</span>:<a href="Matrix3D.html">Matrix3D</a></code> &mdash; the matrix to compare with
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; true if the matrices are the same, false otherwise
+   </td>
+</tr>
+</table>
+</div>
+<a name="invert()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">invert</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function invert():<a href="../geom/Matrix3D.html">Matrix3D</a></code><p>
+   Invert this matrix. If no inverse exists, the matrix is invalid and null
+   is returned.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Matrix3D.html">Matrix3D</a></code> &mdash; 
+                        A reference to this matrix or null if no inverse exists
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="nearEquals()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">nearEquals</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function nearEquals(m:<a href="Matrix3D.html">Matrix3D</a>, e:Number):Boolean</code><p>
+   Compare another matrix with this one
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">m</span>:<a href="Matrix3D.html">Matrix3D</a></code> &mdash; the matrix to compare with
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">e</span>:Number</code> &mdash; The small variation allowed between the values representing
+   the matrices
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Boolean</code> &mdash; true if the matrices are the within e of each other, false otherwise
+   </td>
+</tr>
+</table>
+</div>
+<a name="newBasisTransform()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">newBasisTransform</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function newBasisTransform(axisX:<a href="Vector3D.html">Vector3D</a>, axisY:<a href="Vector3D.html">Vector3D</a>, axisZ:<a href="Vector3D.html">Vector3D</a>):<a href="../geom/Matrix3D.html">Matrix3D</a></code><p>
+   Creates a coordinate system transformation such that the vectors
+   indicated are transformed to the x, y and z axes. The vectors need
+   not be perpendicular, but they must form a basis for 3D space.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">axisX</span>:<a href="Vector3D.html">Vector3D</a></code> &mdash; The vector that is translated to ( 1, 0, 0 ) by the transform.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">axisY</span>:<a href="Vector3D.html">Vector3D</a></code> &mdash; The vector that is translated to ( 0, 1, 0 ) by the transform.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">axisZ</span>:<a href="Vector3D.html">Vector3D</a></code> &mdash; The vector that is translated to ( 0, 0, 1 ) by the transform.
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Matrix3D.html">Matrix3D</a></code></td>
+</tr>
+</table>
+</div>
+<a name="newRotate()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">newRotate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function newRotate(angle:Number, axis:<a href="Vector3D.html">Vector3D</a>, pivotPoint:<a href="Point3D.html">Point3D</a> = null):<a href="../geom/Matrix3D.html">Matrix3D</a></code><p>
+   Creates a new Matrix3D for rotation about an axis.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">angle</span>:Number</code> &mdash; The angle in radians for the rotation
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">axis</span>:<a href="Vector3D.html">Vector3D</a></code> &mdash; The axis to rotate around
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">pivotPoint</span>:<a href="Point3D.html">Point3D</a></code> (default = <code>null</code>)<code></code> &mdash; The point the axis passes through. The default value is the origin.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Matrix3D.html">Matrix3D</a></code> &mdash; 
+                        The new matrix
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="newScale()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">newScale</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function newScale(scaleX:Number, scaleY:Number, scaleZ:Number):<a href="../geom/Matrix3D.html">Matrix3D</a></code><p>
+   Creates a new Matrix3D for scaling.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">scaleX</span>:Number</code> &mdash; The scale factor in the x direction
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">scaleY</span>:Number</code> &mdash; The scale factor in the y direction
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">scaleZ</span>:Number</code> &mdash; The scale factor in the z direction
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Matrix3D.html">Matrix3D</a></code> &mdash; 
+                        The new matrix
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="newTranslate()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">newTranslate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static function newTranslate(x:Number, y:Number, z:Number):<a href="../geom/Matrix3D.html">Matrix3D</a></code><p>
+   Creates a new Matrix3D for translation.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">x</span>:Number</code> &mdash; The translation along the x axis.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">y</span>:Number</code> &mdash; The translation along the y axis.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">z</span>:Number</code> &mdash; The translation along the z axis.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Matrix3D.html">Matrix3D</a></code> &mdash; 
+                        The new matrix
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="prepend()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">prepend</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function prepend(m:<a href="Matrix3D.html">Matrix3D</a>):<a href="../geom/Matrix3D.html">Matrix3D</a></code><p>
+   Add another transformation matrix to this one, applying the new
+   transformation before the transformations already in this matrix.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">m</span>:<a href="Matrix3D.html">Matrix3D</a></code> &mdash; The other transformation matrix
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Matrix3D.html">Matrix3D</a></code> &mdash; 
+                        A reference to this matrix
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="prependBasisTransform()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">prependBasisTransform</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function prependBasisTransform(axisX:<a href="Vector3D.html">Vector3D</a>, axisY:<a href="Vector3D.html">Vector3D</a>, axisZ:<a href="Vector3D.html">Vector3D</a>):<a href="../geom/Matrix3D.html">Matrix3D</a></code><p>
+   Prepend a coordinate system transformation such that the vectors
+   indicated are transformed to the x, y and z axes. The vectors need
+   not be perpendicular, but they must form a basis for 3D space.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">axisX</span>:<a href="Vector3D.html">Vector3D</a></code> &mdash; The vector that is translated to ( 1, 0, 0 ) by the transform.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">axisY</span>:<a href="Vector3D.html">Vector3D</a></code> &mdash; The vector that is translated to ( 0, 1, 0 ) by the transform.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">axisZ</span>:<a href="Vector3D.html">Vector3D</a></code> &mdash; The vector that is translated to ( 0, 0, 1 ) by the transform.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Matrix3D.html">Matrix3D</a></code> &mdash; 
+                        A reference to this matrix
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="prependRotate()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">prependRotate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function prependRotate(angle:Number, axis:<a href="Vector3D.html">Vector3D</a>, pivotPoint:<a href="Point3D.html">Point3D</a> = null):<a href="../geom/Matrix3D.html">Matrix3D</a></code><p>
+   Prepend a rotation about an axis transformation to this matrix, applying the 
+   rotation before the transformations already in this matrix.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">angle</span>:Number</code> &mdash; The rotation angle in radians. If this is not set, the
+   w coordinate of the axis is used as the angle.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">axis</span>:<a href="Vector3D.html">Vector3D</a></code> &mdash; The vector to rotate around
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">pivotPoint</span>:<a href="Point3D.html">Point3D</a></code> (default = <code>null</code>)<code></code> &mdash; The point the axis passes through. The default value is the origin.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Matrix3D.html">Matrix3D</a></code> &mdash; 
+                        A reference to this matrix
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="prependScale()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">prependScale</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function prependScale(scaleX:Number, scaleY:Number, scaleZ:Number):<a href="../geom/Matrix3D.html">Matrix3D</a></code><p>
+   Prepend a scale transformation to this matrix, applying the scale
+   before the transformations already in this matrix.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">scaleX</span>:Number</code> &mdash; The scaling factor in the x direction
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">scaleY</span>:Number</code> &mdash; The scaling factor in the y direction
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">scaleZ</span>:Number</code> &mdash; The scaling factor in the z direction
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Matrix3D.html">Matrix3D</a></code> &mdash; 
+                        A reference to this matrix
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="prependTranslate()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">prependTranslate</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function prependTranslate(x:Number, y:Number, z:Number):<a href="../geom/Matrix3D.html">Matrix3D</a></code><p>
+   Prepend a translation transformation to this matrix, applying the 
+   translation before the transformations already in this matrix.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">x</span>:Number</code> &mdash; The translation along the x axis.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">y</span>:Number</code> &mdash; The translation along the y axis.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">z</span>:Number</code> &mdash; The translation along the z axis.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code><a href="../geom/Matrix3D.html">Matrix3D</a></code> &mdash; 
+                        A reference to this matrix
+   
+                        
+                     </td>
+</tr>
+</table>
+</div>
+<a name="toString()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">toString</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function toString():String</code>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>String</code></td>
+</tr>
+</table>
+</div>
+<a name="transform()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">transform</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function transform(v:Transformable3D, result:Transformable3D = null):Transformable3D</code><p>
+   Transform a Vector3D or Point3D using this matrix, returning a new, transformed vector.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">v</span>:Transformable3D</code> &mdash; The vector to transform.
+   
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">result</span>:Transformable3D</code> (default = <code>null</code>)<code></code></td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Transformable3D</code> &mdash; The result of the transformation.
+   </td>
+</tr>
+</table>
+</div>
+<a name="transformArray()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">transformArray</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function transformArray(vectors:Array):Array</code><p>
+   Transform an array of Vector3D or Point3D objects using this matrix. The 
+   results are returned in a new array.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">vectors</span>:Array</code> &mdash; the array of Vector3D or Point3D objects to transform.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Array</code> &mdash; An array containing the new transformed vectors.
+   </td>
+</tr>
+</table>
+</div>
+<a name="transformArraySelf()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">transformArraySelf</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function transformArraySelf(vectors:Array):Array</code><p>
+   Transform an array of Vector3D or Point3D objects using this matrix. The 
+   original vectors are modified to contain the new, transformed values.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">vectors</span>:Array</code> &mdash; the array of Vector3D or Point3D objects to transform.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Array</code> &mdash; The original array, which now contains the transformed vectors.
+   </td>
+</tr>
+</table>
+</div>
+<a name="transformSelf()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">transformSelf</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function transformSelf(v:Transformable3D):Transformable3D</code><p>
+   Transform a Vector3D or Point3D using this matrix, storing the result in the original 
+   vector.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">v</span>:Transformable3D</code> &mdash; The vector to transform.
+   
+   </td>
+</tr>
+</table>
+<p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Transformable3D</code> &mdash; A reference to the original (now transformed) vector.
+   </td>
+</tr>
+</table>
+</div>
+<a name="constantDetail"></a>
+<div class="detailSectionHeader">Constant detail</div>
+<a name="IDENTITY"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">IDENTITY</td><td class="detailHeaderType">constant</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const IDENTITY:<a href="../geom/Matrix3D.html">Matrix3D</a></code><p>
+   An identity matrix.
+   </p></div>
+<a name="ZERO"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">ZERO</td><td class="detailHeaderType">constant</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static const ZERO:<a href="../geom/Matrix3D.html">Matrix3D</a></code><p>
+   A zero matrix.
+   </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">&copy; Richard Lord 2010</center>
+</div>
+</body>
+</html>
+<!--© Richard Lord 2010-->

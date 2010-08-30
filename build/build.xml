@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Flint Build Scripts" default="all">
+	
+	<property file="build.config"/>
+		
+	<target name="all" depends="swc2d,swc3d,asdocs" description="Full build of swc library and asdocs"/>
+		
+	<target name="swc2d" description="Clean and build 2D swc library">
+		
+		<fileset dir="../src" casesensitive="yes" includes="org/flintparticles/common/**/*.as org/flintparticles/twoD/**/*.as" id="classfiles2d"/>
+		<pathconvert property="classlist2d" refid="classfiles2d" pathsep=" " dirsep=".">
+			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
+		</pathconvert>
+		
+		<exec executable="${compc}" failonerror="true">
+
+			<arg line='-source-path ../src'/>
+			<arg line='-output ../swc/Flint2d.swc'/>
+
+			<arg line='-namespace http://flintparticles.org/2009/flint2d manifest2D.xml'/>
+			<arg line='-include-namespaces http://flintparticles.org/2009/flint2d'/>
+
+			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/flex.swc"'/>
+			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/framework.swc"'/>
+			
+			<arg line='-include-classes ${classlist2d}'/>
+		</exec>
+	</target>
+				
+	<target name="swc3d" description="Clean and build 3D swc library">
+		
+		<fileset dir="../src" casesensitive="yes" includes="org/flintparticles/common/**/*.as org/flintparticles/threeD/**/*.as" id="classfiles3d"/>
+		<pathconvert property="classlist3d" refid="classfiles3d" pathsep=" " dirsep=".">
+			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
+		</pathconvert>
+		
+		<exec executable="${compc}" failonerror="true">
+
+			<arg line='-source-path ../src'/>
+			<arg line='-output ../swc/Flint3d.swc'/>
+
+			<arg line='-target-player 10.0.0.0'/>
+			<arg line='-namespace http://flintparticles.org/2009/flint3d manifest3D.xml'/>
+			<arg line='-include-namespaces http://flintparticles.org/2009/flint3d'/>
+
+			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/flex.swc"'/>
+			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/framework.swc"'/>
+			<arg line='-external-library-path+="${away3d.swc}"'/>
+			<arg line='-external-library-path+="${papervision3d.swc}"'/>
+			
+			<arg line='-include-classes ${classlist3d}'/>
+		</exec>
+	</target>
+
+	<target name="asdocs" description="Clean and build asdocs">
+		<exec executable="${asdoc}" failonerror="true">
+			
+			<arg line='-output ../docs'/>
+			<arg line='-templates-path asdoc_templates'/>
+			
+			<arg line='-doc-sources ../src/'/>
+			<arg line='-namespace http://flintparticles.org/2009/flint2d manifest2D.xml'/>
+			<arg line='-namespace http://flintparticles.org/2009/flint3d manifest3D.xml'/>
+			
+			<arg line='-library-path "${flexsdk.dir}/frameworks/libs/flex.swc"'/>
+			<arg line='-library-path "${flexsdk.dir}/frameworks/libs/framework.swc"'/>
+			<arg line='-library-path "${away3d.swc}"'/>
+			<arg line='-library-path "${papervision3d.swc}"'/>
+			<arg line='-target-player 10.0.0.0'/>
+			
+			<arg line='-main-title "Flint Particles documentation v${version}"'/>
+			<arg line='-window-title "Flint Particles documentation"'/>
+			<arg line='-footer "© Richard Lord 2010"'/>
+			
+		</exec>
+	</target>
+
+</project>

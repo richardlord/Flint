@@ -1,0 +1,285 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<meta content="ParticleEvent,org.flintparticles.common.events.ParticleEvent,BOUNDING_BOX_COLLISION,PARTICLES_COLLISION,PARTICLE_ADDED,PARTICLE_CREATED,PARTICLE_DEAD,ZONE_COLLISION,otherObject,particle,clone" name="keywords">
+<title>org.flintparticles.common.events.ParticleEvent</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'ParticleEvent - Flint Particles documentation';
+				var baseRef = '../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flint Particles documentation v2.2.0</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?org/flintparticles/common/events/ParticleEvent.html&amp;org/flintparticles/common/events/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;ParticleEvent</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class ParticleEvent"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.flintparticles.common.events</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class ParticleEvent</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">ParticleEvent <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../images/inherit-arrow.gif"> flash.events.Event</td>
+</tr>
+</table>
+<p></p>
+  The class for particle related events dispatched by classes in the Flint project.
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#BOUNDING_BOX_COLLISION">BOUNDING_BOX_COLLISION</a> : String = "boundingBoxCollision"<div class="summaryTableDescription">[static]
+   The event dispatched by an emitter when a particle collides with another particle.</div>
+</td><td class="summaryTableOwnerCol">ParticleEvent</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#otherObject">otherObject</a> : *<div class="summaryTableDescription">
+   The other object involved in the event.</div>
+</td><td class="summaryTableOwnerCol">ParticleEvent</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#particle">particle</a> : <a href="../particles/Particle.html">Particle</a>
+<div class="summaryTableDescription">
+   The particle to which the event relates.</div>
+</td><td class="summaryTableOwnerCol">ParticleEvent</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#PARTICLE_ADDED">PARTICLE_ADDED</a> : String = "particleAdded"<div class="summaryTableDescription">[static]
+   The event dispatched by an emitter when a pre-existing particle is added to it.</div>
+</td><td class="summaryTableOwnerCol">ParticleEvent</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#PARTICLE_CREATED">PARTICLE_CREATED</a> : String = "particleCreated"<div class="summaryTableDescription">[static]
+   The event dispatched by an emitter when a particle is created.</div>
+</td><td class="summaryTableOwnerCol">ParticleEvent</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#PARTICLE_DEAD">PARTICLE_DEAD</a> : String = "particleDead"<div class="summaryTableDescription">[static]
+   The event dispatched by an emitter when a particle dies.</div>
+</td><td class="summaryTableOwnerCol">ParticleEvent</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#PARTICLES_COLLISION">PARTICLES_COLLISION</a> : String = "particlesCollision"<div class="summaryTableDescription">[static]
+   The event dispatched by an emitter when a particle collides with another particle.</div>
+</td><td class="summaryTableOwnerCol">ParticleEvent</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#ZONE_COLLISION">ZONE_COLLISION</a> : String = "zoneCollision"<div class="summaryTableDescription">[static]
+   The event dispatched by an emitter when a particle collides with a zone.</div>
+</td><td class="summaryTableOwnerCol">ParticleEvent</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#ParticleEvent()">ParticleEvent</a>(type:String, particle:<a href="../particles/Particle.html">Particle</a> = null, bubbles:Boolean = false, cancelable:Boolean = false)</div>
+<div class="summaryTableDescription">
+   The constructor creates a ParticleEvent object.</div>
+</td><td class="summaryTableOwnerCol">ParticleEvent</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#clone()">clone</a>():Event</div>
+<div class="summaryTableDescription">
+   Creates a copy of this event.</div>
+</td><td class="summaryTableOwnerCol">ParticleEvent</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="BOUNDING_BOX_COLLISION"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">BOUNDING_BOX_COLLISION</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static var BOUNDING_BOX_COLLISION:String = "boundingBoxCollision"</code><p>
+   The event dispatched by an emitter when a particle collides with another particle.
+   </p></div>
+<a name="otherObject"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">otherObject</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var otherObject:*</code><p>
+   The other object involved in the event. This may be null.
+   </p></div>
+<a name="particle"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">particle</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var particle:<a href="../particles/Particle.html">Particle</a></code><p>
+   The particle to which the event relates.
+   </p></div>
+<a name="PARTICLE_ADDED"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">PARTICLE_ADDED</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static var PARTICLE_ADDED:String = "particleAdded"</code><p>
+   The event dispatched by an emitter when a pre-existing particle is added to it.
+   </p></div>
+<a name="PARTICLE_CREATED"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">PARTICLE_CREATED</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static var PARTICLE_CREATED:String = "particleCreated"</code><p>
+   The event dispatched by an emitter when a particle is created.
+   </p></div>
+<a name="PARTICLE_DEAD"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">PARTICLE_DEAD</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static var PARTICLE_DEAD:String = "particleDead"</code><p>
+   The event dispatched by an emitter when a particle dies.
+   </p></div>
+<a name="PARTICLES_COLLISION"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">PARTICLES_COLLISION</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static var PARTICLES_COLLISION:String = "particlesCollision"</code><p>
+   The event dispatched by an emitter when a particle collides with another particle.
+   </p></div>
+<a name="ZONE_COLLISION"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">ZONE_COLLISION</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public static var ZONE_COLLISION:String = "zoneCollision"</code><p>
+   The event dispatched by an emitter when a particle collides with a zone.
+   </p></div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="ParticleEvent()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">ParticleEvent</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function ParticleEvent(type:String, particle:<a href="../particles/Particle.html">Particle</a> = null, bubbles:Boolean = false, cancelable:Boolean = false)</code><p>
+   The constructor creates a ParticleEvent object.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">type</span>:String</code> &mdash; The type of the event, accessible as Event.type.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">particle</span>:<a href="../particles/Particle.html">Particle</a></code> (default = <code>null</code>)<code></code> &mdash; The particle to which teh event relates.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">bubbles</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; Determines whether the Event object participates 
+   in the bubbling stage of the event flow. The default value is false.
+   </td>
+</tr>
+<tr>
+<td class="paramSpacer">&nbsp;</td>
+</tr>
+<tr>
+<td width="20px"></td><td><code><span class="label">cancelable</span>:Boolean</code> (default = <code>false</code>)<code></code> &mdash; Determines whether the Event object can be 
+   canceled. The default values is false.
+   </td>
+</tr>
+</table>
+</div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="clone()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">clone</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public override function clone():Event</code><p>
+   Creates a copy of this event.
+   
+   </p><p></p>
+<span class="label">Returns</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20"></td><td><code>Event</code> &mdash; The copy of this event.
+   </td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">&copy; Richard Lord 2010</center>
+</div>
+</body>
+</html>
+<!--© Richard Lord 2010-->

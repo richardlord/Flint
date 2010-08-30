@@ -1,0 +1,151 @@
+<!--
+
+	ADOBE SYSTEMS INCORPORATED
+	Copyright 2006 Adobe Systems Incorporated
+	All Rights Reserved.
+
+	NOTICE: Adobe permits you to use, modify, and distribute this file
+	in accordance with the terms of the license agreement accompanying it.
+
+-->
+
+<!-- this file normally should not be edited.  Use the command-line
+     parameters for ASDoc instead -->
+<overviews>
+
+	<all-packages>
+<!--		<description><![CDATA[&lt;img src="images/diagram.png" width="600" height="410" style="text-align:center" /&gt;]]></description>  -->
+		<description><![CDATA[Flint is divided into three major packages.
+&lt;ul&gt;
+&lt;li&gt;com.flintparticles.common contains classes used for both 2D and 3D particle systems.&lt;/li&gt;
+&lt;li&gt;com.flintparticles.twoD contains classes used only for 2D particle systems.&lt;/li&gt;
+&lt;li&gt;com.flintparticles.threeD contains classes used only for 3D particle systems.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A particle system in Flint is created by combining emitters, counters, initializers, actions, activities and renderers.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Emitters create and manage Particles.&lt;/li&gt;
+&lt;li&gt;Emitters use Counters to control how many particles are created.&lt;/li&gt;
+&lt;li&gt;Emitters use Initializers to control how those particles are initialized.&lt;/li&gt;
+&lt;li&gt;Emitters use Actions to control how those particles behave over time.&lt;/li&gt;
+&lt;li&gt;Emitters use Activities to control their own behaviour over time.&lt;/li&gt;
+&lt;li&gt;Renderers draw the Particles created by one or more emitters.&lt;/li&gt;
+&lt;/ul&gt;]]></description>
+	</all-packages>
+
+	<all-classes>
+		<description><![CDATA[Documentation for classes includes syntax, usage information, and code samples for methods, properties, and event handlers and listeners for those APIs that belong to a specific class in ActionScript. The classes are listed alphabetically. If you are not sure to which class a certain method or property belongs, you can look it up in the Index.]]></description>
+	</all-classes>
+	<deprecated>
+		<shortDescription><![CDATA[A list of deprecated items and suggested alternatives when available.]]></shortDescription>
+		<description></description>
+	</deprecated>
+
+	<packages>
+		<package name="org.flintparticles.common.actions">
+			<shortDescription><![CDATA[Actions are used to continuously modify the state of particles created by an Emitter.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.twoD.actions">
+			<shortDescription><![CDATA[Actions are used to continuously modify the state of particles created by an Emitter.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.threeD.actions">
+			<shortDescription><![CDATA[Actions are used to continuously modify the state of particles created by an Emitter.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.common.activities">
+			<shortDescription><![CDATA[Activities are used to continuously modify the state of an Emitter.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.twoD.activities">
+			<shortDescription><![CDATA[Activities are used to continuously modify the state of an Emitter.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.threeD.activities">
+			<shortDescription><![CDATA[Activities are used to continuously modify the state of an Emitter.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.common.counters">
+			<shortDescription><![CDATA[Counters are used to control the rate of particle emission by an Emitter.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.common.debug">
+			<shortDescription><![CDATA[Classes used for debugging and optimizing Flint]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.common.displayObjects">
+			<shortDescription><![CDATA[This package contains some standard displayObjects used in particle systems.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.common.easing">
+			<shortDescription><![CDATA[These easing functions can be used to modify the TimePeriod counter.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.common.emitters">
+			<shortDescription><![CDATA[Emitters create particles and are the core component of a particle system.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.twoD.emitters">
+			<shortDescription><![CDATA[Emitters create particles and are the core component of a particle system.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.threeD.emitters">
+			<shortDescription><![CDATA[Emitters create particles and are the core component of a particle system.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.common.energyEasing">
+			<shortDescription><![CDATA[These easing functions can be used to modify the ageing of the particles in a particle system.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.common.events">
+			<shortDescription><![CDATA[Events dispatched by Flint]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.common.initializers">
+			<shortDescription><![CDATA[Initializers are used to modify the initial state of particles created by an Emitter.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.twoD.initializers">
+			<shortDescription><![CDATA[Initializers are used to modify the initial state of particles created by an Emitter.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.threeD.initializers">
+			<shortDescription><![CDATA[Initializers are used to modify the initial state of particles created by an Emitter.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.common.particles">
+			<shortDescription><![CDATA[Particles contain the state information for a single particle in a particle system.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.twoD.particles">
+			<shortDescription><![CDATA[Particles contain the state information for a single particle in a particle system.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.threeD.particles">
+			<shortDescription><![CDATA[Particles contain the state information for a single particle in a particle system.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.common.renderers">
+			<shortDescription><![CDATA[Renderers are used to draw the particle system on the stage.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.twoD.renderers">
+			<shortDescription><![CDATA[Renderers are used to draw the particle system on the stage.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.threeD.renderers">
+			<shortDescription><![CDATA[Renderers are used to draw the particle system on the stage.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.common.utils">
+			<shortDescription><![CDATA[Utility classes and functions.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.twoD.zones">
+			<shortDescription><![CDATA[Zones define a region of the particle system and are used in various Actions and Initializers.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.threeD.zones">
+			<shortDescription><![CDATA[Zones define a region of the particle system and are used in various Actions and Initializers.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.threeD.geom">
+			<shortDescription><![CDATA[Geometry classes for working in 3D]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.threeD.renderers.controllers">
+			<shortDescription><![CDATA[Predefined camera controllers for letting users move within a 3D scene.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.threeD.away3d">
+			<shortDescription><![CDATA[Renderers for displaying particle systems in Away3D]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.threeD.away3d.initializers">
+			<shortDescription><![CDATA[Initializers are used to modify the initial state of particles created by an Emitter.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.threeD.away3d.utils">
+			<shortDescription><![CDATA[Utility classes and functions.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.threeD.papervision3d">
+			<shortDescription><![CDATA[Renderers for displaying particle systems in Papervision3D]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.threeD.papervision3d.initializers">
+			<shortDescription><![CDATA[Initializers are used to modify the initial state of particles created by an Emitter.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.threeD.papervision3d.utils">
+			<shortDescription><![CDATA[Utility classes and functions.]]></shortDescription>
+		</package>
+	</packages>
+
+</overviews>

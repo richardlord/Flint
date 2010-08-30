@@ -1,0 +1,672 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<meta content="Emitter2D,org.flintparticles.twoD.emitters.Emitter2D,spaceSort,spaceSortedX,defaultParticleFactory,rotRadians,rotation,x,y,initParticle,sortParticles" name="keywords">
+<title>org.flintparticles.twoD.emitters.Emitter2D</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'Emitter2D - Flint Particles documentation';
+				var baseRef = '../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flint Particles documentation v2.2.0</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?org/flintparticles/twoD/emitters/Emitter2D.html&amp;org/flintparticles/twoD/emitters/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;Emitter2D</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a>&nbsp;| <a href="#eventSummary">Events</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class Emitter2D"); titleBar_setSubNav(false,true,false,false,true,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.flintparticles.twoD.emitters</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class Emitter2D</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">Emitter2D <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../images/inherit-arrow.gif"> <a href="../../common/emitters/Emitter.html">Emitter</a> <img class="inheritArrow" alt="Inheritance" title="Inheritance" src="../../../../images/inherit-arrow.gif"> flash.events.EventDispatcher</td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Subclasses</td><td><a href="mxml/Emitter2D.html">Emitter2D</a></td>
+</tr>
+</table>
+<p></p>
+  The Emitter class manages the creation and ongoing state of particles. It uses a number of
+  utility classes to customise its behaviour.
+  
+  <p>An emitter uses Initializers to customise the initial state of particles
+  that it creates, their position, velocity, color etc. These are added to the 
+  emitter using the addInitializer  method.</p>
+  
+  <p>An emitter uses Actions to customise the behaviour of particles that
+  it creates, to apply gravity, drag, fade etc. These are added to the emitter 
+  using the addAction method.</p>
+  
+  <p>An emitter uses Activities to customise its own behaviour in an ongoing manner, to 
+  make it move or rotate.</p>
+  
+  <p>An emitter uses a Counter to know when and how many particles to emit.</p>
+  
+  <p>An emitter uses a Renderer to display the particles on screen.</p>
+  
+  <p>All timings in the emitter are based on actual time passed, not on frames.</p>
+  
+  <p>Most functionality is best added to an emitter using Actions,
+  Initializers, Activities, Counters and Renderers. This offers greater 
+  flexibility to combine behaviours witout needing to subclass 
+  the Emitter itself.</p>
+  
+  <p>The emitter also has position properties - x, y, rotation - that can be used to directly
+  affect its location in the particle system.
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProperty" id="hideInheritedProperty">
+<a onclick="javascript:setInheritedVisible(false,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Properties</a>
+</div>
+<div class="showInheritedProperty" id="showInheritedProperty">
+<a onclick="javascript:setInheritedVisible(true,'Property');" href="#propertySummary" class="showHideLink"><img src="../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Properties</a>
+</div>
+</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../common/emitters/Emitter.html#actions">actions</a> : Array<div class="summaryTableDescription">
+   The array of all actions being used by this emitter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../common/emitters/Emitter.html#activities">activities</a> : Array<div class="summaryTableDescription">
+   The array of all actions being used by this emitter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../common/emitters/Emitter.html#counter">counter</a> : <a href="../../common/counters/Counter.html">Counter</a>
+<div class="summaryTableDescription">
+   The Counter for the Emitter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#defaultParticleFactory">defaultParticleFactory</a> : <a href="../../common/particles/ParticleFactory.html">ParticleFactory</a>
+<div class="summaryTableDescription">[static][read-only]
+   The default particle factory used to manage the creation, reuse and destruction of particles.</div>
+</td><td class="summaryTableOwnerCol">Emitter2D</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../common/emitters/Emitter.html#fixedFrameTime">fixedFrameTime</a> : Number<div class="summaryTableDescription">
+   Indicates a fixed time (in seconds) to use for every frame.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../common/emitters/Emitter.html#initializers">initializers</a> : Array<div class="summaryTableDescription">
+   The array of all initializers being used by this emitter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../common/emitters/Emitter.html#maximumFrameTime">maximumFrameTime</a> : Number<div class="summaryTableDescription">
+   The maximum duration for a single update frame, in seconds.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../common/emitters/Emitter.html#particleFactory">particleFactory</a> : <a href="../../common/particles/ParticleFactory.html">ParticleFactory</a>
+<div class="summaryTableDescription">
+   This is the particle factory used by the emitter to create and dispose 
+   of particles.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../common/emitters/Emitter.html#particles">particles</a> : Array<div class="summaryTableDescription">
+   The array of all particles created by this emitter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#rotation">rotation</a> : Number<div class="summaryTableDescription">
+   Indicates the rotation of the Emitter, in degrees, within the particle system's coordinate space.</div>
+</td><td class="summaryTableOwnerCol">Emitter2D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#rotRadians">rotRadians</a> : Number<div class="summaryTableDescription">
+   Indicates the rotation of the Emitter, in radians, within the particle system's coordinate space.</div>
+</td><td class="summaryTableOwnerCol">Emitter2D</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../common/emitters/Emitter.html#running">running</a> : Boolean<div class="summaryTableDescription">
+   Indicates if the emitter is currently running.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#spaceSort">spaceSort</a> : Boolean = false<div class="summaryTableDescription">
+   Identifies whether the particles should be arranged
+   into spacially sorted arrays - this speeds up proximity
+   testing for those actions that need it.</div>
+</td><td class="summaryTableOwnerCol">Emitter2D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#spaceSortedX">spaceSortedX</a> : Array<div class="summaryTableDescription">
+   The array of particle indices sorted based on the particles' horizontal positions.</div>
+</td><td class="summaryTableOwnerCol">Emitter2D</td>
+</tr>
+<tr class="hideInheritedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../common/emitters/Emitter.html#useInternalTick">useInternalTick</a> : Boolean<div class="summaryTableDescription">
+   Indicates whether the emitter should manage its own internal update
+   tick.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#x">x</a> : Number<div class="summaryTableDescription">
+   Indicates the x coordinate of the Emitter within the particle system's coordinate space.</div>
+</td><td class="summaryTableOwnerCol">Emitter2D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#y">y</a> : Number<div class="summaryTableDescription">
+   Indicates the y coordinate of the Emitter within the particle system's coordinate space.</div>
+</td><td class="summaryTableOwnerCol">Emitter2D</td>
+</tr>
+</table>
+</div>
+<a name="protectedPropertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Properties</div>
+<div class="showHideLinks">
+<div class="hideInheritedProtectedProperty" id="hideInheritedProtectedProperty">
+<a onclick="javascript:setInheritedVisible(false,'ProtectedProperty');" href="#protectedPropertySummary" class="showHideLink"><img src="../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Protected Properties</a>
+</div>
+<div class="showInheritedProtectedProperty" id="showInheritedProtectedProperty">
+<a onclick="javascript:setInheritedVisible(true,'ProtectedProperty');" href="#protectedPropertySummary" class="showHideLink"><img src="../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Properties</a>
+</div>
+</div>
+<table id="summaryTableProtectedProperty" class="summaryTable hideInheritedProtectedProperty" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProtectedProperty">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol"><a class="signatureLink" href="../../common/emitters/Emitter.html#_dispatchCounterComplete">_dispatchCounterComplete</a> : Boolean = false<div class="summaryTableDescription">
+   Indicates if the emitter should dispatch a counterComplete event at the
+   end of the next update cycle.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedMethod" id="hideInheritedMethod">
+<a onclick="javascript:setInheritedVisible(false,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Public Methods</a>
+</div>
+<div class="showInheritedMethod" id="showInheritedMethod">
+<a onclick="javascript:setInheritedVisible(true,'Method');" href="#methodSummary" class="showHideLink"><img src="../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Public Methods</a>
+</div>
+</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#Emitter2D()">Emitter2D</a>()</div>
+<div class="summaryTableDescription">
+   The constructor creates an emitter.</div>
+</td><td class="summaryTableOwnerCol">Emitter2D</td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#addAction()">addAction</a>(action:<a href="../../common/actions/Action.html">Action</a>):void</div>
+<div class="summaryTableDescription">
+   Adds an Action to the Emitter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#addActivity()">addActivity</a>(activity:<a href="../../common/activities/Activity.html">Activity</a>):void</div>
+<div class="summaryTableDescription">
+   Adds an Activity to the Emitter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#addExistingParticles()">addExistingParticles</a>(particles:Array, applyInitializers:Boolean = false):void</div>
+<div class="summaryTableDescription">
+   Adds existing particles to the emitter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#addInitializer()">addInitializer</a>(initializer:<a href="../../common/initializers/Initializer.html">Initializer</a>):void</div>
+<div class="summaryTableDescription">
+   Adds an Initializer object to the Emitter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#dispatchCounterComplete()">dispatchCounterComplete</a>():void</div>
+<div class="summaryTableDescription">
+   Used by counters to tell the emitter to dispatch a counter complete event.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#hasAction()">hasAction</a>(action:<a href="../../common/actions/Action.html">Action</a>):Boolean</div>
+<div class="summaryTableDescription">
+   Detects if the emitter is using a particular action or not.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#hasActionOfType()">hasActionOfType</a>(actionClass:Class):Boolean</div>
+<div class="summaryTableDescription">
+   Detects if the emitter is using an action of a particular class.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#hasActivity()">hasActivity</a>(activity:<a href="../../common/activities/Activity.html">Activity</a>):Boolean</div>
+<div class="summaryTableDescription">
+   Detects if the emitter is using a particular activity or not.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#hasActivityOfType()">hasActivityOfType</a>(activityClass:Class):Boolean</div>
+<div class="summaryTableDescription">
+   Detects if the emitter is using an activity of a particular class.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#hasInitializer()">hasInitializer</a>(initializer:<a href="../../common/initializers/Initializer.html">Initializer</a>):Boolean</div>
+<div class="summaryTableDescription">
+   Detects if the emitter is using a particular initializer or not.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#hasInitializerOfType()">hasInitializerOfType</a>(initializerClass:Class):Boolean</div>
+<div class="summaryTableDescription">
+   Detects if the emitter is using an initializer of a particular class.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#killAllParticles()">killAllParticles</a>():void</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#pause()">pause</a>():void</div>
+<div class="summaryTableDescription">
+   Pauses the emitter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#removeAction()">removeAction</a>(action:<a href="../../common/actions/Action.html">Action</a>):void</div>
+<div class="summaryTableDescription">
+   Removes an Action from the Emitter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#removeActivity()">removeActivity</a>(activity:<a href="../../common/activities/Activity.html">Activity</a>):void</div>
+<div class="summaryTableDescription">
+   Removes an Activity from the Emitter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#removeInitializer()">removeInitializer</a>(initializer:<a href="../../common/initializers/Initializer.html">Initializer</a>):void</div>
+<div class="summaryTableDescription">
+   Removes an Initializer from the Emitter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#resume()">resume</a>():void</div>
+<div class="summaryTableDescription">
+   Resumes the emitter after a pause.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#runAhead()">runAhead</a>(time:Number, frameRate:Number = 10):void</div>
+<div class="summaryTableDescription">
+   Makes the emitter skip forwards a period of time with a single update.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#start()">start</a>():void</div>
+<div class="summaryTableDescription">
+   Starts the emitter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#stop()">stop</a>():void</div>
+<div class="summaryTableDescription">
+   Stops the emitter, killing all current particles and returning them to the 
+   particle factory for reuse.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#update()">update</a>(time:Number):void</div>
+<div class="summaryTableDescription">
+   Used to update the emitter.</div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+</table>
+</div>
+<a name="protectedMethodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Protected Methods</div>
+<div class="showHideLinks">
+<div class="hideInheritedProtectedMethod" id="hideInheritedProtectedMethod">
+<a onclick="javascript:setInheritedVisible(false,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Protected Methods</a>
+</div>
+<div class="showInheritedProtectedMethod" id="showInheritedProtectedMethod">
+<a onclick="javascript:setInheritedVisible(true,'ProtectedMethod');" href="#protectedMethodSummary" class="showHideLink"><img src="../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Protected Methods</a>
+</div>
+</div>
+<table id="summaryTableProtectedMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedProtectedMethod">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#createParticle()">createParticle</a>():<a href="../../common/particles/Particle.html">Particle</a>
+</div>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#initParticle()">initParticle</a>(particle:<a href="../../common/particles/Particle.html">Particle</a>):void</div>
+<div class="summaryTableDescription">
+   Used internally to initialise the position and rotation of a particle relative to the emitter.</div>
+</td><td class="summaryTableOwnerCol">Emitter2D</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#sortParticles()">sortParticles</a>():void</div>
+<div class="summaryTableDescription">
+   Used internally and in derived classes to update the emitter.</div>
+</td><td class="summaryTableOwnerCol">Emitter2D</td>
+</tr>
+</table>
+</div>
+<a name="eventSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Events</div>
+<div class="showHideLinks">
+<div class="hideInheritedEvent" id="hideInheritedEvent">
+<a onclick="javascript:setInheritedVisible(false,'Event');" href="#eventSummary" class="showHideLink"><img src="../../../../images/expanded.gif" class="showHideLinkImage"> Hide Inherited Events</a>
+</div>
+<div class="showInheritedEvent" id="showInheritedEvent">
+<a onclick="javascript:setInheritedVisible(true,'Event');" href="#eventSummary" class="showHideLink"><img src="../../../../images/collapsed.gif" class="showHideLinkImage"> Show Inherited Events</a>
+</div>
+</div>
+<table id="summaryTableEvent" class="summaryTable hideInheritedEvent" cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Event</th><th>Summary</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#event:counterComplete">counterComplete</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when the counter for the particle system has finished its cycle and so
+  the system will not emit any more particles unless the counter is changed or restarted.</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#event:emitterEmpty">emitterEmpty</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when an emitter attempts to update the particles' state but it 
+  contains no particles.</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#event:emitterUpdated">emitterUpdated</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when the particle system has updated and the state of the particles
+  has changed.</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#event:particleAdded">particleAdded</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when a pre-existing particle is added to the emitter.</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#event:particleCreated">particleCreated</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when a particle is created and has just been added to the emitter.</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+<tr class="hideInheritedEvent">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img class="inheritedSummaryImage" title="Inherited" alt="Inherited" src="../../../../images/inheritedSummary.gif"></td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="../../common/emitters/Emitter.html#event:particleDead">particleDead</a>
+</div>
+</td><td class="summaryTableDescription summaryTableCol">
+  Dispatched when a particle dies and is about to be removed from the system.</td><td class="summaryTableOwnerCol"><a href="../../common/emitters/Emitter.html">Emitter</a></td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="defaultParticleFactory"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">defaultParticleFactory</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>defaultParticleFactory:<a href="../../common/particles/ParticleFactory.html">ParticleFactory</a></code>&nbsp;&nbsp;[read-only]<p>
+   The default particle factory used to manage the creation, reuse and destruction of particles.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public static function get defaultParticleFactory():<a href="../../common/particles/ParticleFactory.html">ParticleFactory</a></code>
+<br>
+</div>
+<a name="rotation"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">rotation</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>rotation:Number</code>&nbsp;&nbsp;[read-write]<p>
+   Indicates the rotation of the Emitter, in degrees, within the particle system's coordinate space.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get rotation():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set rotation(value:Number):void</code>
+<br>
+</div>
+<a name="rotRadians"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">rotRadians</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>rotRadians:Number</code>&nbsp;&nbsp;[read-write]<p>
+   Indicates the rotation of the Emitter, in radians, within the particle system's coordinate space.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get rotRadians():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set rotRadians(value:Number):void</code>
+<br>
+</div>
+<a name="spaceSort"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">spaceSort</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var spaceSort:Boolean = false</code><p>
+   Identifies whether the particles should be arranged
+   into spacially sorted arrays - this speeds up proximity
+   testing for those actions that need it.
+   </p></div>
+<a name="spaceSortedX"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">spaceSortedX</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public var spaceSortedX:Array</code><p>
+   The array of particle indices sorted based on the particles' horizontal positions.
+   To persuade the emitter to create this array you should set the spaceSort property
+   to true. Usually, actions that need this set to true will do so in their addedToEmitter
+   method.
+   </p></div>
+<a name="x"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">x</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>x:Number</code>&nbsp;&nbsp;[read-write]<p>
+   Indicates the x coordinate of the Emitter within the particle system's coordinate space.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get x():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set x(value:Number):void</code>
+<br>
+</div>
+<a name="y"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">y</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>y:Number</code>&nbsp;&nbsp;[read-write]<p>
+   Indicates the y coordinate of the Emitter within the particle system's coordinate space.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get y():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set y(value:Number):void</code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="Emitter2D()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">Emitter2D</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function Emitter2D()</code><p>
+   The constructor creates an emitter.
+   </p></div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="initParticle()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">initParticle</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected override function initParticle(particle:<a href="../../common/particles/Particle.html">Particle</a>):void</code><p>
+   Used internally to initialise the position and rotation of a particle relative to the emitter.
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">particle</span>:<a href="../../common/particles/Particle.html">Particle</a></code></td>
+</tr>
+</table>
+</div>
+<a name="sortParticles()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">sortParticles</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>protected override function sortParticles():void</code><p>
+   Used internally and in derived classes to update the emitter.
+   </p></div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">&copy; Richard Lord 2010</center>
+</div>
+</body>
+</html>
+<!--© Richard Lord 2010-->

@@ -1,0 +1,554 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="../../../../style.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../../../print.css" type="text/css" media="print">
+<meta content="Camera,org.flintparticles.threeD.renderers.Camera,controller,direction,farPlaneDistance,nearPlaneDistance,position,projectionDistance,spaceTransform,target,transform,up,dolly,lift,orbit,pan,roll,tilt,track" name="keywords">
+<title>org.flintparticles.threeD.renderers.Camera</title>
+</head>
+<body>
+<script type="text/javascript" language="javascript" src="../../../../asdoc.js"></script><script type="text/javascript" language="javascript" src="../../../../cookies.js"></script><script type="text/javascript" language="javascript">
+<!--
+				asdocTitle = 'Camera - Flint Particles documentation';
+				var baseRef = '../../../../';
+				window.onload = configPage;
+			--></script>
+<table style="display:none" id="titleTable" cellspacing="0" cellpadding="0" class="titleTable">
+<tr>
+<td align="left" class="titleTableTitle">Flint Particles documentation v2.2.0</td><td align="right" class="titleTableTopNav"><a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../package-summary.html">All&nbsp;Packages</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../all-classes.html')" href="../../../../class-summary.html">All&nbsp;Classes</a>&nbsp;|&nbsp;<a onclick="loadClassListFrame('../../../../index-list.html')" href="../../../../all-index-A.html">Index</a>&nbsp;|&nbsp;<a href="../../../../index.html?org/flintparticles/threeD/renderers/Camera.html&amp;org/flintparticles/threeD/renderers/class-list.html" id="framesLink1">Frames</a><a onclick="parent.location=document.location" href="" style="display:none" id="noFramesLink1">No&nbsp;Frames</a></td>
+</tr>
+<tr class="titleTableRow2">
+<td align="left" id="subTitle" class="titleTableSubTitle">Class&nbsp;Camera</td><td align="right" id="subNav" class="titleTableSubNav"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td>
+</tr>
+<tr class="titleTableRow3">
+<td colspan="2">&nbsp;</td>
+</tr>
+</table>
+<script type="text/javascript" language="javascript">
+<!--
+if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("Class Camera"); titleBar_setSubNav(false,true,false,false,false,false,true,false,false,false,false,false,false,false);}
+--></script>
+<div class="MainContent">
+<table cellspacing="0" cellpadding="0" class="classHeaderTable">
+<tr>
+<td class="classHeaderTableLabel">Package</td><td><a onclick="javascript:loadClassListFrame('class-list.html')" href="package-detail.html">org.flintparticles.threeD.renderers</a></td>
+</tr>
+<tr>
+<td class="classHeaderTableLabel">Class</td><td class="classSignature">public class Camera</td>
+</tr>
+</table>
+<p></p>
+  The camera class is used by Flint's internal 3D renderers to manage the view on the 3D
+  world that is displayed by the renderer. Each renderer has a camera property, which is
+  its camera object.
+  <p></p>
+<br>
+<hr>
+</div>
+<a name="propertySummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Properties</div>
+<table id="summaryTableProperty" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#controller">controller</a> : <a href="controllers/CameraController.html">CameraController</a>
+<div class="summaryTableDescription"></div>
+</td><td class="summaryTableOwnerCol">Camera</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#direction">direction</a> : <a href="../geom/Vector3D.html">Vector3D</a>
+<div class="summaryTableDescription">
+   The direction the camera is pointing.</div>
+</td><td class="summaryTableOwnerCol">Camera</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#farPlaneDistance">farPlaneDistance</a> : Number<div class="summaryTableDescription">
+   The distance to the camera's far plane
+   - particles farther away than this are not rendered.</div>
+</td><td class="summaryTableOwnerCol">Camera</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#nearPlaneDistance">nearPlaneDistance</a> : Number<div class="summaryTableDescription">
+   The distance to the camera's near plane
+   - particles closer than this are not rendered.</div>
+</td><td class="summaryTableOwnerCol">Camera</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#position">position</a> : <a href="../geom/Point3D.html">Point3D</a>
+<div class="summaryTableDescription">
+   The location of the camera.</div>
+</td><td class="summaryTableOwnerCol">Camera</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#projectionDistance">projectionDistance</a> : Number<div class="summaryTableDescription">
+   The distance to the camera's projection distance.</div>
+</td><td class="summaryTableOwnerCol">Camera</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#spaceTransform">spaceTransform</a> : <a href="../geom/Matrix3D.html">Matrix3D</a>
+<div class="summaryTableDescription">[read-only]
+   The transform matrix that converts positions in world space to positions in camera space.</div>
+</td><td class="summaryTableOwnerCol">Camera</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#target">target</a> : <a href="../geom/Point3D.html">Point3D</a>
+<div class="summaryTableDescription">
+   The point that the camera looks at.</div>
+</td><td class="summaryTableOwnerCol">Camera</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#transform">transform</a> : <a href="../geom/Matrix3D.html">Matrix3D</a>
+<div class="summaryTableDescription">[read-only]
+   The transform matrix that converts positions in world space to positions in camera space.</div>
+</td><td class="summaryTableOwnerCol">Camera</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a class="signatureLink" href="#up">up</a> : <a href="../geom/Vector3D.html">Vector3D</a>
+<div class="summaryTableDescription">
+   The up direction for the camera.</div>
+</td><td class="summaryTableOwnerCol">Camera</td>
+</tr>
+</table>
+</div>
+<a name="methodSummary"></a>
+<div class="summarySection">
+<div class="summaryTableTitle">Public Methods</div>
+<table id="summaryTableMethod" class="summaryTable " cellpadding="3" cellspacing="0">
+<tr>
+<th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined&nbsp;by</th>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#Camera()">Camera</a>()</div>
+<div class="summaryTableDescription">
+   The constructor creates a Camera object.</div>
+</td><td class="summaryTableOwnerCol">Camera</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#dolly()">dolly</a>(distance:Number):void</div>
+<div class="summaryTableDescription">
+   Dolly or Track the camera in/out in the direction it's facing.</div>
+</td><td class="summaryTableOwnerCol">Camera</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#lift()">lift</a>(distance:Number):void</div>
+<div class="summaryTableDescription">
+   Raise or lower the camera.</div>
+</td><td class="summaryTableOwnerCol">Camera</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#orbit()">orbit</a>(angle:Number):void</div>
+<div class="summaryTableDescription">
+   Orbit the camera around the target.</div>
+</td><td class="summaryTableOwnerCol">Camera</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#pan()">pan</a>(angle:Number):void</div>
+<div class="summaryTableDescription">
+   Pan the camera left or right.</div>
+</td><td class="summaryTableOwnerCol">Camera</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#roll()">roll</a>(angle:Number):void</div>
+<div class="summaryTableDescription">
+   Roll the camera clockwise or counter-clockwise.</div>
+</td><td class="summaryTableOwnerCol">Camera</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#tilt()">tilt</a>(angle:Number):void</div>
+<div class="summaryTableDescription">
+   Tilt the camera up or down.</div>
+</td><td class="summaryTableOwnerCol">Camera</td>
+</tr>
+<tr class="">
+<td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol">
+<div class="summarySignature">
+<a class="signatureLink" href="#track()">track</a>(distance:Number):void</div>
+<div class="summaryTableDescription">
+   Dolly or Track the camera left/right.</div>
+</td><td class="summaryTableOwnerCol">Camera</td>
+</tr>
+</table>
+</div>
+<script type="text/javascript" language="javascript">
+<!--
+showHideInherited();
+--></script>
+<div class="MainContent">
+<a name="propertyDetail"></a>
+<div class="detailSectionHeader">Property detail</div>
+<a name="controller"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">controller</td><td class="detailHeaderType">property</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>controller:<a href="controllers/CameraController.html">CameraController</a></code>&nbsp;&nbsp;[read-write]<span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get controller():<a href="controllers/CameraController.html">CameraController</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set controller(value:<a href="controllers/CameraController.html">CameraController</a>):void</code>
+<br>
+</div>
+<a name="direction"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">direction</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>direction:<a href="../geom/Vector3D.html">Vector3D</a></code>&nbsp;&nbsp;[read-write]<p>
+   The direction the camera is pointing. Setting this will invalidate any
+   setting for the target, since the camera now points in this direction
+   rather than pointing towards the target.
+   
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get direction():<a href="../geom/Vector3D.html">Vector3D</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set direction(value:<a href="../geom/Vector3D.html">Vector3D</a>):void</code>
+<br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../renderers/Camera.html#target" target="">target</a>
+</div>
+</div>
+<a name="farPlaneDistance"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">farPlaneDistance</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>farPlaneDistance:Number</code>&nbsp;&nbsp;[read-write]<p>
+   The distance to the camera's far plane
+   - particles farther away than this are not rendered.
+   
+   The default value is 2000.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get farPlaneDistance():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set farPlaneDistance(value:Number):void</code>
+<br>
+</div>
+<a name="nearPlaneDistance"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">nearPlaneDistance</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>nearPlaneDistance:Number</code>&nbsp;&nbsp;[read-write]<p>
+   The distance to the camera's near plane
+   - particles closer than this are not rendered.
+   
+   The default value is 10.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get nearPlaneDistance():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set nearPlaneDistance(value:Number):void</code>
+<br>
+</div>
+<a name="position"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">position</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>position:<a href="../geom/Point3D.html">Point3D</a></code>&nbsp;&nbsp;[read-write]<p>
+   The location of the camera.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get position():<a href="../geom/Point3D.html">Point3D</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set position(value:<a href="../geom/Point3D.html">Point3D</a>):void</code>
+<br>
+</div>
+<a name="projectionDistance"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">projectionDistance</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>projectionDistance:Number</code>&nbsp;&nbsp;[read-write]<p>
+   The distance to the camera's projection distance. Particles this
+   distance from the camera are rendered at their normal size. Perspective
+   will cause closer particles to appear larger than normal and more 
+   distant particles to appear smaller than normal.
+   
+   The default value is 400.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get projectionDistance():Number</code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set projectionDistance(value:Number):void</code>
+<br>
+</div>
+<a name="spaceTransform"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">spaceTransform</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>spaceTransform:<a href="../geom/Matrix3D.html">Matrix3D</a></code>&nbsp;&nbsp;[read-only]<p>
+   The transform matrix that converts positions in world space to positions in camera space.
+   The projection transform is not part of this transform.
+   
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get spaceTransform():<a href="../geom/Matrix3D.html">Matrix3D</a></code>
+<br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../geom/Vector3D.html#project()" target="">org.flintparticles.threeD.geom.Vector3D.project()</a>
+</div>
+</div>
+<a name="target"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">target</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>target:<a href="../geom/Point3D.html">Point3D</a></code>&nbsp;&nbsp;[read-write]<p>
+   The point that the camera looks at. Setting this will
+   invalidate any setting for the camera direction - the direction
+   will be recalculated based on the position and the target.
+   
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get target():<a href="../geom/Point3D.html">Point3D</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set target(value:<a href="../geom/Point3D.html">Point3D</a>):void</code>
+<br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../renderers/Camera.html#direction" target="">direction</a>
+</div>
+</div>
+<a name="transform"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">transform</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>transform:<a href="../geom/Matrix3D.html">Matrix3D</a></code>&nbsp;&nbsp;[read-only]<p>
+   The transform matrix that converts positions in world space to positions in camera space.
+   The projection transform is part of this transform - so vectors need only to have their
+   project method called to get their position in 2D camera space.
+   
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get transform():<a href="../geom/Matrix3D.html">Matrix3D</a></code>
+<br>
+<p>
+<span class="label">See also</span>
+</p>
+<div class="seeAlso">
+<a href="../geom/Vector3D.html#project()" target="">org.flintparticles.threeD.geom.Vector3D.project()</a>
+</div>
+</div>
+<a name="up"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">up</td><td class="detailHeaderType">property</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>up:<a href="../geom/Vector3D.html">Vector3D</a></code>&nbsp;&nbsp;[read-write]<p>
+   The up direction for the camera. Is this is not perpendicular to the direction, the camera
+   is tilted down or up from this up direction to point in the direction or at the target.
+   </p><span class="label">Implementation</span>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function get up():<a href="../geom/Vector3D.html">Vector3D</a></code>
+<br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;public function set up(value:<a href="../geom/Vector3D.html">Vector3D</a>):void</code>
+<br>
+</div>
+<a name="constructorDetail"></a>
+<div class="detailSectionHeader">Constructor detail</div>
+<a name="Camera()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">Camera</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">constructor</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function Camera()</code><p>
+   The constructor creates a Camera object. Usually, users don't need to create camera
+   objects, but will use the camera objects that are properties of Flint's renderers.
+   </p></div>
+<a name="methodDetail"></a>
+<div class="detailSectionHeader">Method detail</div>
+<a name="dolly()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">dolly</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function dolly(distance:Number):void</code><p>
+   Dolly or Track the camera in/out in the direction it's facing.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">distance</span>:Number</code> &mdash; The distance to move the camera. Positive values track in and
+   negative values track out.
+   </td>
+</tr>
+</table>
+</div>
+<a name="lift()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">lift</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function lift(distance:Number):void</code><p>
+   Raise or lower the camera.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">distance</span>:Number</code> &mdash; The distance to lift the camera. Positive values raise the camera
+   and negative values lower the camera.
+   </td>
+</tr>
+</table>
+</div>
+<a name="orbit()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">orbit</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function orbit(angle:Number):void</code><p>
+   Orbit the camera around the target.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">angle</span>:Number</code> &mdash; angle (in radians) to orbit the camera. Positive values orbit to the right,
+   negative values orbit to the left.
+   </td>
+</tr>
+</table>
+</div>
+<a name="pan()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">pan</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function pan(angle:Number):void</code><p>
+   Pan the camera left or right.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">angle</span>:Number</code> &mdash; angle (in radians) to pan the camera. Positive values pan right,
+   negative values pan left.
+   </td>
+</tr>
+</table>
+</div>
+<a name="roll()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">roll</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function roll(angle:Number):void</code><p>
+   Roll the camera clockwise or counter-clockwise.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">angle</span>:Number</code> &mdash; angle (in radians) to roll the camera. Positive values roll clockwise,
+   negative values roll counter-clockwise.
+   </td>
+</tr>
+</table>
+</div>
+<a name="tilt()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">tilt</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function tilt(angle:Number):void</code><p>
+   Tilt the camera up or down.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">angle</span>:Number</code> &mdash; angle (in radians) to tilt the camera. Positive values tilt up,
+   negative values tilt down.
+   </td>
+</tr>
+</table>
+</div>
+<a name="track()"></a>
+<table cellspacing="0" cellpadding="0" class="detailHeader">
+<tr>
+<td class="detailHeaderName">track</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td>
+</tr>
+</table>
+<div class="detailBody">
+<code>public function track(distance:Number):void</code><p>
+   Dolly or Track the camera left/right.
+   
+   </p><span class="label">Parameters</span>
+<table border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="20px"></td><td><code><span class="label">distance</span>:Number</code> &mdash; The distance to move the camera. Positive values move the camera to the
+   right, negative values move it to the left.
+   </td>
+</tr>
+</table>
+</div>
+<br>
+<br>
+<hr>
+<br>
+<p></p>
+<center class="copyright">&copy; Richard Lord 2010</center>
+</div>
+</body>
+</html>
+<!--© Richard Lord 2010-->
