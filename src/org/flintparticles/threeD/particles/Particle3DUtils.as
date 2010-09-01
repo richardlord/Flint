@@ -52,16 +52,21 @@ package org.flintparticles.threeD.particles
 			var y:int;
 			var x:int;
 			var p:Particle3D;
+			var color:uint;
 			if( factory )
 			{
 				for( y = 0; y < height; ++y )
 				{
 					for( x = 0; x < width; ++x )
 					{
-						p = Particle3D( factory.createParticle() );
-						p.position = new Point3D( x + offset.x, y + offset.y, offset.z );
-						p.color = bitmapData.getPixel32( x, y );
-						particles.push( p );
+						color = bitmapData.getPixel32( x, y );
+						if( color >>> 24 > 0 )
+						{
+							p = Particle3D( factory.createParticle() );
+							p.position = new Point3D( x + offset.x, y + offset.y, offset.z );
+							p.color = color;
+							particles.push( p );
+						}
 					}
 				}
 			}
@@ -71,10 +76,14 @@ package org.flintparticles.threeD.particles
 				{
 					for( x = 0; x < width; ++x )
 					{
-						p = new Particle3D();
-						p.position = new Point3D( x + offset.x, y + offset.y, offset.z );
-						p.color = bitmapData.getPixel32( x, y );
-						particles.push( p );
+						color = bitmapData.getPixel32( x, y );
+						if( color >>> 24 > 0 )
+						{
+							p = new Particle3D();
+							p.position = new Point3D( x + offset.x, y + offset.y, offset.z );
+							p.color = color;
+							particles.push( p );
+						}
 					}
 				}
 			}

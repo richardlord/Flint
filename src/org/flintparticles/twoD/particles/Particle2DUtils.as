@@ -113,17 +113,22 @@ package org.flintparticles.twoD.particles
 			var y:int;
 			var x:int;
 			var p:Particle2D;
+			var color:uint;
 			if( factory )
 			{
 				for( y = 0; y < height; ++y )
 				{
 					for( x = 0; x < width; ++x )
 					{
-						p = Particle2D( factory.createParticle() );
-						p.x = x + offsetX;
-						p.y = y + offsetY;
-						p.color = bitmapData.getPixel32( x, y );
-						particles.push( p );
+						color = bitmapData.getPixel32( x, y );
+						if( color >>> 24 > 0 )
+						{
+							p = Particle2D( factory.createParticle() );
+							p.x = x + offsetX;
+							p.y = y + offsetY;
+							p.color = color;
+							particles.push( p );
+						}
 					}
 				}
 			}
@@ -133,11 +138,15 @@ package org.flintparticles.twoD.particles
 				{
 					for( x = 0; x < width; ++x )
 					{
-						p = new Particle2D();
-						p.x = x + offsetX;
-						p.y = y + offsetY;
-						p.color = bitmapData.getPixel32( x, y );
-						particles.push( p );
+						color = bitmapData.getPixel32( x, y );
+						if( color >>> 24 > 0 )
+						{
+							p = new Particle2D();
+							p.x = x + offsetX;
+							p.y = y + offsetY;
+							p.color = color;
+							particles.push( p );
+						}
 					}
 				}
 			}
