@@ -28,14 +28,14 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.twoD.renderers.mxml
-{
+package org.flintparticles.twoD.renderers.mxml {
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.events.EmitterEvent;
+	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.renderers.FlexRendererBase;
 	import org.flintparticles.twoD.particles.Particle2D;
-	
-	import flash.events.Event;	
+
+	import flash.events.Event;
 
 	/**
 	 * The VectorLineRenderer draws particles as continuous lines mapping the 
@@ -69,13 +69,13 @@ package org.flintparticles.twoD.renderers.mxml
 		/**
 		 * @inheritDoc
 		 */
-		override protected function renderParticles( particles:Array ):void
+		override protected function renderParticles( particles:Vector.<Particle> ):void
 		{
 			var particle:Particle2D;
 			var len:int = particles.length;
 			for( var i:int = 0; i < len; ++i )
 			{
-				particle = particles[i];
+				particle = Particle2D( particles[i] );
 				graphics.lineStyle( particle.scale, particle.color & 0xFFFFFF, particle.color >>> 24 );
 				graphics.moveTo( particle.previousX, particle.previousY );
 				graphics.lineTo( particle.x, particle.y );

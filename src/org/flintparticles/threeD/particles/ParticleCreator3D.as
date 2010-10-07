@@ -41,14 +41,14 @@ package org.flintparticles.threeD.particles
 
 	public class ParticleCreator3D implements ParticleFactory
 	{
-		private var _particles:Array;
+		private var _particles:Vector.<Particle>;
 		
 		/**
 		 * The constructor creates a ParticleCreator object.
 		 */
 		public function ParticleCreator3D()
 		{
-			_particles = new Array();
+			_particles = new Vector.<Particle>();
 		}
 		
 		/**
@@ -86,7 +86,7 @@ package org.flintparticles.threeD.particles
 		 */
 		public function clearAllParticles():void
 		{
-			_particles = new Array();
+			_particles = new Vector.<Particle>();
 		}
 	}
 }

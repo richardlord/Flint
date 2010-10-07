@@ -173,7 +173,7 @@ package org.flintparticles.common.renderers
 		
 		protected function updateParticles( ev:Event ) : void
 		{
-			var particles:Array = new Array();
+			var particles:Vector.<Particle> = new Vector.<Particle>();
 			for( var i:int = 0; i < _emitters.length; ++i )
 			{
 				particles = particles.concat( Emitter( _emitters[i] ).particles );
@@ -212,7 +212,7 @@ package org.flintparticles.common.renderers
 		 * being rendered by this renderer. The particles are in no particular
 		 * order.
 		 */
-		protected function renderParticles( particles:Array ):void
+		protected function renderParticles( particles:Vector.<Particle> ):void
 		{
 		}
 

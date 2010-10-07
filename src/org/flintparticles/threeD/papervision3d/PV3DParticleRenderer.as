@@ -34,7 +34,7 @@ package org.flintparticles.threeD.papervision3d
 	import org.flintparticles.common.renderers.RendererBase;
 	import org.flintparticles.threeD.particles.Particle3D;
 	import org.papervision3d.core.geom.Particles;
-	import org.papervision3d.core.geom.renderables.Particle;	
+	import org.papervision3d.core.geom.renderables.Particle;
 
 	/**
 	 * Renders the particles in a Papervision3D Particles object.
@@ -71,7 +71,7 @@ package org.flintparticles.threeD.papervision3d
 		 * 
 		 * @param particles The particles to be rendered.
 		 */
-		override protected function renderParticles( particles:Array ):void
+		override protected function renderParticles( particles:Vector.<org.flintparticles.common.particles.Particle> ):void
 		{
 			for each( var p:Particle3D in particles )
 			{

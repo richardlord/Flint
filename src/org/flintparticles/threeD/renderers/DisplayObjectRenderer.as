@@ -124,7 +124,7 @@ package org.flintparticles.threeD.renderers
 		 * 
 		 * @param particles The particles to be rendered.
 		 */
-		override protected function renderParticles( particles:Array ):void
+		override protected function renderParticles( particles:Vector.<Particle> ):void
 		{
 			var pos:Point3D = new Point3D();
 			var transform:Matrix3D = _camera.transform;
@@ -134,7 +134,7 @@ package org.flintparticles.threeD.renderers
 			var facing:Vector3D;
 			for( var i:int = 0; i < len; ++i )
 			{
-				particle = particles[i];
+				particle = Particle3D( particles[i] );
 				img = particle.image;
 				transform.transform( particle.position, pos );
 				particle.zDepth = pos.z;

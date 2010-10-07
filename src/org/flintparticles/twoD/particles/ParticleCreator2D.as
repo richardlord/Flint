@@ -41,14 +41,14 @@ package org.flintparticles.twoD.particles
 
 	public class ParticleCreator2D implements ParticleFactory
 	{
-		private var _particles:Array;
+		private var _particles:Vector.<Particle>;
 		
 		/**
 		 * The constructor creates a ParticleCreator object.
 		 */
 		public function ParticleCreator2D()
 		{
-			_particles = new Array();
+			_particles = new Vector.<Particle>();
 		}
 		
 		/**
@@ -89,7 +89,7 @@ package org.flintparticles.twoD.particles
 		 */
 		public function clearAllParticles():void
 		{
-			_particles = new Array();
+			_particles = new Vector.<Particle>();
 		}
 	}
 }

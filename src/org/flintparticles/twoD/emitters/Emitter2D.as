@@ -98,14 +98,6 @@ package org.flintparticles.twoD.emitters
 		protected var _rotation:Number = 0; // N.B. Is in radians
 		
 		/**
-		 * The array of particle indices sorted based on the particles' horizontal positions.
-		 * To persuade the emitter to create this array you should set the spaceSort property
-		 * to true. Usually, actions that need this set to true will do so in their addedToEmitter
-		 * method.
-		 */
-		public var spaceSortedX:Array;
-
-		/**
 		 * Identifies whether the particles should be arranged
 		 * into spacially sorted arrays - this speeds up proximity
 		 * testing for those actions that need it.
@@ -187,13 +179,21 @@ package org.flintparticles.twoD.emitters
 		{
 			if( spaceSort )
 			{
-				spaceSortedX = _particles.sortOn( "x", Array.NUMERIC | Array.RETURNINDEXEDARRAY );
+				_particles.sort( sortParticlesOnX );
 				var len:int = _particles.length;
 				for( var i:int = 0; i < len; ++i )
 				{
-					Particle2D( _particles[ spaceSortedX[i] ] ).sortID = i;
+					Particle2D( _particles[ i ] ).sortID = i;
 				}
 			}
+		}
+		
+		/**
+		 * @private
+		 */
+		protected function sortParticlesOnX( p1:Particle2D, p2:Particle2D ):Number
+		{
+			return p1.x - p2.x;
 		}
 	}
 }

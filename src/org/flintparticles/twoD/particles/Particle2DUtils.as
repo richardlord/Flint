@@ -29,16 +29,17 @@
 
 package org.flintparticles.twoD.particles 
 {
+	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.particles.ParticleFactory;
 	import org.flintparticles.common.utils.DisplayObjectUtils;
 	import org.flintparticles.common.utils.Maths;
-	
+
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
 	import flash.geom.Point;
-	import flash.geom.Rectangle;	
+	import flash.geom.Rectangle;
 
 	public class Particle2DUtils 
 	{
@@ -57,9 +58,9 @@ package org.flintparticles.twoD.particles
 		 * If you pass an array as the parameter, each item in the array should be another
 		 * display object for adding to the emitter.
 		 */
-		public static function createParticles2DFromDisplayObjects( displayObjects:Array, renderer:DisplayObject = null, factory:ParticleFactory = null ):Array
+		public static function createParticles2DFromDisplayObjects( displayObjects:Array, renderer:DisplayObject = null, factory:ParticleFactory = null ):Vector.<Particle>
 		{
-			var particles:Array = new Array();
+			var particles:Vector.<Particle> = new Vector.<Particle>();
 			for( var i:Number = 0; i < displayObjects.length; ++i )
 			{
 				particles.push( createParticle2DFromDisplayObject( displayObjects[i], renderer, factory ) );
@@ -105,9 +106,9 @@ package org.flintparticles.twoD.particles
 			return particle;
 		}
 
-		public static function createPixelParticlesFromBitmapData( bitmapData:BitmapData, factory:ParticleFactory = null, offsetX:Number = 0, offsetY:Number = 0 ):Array
+		public static function createPixelParticlesFromBitmapData( bitmapData:BitmapData, factory:ParticleFactory = null, offsetX:Number = 0, offsetY:Number = 0 ):Vector.<Particle>
 		{
-			var particles:Array = new Array();
+			var particles:Vector.<Particle> = new Vector.<Particle>();
 			var width:int = bitmapData.width;
 			var height:int = bitmapData.height;
 			var y:int;
@@ -153,9 +154,9 @@ package org.flintparticles.twoD.particles
 			return particles;
 		}
 		
-		public static function createRectangleParticlesFromBitmapData( bitmapData:BitmapData, size:uint, factory:ParticleFactory = null, offsetX:Number = 0, offsetY:Number = 0 ):Array
+		public static function createRectangleParticlesFromBitmapData( bitmapData:BitmapData, size:uint, factory:ParticleFactory = null, offsetX:Number = 0, offsetY:Number = 0 ):Vector.<Particle>
 		{
-			var particles:Array = new Array();
+			var particles:Vector.<Particle> = new Vector.<Particle>();
 			var width:int = bitmapData.width;
 			var height:int = bitmapData.height;
 			var y:int;

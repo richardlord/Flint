@@ -84,14 +84,6 @@ package org.flintparticles.threeD.emitters
 		private var _rotTransformRotation:Quaternion;
 		
 		/**
-		 * The array of particle indices sorted based on the particles' x 
-		 * positions. To tell the emitter to create this array you should set the 
-		 * spaceSort property to true. Usually, actions that need this set to true 
-		 * will do so in their addedToEmitter method.
-		 */
-		public var spaceSortedX:Array;
-
-		/**
 		 * Identifies whether the particles should be arranged
 		 * into a spacially sorted array - this speeds up proximity
 		 * testing for those actions that need it.
@@ -176,11 +168,11 @@ package org.flintparticles.threeD.emitters
 		{
 			if( spaceSort )
 			{
-				spaceSortedX = _particles.sort( sortOnX, Array.RETURNINDEXEDARRAY );
+				_particles.sort( sortOnX );
 				var len:int = _particles.length;
 				for( var i:int = 0; i < len; ++i )
 				{
-					Particle3D( _particles[ spaceSortedX[i] ] ).sortID = i;
+					Particle3D( _particles[ i ] ).sortID = i;
 				}
 			}
 		}
@@ -189,21 +181,9 @@ package org.flintparticles.threeD.emitters
 		 * The custom sort function used when sorting the particles based on their
 		 * x coordinate.
 		 */
-		private function sortOnX( p1:Particle3D, p2:Particle3D ):int
+		private function sortOnX( p1:Particle3D, p2:Particle3D ):Number
 		{
-			/*
-			 * TODO: does this work?
-			 * return p1.position.x - p2.position.x
-			 */
-			if( p1.position.x < p2.position.x )
-			{
-				return -1;
-			}
-			if( p1.position.x > p2.position.x )
-			{
-				return 1;
-			}
-			return 0;
+			return p1.position.x - p2.position.x;
 		}
 	}
 }

@@ -29,24 +29,25 @@
 
 package org.flintparticles.threeD.particles 
 {
+	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.particles.ParticleFactory;
 	import org.flintparticles.threeD.geom.Point3D;
-	
+
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.display.Sprite;
 	import flash.geom.Point;
-	import flash.geom.Rectangle;	
+	import flash.geom.Rectangle;
 
 	public class Particle3DUtils 
 	{
-		public static function createPixelParticlesFromBitmapData( bitmapData:BitmapData, factory:ParticleFactory = null, offset:Point3D = null ):Array
+		public static function createPixelParticlesFromBitmapData( bitmapData:BitmapData, factory:ParticleFactory = null, offset:Point3D = null ):Vector.<Particle>
 		{
 			if( offset == null )
 			{
 				offset = Point3D.ZERO;
 			}
-			var particles:Array = new Array();
+			var particles:Vector.<Particle> = new Vector.<Particle>();
 			var width:int = bitmapData.width;
 			var height:int = bitmapData.height;
 			var y:int;
@@ -90,13 +91,13 @@ package org.flintparticles.threeD.particles
 			return particles;
 		}
 		
-		public static function createRectangleParticlesFromBitmapData( bitmapData:BitmapData, size:uint, factory:ParticleFactory = null, offset:Point3D = null ):Array
+		public static function createRectangleParticlesFromBitmapData( bitmapData:BitmapData, size:uint, factory:ParticleFactory = null, offset:Point3D = null ):Vector.<Particle>
 		{
 			if( offset == null )
 			{
 				offset = Point3D.ZERO;
 			}
-			var particles:Array = new Array();
+			var particles:Vector.<Particle> = new Vector.<Particle>();
 			var width:int = bitmapData.width;
 			var height:int = bitmapData.height;
 			var y:int;

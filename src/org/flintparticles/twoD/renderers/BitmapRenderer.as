@@ -28,18 +28,18 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.twoD.renderers
-{
+package org.flintparticles.twoD.renderers {
+	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.renderers.SpriteRendererBase;
 	import org.flintparticles.twoD.particles.Particle2D;
-	
+
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.display.DisplayObject;
 	import flash.filters.BitmapFilter;
 	import flash.geom.Matrix;
 	import flash.geom.Point;
-	import flash.geom.Rectangle;	
+	import flash.geom.Rectangle;
 
 	/**
 	 * The BitmapRenderer draws particles onto a single Bitmap display object. The
@@ -315,7 +315,7 @@ package org.flintparticles.twoD.renderers
 		/**
 		 * @inheritDoc
 		 */
-		override protected function renderParticles( particles:Array ):void
+		override protected function renderParticles( particles:Vector.<Particle> ):void
 		{
 			if( !_bitmap )
 			{
@@ -338,7 +338,7 @@ package org.flintparticles.twoD.renderers
 			{
 				for( i = len; i--; ) // draw new particles first so they are behind old particles
 				{
-					drawParticle( particles[i] );
+					drawParticle( Particle2D( particles[i] ) );
 				}
 			}
 			len = _postFilters.length;

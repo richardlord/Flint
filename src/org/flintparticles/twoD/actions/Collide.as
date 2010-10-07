@@ -148,7 +148,7 @@ package org.flintparticles.twoD.actions
 		 */
 		public function frameUpdate( emitter:Emitter, time:Number ):void
 		{
-			var particles:Array = emitter.particles;
+			var particles:Vector.<Particle> = emitter.particles;
 			var max1:Number = 0;
 			var max2:Number = 0;
 			for each( var p:Particle in particles )
@@ -183,8 +183,7 @@ package org.flintparticles.twoD.actions
 		{
 			var p:Particle2D = Particle2D( particle );
 			var e:Emitter2D = Emitter2D( emitter );
-			var particles:Array = e.particles;
-			var sortedX:Array = e.spaceSortedX;
+			var particles:Vector.<Particle> = e.particles;
 			var other:Particle2D;
 			var i:int;
 			var len:int = particles.length;
@@ -198,7 +197,7 @@ package org.flintparticles.twoD.actions
 			var f1:Number, f2:Number;
 			for( i = p.sortID + 1; i < len; ++i )
 			{
-				other = particles[sortedX[i]];
+				other = Particle2D( particles[i] );
 				if( ( dx = other.x - p.x ) > _maxDistance ) break;
 				collisionDist = other.collisionRadius + p.collisionRadius;
 				if( dx > collisionDist ) continue;

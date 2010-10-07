@@ -28,8 +28,7 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.common.emitters
-{
+package org.flintparticles.common.emitters {
 	import org.flintparticles.common.actions.Action;
 	import org.flintparticles.common.activities.Activity;
 	import org.flintparticles.common.behaviours.BehaviourArrayUtils;
@@ -42,8 +41,8 @@ package org.flintparticles.common.emitters
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.particles.ParticleFactory;
 	import org.flintparticles.common.utils.FrameUpdater;
-	
-	import flash.events.EventDispatcher;	
+
+	import flash.events.EventDispatcher;
 
 	/**
 	 * Dispatched when a particle dies and is about to be removed from the system.
@@ -155,7 +154,7 @@ package org.flintparticles.common.emitters
 		/**
 		 * @private
 		 */
-		protected var _particles:Array;
+		protected var _particles:Vector.<Particle>;
 		/**
 		 * @private
 		 */
@@ -196,7 +195,7 @@ package org.flintparticles.common.emitters
 		 */
 		public function Emitter()
 		{
-			_particles = new Array();
+			_particles = new Vector.<Particle>();
 			_actions = new Array();
 			_initializers = new Array();
 			_activities = new Array();
@@ -567,11 +566,11 @@ package org.flintparticles.common.emitters
 		/**
 		 * The array of all particles created by this emitter.
 		 */
-		public function get particles():Array
+		public function get particles():Vector.<Particle>
 		{
 			return _particles;
 		}
-		public function set particles( value:Array ):void
+		public function set particles( value:Vector.<Particle> ):void
 		{
 			killAllParticles();
 			addExistingParticles( value, false );
@@ -616,7 +615,7 @@ package org.flintparticles.common.emitters
 		 * @param applyInitializers Indicates whether to apply the emitter's
 		 * initializer behaviours to the particle (true) or not (false).
 		 */
-		public function addExistingParticles( particles:Array, applyInitializers:Boolean = false ):void
+		public function addExistingParticles( particles:Vector.<Particle>, applyInitializers:Boolean = false ):void
 		{
 			var len:int = particles.length;
 			var i:int;

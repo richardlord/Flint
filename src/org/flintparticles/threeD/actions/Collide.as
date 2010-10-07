@@ -154,7 +154,7 @@ package org.flintparticles.threeD.actions
 		 */
 		public function frameUpdate( emitter:Emitter, time:Number ):void
 		{
-			var particles:Array = emitter.particles;
+			var particles:Vector.<Particle> = emitter.particles;
 			var max1:Number = 0;
 			var max2:Number = 0;
 			for each( var p:Particle in particles )
@@ -163,7 +163,7 @@ package org.flintparticles.threeD.actions
 				{
 					max2 = max1;
 					max1 = p.collisionRadius;
-		}
+				}
 				else if( p.collisionRadius > max2 )
 				{
 					max2 = p.collisionRadius;
@@ -179,8 +179,7 @@ package org.flintparticles.threeD.actions
 		{
 			var p:Particle3D = Particle3D( particle );
 			var e:Emitter3D = Emitter3D( emitter );
-			var particles:Array = e.particles;
-			var sortedX:Array = e.spaceSortedX;
+			var particles:Vector.<Particle> = e.particles;
 			var other:Particle3D;
 			var i:int;
 			var len:int = particles.length;
@@ -193,7 +192,7 @@ package org.flintparticles.threeD.actions
 			var f1:Number, f2:Number;
 			for( i = p.sortID + 1; i < len; ++i )
 			{
-				other = particles[sortedX[i]];
+				other = Particle3D( particles[i] );
 				if( ( d.x = other.position.x - p.position.x ) > _maxDistance ) break;
 				collisionDist = other.collisionRadius + p.collisionRadius;
 				if( d.x > collisionDist ) continue;

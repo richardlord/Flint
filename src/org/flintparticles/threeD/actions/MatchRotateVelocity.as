@@ -122,8 +122,7 @@ package org.flintparticles.threeD.actions
 		{
 			var p:Particle3D = Particle3D( particle );
 			var e:Emitter3D = Emitter3D( emitter );
-			var particles:Array = e.particles;
-			var sortedX:Array = e.spaceSortedX;
+			var particles:Vector.<Particle> = e.particles;
 			var other:Particle3D;
 			var i:int;
 			var len:int = particles.length;
@@ -133,7 +132,7 @@ package org.flintparticles.threeD.actions
 			var factor:Number;
 			for( i = p.sortID - 1; i >= 0; --i )
 			{
-				other = particles[sortedX[i]];
+				other = Particle3D( particles[i] );
 				if( ( d.x = other.position.x - p.position.x ) < -_max ) break;
 				d.y = other.position.y - p.position.y;
 				if( d.y > _max || d.y < -_max ) continue;
@@ -148,7 +147,7 @@ package org.flintparticles.threeD.actions
 			}
 			for( i = p.sortID + 1; i < len; ++i )
 			{
-				other = particles[sortedX[i]];
+				other = Particle3D( particles[i] );
 				if( ( d.x = other.position.x - p.position.x ) > _max ) break;
 				d.y = other.position.y - p.position.y;
 				if( d.y > _max || d.y < -_max ) continue;

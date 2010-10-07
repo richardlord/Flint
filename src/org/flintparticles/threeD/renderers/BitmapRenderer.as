@@ -28,8 +28,15 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.threeD.renderers
-{
+package org.flintparticles.threeD.renderers {
+	import org.flintparticles.common.particles.Particle;
+	import org.flintparticles.common.renderers.SpriteRendererBase;
+	import org.flintparticles.threeD.geom.Matrix3D;
+	import org.flintparticles.threeD.geom.Point3D;
+	import org.flintparticles.threeD.geom.Quaternion;
+	import org.flintparticles.threeD.geom.Vector3D;
+	import org.flintparticles.threeD.particles.Particle3D;
+
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.display.DisplayObject;
@@ -37,13 +44,6 @@ package org.flintparticles.threeD.renderers
 	import flash.geom.Matrix;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
-	
-	import org.flintparticles.common.renderers.SpriteRendererBase;
-	import org.flintparticles.threeD.geom.Matrix3D;
-	import org.flintparticles.threeD.geom.Point3D;
-	import org.flintparticles.threeD.geom.Quaternion;
-	import org.flintparticles.threeD.geom.Vector3D;
-	import org.flintparticles.threeD.particles.Particle3D;	
 
 	/**
 	 * The BitmapRenderer is a native Flint 3D renderer that draws particles
@@ -361,7 +361,7 @@ package org.flintparticles.threeD.renderers
 		 * 
 		 * @param particles The particles to be rendered.
 		 */
-		override protected function renderParticles( particles:Array ):void
+		override protected function renderParticles( particles:Vector.<Particle> ):void
 		{
 			if( !_bitmap )
 			{
@@ -384,7 +384,7 @@ package org.flintparticles.threeD.renderers
 			len = particles.length;
 			for( i = 0; i < len; ++i )
 			{
-				particle = particles[i];
+				particle = Particle3D( particles[i] );
 				particle.projectedPosition = transform.transform( particle.position ) as Point3D;
 				particle.zDepth = particle.projectedPosition.z;
 			}
@@ -394,7 +394,7 @@ package org.flintparticles.threeD.renderers
 			}
 			for( i = 0; i < len; ++i )
 			{
-				drawParticle( particles[i] );
+				drawParticle( Particle3D( particles[i] ) );
 			}
 			len = _postFilters.length;
 			for( i = 0; i < len; ++i )

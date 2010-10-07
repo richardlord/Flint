@@ -73,14 +73,14 @@ package org.flintparticles.twoD.renderers
 		/**
 		 * @inheritDoc
 		 */
-		override protected function renderParticles( particles:Array ):void
+		override protected function renderParticles( particles:Vector.<Particle> ):void
 		{
 			var particle:Particle2D;
 			var img:DisplayObject;
 			var len:int = particles.length;
 			for( var i:int = 0; i < len; ++i )
 			{
-				particle = particles[i];
+				particle = Particle2D( particles[i] );
 				img = particle.image;
 				img.transform.colorTransform = particle.colorTransform;
 				img.transform.matrix = particle.matrixTransform;

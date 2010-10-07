@@ -155,7 +155,7 @@ package org.flintparticles.common.renderers
 		 * being rendered by this renderer. The particles are in no particular
 		 * order.
 		 */
-		protected function renderParticles( particles:Array ):void
+		protected function renderParticles( particles:Vector.<Particle> ):void
 		{
 		}
 
