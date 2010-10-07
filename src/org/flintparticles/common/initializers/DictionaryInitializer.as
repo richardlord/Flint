@@ -34,7 +34,7 @@ package org.flintparticles.common.initializers
 	import org.flintparticles.common.particles.Particle;
 
 	/**
-	 * The DictionaryInit Initializer copies properties from an initializing object to a particle's dictionary.
+	 * The Dictionary Initializer copies properties from an initializing object to a particle's dictionary.
 	 */
 	public class DictionaryInitializer extends InitializerBase 
 	{
