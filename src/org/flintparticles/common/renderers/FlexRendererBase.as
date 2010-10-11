@@ -59,7 +59,7 @@ package org.flintparticles.common.renderers
 		 * on a renderer is not garbage collected, an emitter that does not exist on a renderer may be 
 		 * garbage collected if no other references exist.
 		 */
-		protected var _emitters:Array;
+		protected var _emitters:Vector.<Emitter>;
 		
 		/**
 		 * The constructor creates a FlexRendererBase class.
@@ -67,7 +67,7 @@ package org.flintparticles.common.renderers
 		public function FlexRendererBase()
 		{
 			super();
-			_emitters = new Array();
+			_emitters = new Vector.<Emitter>();
 			mouseEnabled = false;
 			mouseChildren = false;
 			addEventListener( Event.ADDED_TO_STAGE, addedToStage, false, 0, true );
@@ -221,11 +221,11 @@ package org.flintparticles.common.renderers
 		 * to enable setting of the emitters in mxml files. It is not intended to be used
 		 * from Actionscript code.
 		 */
-		public function get emitters():Array
+		public function get emitters():Vector.<Emitter>
 		{
 			return _emitters;
 		}
-		public function set emitters( value:Array ):void
+		public function set emitters( value:Vector.<Emitter> ):void
 		{
 			var e:Emitter;
 			for each( e in _emitters )

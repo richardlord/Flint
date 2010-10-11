@@ -58,14 +58,14 @@ package org.flintparticles.common.renderers
 		 * on a renderer is not garbage collected, an emitter that does not exist on a renderer may be 
 		 * garbage collected if no other references exist.
 		 */
-		protected var _emitters:Array;
+		protected var _emitters:Vector.<Emitter>;
 		
 		/**
 		 * The constructor creates a RendererBase class.
 		 */
 		public function SpriteRendererBase()
 		{
-			_emitters = new Array();
+			_emitters = new Vector.<Emitter>();
 			mouseEnabled = false;
 			mouseChildren = false;
 			addEventListener( Event.ADDED_TO_STAGE, addedToStage, false, 0, true );
@@ -216,11 +216,11 @@ package org.flintparticles.common.renderers
 		/**
 		 * The array of all emitters being rendered by this renderer.
 		 */
-		public function get emitters():Array
+		public function get emitters():Vector.<Emitter>
 		{
 			return _emitters;
 		}
-		public function set emitters( value:Array ):void
+		public function set emitters( value:Vector.<Emitter> ):void
 		{
 			var e:Emitter;
 			for each( e in _emitters )
