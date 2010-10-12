@@ -29,9 +29,9 @@
  */
 
 package org.flintparticles.common.emitters {
+	import org.flintparticles.common.behaviours.Behaviour;
 	import org.flintparticles.common.actions.Action;
 	import org.flintparticles.common.activities.Activity;
-	import org.flintparticles.common.behaviours.BehaviourArrayUtils;
 	import org.flintparticles.common.counters.Counter;
 	import org.flintparticles.common.counters.ZeroCounter;
 	import org.flintparticles.common.events.EmitterEvent;
@@ -142,15 +142,15 @@ package org.flintparticles.common.emitters {
 		/**
 		 * @private
 		 */
-		protected var _initializers:Array;
+		protected var _initializers:Vector.<Initializer>;
 		/**
 		 * @private
 		 */
-		protected var _actions:Array;
+		protected var _actions:Vector.<Action>;
 		/**
 		 * @private
 		 */
-		protected var _activities:Array;
+		protected var _activities:Vector.<Activity>;
 		/**
 		 * @private
 		 */
@@ -196,9 +196,9 @@ package org.flintparticles.common.emitters {
 		public function Emitter()
 		{
 			_particles = new Vector.<Particle>();
-			_actions = new Array();
-			_initializers = new Array();
-			_activities = new Array();
+			_actions = new Vector.<Action>();
+			_initializers = new Vector.<Initializer>();
+			_activities = new Vector.<Activity>();
 			_counter = new ZeroCounter();
 		}
 
@@ -229,11 +229,11 @@ package org.flintparticles.common.emitters {
 		/**
 		 * The array of all initializers being used by this emitter.
 		 */
-		public function get initializers():Array
+		public function get initializers():Vector.<Initializer>
 		{
 			return _initializers;
 		}
-		public function set initializers( value:Array ):void
+		public function set initializers( value:Vector.<Initializer> ):void
 		{
 			var initializer:Initializer;
 			for each( initializer in _initializers )
@@ -241,7 +241,7 @@ package org.flintparticles.common.emitters {
 				initializer.removedFromEmitter( this );
 			}
 			_initializers = value.slice();
-			BehaviourArrayUtils.sortArray( _initializers );
+			_initializers.sort( prioritySort );
 			for each( initializer in value )
 			{
 				initializer.addedToEmitter( this );
@@ -259,7 +259,15 @@ package org.flintparticles.common.emitters {
 		 */
 		public function addInitializer( initializer:Initializer ):void
 		{
-			BehaviourArrayUtils.add( _initializers, initializer );
+			var len:uint = _initializers.length;
+			for( var i:uint = 0; i < len; ++i )
+			{
+				if( Behaviour( _initializers[i] ).priority < initializer.priority )
+				{
+					break;
+				}
+			}
+			_initializers.splice( i, 0, initializer );
 			initializer.addedToEmitter( this );
 		}
 		
@@ -272,8 +280,10 @@ package org.flintparticles.common.emitters {
 		 */
 		public function removeInitializer( initializer:Initializer ):void
 		{
-			if( BehaviourArrayUtils.remove( _initializers, initializer ) )
+			var index:int = _initializers.indexOf( initializer );
+			if( index != -1 )
 			{
+				_initializers.splice( index, 1 );
 				initializer.removedFromEmitter( this );
 			}
 		}
@@ -288,7 +298,7 @@ package org.flintparticles.common.emitters {
 		 */
 		public function hasInitializer( initializer:Initializer ):Boolean
 		{
-			return BehaviourArrayUtils.contains( _initializers, initializer );
+			return _initializers.indexOf( initializer ) != -1;
 		}
 		
 		/**
@@ -301,17 +311,25 @@ package org.flintparticles.common.emitters {
 		 */
 		public function hasInitializerOfType( initializerClass:Class ):Boolean
 		{
-			return BehaviourArrayUtils.containsType( _initializers, initializerClass );
+			var len:uint = _initializers.length;
+			for( var i:uint = 0; i < len; ++i )
+			{
+				if( _initializers[i] is initializerClass )
+				{
+					return true;
+				}
+			}
+			return false;
 		}
 
 		/**
 		 * The array of all actions being used by this emitter.
 		 */
-		public function get actions():Array
+		public function get actions():Vector.<Action>
 		{
 			return _actions;
 		}
-		public function set actions( value:Array ):void
+		public function set actions( value:Vector.<Action> ):void
 		{
 			var action:Action;
 			for each( action in _actions )
@@ -319,7 +337,7 @@ package org.flintparticles.common.emitters {
 				action.removedFromEmitter( this );
 			}
 			_actions = value.slice();
-			BehaviourArrayUtils.sortArray( _actions );
+			_actions.sort( prioritySort );
 			for each( action in value )
 			{
 				action.addedToEmitter( this );
@@ -337,7 +355,15 @@ package org.flintparticles.common.emitters {
 		 */
 		public function addAction( action:Action ):void
 		{
-			BehaviourArrayUtils.add( _actions, action );
+			var len:uint = _actions.length;
+			for( var i:uint = 0; i < len; ++i )
+			{
+				if( Behaviour( _actions[i] ).priority < action.priority )
+				{
+					break;
+				}
+			}
+			_actions.splice( i, 0, action );
 			action.addedToEmitter( this );
 		}
 		
@@ -350,8 +376,10 @@ package org.flintparticles.common.emitters {
 		 */
 		public function removeAction( action:Action ):void
 		{
-			if( BehaviourArrayUtils.remove( _actions, action ) )
+			var index:int = _actions.indexOf( action );
+			if( index != -1 )
 			{
+				_actions.splice( index, 1 );
 				action.removedFromEmitter( this );
 			}
 		}
@@ -366,7 +394,7 @@ package org.flintparticles.common.emitters {
 		 */
 		public function hasAction( action:Action ):Boolean
 		{
-			return BehaviourArrayUtils.contains( _actions, action );
+			return _actions.indexOf( action ) != -1;
 		}
 		
 		/**
@@ -379,17 +407,25 @@ package org.flintparticles.common.emitters {
 		 */
 		public function hasActionOfType( actionClass:Class ):Boolean
 		{
-			return BehaviourArrayUtils.containsType( _actions, actionClass );
+			var len:uint = _actions.length;
+			for( var i:uint = 0; i < len; ++i )
+			{
+				if( _actions[i] is actionClass )
+				{
+					return true;
+				}
+			}
+			return false;
 		}
 
 		/**
 		 * The array of all actions being used by this emitter.
 		 */
-		public function get activities():Array
+		public function get activities():Vector.<Activity>
 		{
 			return _activities;
 		}
-		public function set activities( value:Array ):void
+		public function set activities( value:Vector.<Activity> ):void
 		{
 			var activity:Activity;
 			for each( activity in _activities )
@@ -397,7 +433,7 @@ package org.flintparticles.common.emitters {
 				activity.removedFromEmitter( this );
 			}
 			_activities = value.slice();
-			BehaviourArrayUtils.sortArray( _activities );
+			_activities.sort( prioritySort );
 			for each( activity in _activities )
 			{
 				activity.addedToEmitter( this );
@@ -415,7 +451,15 @@ package org.flintparticles.common.emitters {
 		 */
 		public function addActivity( activity:Activity ):void
 		{
-			BehaviourArrayUtils.add( _activities, activity );
+			var len:uint = _activities.length;
+			for( var i:uint = 0; i < len; ++i )
+			{
+				if( Behaviour( _activities[i] ).priority < activity.priority )
+				{
+					break;
+				}
+			}
+			_activities.splice( i, 0, activity );
 			activity.addedToEmitter( this );
 		}
 		
@@ -428,8 +472,10 @@ package org.flintparticles.common.emitters {
 		 */
 		public function removeActivity( activity:Activity ):void
 		{
-			if( BehaviourArrayUtils.remove( _activities, activity ) )
+			var index:int = _activities.indexOf( activity );
+			if( index != -1 )
 			{
+				_activities.splice( index, 1 );
 				activity.removedFromEmitter( this );
 			}
 		}
@@ -444,7 +490,7 @@ package org.flintparticles.common.emitters {
 		 */
 		public function hasActivity( activity:Activity ):Boolean
 		{
-			return BehaviourArrayUtils.contains( _activities, activity );
+			return _activities.indexOf( activity ) != -1;
 		}
 		
 		/**
@@ -457,7 +503,15 @@ package org.flintparticles.common.emitters {
 		 */
 		public function hasActivityOfType( activityClass:Class ):Boolean
 		{
-			return BehaviourArrayUtils.containsType( _activities, activityClass );
+			var len:uint = _activities.length;
+			for( var i:uint = 0; i < len; ++i )
+			{
+				if( _activities[i] is activityClass )
+				{
+					return true;
+				}
+			}
+			return false;
 		}
 
 		/**
@@ -830,6 +884,11 @@ package org.flintparticles.common.emitters {
 				update( step );
 			}
 			_maximumFrameTime = maxTime;
+		}
+		
+		private function prioritySort( b1:Behaviour, b2:Behaviour ):Number
+		{
+			return b1.priority - b2.priority;
 		}
 	}
 }
