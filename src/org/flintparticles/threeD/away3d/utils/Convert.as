@@ -30,9 +30,10 @@
 
 package org.flintparticles.threeD.away3d.utils 
 {
-	import away3d.core.math.MatrixAway3D;
-	import away3d.core.math.Number3D;
 	import away3d.core.math.Quaternion;
+	
+	import flash.geom.Matrix3D;
+	import flash.geom.Vector3D;
 	
 	import org.flintparticles.threeD.geom.Matrix3D;
 	import org.flintparticles.threeD.geom.Point3D;
@@ -48,31 +49,35 @@ package org.flintparticles.threeD.away3d.utils
 		/**
 		 * Convert a Flint Vector3D object to an Away3D Number3D object.
 		 */
-		public static function Vector3DToA3D( v:Vector3D ):Number3D
+		public static function Vector3DToA3D( v:org.flintparticles.threeD.geom.Vector3D ):flash.geom.Vector3D
 		{
-			return new Number3D( v.x, v.y, v.z );
+			///return new Number3D( v.x, v.y, v.z );Updated by Michael IV to Away3D 3.6
+			return new flash.geom.Vector3D(v.x,v.y,v.z);
 		}
 
 		/**
 		 * Convert an Away3D Number3D object to a Flint Vector3D object.
 		 */
-		public static function Vector3DFromA3D( v:Number3D ):Vector3D
+		public static function Vector3DFromA3D( v:flash.geom.Vector3D ):org.flintparticles.threeD.geom.Vector3D
 		{
-			return new Vector3D( v.x, v.y, v.z );
+			//return new Vector3D( v.x, v.y, v.z );Updated by Michael IV to Away3D 3.6
+			return new org.flintparticles.threeD.geom.Vector3D(v.x, v.y, v.z );
 		}
 
 		/**
 		 * Convert a Flint Point3D object to an Away3D Number3D object.
 		 */
-		public static function Point3DToA3D( v:Point3D ):Number3D
+		public static function Point3DToA3D( v:Point3D ):flash.geom.Vector3D
 		{
-			return new Number3D( v.x, v.y, v.z );
+			///return new Number3D( v.x, v.y, v.z );Updated by Michael IV to Away3D 3.6
+			return new flash.geom.Vector3D
 		}
 
 		/**
 		 * Convert an Away3D Number3D object to a Flint Point3D object.
 		 */
-		public static function Point3DFromA3D( v:Number3D ):Point3D
+		////Updated by Michael IV to Away3D 3.6
+		public static function Point3DFromA3D( v:flash.geom.Vector3D ):Point3D
 		{
 			return new Point3D( v.x, v.y, v.z );
 		}
@@ -80,20 +85,28 @@ package org.flintparticles.threeD.away3d.utils
 		/**
 		 * Convert a Flint Matrix3D object to an Away3D Matrix3D object.
 		 */
-		public static function Matrix3DToA3D( m:Matrix3D ):MatrixAway3D
+		public static function Matrix3DToA3D( m:org.flintparticles.threeD.geom.Matrix3D ):flash.geom.Matrix3D
 		{
-			var n:MatrixAway3D = new MatrixAway3D();
-			n.array2matrix( m.rawData, false, 1 );
+		///	var n:MatrixAway3D = new MatrixAway3D();Updated by Michael IV to Away3D 3.6
+		///	n.array2matrix( m.rawData, false, 1 );Updated by Michael IV to Away3D 3.6
+			var n:flash.geom.Matrix3D=new flash.geom.Matrix3D();
+			//this one needs a check that columns and raws match between the matrices(Michael IV)
+			var rData:Vector.<Number>=new Vector.<Number>(m.rawData[0],m.rawData[1],m.rawData[2],m.rawData[3],m.rawData[4],m.rawData[5],m.rawData[6],m.rawData[7],m.rawData[8],m.rawData[9],m.rawData[10],m.rawData[11],m.rawData[12],m.rawData[13],m.rawData[14],m.rawData[15]);
+			n.rawData=rData;	
 			return n;
 		}
 
 		/**
 		 * Convert an Away3D Matrix3D object to a Flint Matrix3D object.
 		 */
-		public static function Matrix3DFromA3D( m:MatrixAway3D ):Matrix3D
+		public static function Matrix3DFromA3D( m:flash.geom.Matrix3D ):org.flintparticles.threeD.geom.Matrix3D
 		{
-			return new Matrix3D(
-				[ m.sxx, m.sxy, m.sxz, m.tx, m.syx, m.syy, m.syz, m.ty, m.szx, m.szy, m.szz, m.tz, m.swx, m.swy, m.swz, m.tw ]
+			//return new Matrix3D(
+			//	[ m.sxx, m.sxy, m.sxz, m.tx, m.syx, m.syy, m.syz, m.ty, m.szx, m.szy, m.szz, m.tz, m.swx, m.swy, m.swz, m.tw ]
+			//);
+			///Updated by Michael IV to Away3D 3.6
+			return new org.flintparticles.threeD.geom.Matrix3D(
+				[m.rawData[0],m.rawData[0], m.rawData[0], m.rawData[0], m.rawData[0], m.rawData[0], m.rawData[0], m.rawData[0], m.rawData[0], m.rawData[0], m.rawData[0], m.rawData[0],m.rawData[0], m.rawData[0], m.rawData[0], m.rawData[0] ]
 			);
 		}
 		
