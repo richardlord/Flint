@@ -33,14 +33,16 @@ package org.flintparticles.threeD.away3d
 	import away3d.containers.ObjectContainer3D;
 	import away3d.core.base.Mesh;
 	import away3d.core.base.Object3D;
-	import away3d.core.math.Number3D;
+	import away3d.core.math.Vector3DUtils;
 	import away3d.sprites.MovieClipSprite;
+	
+	import flash.geom.Vector3D;
 	
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.renderers.RendererBase;
 	import org.flintparticles.common.utils.Maths;
 	import org.flintparticles.threeD.away3d.utils.Convert;
-	import org.flintparticles.threeD.particles.Particle3D;	
+	import org.flintparticles.threeD.particles.Particle3D;
 
 	/**
 	 * Renders the particles in an Away3D scene.
@@ -95,8 +97,14 @@ package org.flintparticles.threeD.away3d
 			o.scaleX = o.scaleY = o.scaleZ = particle.scale;
 			
 			// rotation
-			var r:Number3D = new Number3D();
-			r.quaternion2euler( Convert.QuaternionToA3D( particle.rotation ) );
+			
+			///var r:Number3D = new Number3D();
+			///Updated by Michael IV to Away3D 3.6
+			var r:flash.geom.Vector3D=new flash.geom.Vector3D(); 
+			
+			//r.quaternion2euler( Convert.QuaternionToA3D( particle.rotation ) );
+			///Updated by Michael IV to Away3D 3.6
+			r=away3d.core.math.Vector3DUtils.quaternion2euler(Convert.QuaternionToA3D( particle.rotation ));
 			o.rotationX = Maths.asDegrees( r.x );
 			o.rotationY = Maths.asDegrees( r.y );
 			o.rotationZ = Maths.asDegrees( r.z );
@@ -117,9 +125,14 @@ package org.flintparticles.threeD.away3d
 			// display object rendering
 			else if( o is MovieClipSprite )
 			{
-				MovieClipSprite( o ).movieclip.transform.colorTransform = particle.colorTransform;
+				//MovieClipSprite( o ).movieclip.transform.colorTransform = particle.colorTransform;
+				///Updated by Michael IV to Away3D 3.6
+				MovieClipSprite( o ).movieClip.transform.colorTransform = particle.colorTransform;
 				MovieClipSprite( o ).scaling = particle.scale;
+				
+				
 			}
+		
 			
 			// others
 			else
