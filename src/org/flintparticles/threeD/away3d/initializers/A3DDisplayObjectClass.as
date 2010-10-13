@@ -32,10 +32,12 @@ package org.flintparticles.threeD.away3d.initializers
 {
 	import away3d.sprites.MovieClipSprite;
 	
+	import flash.display.DisplayObject;
+	
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.initializers.InitializerBase;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.common.utils.construct;	
+	import org.flintparticles.common.utils.construct;
 
 	/**
 	 * The A3DDisplayObjectClass initializer sets the DisplayObject to use to 
@@ -101,7 +103,10 @@ package org.flintparticles.threeD.away3d.initializers
 		 */
 		override public function initialize( emitter:Emitter, particle:Particle ):void
 		{
-			particle.image = new MovieClipSprite( construct( _imageClass, _parameters ), { rescale:true, align:"none", ownCanvas:true } );
+			///particle.image = new MovieClipSprite( construct( _imageClass, _parameters ) , { rescale:true, align:"none", ownCanvas:true } );
+			///Updated by Michael IV to Away3D 3.6
+			particle.image = new MovieClipSprite( construct( _imageClass, _parameters ) ,"none", 1,true );
+			
 		}
 	}
 }
