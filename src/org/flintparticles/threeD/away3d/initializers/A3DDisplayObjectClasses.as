@@ -106,7 +106,9 @@ package org.flintparticles.threeD.away3d.initializers
 		override public function initialize( emitter:Emitter, particle:Particle ):void
 		{
 			var img:Pair = _images.getRandomValue();
-			particle.image = new MovieClipSprite( construct( img.image, img.parameters ), { rescale:true, align:"none", ownCanvas:true } );
+			///particle.image = new MovieClipSprite( construct( img.image, img.parameters ), { rescale:true, align:"none", ownCanvas:true } );
+			///Updated by Michael IV to Away3D 3.6
+			particle.image = new MovieClipSprite( construct( img.image, img.parameters ) ,"none", 1,true );
 		}
 	}
 }
