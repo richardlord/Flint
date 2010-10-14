@@ -30,7 +30,6 @@
 
 package org.flintparticles.common.initializers 
 {
-	import org.flintparticles.common.behaviours.BehaviourArrayUtils;
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.particles.Particle;	
 
@@ -47,7 +46,7 @@ package org.flintparticles.common.initializers
 
 	public class InitializerGroup extends InitializerBase
 	{
-		private var _initializers:Array;
+		private var _initializers:Vector.<Initializer>;
 		private var _emitter:Emitter;
 		
 		/**
@@ -64,11 +63,11 @@ package org.flintparticles.common.initializers
 			}
 		}
 		
-		public function get initializers():Array
+		public function get initializers():Vector.<Initializer>
 		{
 			return _initializers;
 		}
-		public function set initializers( value:Array ):void
+		public function set initializers( value:Vector.<Initializer> ):void
 		{
 			var initializer:Initializer;
 			if( _emitter )
@@ -79,7 +78,7 @@ package org.flintparticles.common.initializers
 				}
 			}
 			_initializers = value.slice( );
-			BehaviourArrayUtils.sortArray( _initializers );
+			_initializers.sort( prioritySort );
 			if( _emitter )
 			{
 				for each( initializer in _initializers )
@@ -91,7 +90,15 @@ package org.flintparticles.common.initializers
 
 		public function addInitializer( initializer:Initializer ):void
 		{
-			BehaviourArrayUtils.add( _initializers, initializer );
+			var len:uint = _initializers.length;
+			for( var i:uint = 0; i < len; ++i )
+			{
+				if( _initializers[i].priority < initializer.priority )
+				{
+					break;
+				}
+			}
+			_initializers.splice( i, 0, initializer );
 			if( _emitter )
 			{
 				initializer.addedToEmitter( _emitter );
@@ -100,9 +107,14 @@ package org.flintparticles.common.initializers
 		
 		public function removeInitializer( initializer:Initializer ):void
 		{
-			if( BehaviourArrayUtils.remove( _initializers, initializer ) && _emitter )
+			var index:int = _initializers.indexOf( initializer );
+			if( index != -1 )
 			{
-				initializer.removedFromEmitter( _emitter );
+				_initializers.splice( index, 1 );
+				if( _emitter )
+				{
+					initializer.removedFromEmitter( _emitter );
+				}
 			}
 		}
 		
@@ -112,7 +124,7 @@ package org.flintparticles.common.initializers
 			var len:uint = _initializers.length;
 			for( var i:uint = 0; i < len; ++i )
 			{
-				Initializer( _initializers[i] ).addedToEmitter( emitter );
+				_initializers[i].addedToEmitter( emitter );
 			}
 		}
 
@@ -121,7 +133,7 @@ package org.flintparticles.common.initializers
 			var len:uint = _initializers.length;
 			for( var i:uint = 0; i < len; ++i )
 			{
-				Initializer( _initializers[i] ).removedFromEmitter( emitter );
+				_initializers[i].removedFromEmitter( emitter );
 			}
 			_emitter = null;
 		}
@@ -134,8 +146,13 @@ package org.flintparticles.common.initializers
 			var len:uint = _initializers.length;
 			for( var i:uint = 0; i < len; ++i )
 			{
-				Initializer( _initializers[i] ).initialize( emitter, particle );
+				_initializers[i].initialize( emitter, particle );
 			}
+		}
+		
+		private function prioritySort( b1:Initializer, b2:Initializer ):Number
+		{
+			return b1.priority - b2.priority;
 		}
 	}
 }

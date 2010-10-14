@@ -48,7 +48,7 @@ package org.flintparticles.common.utils
 	 */
 	public class WeightedArray extends Proxy
 	{
-		private var _values:Array;
+		private var _values:Vector.<Pair>;
 		private var _totalWeights:Number;
 		
 		/**
@@ -56,7 +56,7 @@ package org.flintparticles.common.utils
 		 */
 		public function WeightedArray()
 		{
-			_values = new Array();
+			_values = new Vector.<Pair>();
 			_totalWeights = 0;
 		}
 		
@@ -68,7 +68,7 @@ package org.flintparticles.common.utils
 			var index:int = int( name );
 			if ( index == name && index < _values.length && _values[ index ] )
 			{
-				return Pair( _values[ index ] ).value;
+				return _values[ index ].value;
 			}
 			else
 			{
@@ -86,7 +86,7 @@ package org.flintparticles.common.utils
 			var index:uint = uint( name );
 			if ( index == name && index < _values.length )
 			{
-				Pair( _values[index] ).value = value;
+				_values[index].value = value;
 			}
 		}
 
@@ -118,7 +118,7 @@ package org.flintparticles.common.utils
 		 */
 		override flash_proxy function nextValue( index:int ):*
 		{
-			return Pair( _values[ index - 1 ] ).value;
+			return _values[ index - 1 ].value;
 		}
 
 		/**
@@ -145,7 +145,7 @@ package org.flintparticles.common.utils
 		{
 			for( var i:uint = _values.length; i--; )
 			{
-				if( Pair( _values[i] ).value == value )
+				if( _values[i].value == value )
 				{
 					_totalWeights -= Pair( _values[i] ).weight;
 					_values.splice( i, 1 );
@@ -164,7 +164,7 @@ package org.flintparticles.common.utils
 		{
 			for( var i:uint = _values.length; i--; )
 			{
-				if( Pair( _values[i] ).value == value )
+				if( _values[i].value == value )
 				{
 					return true;
 				}
@@ -180,8 +180,8 @@ package org.flintparticles.common.utils
 		 */
 		public function removeAt( index:uint ):*
 		{
-			var temp:* = Pair( _values[index] ).value;
-			_totalWeights -= Pair( _values[index] ).weight;
+			var temp:* = _values[index].value;
+			_totalWeights -= _values[index].weight;
 			_values.splice( index, 1 );
 			return temp;
 		}
@@ -226,13 +226,13 @@ package org.flintparticles.common.utils
 			var len:int = _values.length;
 			for( var i:int = 0; i < len; ++i )
 			{
-				current += Pair( _values[i] ).weight;
+				current += _values[i].weight;
 				if( current >= position )
 				{
-					return Pair( _values[i] ).value;
+					return _values[i].value;
 				}
 			}
-			return Pair( _values[len-1] ).value;
+			return _values[len-1].value;
 		}
 	}
 }

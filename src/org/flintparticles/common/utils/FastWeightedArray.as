@@ -33,13 +33,13 @@ package org.flintparticles.common.utils
 	/**
 	 * A FastWeightedArray performes the same purpose as a WeightedArray 
 	 * but this array is optimized to select random items in a large array 
-	 * much more rapidly. In improving the speed if the array, it is necessary
+	 * much more rapidly. In improving the speed of the array, it is necessary
 	 * to loose the functionality to remove items from the FastWeightedArray, so
-	 * the original WeightedArray also still available.
+	 * the original WeightedArray is also still available.
 	 * 
 	 * <p>The FastWeightedArray is a collection of values that are weighted. When 
 	 * a random value is required from the collection, the value returned
-	 * is randomly selkected based on the weightings.</p>
+	 * is randomly selected based on the weightings.</p>
 	 * 
 	 * <p>Due to the nature of a FastWeightedArray, there are no facilities
 	 * to push, unshift or splice items into the array. All items are 
@@ -47,7 +47,7 @@ package org.flintparticles.common.utils
 	 */
 	public class FastWeightedArray
 	{
-		private var _values:Array;
+		private var _values:Vector.<Pair>;
 		private var _totalRatios:Number;
 		
 		/**
@@ -55,7 +55,7 @@ package org.flintparticles.common.utils
 		 */
 		public function FastWeightedArray()
 		{
-			_values = new Array();
+			_values = new Vector.<Pair>();
 			_totalRatios = 0;
 		}
 		
@@ -115,7 +115,7 @@ package org.flintparticles.common.utils
 			while( low < high )
 			{
 				mid = Math.floor( ( low + high ) * 0.5 );
-				if( Pair( _values[ mid ] ).topWeight < position )
+				if( _values[ mid ].topWeight < position )
 				{
 					low = mid + 1;
 				}
@@ -124,7 +124,7 @@ package org.flintparticles.common.utils
 					high = mid;
 				}
 			}
-			return Pair( _values[low] ).value;
+			return _values[low].value;
 		}
 	}
 }

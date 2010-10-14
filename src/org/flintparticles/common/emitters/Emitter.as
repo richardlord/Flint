@@ -262,7 +262,7 @@ package org.flintparticles.common.emitters {
 			var len:uint = _initializers.length;
 			for( var i:uint = 0; i < len; ++i )
 			{
-				if( Behaviour( _initializers[i] ).priority < initializer.priority )
+				if( _initializers[i].priority < initializer.priority )
 				{
 					break;
 				}
@@ -358,7 +358,7 @@ package org.flintparticles.common.emitters {
 			var len:uint = _actions.length;
 			for( var i:uint = 0; i < len; ++i )
 			{
-				if( Behaviour( _actions[i] ).priority < action.priority )
+				if( _actions[i].priority < action.priority )
 				{
 					break;
 				}
@@ -454,7 +454,7 @@ package org.flintparticles.common.emitters {
 			var len:uint = _activities.length;
 			for( var i:uint = 0; i < len; ++i )
 			{
-				if( Behaviour( _activities[i] ).priority < activity.priority )
+				if( _activities[i].priority < activity.priority )
 				{
 					break;
 				}

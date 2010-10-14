@@ -30,7 +30,6 @@
 
 package org.flintparticles.common.counters
 {
-	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.emitters.Emitter;
 	
 	import flash.utils.getTimer;	
@@ -48,7 +47,7 @@ package org.flintparticles.common.counters
 		private var _rateMax:Number;
 		private var _target:Number;
 		private var _rate:Number;
-		private var _times:Array;
+		private var _times:Vector.<int>;
 		private var _timeToRateCheck:Number;
 		private var _stop:Boolean;
 		
@@ -74,7 +73,7 @@ package org.flintparticles.common.counters
 			_rateMin = rateMin;
 			_rate = _rateMax = rateMax;
 			_target = targetFrameRate;
-			_times = new Array();
+			_times = new Vector.<int>();
 			_timeToRateCheck = 0;
 		}
 		
@@ -189,13 +188,13 @@ package org.flintparticles.common.counters
 				var t:Number;
 				if ( _times.push( t = getTimer() ) > 9 )
 				{
-					var frameRate:Number = Math.round( 10000 / ( t - Number( _times.shift() ) ) );
+					var frameRate:Number = Math.round( 10000 / ( t - _times.shift() ) );
 					if( frameRate < _target )
 					{
 						_rate = Math.floor( ( _rate + _rateMin ) * 0.5 );
 						_times.length = 0;
 						
-						if( !( _timeToRateCheck = Particle( emitter.particles[0] ).lifetime ) )
+						if( !( _timeToRateCheck = emitter.particles[0].lifetime ) )
 						{
 							_timeToRateCheck = 2;
 						}
