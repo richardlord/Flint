@@ -2,7 +2,7 @@
  * FLINT PARTICLE SYSTEM
  * .....................
  * 
- * Author: Richard Lord
+ * Author: Richard Lord & Michael Ivanov
  * Copyright (c) Richard Lord 2008-2010
  * http://flintparticles.org
  * 
@@ -98,13 +98,9 @@ package org.flintparticles.threeD.away3d
 			
 			// rotation
 			
-			///var r:Number3D = new Number3D();
-			///Updated by Michael IV to Away3D 3.6
-			var r:flash.geom.Vector3D=new flash.geom.Vector3D(); 
+			var r:flash.geom.Vector3D = new flash.geom.Vector3D(); 
 			
-			//r.quaternion2euler( Convert.QuaternionToA3D( particle.rotation ) );
-			///Updated by Michael IV to Away3D 3.6
-			r=away3d.core.math.Vector3DUtils.quaternion2euler(Convert.QuaternionToA3D( particle.rotation ));
+			r = away3d.core.math.Vector3DUtils.quaternion2euler( Convert.QuaternionToA3D( particle.rotation ) );
 			o.rotationX = Maths.asDegrees( r.x );
 			o.rotationY = Maths.asDegrees( r.y );
 			o.rotationZ = Maths.asDegrees( r.z );
@@ -125,15 +121,10 @@ package org.flintparticles.threeD.away3d
 			// display object rendering
 			else if( o is MovieClipSprite )
 			{
-				//MovieClipSprite( o ).movieclip.transform.colorTransform = particle.colorTransform;
-				///Updated by Michael IV to Away3D 3.6
 				MovieClipSprite( o ).movieClip.transform.colorTransform = particle.colorTransform;
 				MovieClipSprite( o ).scaling = particle.scale;
-				
-				
 			}
 		
-			
 			// others
 			else
 			{

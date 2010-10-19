@@ -2,7 +2,7 @@
  * FLINT PARTICLE SYSTEM
  * .....................
  * 
- * Author: Richard Lord
+ * Author: Richard Lord & Michael Ivanov
  * Copyright (c) Richard Lord 2008-2010
  * http://flintparticles.org
  * 
@@ -51,8 +51,7 @@ package org.flintparticles.threeD.away3d.utils
 		 */
 		public static function Vector3DToA3D( v:org.flintparticles.threeD.geom.Vector3D ):flash.geom.Vector3D
 		{
-			///return new Number3D( v.x, v.y, v.z );Updated by Michael IV to Away3D 3.6
-			return new flash.geom.Vector3D(v.x,v.y,v.z);
+			return new flash.geom.Vector3D( v.x, v.y, v.z );
 		}
 
 		/**
@@ -60,8 +59,7 @@ package org.flintparticles.threeD.away3d.utils
 		 */
 		public static function Vector3DFromA3D( v:flash.geom.Vector3D ):org.flintparticles.threeD.geom.Vector3D
 		{
-			//return new Vector3D( v.x, v.y, v.z );Updated by Michael IV to Away3D 3.6
-			return new org.flintparticles.threeD.geom.Vector3D(v.x, v.y, v.z );
+			return new org.flintparticles.threeD.geom.Vector3D( v.x, v.y, v.z );
 		}
 
 		/**
@@ -69,14 +67,12 @@ package org.flintparticles.threeD.away3d.utils
 		 */
 		public static function Point3DToA3D( v:Point3D ):flash.geom.Vector3D
 		{
-			///return new Number3D( v.x, v.y, v.z );Updated by Michael IV to Away3D 3.6
-			return new flash.geom.Vector3D
+			return new flash.geom.Vector3D( v.x, v.y, v.z );
 		}
 
 		/**
 		 * Convert an Away3D Number3D object to a Flint Point3D object.
 		 */
-		////Updated by Michael IV to Away3D 3.6
 		public static function Point3DFromA3D( v:flash.geom.Vector3D ):Point3D
 		{
 			return new Point3D( v.x, v.y, v.z );
@@ -87,12 +83,14 @@ package org.flintparticles.threeD.away3d.utils
 		 */
 		public static function Matrix3DToA3D( m:org.flintparticles.threeD.geom.Matrix3D ):flash.geom.Matrix3D
 		{
-		///	var n:MatrixAway3D = new MatrixAway3D();Updated by Michael IV to Away3D 3.6
-		///	n.array2matrix( m.rawData, false, 1 );Updated by Michael IV to Away3D 3.6
 			var n:flash.geom.Matrix3D=new flash.geom.Matrix3D();
-			//this one needs a check that columns and raws match between the matrices(Michael IV)
-			var rData:Vector.<Number>=new Vector.<Number>(m.rawData[0],m.rawData[1],m.rawData[2],m.rawData[3],m.rawData[4],m.rawData[5],m.rawData[6],m.rawData[7],m.rawData[8],m.rawData[9],m.rawData[10],m.rawData[11],m.rawData[12],m.rawData[13],m.rawData[14],m.rawData[15]);
-			n.rawData=rData;	
+			// TODO: check that columns and raws match between the matrices
+			n.rawData = new Vector.<Number>(
+				m.rawData[0], m.rawData[1], m.rawData[2], m.rawData[3],
+				m.rawData[4], m.rawData[5], m.rawData[6], m.rawData[7],
+				m.rawData[8], m.rawData[9], m.rawData[10], m.rawData[11],
+				m.rawData[12], m.rawData[13], m.rawData[14], m.rawData[15]
+			);
 			return n;
 		}
 
@@ -101,13 +99,13 @@ package org.flintparticles.threeD.away3d.utils
 		 */
 		public static function Matrix3DFromA3D( m:flash.geom.Matrix3D ):org.flintparticles.threeD.geom.Matrix3D
 		{
-			//return new Matrix3D(
-			//	[ m.sxx, m.sxy, m.sxz, m.tx, m.syx, m.syy, m.syz, m.ty, m.szx, m.szy, m.szz, m.tz, m.swx, m.swy, m.swz, m.tw ]
-			//);
-			///Updated by Michael IV to Away3D 3.6
-			return new org.flintparticles.threeD.geom.Matrix3D(
-				[m.rawData[0],m.rawData[0], m.rawData[0], m.rawData[0], m.rawData[0], m.rawData[0], m.rawData[0], m.rawData[0], m.rawData[0], m.rawData[0], m.rawData[0], m.rawData[0],m.rawData[0], m.rawData[0], m.rawData[0], m.rawData[0] ]
-			);
+			// TODO: check that columns and raws match between the matrices
+			return new org.flintparticles.threeD.geom.Matrix3D( [
+				m.rawData[0], m.rawData[1], m.rawData[2], m.rawData[3],
+				m.rawData[4], m.rawData[5], m.rawData[6], m.rawData[7],
+				m.rawData[8], m.rawData[9], m.rawData[10], m.rawData[11],
+				m.rawData[12], m.rawData[13], m.rawData[14], m.rawData[15]
+			] );
 		}
 		
 		/**
