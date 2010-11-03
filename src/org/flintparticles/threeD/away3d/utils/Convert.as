@@ -86,10 +86,10 @@ package org.flintparticles.threeD.away3d.utils
 			var n:flash.geom.Matrix3D=new flash.geom.Matrix3D();
 			// TODO: check that columns and raws match between the matrices
 			n.rawData = new Vector.<Number>(
-				m.rawData[0], m.rawData[1], m.rawData[2], m.rawData[3],
-				m.rawData[4], m.rawData[5], m.rawData[6], m.rawData[7],
-				m.rawData[8], m.rawData[9], m.rawData[10], m.rawData[11],
-				m.rawData[12], m.rawData[13], m.rawData[14], m.rawData[15]
+				m.rawData[0], m.rawData[4], m.rawData[8], m.rawData[12],
+				m.rawData[1], m.rawData[5], m.rawData[9], m.rawData[13],
+				m.rawData[2], m.rawData[6], m.rawData[10], m.rawData[14],
+				m.rawData[3], m.rawData[7], m.rawData[11], m.rawData[15]
 			);
 			return n;
 		}
@@ -101,10 +101,10 @@ package org.flintparticles.threeD.away3d.utils
 		{
 			// TODO: check that columns and raws match between the matrices
 			return new org.flintparticles.threeD.geom.Matrix3D( [
-				m.rawData[0], m.rawData[1], m.rawData[2], m.rawData[3],
-				m.rawData[4], m.rawData[5], m.rawData[6], m.rawData[7],
-				m.rawData[8], m.rawData[9], m.rawData[10], m.rawData[11],
-				m.rawData[12], m.rawData[13], m.rawData[14], m.rawData[15]
+				m.rawData[0], m.rawData[4], m.rawData[8], m.rawData[12],
+				m.rawData[1], m.rawData[5], m.rawData[9], m.rawData[13],
+				m.rawData[2], m.rawData[6], m.rawData[10], m.rawData[14],
+				m.rawData[3], m.rawData[7], m.rawData[11], m.rawData[15]
 			] );
 		}
 		
