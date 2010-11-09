@@ -2,7 +2,7 @@
  * FLINT PARTICLE SYSTEM
  * .....................
  * 
- * Author: Richard Lord
+ * Author: Richard Lord & Michael Ivanov
  * Copyright (c) Richard Lord 2008-2010
  * http://flintparticles.org
  * 
@@ -35,7 +35,7 @@ package org.flintparticles.threeD.away3d.initializers
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.initializers.InitializerBase;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.common.utils.construct;	
+	import org.flintparticles.common.utils.construct;
 
 	/**
 	 * The A3DDisplayObjectClass initializer sets the DisplayObject to use to 
@@ -101,7 +101,8 @@ package org.flintparticles.threeD.away3d.initializers
 		 */
 		override public function initialize( emitter:Emitter, particle:Particle ):void
 		{
-			particle.image = new MovieClipSprite( construct( _imageClass, _parameters ), { rescale:true, align:"none", ownCanvas:true } );
+			particle.image = new MovieClipSprite( construct( _imageClass, _parameters ) ,"none", 1, true );
+			
 		}
 	}
 }

@@ -2,7 +2,7 @@
  * FLINT PARTICLE SYSTEM
  * .....................
  * 
- * Author: Richard Lord
+ * Author: Richard Lord & Michael Ivanov
  * Copyright (c) Richard Lord 2008-2010
  * http://flintparticles.org
  * 
@@ -30,17 +30,20 @@
 
 package org.flintparticles.threeD.away3d 
 {
+	import away3d.sprites.Sprite3D;
 	import away3d.containers.ObjectContainer3D;
 	import away3d.core.base.Mesh;
 	import away3d.core.base.Object3D;
-	import away3d.core.math.Number3D;
+	import away3d.core.math.Vector3DUtils;
 	import away3d.sprites.MovieClipSprite;
+	
+	import flash.geom.Vector3D;
 	
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.renderers.RendererBase;
 	import org.flintparticles.common.utils.Maths;
 	import org.flintparticles.threeD.away3d.utils.Convert;
-	import org.flintparticles.threeD.particles.Particle3D;	
+	import org.flintparticles.threeD.particles.Particle3D;
 
 	/**
 	 * Renders the particles in an Away3D scene.
@@ -88,46 +91,54 @@ package org.flintparticles.threeD.away3d
 
 		protected function renderParticle( particle:Particle3D ):void
 		{
-			var o:Object3D = particle.image;
-			o.x = particle.position.x;
-			o.y = particle.position.y;
-			o.z = particle.position.z;
-			o.scaleX = o.scaleY = o.scaleZ = particle.scale;
+			var o:* = particle.image;
 			
-			// rotation
-			var r:Number3D = new Number3D();
-			r.quaternion2euler( Convert.QuaternionToA3D( particle.rotation ) );
-			o.rotationX = Maths.asDegrees( r.x );
-			o.rotationY = Maths.asDegrees( r.y );
-			o.rotationZ = Maths.asDegrees( r.z );
+			if( o is Object3D ) {
+				Object3D( o ).x = particle.position.x;
+				Object3D( o ).y = particle.position.y;
+				Object3D( o ).z = particle.position.z;
+				Object3D( o ).scaleX = Object3D( o ).scaleY = Object3D( o ).scaleZ = particle.scale;
+				
+				var rotation:flash.geom.Vector3D = away3d.core.math.Vector3DUtils.quaternion2euler( Convert.QuaternionToA3D( particle.rotation ) );
+				Object3D( o ).rotationX = Maths.asDegrees( rotation.x );
+				Object3D( o ).rotationY = Maths.asDegrees( rotation.y );
+				Object3D( o ).rotationZ = Maths.asDegrees( rotation.z );
 			
-			// mesh rendering
-			if( o is Mesh )
-			{
-				if( Mesh( o ).material["hasOwnProperty"]( "color" ) )
+				// mesh rendering
+				if( o is Mesh )
 				{
-					Mesh( o ).material["color"] = particle.color & 0xFFFFFF;
+					if( Mesh( o ).material["hasOwnProperty"]( "color" ) )
+					{
+						Mesh( o ).material["color"] = particle.color & 0xFFFFFF;
+					}
+					if( Mesh( o ).material["hasOwnProperty"]( "alpha" ) )
+					{
+						Mesh( o ).material["alpha"] = particle.alpha;
+					}
 				}
-				if( Mesh( o ).material["hasOwnProperty"]( "alpha" ) )
+				else
 				{
-					Mesh( o ).material["alpha"] = particle.alpha;
+					// can't do color transform
+					// will try alpha - only works if objects have own canvas
+					Object3D( o ).alpha = particle.alpha;
 				}
 			}
 			
 			// display object rendering
-			else if( o is MovieClipSprite )
+			else if( o is Sprite3D )
 			{
-				MovieClipSprite( o ).movieclip.transform.colorTransform = particle.colorTransform;
-				MovieClipSprite( o ).scaling = particle.scale;
+				Sprite3D( o ).x = particle.position.x;
+				Sprite3D( o ).y = particle.position.y;
+				Sprite3D( o ).z = particle.position.z;
+				Sprite3D( o ).scaling = particle.scale;
+				
+				if( o is MovieClipSprite )
+				{
+					MovieClipSprite( o ).movieClip.transform.colorTransform = particle.colorTransform;
+				}
 			}
-			
+		
 			// others
-			else
-			{
-				// can't do color transform
-				// will try alpha - only works if objects have own canvas
-				o.alpha = particle.alpha;
-			}
 		}
 				
 		/**
@@ -140,8 +151,16 @@ package org.flintparticles.threeD.away3d
 		 */
 		override protected function addParticle( particle:Particle ):void
 		{
-			_container.addChild( Object3D( particle.image ) );
-			renderParticle( Particle3D( particle ) );
+			if( particle.image is Object3D )
+			{
+				_container.addChild( Object3D( particle.image ) );
+				renderParticle( Particle3D( particle ) );
+			}
+			else if( particle.image is Sprite3D )
+			{
+				_container.addSprite( Sprite3D( particle.image ) );
+				renderParticle( Particle3D( particle ) );
+			}
 		}
 		
 		/**
@@ -154,7 +173,14 @@ package org.flintparticles.threeD.away3d
 		 */
 		override protected function removeParticle( particle:Particle ):void
 		{
-			_container.removeChild( Object3D( particle.image ) );
+			if( particle.image is Object3D )
+			{
+				_container.removeChild( Object3D( particle.image ) );
+			}
+			else if( particle.image is Sprite3D )
+			{
+				_container.removeSprite( Sprite3D( particle.image ) );
+			}
 		}
 	}
 }
