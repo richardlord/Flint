@@ -30,7 +30,7 @@
 
 package org.flintparticles.threeD.zones
 {
-	import org.flintparticles.threeD.geom.Point3D;					
+	import flash.geom.Vector3D;					
 
 	/**
 	 * The Zones interface must be implemented by all zones.
@@ -50,14 +50,14 @@ package org.flintparticles.threeD.zones
 		 * @param y The y coordinate of the location to test for.
 		 * @return true if point is inside the zone, false if it is outside.
 		 */
-		function contains( p:Point3D ):Boolean;
+		function contains( p:Vector3D ):Boolean;
 
 		/**
 		 * The getLocation method returns a random point inside the zone.
 		 * 
 		 * @return a random point inside the zone.
 		 */
-		function getLocation():Point3D;
+		function getLocation():Vector3D;
 		
 
 		/**

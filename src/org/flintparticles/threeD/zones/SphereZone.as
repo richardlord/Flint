@@ -30,8 +30,9 @@
 
 package org.flintparticles.threeD.zones 
 {
-	import org.flintparticles.threeD.geom.Point3D;
-	import org.flintparticles.threeD.geom.Vector3D;	
+	import org.flintparticles.threeD.geom.Vector3DUtils;
+
+	import flash.geom.Vector3D;
 
 	/**
 	 * The SphereZone zone defines a zone that contains all the points in a sphere.
@@ -41,7 +42,7 @@ package org.flintparticles.threeD.zones
 
 	public class SphereZone implements Zone3D 
 	{
-		private var _center:Point3D;
+		private var _center:Vector3D;
 		private var _innerRadius:Number;
 		private var _innerRadiusSq:Number;
 		private var _outerRadius:Number;
@@ -55,9 +56,9 @@ package org.flintparticles.threeD.zones
 		 * @param innerRadius The inner radius of the sphere. This defines the hollow 
 		 * center of the sphere. If set to zero, the sphere is solid throughout. 
 		 */
-		public function SphereZone( center:Point3D = null, outerRadius:Number = 0, innerRadius:Number = 0 )
+		public function SphereZone( center:Vector3D = null, outerRadius:Number = 0, innerRadius:Number = 0 )
 		{
-			_center = center ? center.clone() : new Point3D( 0, 0, 0 );
+			_center = center ? Vector3DUtils.clonePoint( center ) : Vector3DUtils.getPoint( 0, 0, 0 );
 			_innerRadius = innerRadius;
 			_innerRadiusSq = _innerRadius * _innerRadius;
 			_outerRadius = outerRadius;
@@ -67,13 +68,13 @@ package org.flintparticles.threeD.zones
 		/**
 		 * The point at the center of the sphere.
 		 */
-		public function get center() : Point3D
+		public function get center() : Vector3D
 		{
 			return _center.clone();
 		}
-		public function set center( value : Point3D ) : void
+		public function set center( value : Vector3D ) : void
 		{
-			_center = value.clone();
+			_center = Vector3DUtils.clonePoint( value );
 		}
 
 		/**
@@ -110,9 +111,9 @@ package org.flintparticles.threeD.zones
 		 * @param p The location to test.
 		 * @return true if the location is inside the zone, false if it is outside.
 		 */
-		public function contains( p:Point3D ):Boolean
+		public function contains( p:Vector3D ):Boolean
 		{
-			var distSq:Number = p.distanceSquared( _center );
+			var distSq:Number = Vector3DUtils.distanceSquared( p, _center );
 			return distSq <= _outerRadiusSq && distSq >= _innerRadiusSq;
 		}
 		
@@ -123,7 +124,7 @@ package org.flintparticles.threeD.zones
 		 * 
 		 * @return A random point inside the zone.
 		 */
-		public function getLocation():Point3D
+		public function getLocation():Vector3D
 		{
 			var rand:Vector3D;
 			do
@@ -147,7 +148,6 @@ package org.flintparticles.threeD.zones
 		 */
 		public function getVolume():Number
 		{
-			// treat as one pixel tall disc
 			return ( _outerRadiusSq * _outerRadius - _innerRadiusSq * _innerRadius ) * Math.PI * 4 / 3;
 		}
 	}

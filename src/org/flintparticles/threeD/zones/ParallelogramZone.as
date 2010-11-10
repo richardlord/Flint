@@ -30,9 +30,11 @@
 
 package org.flintparticles.threeD.zones 
 {
-	import org.flintparticles.threeD.geom.Matrix3D;
-	import org.flintparticles.threeD.geom.Point3D;
-	import org.flintparticles.threeD.geom.Vector3D;	
+	import org.flintparticles.threeD.geom.Matrix3DUtils;
+	import org.flintparticles.threeD.geom.Vector3DUtils;
+
+	import flash.geom.Matrix3D;
+	import flash.geom.Vector3D;
 
 	/**
 	 * The PrallelogramZone zone defines a four sided zone n which opposite sides are parallel.
@@ -40,7 +42,7 @@ package org.flintparticles.threeD.zones
 	 */
 	public class ParallelogramZone implements Zone3D 
 	{
-		private var _corner : Point3D;
+		private var _corner : Vector3D;
 		private var _side1 : Vector3D;
 		private var _side2 : Vector3D;
 		private var _normal : Vector3D;
@@ -57,25 +59,25 @@ package org.flintparticles.threeD.zones
 		 * @param side2 The other side of the zone from the corner. The length of the
 		 * vector indicates how long the side is.
 		 */
-		public function ParallelogramZone( corner:Point3D = null, side1:Vector3D = null, side2:Vector3D = null )
+		public function ParallelogramZone( corner:Vector3D = null, side1:Vector3D = null, side2:Vector3D = null )
 		{
-			_corner = corner ? corner.clone() : new Point3D( 0, 0, 0 );
-			_side1 = side1 ? side1.clone() : new Vector3D( 1, 0, 0 );
-			_side2 = side2 ? side2.clone() : new Vector3D( 0, -1, 0 );
+			_corner = corner ? Vector3DUtils.clonePoint( corner ) : Vector3DUtils.getPoint( 0, 0, 0 );
+			_side1 = side1 ? Vector3DUtils.cloneVector( side1 ) : Vector3DUtils.getVector( 1, 0, 0 );
+			_side2 = side2 ? Vector3DUtils.cloneVector( side2 ) : Vector3DUtils.getVector( 0, -1, 0 );
 			_dirty = true;
 		}
 		
 		/**
 		 * A corner of the zone.
 		 */
-		public function get corner() : Point3D
+		public function get corner() : Vector3D
 		{
 			return _corner.clone();
 		}
 
-		public function set corner( value : Point3D ) : void
+		public function set corner( value : Vector3D ) : void
 		{
-			_corner = value.clone();
+			_corner = Vector3DUtils.clonePoint( value );
 		}
 
 		/**
@@ -89,7 +91,7 @@ package org.flintparticles.threeD.zones
 
 		public function set side1( value : Vector3D ) : void
 		{
-			_side1 = value;
+			_side1 = Vector3DUtils.cloneVector( value );
 			_dirty = true;
 		}
 
@@ -104,16 +106,18 @@ package org.flintparticles.threeD.zones
 
 		public function set side2( value : Vector3D ) : void
 		{
-			_side2 = value;
+			_side2 = Vector3DUtils.cloneVector( value );
 			_dirty = true;
 		}
 
 		private function init():void
 		{
 			_normal = _side1.crossProduct( _side2 );
-			_distToOrigin = _normal.dotProduct( _corner.toVector3D() );
-			_basis = Matrix3D.newBasisTransform( _side1, _side2, _side1.crossProduct( _side2 ).normalize() );
-			_basis.prependTranslate( -_corner.x, -_corner.y, -_corner.z );
+			_distToOrigin = _normal.dotProduct( _corner );
+			var perp:Vector3D = _side1.crossProduct( _side2 );
+			perp.normalize();
+			_basis = Matrix3DUtils.newBasisTransform( _side1, _side2, perp );
+			_basis.prependTranslation( -_corner.x, -_corner.y, -_corner.z );
 			_dirty = false;
 		}
 
@@ -126,19 +130,18 @@ package org.flintparticles.threeD.zones
 		 * @param y The y coordinate of the location to test for.
 		 * @return true if point is inside the zone, false if it is outside.
 		 */
-		public function contains( p:Point3D ):Boolean
+		public function contains( p:Vector3D ):Boolean
 		{
 			if( _dirty )
 			{
 				init();
 			}
-			var dist:Number = _normal.dotProduct( p.toVector3D() );
+			var dist:Number = _normal.dotProduct( p );
 			if( Math.abs( dist - _distToOrigin ) > 0.1 ) // test for close, not exact
 			{
 				return false;
 			}
-			var q:Point3D = p.clone();
-			_basis.transformSelf( q );
+			var q:Vector3D = _basis.transformVector( p );
 			return q.x >= 0 && q.x <= 1 && q.y >= 0 && q.y <= 1;
 		}
 		
@@ -149,9 +152,14 @@ package org.flintparticles.threeD.zones
 		 * 
 		 * @return a random point inside the zone.
 		 */
-		public function getLocation():Point3D
+		public function getLocation():Vector3D
 		{
-			return _corner.add( _side1.multiply( Math.random() ).incrementBy( _side2.multiply( Math.random() ) ) );
+			var d1:Vector3D = _side1.clone();
+			d1.scaleBy( Math.random() );
+			var d2:Vector3D = _side2.clone();
+			d2.scaleBy( Math.random() );
+			d1.incrementBy( d2 );
+			return _corner.add( d1 );
 		}
 		
 		/**

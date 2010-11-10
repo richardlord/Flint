@@ -30,8 +30,9 @@
 
 package org.flintparticles.threeD.zones 
 {
-	import org.flintparticles.threeD.geom.Point3D;
-	import org.flintparticles.threeD.geom.Vector3D;	
+	import org.flintparticles.threeD.geom.Vector3DUtils;
+
+	import flash.geom.Vector3D;
 
 	/**
 	 * The LineZone zone defines a zone that contains all the points on a line.
@@ -39,8 +40,8 @@ package org.flintparticles.threeD.zones
 
 	public class LineZone implements Zone3D 
 	{
-		private var _start:Point3D;
-		private var _end:Point3D;
+		private var _start:Vector3D;
+		private var _end:Vector3D;
 		private var _length:Vector3D;
 		
 		/**
@@ -49,36 +50,36 @@ package org.flintparticles.threeD.zones
 		 * @param start The point at one end of the line.
 		 * @param end The point at the other end of the line.
 		 */
-		public function LineZone( start:Point3D = null, end:Point3D = null )
+		public function LineZone( start:Vector3D = null, end:Vector3D = null )
 		{
-			_start = start ? start.clone() : new Point3D( 0, 0, 0 );
-			_end = end ? end.clone() : new Point3D( 0, 0, 0 );
+			_start = start ? Vector3DUtils.clonePoint( start ) : Vector3DUtils.getPoint( 0, 0, 0 );
+			_end = end ? Vector3DUtils.clonePoint( end ) : Vector3DUtils.getPoint( 0, 0, 0 );
 			setLength();
 		}
 		
 		/**
 		 * The point at one end of the line.
 		 */
-		public function get start() : Point3D
+		public function get start() : Vector3D
 		{
-			return _start;
+			return _start.clone();
 		}
-		public function set start( value : Point3D ) : void
+		public function set start( value : Vector3D ) : void
 		{
-			_start = value.clone();
+			_start = Vector3DUtils.clonePoint( value );
 			setLength();
 		}
 
 		/**
 		 * The point at the other end of the line.
 		 */
-		public function get end() : Point3D
+		public function get end() : Vector3D
 		{
-			return _end;
+			return _end.clone();
 		}
-		public function set end( value : Point3D ) : void
+		public function set end( value : Vector3D ) : void
 		{
-			_end = value.clone();
+			_end = Vector3DUtils.clonePoint( value );
 			setLength();
 		}
 
@@ -86,7 +87,7 @@ package org.flintparticles.threeD.zones
 		{
 			if( _start && _end )
 			{
-				_length = _start.vectorTo( _end );
+				_length = Vector3DUtils.vectorTo( _start, _end );
 			}
 		}
 
@@ -98,15 +99,16 @@ package org.flintparticles.threeD.zones
 		 * @param p The location to test for.
 		 * @return true if point is inside the zone, false if it is outside.
 		 */
-		public function contains( p:Point3D ):Boolean
+		public function contains( p:Vector3D ):Boolean
 		{
+			var vectorToPoint:Vector3D = Vector3DUtils.vectorTo( _start, p );
 			// is not on line through points if cross product is not zero
-			if( ! _start.vectorTo( p ).crossProduct( _length ).lengthSquared < 0.00001 )
+			if( ! vectorToPoint.crossProduct( _length ).lengthSquared < 0.00001 )
 			{
 				return false;
 			}
 			// is not between points if dot product of line to each point is the same sign
-			return _start.vectorTo( p ).dotProduct( _end.vectorTo( p ) ) <= 0;
+			return vectorToPoint.dotProduct( Vector3DUtils.vectorTo( _end, p ) ) <= 0;
 		}
 		
 		/**
@@ -116,9 +118,11 @@ package org.flintparticles.threeD.zones
 		 * 
 		 * @return a random point inside the zone.
 		 */
-		public function getLocation():Point3D
+		public function getLocation():Vector3D
 		{
-			return _start.add( _length.multiply( Math.random() ) );
+			var len:Vector3D = _length.clone();
+			len.scaleBy( Math.random() );
+			return _start.add( len );
 		}
 		
 		/**

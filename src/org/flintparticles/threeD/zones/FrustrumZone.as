@@ -30,7 +30,9 @@
 
 package org.flintparticles.threeD.zones 
 {
-	import org.flintparticles.threeD.geom.Point3D;
+	import flash.geom.Matrix3D;
+	import org.flintparticles.threeD.geom.Vector3DUtils;
+	import flash.geom.Vector3D;
 	import org.flintparticles.threeD.renderers.Camera;
 	
 	import flash.geom.Rectangle;	
@@ -109,9 +111,9 @@ package org.flintparticles.threeD.zones
 		 * @param y The y coordinate of the location to test for.
 		 * @return true if point is inside the zone, false if it is outside.
 		 */
-		public function contains( p:Point3D ):Boolean
+		public function contains( p:Vector3D ):Boolean
 		{
-			var pos:Point3D = _camera.transform.transform( p ) as Point3D;
+			var pos:Vector3D = _camera.transform.transformVector( p );
 			if( pos.z < _camera.nearPlaneDistance || pos.z > _camera.farPlaneDistance )
 			{
 				return false;
@@ -132,15 +134,16 @@ package org.flintparticles.threeD.zones
 		 * 
 		 * @return a random point inside the zone.
 		 */
-		public function getLocation():Point3D
+		public function getLocation():Vector3D
 		{
 			var z:Number = ( Math.random() * ( _camera.farPlaneDistance - _camera.nearPlaneDistance ) ) + _camera.nearPlaneDistance;
 			var scale:Number = z / _camera.projectionDistance;
 			var x:Number = ( ( Math.random() * _viewRect.width ) + _viewRect.left ) * scale;
 			var y:Number = ( ( Math.random() * _viewRect.height ) + _viewRect.top ) * scale;
-			var p:Point3D = new Point3D( x, y, z );
-			_camera.spaceTransform.inverse.transformSelf( p );
-			return p;
+			var p:Vector3D = Vector3DUtils.getPoint( x, y, z );
+			var transform:Matrix3D = _camera.spaceTransform.clone();
+			transform.invert();
+			return transform.transformVector( p );
 		}
 		
 		/**

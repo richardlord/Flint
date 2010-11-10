@@ -30,7 +30,9 @@
 
 package org.flintparticles.threeD.zones 
 {
-	import org.flintparticles.threeD.geom.Point3D;		
+	import org.flintparticles.threeD.geom.Vector3DUtils;
+
+	import flash.geom.Vector3D;
 
 	/**
 	 * The PointZone zone defines a zone that contains a single point.
@@ -38,28 +40,28 @@ package org.flintparticles.threeD.zones
 
 	public class PointZone implements Zone3D 
 	{
-		private var _point:Point3D;
+		private var _point:Vector3D;
 		
 		/**
 		 * The constructor defines a PointZone zone.
 		 * 
 		 * @param point The point that is the zone.
 		 */
-		public function PointZone( point:Point3D = null )
+		public function PointZone( point:Vector3D = null )
 		{
-			_point = point ? point.clone() : new Point3D( 0, 0, 0 );
+			_point = point ? Vector3DUtils.clonePoint( point ) : Vector3DUtils.getPoint( 0, 0, 0 );
 		}
 		
 		/**
 		 * The point that is the zone.
 		 */
-		public function get point() : Point3D
+		public function get point() : Vector3D
 		{
-			return _point;
+			return _point.clone();
 		}
-		public function set point( value : Point3D ) : void
+		public function set point( value : Vector3D ) : void
 		{
-			_point = value;
+			_point = Vector3DUtils.clonePoint( value );
 		}
 
 		/**
@@ -71,7 +73,7 @@ package org.flintparticles.threeD.zones
 		 * @param y The y coordinate of the location to test for.
 		 * @return true if point is inside the zone, false if it is outside.
 		 */
-		public function contains( p:Point3D ):Boolean
+		public function contains( p:Vector3D ):Boolean
 		{
 			return _point.equals( p );
 		}
@@ -83,7 +85,7 @@ package org.flintparticles.threeD.zones
 		 * 
 		 * @return a random point inside the zone.
 		 */
-		public function getLocation():Point3D
+		public function getLocation():Vector3D
 		{
 			return _point.clone();
 		}

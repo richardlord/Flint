@@ -30,7 +30,7 @@
 
 package org.flintparticles.threeD.zones 
 {
-	import org.flintparticles.threeD.geom.Point3D;		
+	import flash.geom.Vector3D;
 
 	/**
 	 * The MutiZone zone defines a zone that combines other zones into one larger zone.
@@ -94,7 +94,7 @@ package org.flintparticles.threeD.zones
 		 * @param y The y coordinate of the location to test for.
 		 * @return true if point is inside the zone, false if it is outside.
 		 */
-		public function contains( p:Point3D ):Boolean
+		public function contains( p:Vector3D ):Boolean
 		{
 			var len:int = _zones.length;
 			for( var i:int = 0; i < len; ++i )
@@ -114,7 +114,7 @@ package org.flintparticles.threeD.zones
 		 * 
 		 * @return a random point inside the zone.
 		 */
-		public function getLocation():Point3D
+		public function getLocation():Vector3D
 		{
 			var selectZone:Number = Math.random() * _totalVolume;
 			var len:int = _zones.length;

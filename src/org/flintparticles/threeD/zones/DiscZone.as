@@ -30,8 +30,7 @@
 
 package org.flintparticles.threeD.zones 
 {
-	import org.flintparticles.threeD.geom.Point3D;
-	import org.flintparticles.threeD.geom.Vector3D;
+	import flash.geom.Vector3D;
 	import org.flintparticles.threeD.geom.Vector3DUtils;	
 
 	/**
@@ -42,7 +41,7 @@ package org.flintparticles.threeD.zones
 
 	public class DiscZone implements Zone3D 
 	{
-		private var _center:Point3D;
+		private var _center:Vector3D;
 		private var _normal:Vector3D;
 		private var _innerRadius:Number;
 		private var _innerRadiusSq:Number;
@@ -64,10 +63,10 @@ package org.flintparticles.threeD.zones
 		 * @param innerRadius The inner radius of the disc. This defines the hole 
 		 * in the center of the disc. If set to zero, there is no hole. 
 		 */
-		public function DiscZone( center:Point3D = null, normal:Vector3D = null, outerRadius:Number = 0, innerRadius:Number = 0 )
+		public function DiscZone( center:Vector3D = null, normal:Vector3D = null, outerRadius:Number = 0, innerRadius:Number = 0 )
 		{
-			_center = center ? center.clone() : new Point3D( 0, 0, 0 );
-			_normal = normal ? normal.unit() : new Vector3D( 0, 0, 1 );
+			_center = center ? Vector3DUtils.clonePoint( center ) : Vector3DUtils.getPoint( 0, 0, 0 );
+			_normal = normal ? Vector3DUtils.cloneUnit( normal ) : Vector3DUtils.getVector( 0, 0, 1 );
 			_innerRadius = innerRadius;
 			_innerRadiusSq = _innerRadius * _innerRadius;
 			_outerRadius = outerRadius;
@@ -77,7 +76,7 @@ package org.flintparticles.threeD.zones
 		
 		private function init():void
 		{
-			_distToOrigin = _normal.dotProduct( center.toVector3D() );
+			_distToOrigin = _normal.dotProduct( center );
 			var axes:Array = Vector3DUtils.getPerpendiculars( normal );
 			_planeAxis1 = axes[0];
 			_planeAxis2 = axes[1];
@@ -87,13 +86,13 @@ package org.flintparticles.threeD.zones
 		/**
 		 * The point at the center of the disc.
 		 */
-		public function get center() : Point3D
+		public function get center() : Vector3D
 		{
 			return _center.clone();
 		}
-		public function set center( value : Point3D ) : void
+		public function set center( value : Vector3D ) : void
 		{
-			_center = value.clone();
+			_center = Vector3DUtils.clonePoint( value );
 			_dirty = true;
 		}
 
@@ -108,7 +107,7 @@ package org.flintparticles.threeD.zones
 		}
 		public function set normal( value : Vector3D ) : void
 		{
-			_normal = value.unit();
+			_normal = Vector3DUtils.cloneUnit( value );
 			_dirty = true;
 		}
 
@@ -146,20 +145,20 @@ package org.flintparticles.threeD.zones
 		 * @param p The location to test.
 		 * @return true if the location is inside the zone, false if it is outside.
 		 */
-		public function contains( p:Point3D ):Boolean
+		public function contains( p:Vector3D ):Boolean
 		{
 			if( _dirty )
 			{
 				init();
 			}
 			// is not in plane if dist to origin along normal is different
-			var dist:Number = _normal.dotProduct( p.toVector3D() );
+			var dist:Number = _normal.dotProduct( p );
 			if( Math.abs( dist - _distToOrigin ) > 0.1 ) // test for close, not exact
 			{
 				return false;
 			}
 			// test distance to center
-			var distToCenter:Number = center.distance( p );
+			var distToCenter:Number = Vector3D.distance( center, p );
 			if( distToCenter <= _outerRadiusSq && distToCenter >= _innerRadiusSq )
 			{
 				return true;
@@ -174,7 +173,7 @@ package org.flintparticles.threeD.zones
 		 * 
 		 * @return a random point inside the zone.
 		 */
-		public function getLocation():Point3D
+		public function getLocation():Vector3D
 		{
 			if( _dirty )
 			{
@@ -183,7 +182,12 @@ package org.flintparticles.threeD.zones
 			var rand:Number = Math.random();
 			var radius:Number = _innerRadius + (1 - rand * rand ) * ( _outerRadius - _innerRadius );
 			var angle:Number = Math.random() * TWOPI;
-			return _center.add( _planeAxis1.multiply( radius * Math.cos( angle ) ).incrementBy( _planeAxis2.multiply( radius * Math.sin( angle ) ) ) );
+			var p:Vector3D = _planeAxis1.clone();
+			p.scaleBy( radius * Math.cos( angle ) );
+			var p2:Vector3D = _planeAxis2.clone();
+			p2.scaleBy( radius * Math.sin( angle ) );
+			p.incrementBy( p2 );
+			return _center.add( p );
 		}
 		
 		/**

@@ -30,8 +30,7 @@
 
 package org.flintparticles.threeD.zones 
 {
-	import org.flintparticles.threeD.geom.Point3D;
-	import org.flintparticles.threeD.geom.Vector3D;
+	import flash.geom.Vector3D;
 	import org.flintparticles.threeD.geom.Vector3DUtils;	
 
 	/**
@@ -42,7 +41,7 @@ package org.flintparticles.threeD.zones
 
 	public class CylinderZone implements Zone3D 
 	{
-		private var _center:Point3D;
+		private var _center:Vector3D;
 		private var _axis:Vector3D;
 		private var _innerRadius:Number;
 		private var _innerRadiusSq:Number;
@@ -65,10 +64,10 @@ package org.flintparticles.threeD.zones
 		 * hole in the center of the cylinder that runs the length of the cylinder.
 		 * If this is set to zero, there is no hole. 
 		 */
-		public function CylinderZone( center:Point3D = null, axis:Vector3D = null, length:Number = 0, outerRadius:Number = 0, innerRadius:Number = 0 )
+		public function CylinderZone( center:Vector3D = null, axis:Vector3D = null, length:Number = 0, outerRadius:Number = 0, innerRadius:Number = 0 )
 		{
-			_center = center ? center.clone() : new Point3D( 0, 0, 0 );
-			_axis = axis ? axis.unit() : new Vector3D( 0, 1, 0 );
+			_center = center ? Vector3DUtils.clonePoint( center ) : Vector3DUtils.getPoint( 0, 0, 0 );
+			_axis = axis ? Vector3DUtils.cloneUnit( center ) : Vector3DUtils.getVector( 0, 1, 0 );
 			_innerRadius = innerRadius;
 			_innerRadiusSq = innerRadius * innerRadius;
 			_outerRadius = outerRadius;
@@ -88,13 +87,13 @@ package org.flintparticles.threeD.zones
 		/**
 		 * The point at the center of one end of the cylinder.
 		 */
-		public function get center() : Point3D
+		public function get center() : Vector3D
 		{
 			return _center.clone();
 		}
-		public function set center( value : Point3D ) : void
+		public function set center( value : Vector3D ) : void
 		{
-			_center = value.clone();
+			_center = Vector3DUtils.clonePoint( value );
 		}
 		
 		/**
@@ -106,7 +105,7 @@ package org.flintparticles.threeD.zones
 		}
 		public function set axis( value : Vector3D ) : void
 		{
-			_axis = value.clone();
+			_axis = Vector3DUtils.cloneUnit( value );
 			_dirty = true;
 		}
 		
@@ -156,20 +155,22 @@ package org.flintparticles.threeD.zones
 		 * @param p The location to test.
 		 * @return true if the location is inside the cylinder, false if it is outside.
 		 */
-		public function contains( p:Point3D ):Boolean
+		public function contains( p:Vector3D ):Boolean
 		{
 			if( _dirty )
 			{
 				init();
 			}
 
-			var q:Vector3D = _center.vectorTo( p );
+			var q:Vector3D = Vector3DUtils.vectorTo( _center, p );
 			var d:Number = q.dotProduct( _axis );
 			if( d < 0 || d > _length )
 			{
 				return false;
 			}
-			q.decrementBy( _axis.multiply( d ) );
+			var ax:Vector3D = _axis.clone();
+			ax.scaleBy( d );
+			q.decrementBy( ax );
 			var len:Number = q.lengthSquared;
 			return len >= _innerRadiusSq && len <= _outerRadiusSq;
 		}
@@ -181,7 +182,7 @@ package org.flintparticles.threeD.zones
 		 * 
 		 * @return a random point inside the cylinder.
 		 */
-		public function getLocation():Point3D
+		public function getLocation():Vector3D
 		{
 			if( _dirty )
 			{
@@ -194,9 +195,14 @@ package org.flintparticles.threeD.zones
 			r = _innerRadius + ( 1 - r * r ) * ( _outerRadius - _innerRadius );
 			
 			var a:Number = Math.random() * 2 * Math.PI;
-			var p:Vector3D = _perp1.multiply( r * Math.cos( a ) );
-			p.incrementBy( _perp2.multiply( r * Math.sin( a ) ) );
-			p.incrementBy( _axis.multiply( l ) );
+			var p:Vector3D = _perp1.clone();
+			p.scaleBy( r * Math.cos( a ) );
+			var p2:Vector3D = _perp2.clone();
+			p2.scaleBy( r * Math.sin( a ) );
+			p.incrementBy( p2 );
+			var ax:Vector3D = _axis.clone();
+			ax.scaleBy( l );
+			p.incrementBy( ax );
 			return _center.add( p );
 		}
 		
