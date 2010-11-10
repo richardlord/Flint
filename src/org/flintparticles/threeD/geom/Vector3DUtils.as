@@ -36,6 +36,10 @@ package org.flintparticles.threeD.geom
 	 */
 	public class Vector3DUtils 
 	{
+		public static var ZERO_VECTOR:Vector3D = new Vector3D( 0, 0, 0, 0 );
+		public static var MINUS_Y_AXIS:Vector3D = new Vector3D( 0, -1, 0, 0 );
+		public static var ZERO_POINT:Vector3D = new Vector3D( 0, 0, 0, 1 );
+		
 		public static function getVector( x:Number, y:Number, z:Number ):Vector3D
 		{
 			return new Vector3D( x, y, z, 0 );

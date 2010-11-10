@@ -66,13 +66,12 @@ package org.flintparticles.threeD.zones
 		 */
 		public function BoxZone( width:Number = 0, height:Number = 0, depth:Number = 0, center:Vector3D = null, upAxis:Vector3D = null, depthAxis:Vector3D = null )
 		{
-			_width = width;
-			_height = height;
-			_depth = depth;
-			_center = center ? Vector3DUtils.clonePoint( center ) : Vector3DUtils.getPoint( 0, 0, 0 );
-			_upAxis = upAxis ? Vector3DUtils.cloneUnit( upAxis ) : Vector3DUtils.getVector( 0, 1, 0 );
-			_depthAxis = depthAxis ? Vector3DUtils.cloneUnit( depthAxis ) : Vector3DUtils.getVector( 0, 0, 1 );
-			_dirty = true;
+			this.width = width;
+			this.height = height;
+			this.depth = depth;
+			this.center = center ? center : Vector3DUtils.ZERO_POINT;
+			this.upAxis = upAxis ? upAxis : Vector3D.Y_AXIS;
+			this.depthAxis = depthAxis ? depthAxis : Vector3D.Z_AXIS;
 		}
 		
 		private function init():void

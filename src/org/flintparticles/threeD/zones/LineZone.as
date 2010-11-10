@@ -52,9 +52,8 @@ package org.flintparticles.threeD.zones
 		 */
 		public function LineZone( start:Vector3D = null, end:Vector3D = null )
 		{
-			_start = start ? Vector3DUtils.clonePoint( start ) : Vector3DUtils.getPoint( 0, 0, 0 );
-			_end = end ? Vector3DUtils.clonePoint( end ) : Vector3DUtils.getPoint( 0, 0, 0 );
-			setLength();
+			this.start = start ? start : Vector3DUtils.ZERO_POINT;
+			this.end = end ? end : Vector3DUtils.ZERO_POINT;
 		}
 		
 		/**

@@ -49,7 +49,7 @@ package org.flintparticles.threeD.zones
 		 */
 		public function PointZone( point:Vector3D = null )
 		{
-			_point = point ? Vector3DUtils.clonePoint( point ) : Vector3DUtils.getPoint( 0, 0, 0 );
+			this.point = point ? point : Vector3DUtils.ZERO_POINT;
 		}
 		
 		/**

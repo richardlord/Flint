@@ -78,9 +78,9 @@ package org.flintparticles.threeD.zones
 		public function GreyscaleZone( bitmapData : BitmapData = null, corner:Vector3D = null, top:Vector3D = null, left:Vector3D = null )
 		{
 			_bitmapData = bitmapData;
-			_corner = corner ? Vector3DUtils.clonePoint( corner ) : Vector3DUtils.getPoint( 0, 0, 0 );
-			_top = top ? Vector3DUtils.cloneVector( top ) : Vector3DUtils.getVector( 1, 0, 0 );
-			_left = left ? Vector3DUtils.cloneVector( left ) : Vector3DUtils.getVector( 0, -1, 0 );
+			this.corner = corner ? corner : Vector3DUtils.ZERO_POINT;
+			this.top = top ? top : Vector3D.X_AXIS;
+			this.left = left ? left : Vector3DUtils.MINUS_Y_AXIS;
 			if( _bitmapData )
 			{
 				_dirty = true;
