@@ -31,7 +31,8 @@ package org.flintparticles.threeD.particles
 {
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.particles.ParticleFactory;
-	import org.flintparticles.threeD.geom.Point3D;
+	import org.flintparticles.threeD.geom.Vector3DUtils;
+	import flash.geom.Vector3D;
 
 	import flash.display.Bitmap;
 	import flash.display.BitmapData;
@@ -41,11 +42,11 @@ package org.flintparticles.threeD.particles
 
 	public class Particle3DUtils 
 	{
-		public static function createPixelParticlesFromBitmapData( bitmapData:BitmapData, factory:ParticleFactory = null, offset:Point3D = null ):Vector.<Particle>
+		public static function createPixelParticlesFromBitmapData( bitmapData:BitmapData, factory:ParticleFactory = null, offset:Vector3D = null ):Vector.<Particle>
 		{
 			if( offset == null )
 			{
-				offset = Point3D.ZERO;
+				offset = Vector3DUtils.getPoint( 0, 0, 0 );
 			}
 			var particles:Vector.<Particle> = new Vector.<Particle>();
 			var width:int = bitmapData.width;
@@ -64,7 +65,7 @@ package org.flintparticles.threeD.particles
 						if( color >>> 24 > 0 )
 						{
 							p = Particle3D( factory.createParticle() );
-							p.position = new Point3D( x + offset.x, y + offset.y, offset.z );
+							p.position = Vector3DUtils.getPoint( x + offset.x, y + offset.y, offset.z );
 							p.color = color;
 							particles.push( p );
 						}
@@ -81,7 +82,7 @@ package org.flintparticles.threeD.particles
 						if( color >>> 24 > 0 )
 						{
 							p = new Particle3D();
-							p.position = new Point3D( x + offset.x, y + offset.y, offset.z );
+							p.position = Vector3DUtils.getPoint( x + offset.x, y + offset.y, offset.z );
 							p.color = color;
 							particles.push( p );
 						}
@@ -91,11 +92,11 @@ package org.flintparticles.threeD.particles
 			return particles;
 		}
 		
-		public static function createRectangleParticlesFromBitmapData( bitmapData:BitmapData, size:uint, factory:ParticleFactory = null, offset:Point3D = null ):Vector.<Particle>
+		public static function createRectangleParticlesFromBitmapData( bitmapData:BitmapData, size:uint, factory:ParticleFactory = null, offset:Vector3D = null ):Vector.<Particle>
 		{
 			if( offset == null )
 			{
-				offset = Point3D.ZERO;
+				offset = Vector3DUtils.getPoint( 0, 0, 0 );
 			}
 			var particles:Vector.<Particle> = new Vector.<Particle>();
 			var width:int = bitmapData.width;
@@ -117,7 +118,7 @@ package org.flintparticles.threeD.particles
 					for( x = 0; x < width; x += size )
 					{
 						p = Particle3D( factory.createParticle() );
-						p.position = new Point3D( x + offset.x, -y + offset.y, offset.z );
+						p.position = Vector3DUtils.getPoint( x + offset.x, -y + offset.y, offset.z );
 						b = new BitmapData( size, size, true, 0 );
 						b.copyPixels( bitmapData, new Rectangle( x, y, size, size ), zero );
 						m = new Bitmap( b );
@@ -138,7 +139,7 @@ package org.flintparticles.threeD.particles
 					for( x = 0; x < width; ++x )
 					{
 						p = new Particle3D();
-						p.position = new Point3D( x + offset.x, -y + offset.y, offset.z );
+						p.position = Vector3DUtils.getPoint( x + offset.x, -y + offset.y, offset.z );
 						b = new BitmapData( size, size, true, 0 );
 						b.copyPixels( bitmapData, new Rectangle( x, y, size, size ), zero );
 						m = new Bitmap( b );

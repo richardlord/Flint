@@ -30,10 +30,10 @@
 
 package org.flintparticles.threeD.renderers.mxml
 {
-	import org.flintparticles.threeD.geom.Point3D;
 	import org.flintparticles.threeD.particles.Particle3D;
-	
-	import flash.geom.Rectangle;	
+
+	import flash.geom.Rectangle;
+	import flash.geom.Vector3D;
 
 	/**
 	 * The PixelRenderer is a native Flint 3D renderer that draws particles
@@ -86,7 +86,7 @@ package org.flintparticles.threeD.renderers.mxml
 		 */
 		override protected function drawParticle( particle:Particle3D ):void
 		{
-			var pos:Point3D = particle.projectedPosition;
+			var pos:Vector3D = particle.projectedPosition;
 			if( pos.z < _camera.nearPlaneDistance || pos.z > _camera.farPlaneDistance )
 			{
 				return;

@@ -29,6 +29,9 @@
 
 package org.flintparticles.threeD.geom
 {
+	import flash.geom.Matrix3D;
+	import flash.geom.Vector3D;
+	
 	/**
 	 * 
 	 */
@@ -437,7 +440,8 @@ package org.flintparticles.threeD.geom
 			}
 			if( axis.lengthSquared != 1 )
 			{
-				axis = axis.unit();
+				axis = axis.clone();
+				axis.normalize();
 			}
 			const sin:Number = Math.sin( angle );
 			w = Math.cos( angle );
@@ -456,7 +460,7 @@ package org.flintparticles.threeD.geom
 		public function toAxisRotation():Vector3D
 		{
 			var angle:Number = 2 * Math.acos( w );
-			var axis:Vector3D = new Vector3D( x, y, z );
+			var axis:Vector3D = Vector3DUtils.getVector( x, y, z );
 			axis.normalize();
 			axis.scaleBy( angle );
 			return axis;
@@ -480,9 +484,9 @@ package org.flintparticles.threeD.geom
 			var yz:Number = y * z;
 
 			return new Matrix3D( [
-				1 - 2 * ( yy + zz ), 2 * ( xy - wz ), 2 * ( xz + wy ), 0,
-				2 * ( xy + wz ), 1 - 2 * ( xx + zz ), 2 * ( yz - wx ), 0,
-				2 * ( xz - wy ), 2 * ( yz + wx ), 1 - 2 * ( xx + yy ), 0,
+				1 - 2 * ( yy + zz ), 2 * ( xy + wz ), 2 * ( xz - wy ), 0,
+				2 * ( xy - wz ), 1 - 2 * ( xx + zz ), 2 * ( yz + wx ), 0,
+				2 * ( xz + wy ), 2 * ( yz - wx ), 1 - 2 * ( xx + yy ), 0,
 				0, 0, 0, 1
 			] );
 			

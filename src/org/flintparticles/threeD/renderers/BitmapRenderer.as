@@ -28,13 +28,11 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.threeD.renderers {
+package org.flintparticles.threeD.renderers
+{
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.renderers.SpriteRendererBase;
-	import org.flintparticles.threeD.geom.Matrix3D;
-	import org.flintparticles.threeD.geom.Point3D;
 	import org.flintparticles.threeD.geom.Quaternion;
-	import org.flintparticles.threeD.geom.Vector3D;
 	import org.flintparticles.threeD.particles.Particle3D;
 
 	import flash.display.Bitmap;
@@ -42,8 +40,10 @@ package org.flintparticles.threeD.renderers {
 	import flash.display.DisplayObject;
 	import flash.filters.BitmapFilter;
 	import flash.geom.Matrix;
+	import flash.geom.Matrix3D;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
+	import flash.geom.Vector3D;
 
 	/**
 	 * The BitmapRenderer is a native Flint 3D renderer that draws particles
@@ -385,7 +385,7 @@ package org.flintparticles.threeD.renderers {
 			for( i = 0; i < len; ++i )
 			{
 				particle = Particle3D( particles[i] );
-				particle.projectedPosition = transform.transform( particle.position ) as Point3D;
+				particle.projectedPosition = transform.transformVector( particle.position );
 				particle.zDepth = particle.projectedPosition.z;
 			}
 			if( _zSort )
@@ -427,7 +427,7 @@ package org.flintparticles.threeD.renderers {
 		 */
 		protected function drawParticle( particle:Particle3D ):void
 		{
-			var pos:Point3D = particle.projectedPosition;
+			var pos:Vector3D = particle.projectedPosition;
 			if( pos.z < _camera.nearPlaneDistance || pos.z > _camera.farPlaneDistance )
 			{
 				return;
@@ -445,9 +445,9 @@ package org.flintparticles.threeD.renderers {
 			else
 			{
 				var m:Matrix3D = particle.rotation.toMatrixTransformation();
-				facing = m.transform( particle.faceAxis ) as Vector3D;
+				facing = m.transformVector( particle.faceAxis );
 			}
-			transform.transformSelf( facing );
+			facing = transform.transformVector( facing );
 			if( facing.x != 0 || facing.y != 0 )
 			{
 				rot = Math.atan2( -facing.y, facing.x );

@@ -31,10 +31,9 @@
 package org.flintparticles.threeD.renderers.mxml {
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.renderers.FlexRendererBase;
-	import org.flintparticles.threeD.geom.Matrix3D;
-	import org.flintparticles.threeD.geom.Point3D;
+	import flash.geom.Matrix3D;
 	import org.flintparticles.threeD.geom.Quaternion;
-	import org.flintparticles.threeD.geom.Vector3D;
+	import flash.geom.Vector3D;
 	import org.flintparticles.threeD.particles.Particle3D;
 	import org.flintparticles.threeD.renderers.Camera;
 
@@ -427,7 +426,7 @@ package org.flintparticles.threeD.renderers.mxml {
 			for( i = 0; i < len; ++i )
 			{
 				particle = Particle3D( particles[i] );
-				particle.projectedPosition = transform.transform( particle.position ) as Point3D;
+				particle.projectedPosition = transform.transformVector( particle.position );
 				particle.zDepth = particle.projectedPosition.z;
 			}
 			if( _zSort )
@@ -469,7 +468,7 @@ package org.flintparticles.threeD.renderers.mxml {
 		 */
 		protected function drawParticle( particle:Particle3D ):void
 		{
-			var pos:Point3D = particle.projectedPosition;
+			var pos:Vector3D = particle.projectedPosition;
 			if( pos.z < _camera.nearPlaneDistance || pos.z > _camera.farPlaneDistance )
 			{
 				return;
@@ -487,9 +486,9 @@ package org.flintparticles.threeD.renderers.mxml {
 			else
 			{
 				var m:Matrix3D = particle.rotation.toMatrixTransformation();
-				facing = m.transform( particle.faceAxis ) as Vector3D;
+				facing = m.transformVector( particle.faceAxis );
 			}
-			transform.transformSelf( facing );
+			facing = transform.transformVector( facing );
 			if( facing.x != 0 || facing.y != 0 )
 			{
 				rot = Math.atan2( -facing.y, facing.x );
