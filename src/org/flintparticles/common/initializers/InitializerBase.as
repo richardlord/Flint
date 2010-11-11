@@ -47,7 +47,7 @@ package org.flintparticles.common.initializers
 	 * InitializerBase class or implement the Initializer interface directly. 
 	 * Classes that extend the InitializerBase class need only to implement their 
 	 * own functionality for the methods they want to use, leaving other methods 
-	 * with their default empty implementations.
+	 * with their default empty implementations.</p>
 	 * 
 	 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 	 */

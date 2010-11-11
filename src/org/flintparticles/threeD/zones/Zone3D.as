@@ -39,7 +39,7 @@ package org.flintparticles.threeD.zones
 	 * make it easy to get a random point within the zone and to find whether a specific
 	 * point is within the zone. Zones are used to define the start location for particles
 	 * (in the Position initializer), to define the start velocity for particles (in the
-	 * Velocity initializer), and to define zones within which the particles die.
+	 * Velocity initializer), and to define zones within which the particles die.</p>
 	 */
 	public interface Zone3D
 	{
