@@ -36,9 +36,10 @@ package org.flintparticles.threeD.actions
 	import org.flintparticles.common.behaviours.Resetable;
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.threeD.geom.Point3D;
-	import org.flintparticles.threeD.geom.Vector3D;
-	import org.flintparticles.threeD.particles.Particle3D;	
+	import org.flintparticles.threeD.geom.Vector3DUtils;
+	import org.flintparticles.threeD.particles.Particle3D;
+
+	import flash.geom.Vector3D;
 
 	/**
 	 * The Explosion action applies a force on the particle to push it away from
@@ -51,7 +52,7 @@ package org.flintparticles.threeD.actions
 		private static const POWER_FACTOR:Number = 100000;
 		
 		private var _updateActivity:UpdateOnFrame;
-		private var _center:Point3D;
+		private var _center:Vector3D;
 		private var _power:Number;
 		private var _depth:Number;
 		private var _invDepth:Number;
@@ -79,10 +80,10 @@ package org.flintparticles.threeD.actions
 		 * this distance away. This stops the explosion effect blowing up as distances get 
 		 * small.
 		 */
-		public function Explosion( power:Number = 0, center:Point3D = null, expansionRate:Number = 300, depth:Number = 10, epsilon:Number = 1 )
+		public function Explosion( power:Number = 0, center:Vector3D = null, expansionRate:Number = 300, depth:Number = 10, epsilon:Number = 1 )
 		{
 			this.power = power;
-			this.center = center ? center : Point3D.ZERO;
+			this.center = center ? center : Vector3DUtils.ZERO_POINT;
 			this.expansionRate = expansionRate;
 			this.depth = depth;
 			this.epsilon = epsilon;
@@ -128,13 +129,13 @@ package org.flintparticles.threeD.actions
 		/**
 		 * The center of the explosion.
 		 */
-		public function get center():Point3D
+		public function get center():Vector3D
 		{
 			return _center;
 		}
-		public function set center( value:Point3D ):void
+		public function set center( value:Vector3D ):void
 		{
-			_center = value.clone();
+			_center = Vector3DUtils.clonePoint( value );
 		}
 		
 		/**
@@ -259,7 +260,7 @@ package org.flintparticles.threeD.actions
 		override public function update( emitter:Emitter, particle:Particle, time:Number ):void
 		{
 			var p:Particle3D = Particle3D( particle );
-			var dist:Vector3D = _center.vectorTo( p.position );
+			var dist:Vector3D = Vector3DUtils.vectorTo( _center, p.position );
 			var dSq:Number = dist.lengthSquared;
 			if( dSq == 0 )
 			{
@@ -303,7 +304,8 @@ package org.flintparticles.threeD.actions
 				var f2:Number = ( 1 - ratio ) * time * _power * ( offset + 1 );
 				factor = ( f1 + f2 ) / ( _radius * 2 * d * p.mass );
 			}
-			p.velocity.incrementBy( dist.scaleBy( factor ) );
+			dist.scaleBy( factor );
+			p.velocity.incrementBy( dist );
 		}
 	}
 }

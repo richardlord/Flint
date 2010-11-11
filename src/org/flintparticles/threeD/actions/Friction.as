@@ -33,8 +33,8 @@ package org.flintparticles.threeD.actions
 	import org.flintparticles.common.actions.ActionBase;
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.threeD.geom.Vector3D;
-	import org.flintparticles.threeD.particles.Particle3D;	
+	import org.flintparticles.threeD.geom.Vector3DUtils;
+	import org.flintparticles.threeD.particles.Particle3D;
 
 	/**
 	 * The Friction action applies friction to the particle to slow it down when it's moving.
@@ -90,7 +90,7 @@ package org.flintparticles.threeD.actions
 			var scale:Number = 1 - ( _friction * time ) / ( Math.sqrt( len2 ) * p.mass );
 			if( scale < 0 )
 			{
-				p.velocity.assign( Vector3D.ZERO );
+				Vector3DUtils.assignVector( p.velocity, Vector3DUtils.ZERO_VECTOR );
 			}
 			else
 			{

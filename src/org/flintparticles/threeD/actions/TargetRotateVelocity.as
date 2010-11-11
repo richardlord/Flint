@@ -33,8 +33,10 @@ package org.flintparticles.threeD.actions
 	import org.flintparticles.common.actions.ActionBase;
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.threeD.geom.Vector3D;
-	import org.flintparticles.threeD.particles.Particle3D;	
+	import org.flintparticles.threeD.geom.Vector3DUtils;
+	import org.flintparticles.threeD.particles.Particle3D;
+
+	import flash.geom.Vector3D;
 
 	/**
 	 * The TargetRotateVelocity action adjusts the angular velocity of the particle towards the target angular velocity.
@@ -61,7 +63,7 @@ package org.flintparticles.threeD.actions
 		 */
 		public function TargetRotateVelocity( axis:Vector3D = null, rotateSpeed:Number = 0, rate:Number = 0.1 )
 		{
-			_temp = new Vector3D();
+			_temp = Vector3DUtils.getVector( 0, 0, 0 );
 			this.rotateSpeed = rotateSpeed;
 			if( axis )
 			{
@@ -92,8 +94,9 @@ package org.flintparticles.threeD.actions
 		}
 		public function set axis( value:Vector3D ):void
 		{
-			_axis = value.unit();
-			_angVel = _axis.multiply( _rotateSpeed );
+			_axis = Vector3DUtils.cloneUnit( value );
+			_angVel = _axis.clone();
+			_angVel.scaleBy( _rotateSpeed );
 		}
 		
 		/**
@@ -108,7 +111,8 @@ package org.flintparticles.threeD.actions
 			_rotateSpeed = value;
 			if( _axis )
 			{
-				_angVel = _axis.multiply( _rotateSpeed );
+				_angVel = _axis.clone();
+				_angVel.scaleBy( _rotateSpeed );
 			}
 		}
 
@@ -118,7 +122,10 @@ package org.flintparticles.threeD.actions
 		override public function update( emitter:Emitter, particle:Particle, time:Number ):void
 		{
 			var p:Particle3D = Particle3D( particle );
-			p.angVelocity.incrementBy( _angVel.subtract( p.angVelocity, _temp ).scaleBy( _rate * time ) );
+			Vector3DUtils.assignVector( _temp, _angVel );
+			_temp.decrementBy( p.angVelocity );
+			_temp.scaleBy( _rate * time );
+			p.angVelocity.incrementBy( _temp );
 		}
 	}
 }

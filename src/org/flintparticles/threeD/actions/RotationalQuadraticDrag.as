@@ -33,8 +33,8 @@ package org.flintparticles.threeD.actions
 	import org.flintparticles.common.actions.ActionBase;
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.threeD.geom.Vector3D;
-	import org.flintparticles.threeD.particles.Particle3D;	
+	import org.flintparticles.threeD.geom.Vector3DUtils;
+	import org.flintparticles.threeD.particles.Particle3D;
 
 	/**
 	 * The RotationalQuadraticDrag action applies drag to the particle to slow it 
@@ -77,15 +77,15 @@ package org.flintparticles.threeD.actions
 		 */
 		override public function update( emitter:Emitter, particle:Particle, time:Number ):void
 		{
-			var p:Particle3D = Particle3D( particle );
-			if( p.angVelocity.equals( Vector3D.ZERO ) )
+			var p : Particle3D = Particle3D( particle );
+			if ( p.angVelocity.equals( Vector3DUtils.ZERO_VECTOR ) )
 			{
 				return;
 			}
 			var scale:Number = 1 - _drag * time * p.angVelocity.length / p.inertia;
 			if( scale < 0 )
 			{
-				p.angVelocity.reset( 0, 0, 0 );
+				Vector3DUtils.resetVector( p.angVelocity, 0, 0, 0 );
 			}
 			else
 			{

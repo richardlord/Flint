@@ -30,12 +30,14 @@
 
 package org.flintparticles.threeD.actions 
 {
+	import org.flintparticles.threeD.geom.Vector3DUtils;
 	import org.flintparticles.common.actions.ActionBase;
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.threeD.emitters.Emitter3D;
-	import org.flintparticles.threeD.geom.Vector3D;
-	import org.flintparticles.threeD.particles.Particle3D;	
+	import org.flintparticles.threeD.particles.Particle3D;
+
+	import flash.geom.Vector3D;
 
 	/**
 	 * The ApproachNeighbours action applies an acceleration to the particle to 
@@ -73,8 +75,8 @@ package org.flintparticles.threeD.actions
 		public function ApproachNeighbours( maxDistance:Number = 0, acceleration:Number = 0 )
 		{
 			priority = 10;
-			d = new Vector3D();
-			move = new Vector3D();
+			d = Vector3DUtils.getVector( 0, 0, 0 );
+			move = Vector3DUtils.getVector( 0, 0, 0 );
 			this.maxDistance = maxDistance;
 			this.acceleration = acceleration;
 		}
@@ -137,7 +139,7 @@ package org.flintparticles.threeD.actions
 			var distanceInv:Number;
 			var distanceSq:Number;
 			var factor:Number;
-			move.reset( 0, 0, 0 );
+			Vector3DUtils.resetVector( move, 0, 0, 0 );
 			for( i = p.sortID - 1; i >= 0; --i )
 			{
 				other = Particle3D( particles[i] );
@@ -150,7 +152,8 @@ package org.flintparticles.threeD.actions
 				if( distanceSq <= _maxSq && distanceSq > 0 )
 				{
 					distanceInv = 1 / Math.sqrt( distanceSq );
-					move.incrementBy( d.scaleBy( distanceInv ) );
+					d.scaleBy( distanceInv );
+					move.incrementBy( d );
 				} 
 			}
 			for( i = p.sortID + 1; i < len; ++i )
@@ -165,13 +168,15 @@ package org.flintparticles.threeD.actions
 				if( distanceSq <= _maxSq && distanceSq > 0 )
 				{
 					distanceInv = 1 / Math.sqrt( distanceSq );
-					move.incrementBy( d.scaleBy( distanceInv ) );
+					d.scaleBy( distanceInv );
+					move.incrementBy( d );
 				} 
 			}
-			if( !move.equals( Vector3D.ZERO ) )
+			if ( !move.equals( Vector3DUtils.ZERO_VECTOR ) )
 			{
 				factor = time * _acc / move.length;
-				p.velocity.incrementBy( move.scaleBy( factor ) );
+				move.scaleBy( factor );
+				p.velocity.incrementBy( move );
 			}
 		}
 	}

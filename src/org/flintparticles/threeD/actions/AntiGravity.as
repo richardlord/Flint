@@ -30,7 +30,7 @@
 
 package org.flintparticles.threeD.actions 
 {
-	import org.flintparticles.threeD.geom.Point3D;					
+	import flash.geom.Vector3D;
 
 	/**
 	 * The AntiGravity action applies a force to the particle to push it away from
@@ -56,7 +56,7 @@ package org.flintparticles.threeD.actions
 		 * anti-gravity as it they were this distance away. This stops the 
 		 * anti-gravity effect blowing up as distances get very small.
 		 */
-		public function AntiGravity( power:Number = 0, position:Point3D = null, epsilon:Number = 1 )
+		public function AntiGravity( power:Number = 0, position:Vector3D = null, epsilon:Number = 1 )
 		{
 			super( power, position, epsilon );
 		}

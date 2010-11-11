@@ -35,9 +35,10 @@ package org.flintparticles.threeD.actions
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.threeD.geom.Quaternion;
-	import org.flintparticles.threeD.geom.Vector3D;
 	import org.flintparticles.threeD.geom.Vector3DUtils;
-	import org.flintparticles.threeD.particles.Particle3D;	
+	import org.flintparticles.threeD.particles.Particle3D;
+
+	import flash.geom.Vector3D;
 
 	/**
 	 * The RotateToDirection action updates the rotation of the particle 
@@ -59,9 +60,9 @@ package org.flintparticles.threeD.actions
 		 */
 		public function RotateToDirection()
 		{
-			_axis = new Vector3D();
-			_temp = new Vector3D();
-			_target = new Vector3D();
+			_axis = Vector3DUtils.getVector( 0, 0, 0 );
+			_temp = Vector3DUtils.getVector( 0, 0, 0 );
+			_target = Vector3DUtils.getVector( 0, 0, 0 );
 		}
 
 		/**
@@ -69,24 +70,27 @@ package org.flintparticles.threeD.actions
 		 */
 		override public function update( emitter : Emitter, particle : Particle, time : Number ) : void
 		{
-			var p:Particle3D = Particle3D( particle );
-			if( p.velocity.equals( Vector3D.ZERO ) )
+			var p : Particle3D = Particle3D( particle );
+			if ( p.velocity.equals( Vector3DUtils.ZERO_VECTOR ) )
 			{
 				return;
 			}
-			p.velocity.unit( _target );
+			Vector3DUtils.assignVector( _target, p.velocity );
+			_target.normalize();
 			if( _target.equals( p.faceAxis ) )
 			{
 				p.rotation.assign( Quaternion.IDENTITY );
 				return;
 			}
-			if( _target.equals( p.faceAxis.negative( _temp ) ) )
+			Vector3DUtils.assignVector( _temp, p.faceAxis );
+			_temp.negate();
+			if( _target.equals( _temp ) )
 			{
 				var v:Vector3D = Vector3DUtils.getPerpendicular( p.faceAxis );
 				p.rotation.reset( 0, v.x, v.y, v.z );
 				return;
 			}
-			_target.crossProduct( p.faceAxis, _axis );
+			_axis = _target.crossProduct( p.faceAxis );
 			var angle:Number = Math.acos( p.faceAxis.dotProduct( _target ) );
 			p.rotation.setFromAxisRotation( _axis, angle );
 		}

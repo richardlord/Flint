@@ -33,10 +33,11 @@ package org.flintparticles.threeD.actions
 	import org.flintparticles.common.actions.ActionBase;
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.threeD.geom.Point3D;
-	import org.flintparticles.threeD.geom.Vector3D;
+	import org.flintparticles.threeD.geom.Vector3DUtils;
 	import org.flintparticles.threeD.particles.Particle3D;
 	import org.flintparticles.threeD.zones.Zone3D;
+
+	import flash.geom.Vector3D;
 
 	[DefaultProperty("zone")]
 
@@ -90,7 +91,7 @@ package org.flintparticles.threeD.actions
 			var data:TweenToZoneData;
 			if( ! p.dictionary[this] )
 			{
-				var pt:Point3D = _zone.getLocation();
+				var pt:Vector3D = _zone.getLocation();
 				data = new TweenToZoneData( p.position, pt );
 				p.dictionary[this] = data;
 			}
@@ -99,22 +100,25 @@ package org.flintparticles.threeD.actions
 				data = p.dictionary[this];
 			}
 			
-			data.end.add( data.diff.multiply( p.energy, _temp ), p.position );
+			Vector3DUtils.assignVector( _temp, data.diff );
+			_temp.scaleBy( p.energy );
+			_temp.incrementBy( data.end );
+			Vector3DUtils.assignVector( p.position, _temp );
 		}
 	}
 }
+import org.flintparticles.threeD.geom.Vector3DUtils;
 
-import org.flintparticles.threeD.geom.Point3D;
-import org.flintparticles.threeD.geom.Vector3D;
+import flash.geom.Vector3D;
 
 class TweenToZoneData
 {
 	public var diff:Vector3D;
-	public var end:Point3D;
+	public var end:Vector3D;
 	
-	public function TweenToZoneData( start:Point3D, end:Point3D )
+	public function TweenToZoneData( start:Vector3D, end:Vector3D )
 	{
-		this.diff = end.vectorTo( start );
+		this.diff = Vector3DUtils.vectorTo( end, start );
 		this.end = end.clone();
 	}
 }

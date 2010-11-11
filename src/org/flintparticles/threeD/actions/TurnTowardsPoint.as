@@ -33,9 +33,10 @@ package org.flintparticles.threeD.actions
 	import org.flintparticles.common.actions.ActionBase;
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.threeD.geom.Point3D;
-	import org.flintparticles.threeD.geom.Vector3D;
-	import org.flintparticles.threeD.particles.Particle3D;	
+	import org.flintparticles.threeD.geom.Vector3DUtils;
+	import org.flintparticles.threeD.particles.Particle3D;
+
+	import flash.geom.Vector3D;
 
 	/**
 	 * The TurnTowardsPoint action causes the particle to constantly adjust its direction
@@ -44,11 +45,10 @@ package org.flintparticles.threeD.actions
 
 	public class TurnTowardsPoint extends ActionBase
 	{
-		private var _point:Point3D;
+		private var _point:Vector3D;
 		private var _power:Number;
 		private var _velDirection:Vector3D;
 		private var _toTarget:Vector3D;
-		private var _targetPerp:Vector3D;
 		
 		/**
 		 * The constructor creates a TurnTowardsPoint action for use by 
@@ -60,13 +60,12 @@ package org.flintparticles.threeD.actions
 		 * @param power The strength of the turn action. Higher values produce a sharper turn.
 		 * @param point The point towards which the particle turns.
 		 */
-		public function TurnTowardsPoint( point:Point3D = null, power:Number = 0 )
+		public function TurnTowardsPoint( point:Vector3D = null, power:Number = 0 )
 		{
-			_velDirection = new Vector3D();
-			_toTarget = new Vector3D();
-			_targetPerp = new Vector3D();
+			_velDirection = Vector3DUtils.getVector( 0, 0, 0 );
+			_toTarget = Vector3DUtils.getVector( 0, 0, 0 );
 			this.power = power;
-			this.point = point ? point : Point3D.ZERO;
+			this.point = point ? point : Vector3DUtils.ZERO_POINT;
 		}
 		
 		/**
@@ -84,13 +83,13 @@ package org.flintparticles.threeD.actions
 		/**
 		 * The point that the particle turns towards.
 		 */
-		public function get point():Point3D
+		public function get point():Vector3D
 		{
 			return _point;
 		}
-		public function set point( value:Point3D ):void
+		public function set point( value:Vector3D ):void
 		{
-			_point = value.clone();
+			_point = Vector3DUtils.clonePoint( value );
 		}
 		
 		/**
@@ -135,18 +134,22 @@ package org.flintparticles.threeD.actions
 		override public function update( emitter:Emitter, particle:Particle, time:Number ):void
 		{
 			var p:Particle3D = Particle3D( particle );
-			p.velocity.unit( _velDirection );
+			Vector3DUtils.assignVector( _velDirection, p.velocity );
+			_velDirection.normalize();
 			var velLength:Number = p.velocity.length;
 			var acc:Number = power * time;
-			p.position.vectorTo( _point, _toTarget );
+			Vector3DUtils.assignVector( _toTarget, _point );
+			_toTarget.decrementBy( p.position );
 			var len:Number = _toTarget.length;
 			if( len == 0 )
 			{
 				return;
 			}
 			_toTarget.scaleBy( 1 / len );
-			_toTarget.subtract( _velDirection.scaleBy( _toTarget.dotProduct( _velDirection ) ), _targetPerp );
-			p.velocity.incrementBy( _targetPerp.scaleBy( acc / _targetPerp.length ) );
+			_velDirection.scaleBy( _toTarget.dotProduct( _velDirection ) );
+			_toTarget.decrementBy( _velDirection );
+			_toTarget.scaleBy( acc / _toTarget.length );
+			p.velocity.incrementBy( _toTarget );
 			p.velocity.scaleBy( velLength / p.velocity.length );
 		}
 	}

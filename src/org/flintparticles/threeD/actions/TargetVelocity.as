@@ -33,8 +33,10 @@ package org.flintparticles.threeD.actions
 	import org.flintparticles.common.actions.ActionBase;
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.threeD.geom.Vector3D;
-	import org.flintparticles.threeD.particles.Particle3D;	
+	import org.flintparticles.threeD.geom.Vector3DUtils;
+	import org.flintparticles.threeD.particles.Particle3D;
+
+	import flash.geom.Vector3D;
 
 	/**
 	 * The TargetVelocity action adjusts the velocity of the particle towards the target velocity.
@@ -59,8 +61,8 @@ package org.flintparticles.threeD.actions
 		 */
 		public function TargetVelocity( targetVelocity:Vector3D = null, rate:Number = 0.1 )
 		{
-			_temp = new Vector3D();
-			this.targetVelocity = targetVelocity ? targetVelocity : Vector3D.ZERO;
+			_temp = Vector3DUtils.getVector( 0, 0, 0 );
+			this.targetVelocity = targetVelocity ? targetVelocity : Vector3DUtils.ZERO_VECTOR;
 			this.rate = rate;
 		}
 		
@@ -73,7 +75,7 @@ package org.flintparticles.threeD.actions
 		}
 		public function set targetVelocity( value:Vector3D ):void
 		{
-			_vel = value.clone();
+			_vel = Vector3DUtils.cloneVector( value );
 		}
 		
 		/**
@@ -131,7 +133,10 @@ package org.flintparticles.threeD.actions
 		override public function update( emitter:Emitter, particle:Particle, time:Number ):void
 		{
 			var p:Particle3D = Particle3D( particle );
-			p.velocity.incrementBy( _vel.subtract( p.velocity, _temp ).scaleBy( _rate * time ) );
+			Vector3DUtils.assignVector( _temp, _vel );
+			_temp.decrementBy( p.velocity );
+			_temp.scaleBy( _rate * time );
+			p.velocity.incrementBy( _temp );
 		}
 	}
 }

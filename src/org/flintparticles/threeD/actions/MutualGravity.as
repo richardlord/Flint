@@ -34,8 +34,10 @@ package org.flintparticles.threeD.actions
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.threeD.emitters.Emitter3D;
-	import org.flintparticles.threeD.geom.Vector3D;
-	import org.flintparticles.threeD.particles.Particle3D;	
+	import org.flintparticles.threeD.geom.Vector3DUtils;
+	import org.flintparticles.threeD.particles.Particle3D;
+
+	import flash.geom.Vector3D;
 
 	/**
 	 * The MutualGravity Action applies forces to attract each particle towards 
@@ -73,7 +75,7 @@ package org.flintparticles.threeD.actions
 		public function MutualGravity( power:Number = 0, maxDistance:Number = 0, epsilon:Number = 1 )
 		{
 			priority = 10;
-			d = new Vector3D();
+			d = Vector3DUtils.getVector( 0, 0, 0 );
 			this.power = power;
 			this.maxDistance = maxDistance;
 			this.epsilon = epsilon;
@@ -169,8 +171,10 @@ package org.flintparticles.threeD.actions
 						distanceSq = _epsilonSq;
 					}
 					factor = ( _power * time ) / ( distanceSq * distance );
-					p.velocity.incrementBy( d.scaleBy( factor * other.mass ) );
-					other.velocity.decrementBy( d.scaleBy( p.mass / other.mass ) );
+					d.scaleBy( factor * other.mass );
+					p.velocity.incrementBy( d );
+					d.scaleBy( p.mass / other.mass );
+					other.velocity.decrementBy( d );
 				} 
 			}
 		}

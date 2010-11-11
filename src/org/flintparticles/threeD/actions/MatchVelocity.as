@@ -34,8 +34,10 @@ package org.flintparticles.threeD.actions
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.threeD.emitters.Emitter3D;
-	import org.flintparticles.threeD.geom.Vector3D;
-	import org.flintparticles.threeD.particles.Particle3D;	
+	import org.flintparticles.threeD.geom.Vector3DUtils;
+	import org.flintparticles.threeD.particles.Particle3D;
+
+	import flash.geom.Vector3D;
 
 	/**
 	 * The MatchVelocity action applies an acceleration to the particle to match
@@ -72,8 +74,8 @@ package org.flintparticles.threeD.actions
 		public function MatchVelocity( maxDistance:Number = 0, acceleration:Number = 0 )
 		{
 			priority = 10;
-			d = new Vector3D();
-			vel = new Vector3D();
+			d = Vector3DUtils.getVector( 0, 0, 0 );
+			vel = Vector3DUtils.getVector( 0, 0, 0 );
 			this.maxDistance = maxDistance;
 			this.acceleration = acceleration;
 		}
@@ -127,7 +129,7 @@ package org.flintparticles.threeD.actions
 			var distanceSq:Number;
 			var count:int = 0;
 			var factor:Number;
-			vel.reset( 0, 0, 0 );
+			Vector3DUtils.resetVector( vel, 0, 0, 0 );
 			for( i = p.sortID - 1; i >= 0; --i )
 			{
 				other = Particle3D( particles[i] );
@@ -160,12 +162,14 @@ package org.flintparticles.threeD.actions
 			}
 			if( count != 0 )
 			{
-				vel.scaleBy( 1 / count ).decrementBy( p.velocity );
-				if( !vel.equals( Vector3D.ZERO ) )
+				vel.scaleBy( 1 / count );
+				vel.decrementBy( p.velocity );
+				if ( !vel.equals( Vector3DUtils.ZERO_VECTOR ) )
 				{
 					factor = time * _acc / vel.length;
 					if( factor > 1 ) factor = 1;
-					p.velocity.incrementBy( vel.scaleBy( factor ) );
+					vel.scaleBy( factor );
+					p.velocity.incrementBy( vel );
 				}
 			}
 		}

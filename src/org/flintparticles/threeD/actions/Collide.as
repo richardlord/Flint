@@ -30,6 +30,7 @@
 
 package org.flintparticles.threeD.actions 
 {
+	import org.flintparticles.threeD.geom.Vector3DUtils;
 	import org.flintparticles.common.actions.ActionBase;
 	import org.flintparticles.common.activities.FrameUpdatable;
 	import org.flintparticles.common.activities.UpdateOnFrame;
@@ -37,8 +38,9 @@ package org.flintparticles.threeD.actions
 	import org.flintparticles.common.events.ParticleEvent;
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.threeD.emitters.Emitter3D;
-	import org.flintparticles.threeD.geom.Vector3D;
-	import org.flintparticles.threeD.particles.Particle3D;	
+	import org.flintparticles.threeD.particles.Particle3D;
+
+	import flash.geom.Vector3D;
 
 	/**
 	 * The Collide action detects collisions between particles and modifies their velocities
@@ -64,7 +66,7 @@ package org.flintparticles.threeD.actions
 		 * Temporary variables created as class members to avoid creating new objects all the time
 		 */
 		private var d:Vector3D;
-		private var _temp:Vector3D;
+		private var temp:Vector3D;
 
 		/**
 		 * The constructor creates a Collide action for use by  an emitter.
@@ -82,8 +84,8 @@ package org.flintparticles.threeD.actions
 		{
 			priority = -20;
 			_maxDistance = 0;
-			d = new Vector3D();
-			_temp = new Vector3D();
+			d = Vector3DUtils.getVector( 0, 0, 0 );
+			temp = Vector3DUtils.getVector( 0, 0, 0 );
 			this.bounce = bounce;
 		}
 		
@@ -214,8 +216,12 @@ package org.flintparticles.threeD.actions
 						factor = ( ( 1 + _bounce ) * relN ) / ( m1 + m2 );
 						f1 = factor * m2;
 						f2 = -factor * m1;
-						p.velocity.decrementBy( d.multiply( f1, _temp ) );
-						other.velocity.decrementBy( d.multiply( f2, _temp ) );
+						Vector3DUtils.assignVector( temp, d );
+						temp.scaleBy( f1 );
+						p.velocity.decrementBy( temp );
+						Vector3DUtils.assignVector( temp, d );
+						temp.scaleBy( f2 );
+						other.velocity.decrementBy( temp );
 						var ev:ParticleEvent = new ParticleEvent( ParticleEvent.PARTICLES_COLLISION, p );
 						ev.otherObject = other;
 						emitter.dispatchEvent( ev );

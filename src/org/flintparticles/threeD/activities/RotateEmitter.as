@@ -34,7 +34,9 @@ package org.flintparticles.threeD.activities
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.threeD.emitters.Emitter3D;
 	import org.flintparticles.threeD.geom.Quaternion;
-	import org.flintparticles.threeD.geom.Vector3D;	
+	import org.flintparticles.threeD.geom.Vector3DUtils;
+
+	import flash.geom.Vector3D;
 
 	/**
 	 * The RotateEmitter activity rotates the emitter at a constant rate.
@@ -77,8 +79,10 @@ package org.flintparticles.threeD.activities
 		}
 		public function set axis( value:Vector3D ):void
 		{
-			_axis = value.unit();
-			setAngularVelocity( _axis.multiply( _rotateSpeed ) );
+			_axis = Vector3DUtils.cloneUnit( value );
+			var temp:Vector3D = _axis.clone();
+			temp.scaleBy( _rotateSpeed );
+			setAngularVelocity( temp );
 		}
 		
 		/**
@@ -93,7 +97,9 @@ package org.flintparticles.threeD.activities
 			_rotateSpeed = value;
 			if( _axis )
 			{
-				setAngularVelocity( _axis.multiply( _rotateSpeed ) );
+				var temp:Vector3D = _axis.clone();
+				temp.scaleBy( _rotateSpeed );
+				setAngularVelocity( temp );
 			}
 		}
 

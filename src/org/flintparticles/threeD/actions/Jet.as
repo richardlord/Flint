@@ -33,9 +33,11 @@ package org.flintparticles.threeD.actions
 	import org.flintparticles.common.actions.ActionBase;
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.threeD.geom.Vector3D;
+	import org.flintparticles.threeD.geom.Vector3DUtils;
 	import org.flintparticles.threeD.particles.Particle3D;
-	import org.flintparticles.threeD.zones.Zone3D;	
+	import org.flintparticles.threeD.zones.Zone3D;
+
+	import flash.geom.Vector3D;
 
 	/**
 	 * The Jet Action applies an acceleration to the particle only if it is in the specified zone. 
@@ -65,8 +67,8 @@ package org.flintparticles.threeD.actions
 		 */
 		public function Jet( acceleration:Vector3D = null, zone:Zone3D = null, invertZone:Boolean = false )
 		{
-			_temp = new Vector3D();
-			this.acceleration = acceleration ? acceleration : Vector3D.ZERO;
+			_temp = Vector3DUtils.getVector( 0, 0, 0 );
+			this.acceleration = acceleration ? acceleration : Vector3DUtils.ZERO_VECTOR;
 			this.zone = zone;
 			this.invertZone = invertZone;
 		}
@@ -80,7 +82,7 @@ package org.flintparticles.threeD.actions
 		}
 		public function set acceleration( value:Vector3D ):void
 		{
-			_acc = value.clone();
+			_acc = Vector3DUtils.cloneVector( value );
 		}
 		
 		/**
@@ -155,14 +157,18 @@ package org.flintparticles.threeD.actions
 			{
 				if( !_invert )
 				{
-					p.velocity.incrementBy( _acc.multiply( time, _temp ) );
+					Vector3DUtils.assignVector( _temp, _acc );
+					_temp.scaleBy( time );
+					p.velocity.incrementBy( _temp );
 				}
 			}
 			else
 			{
 				if( _invert )
 				{
-					p.velocity.incrementBy( _acc.multiply( time, _temp ) );
+					Vector3DUtils.assignVector( _temp, _acc );
+					_temp.scaleBy( time );
+					p.velocity.incrementBy( _temp );
 				}
 			}
 		}
