@@ -42,7 +42,7 @@ package org.flintparticles.common.activities
 	 * 
 	 * <p>Activities are associated with emitters by using the emitter's 
 	 * addActivity method. Activities are removed from the emitter by using 
-	 * the emitter's removeActivity method.<p>
+	 * the emitter's removeActivity method.</p>
 	 * 
 	 * @see org.flintparticles.common.emitters.Emitter#addActivity()
 	 * @see org.flintparticles.common.emitters.Emitter#removeActivity()

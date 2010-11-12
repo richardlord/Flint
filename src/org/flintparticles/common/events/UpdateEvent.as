@@ -33,7 +33,8 @@ package org.flintparticles.common.events
 	import flash.events.Event;	
 
 	/**
-	 * The class for particle related events dispatched by classes in the Flint project.
+	 * The UpdateEvent is dispatched from the FrameUpdater utility every frame, to all emitters that are
+	 * being updated by Flint, to trigger the update cycle on each emitter.
 	 */
 	public class UpdateEvent extends Event
 	{

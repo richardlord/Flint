@@ -50,7 +50,7 @@ package org.flintparticles.common.initializers
 		 * emitter's addInitializer method.
 		 * 
 		 * <p>This initializer has a priority of -10 to ensure it occurs after the 
-		 * image assignment initializers like ImageClass.
+		 * image assignment initializers like ImageClass.</p>
 		 * 
 		 * @param filter The filter to apply.
 		 * 

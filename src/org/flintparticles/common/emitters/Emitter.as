@@ -698,7 +698,7 @@ package org.flintparticles.common.emitters
 		 * those particles. Then it calls sortParticles, applies the activities to 
 		 * the emitter, applies the Actions to all the particles, removes all dead 
 		 * particles, and finally dispatches an emitterUpdated event which tells 
-		 * any renderers to redraw the particles.
+		 * any renderers to redraw the particles.</p>
 		 * 
 		 * @param time The duration, in seconds, to be applied in the update step.
 		 * 

@@ -45,7 +45,7 @@ package org.flintparticles.common.actions
 	 * particles created or added to that emitter. Actions are applied to 
 	 * all particles created by an emitter by using the emitter's addAction 
 	 * method. Actions are removed from the emitter by using the emitter's
-	 * removeAction method.<p>
+	 * removeAction method.</p>
 	 * 
 	 * <p>The key method in the Action interface is the update method.
 	 * This is called every frame, for every particle and is where the

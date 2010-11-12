@@ -53,7 +53,7 @@ package org.flintparticles.twoD.initializers
 	 * a varied direction, a Disc or DiscSector zone with identical
 	 * inner and outer radius can be used. A Disc or DiscSector with
 	 * different inner and outer radius produces a range of speeds
-	 * in a range of directions.
+	 * in a range of directions.</p>
 	 */
 
 	public class Velocity extends InitializerBase
