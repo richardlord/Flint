@@ -30,10 +30,11 @@
 
 package org.flintparticles.threeD.initializers 
 {
+	import org.flintparticles.threeD.geom.Vector3DUtils;
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.initializers.InitializerBase;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.threeD.geom.Vector3D;
+	import flash.geom.Vector3D;
 	import org.flintparticles.threeD.particles.Particle3D;	
 
 	/**
@@ -62,7 +63,7 @@ package org.flintparticles.threeD.initializers
 		 */
 		public function FaceAxis( axis : Vector3D = null )
 		{
-			this.axis = axis ? axis : Vector3D.AXISX;
+			this.axis = axis ? axis : Vector3D.X_AXIS;
 		}
 		
 		/**
@@ -74,7 +75,7 @@ package org.flintparticles.threeD.initializers
 		}
 		public function set axis( value:Vector3D ):void
 		{
-			_axis = value.unit();
+			_axis = Vector3DUtils.cloneUnit( value );
 		}
 		
 		/**

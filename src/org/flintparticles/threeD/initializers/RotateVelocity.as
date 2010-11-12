@@ -33,8 +33,10 @@ package org.flintparticles.threeD.initializers
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.initializers.InitializerBase;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.threeD.geom.Vector3D;
-	import org.flintparticles.threeD.particles.Particle3D;	
+	import org.flintparticles.threeD.geom.Vector3DUtils;
+	import org.flintparticles.threeD.particles.Particle3D;
+
+	import flash.geom.Vector3D;
 
 	/**
 	 * The RotateVelocity Initializer sets the angular velocity of the particle.
@@ -81,7 +83,7 @@ package org.flintparticles.threeD.initializers
 		}
 		public function set axis( value:Vector3D ):void
 		{
-			_axis = value;
+			_axis = Vector3DUtils.cloneUnit( value );
 		}
 		
 		/**
@@ -117,7 +119,11 @@ package org.flintparticles.threeD.initializers
 		 */
 		public function get angVelocity():Number
 		{
-			return _min == _max ? _min : ( _max + _min ) / 2;
+			if( isNaN( _max ) || _min == _max )
+			{
+				return _min;
+			}
+			return ( _max + _min ) / 2;
 		}
 		public function set angVelocity( value:Number ):void
 		{
@@ -131,7 +137,7 @@ package org.flintparticles.threeD.initializers
 		{
 			var p:Particle3D = Particle3D( particle );
 			var angle:Number;
-			if( isNaN( _max ) )
+			if( isNaN( _max ) || _min == _max )
 			{
 				angle = _min;
 			}
@@ -139,7 +145,8 @@ package org.flintparticles.threeD.initializers
 			{
 				angle = _min + Math.random() * ( _max - _min );
 			}
-			p.angVelocity.assign( axis ).scaleBy( angle );
+			Vector3DUtils.assignVector( p.angVelocity, axis );
+			p.angVelocity.scaleBy( angle );
 		}
 	}
 }

@@ -35,9 +35,10 @@ package org.flintparticles.threeD.initializers
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.threeD.emitters.Emitter3D;
 	import org.flintparticles.threeD.geom.Quaternion;
-	import org.flintparticles.threeD.geom.Vector3D;
 	import org.flintparticles.threeD.particles.Particle3D;
-	import org.flintparticles.threeD.zones.Zone3D;	
+	import org.flintparticles.threeD.zones.Zone3D;
+
+	import flash.geom.Vector3D;
 
 	[DefaultProperty("zone")]
 	
@@ -94,10 +95,10 @@ package org.flintparticles.threeD.initializers
 		{
 			var p:Particle3D = Particle3D( particle );
 			var e:Emitter3D = Emitter3D( emitter );
-			var v:Vector3D = zone.getLocation().toVector3D();
+			var v:Vector3D = zone.getLocation();
 			if( !e.rotation.equals( Quaternion.IDENTITY ) )
 			{
-				e.rotationTransform.transformSelf( v );
+				v = e.rotationTransform.transformVector( v );
 			}
 			p.velocity = v;
 		}

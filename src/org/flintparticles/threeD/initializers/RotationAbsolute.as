@@ -33,8 +33,10 @@ package org.flintparticles.threeD.initializers
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.initializers.InitializerBase;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.threeD.geom.Vector3D;
-	import org.flintparticles.threeD.particles.Particle3D;	
+	import org.flintparticles.threeD.geom.Vector3DUtils;
+	import org.flintparticles.threeD.particles.Particle3D;
+
+	import flash.geom.Vector3D;
 
 	/**
 	 * The RotationAbsolute Initializer sets the rotation of the particle. The rotation is
@@ -65,10 +67,7 @@ package org.flintparticles.threeD.initializers
 		 */
 		public function RotationAbsolute( axis:Vector3D = null, minAngle:Number = 0, maxAngle:Number = NaN )
 		{
-			if( axis )
-			{
-				this.axis = axis;
-			}
+			this.axis = axis ? axis : Vector3D.Z_AXIS;
 			this.minAngle = minAngle;
 			this.maxAngle = maxAngle;
 		}
@@ -82,7 +81,7 @@ package org.flintparticles.threeD.initializers
 		}
 		public function set axis( value:Vector3D ):void
 		{
-			_axis = value.unit();
+			_axis = Vector3DUtils.cloneUnit( value );
 		}
 		
 		/**
@@ -118,7 +117,11 @@ package org.flintparticles.threeD.initializers
 		 */
 		public function get angle():Number
 		{
-			return _min == _max ? _min : ( _max + _min ) / 2;
+			if( isNaN( _max ) || _min == _max )
+			{
+				return _min;
+			}
+			return ( _max + _min ) / 2;
 		}
 		public function set angle( value:Number ):void
 		{
@@ -132,7 +135,7 @@ package org.flintparticles.threeD.initializers
 		{
 			var p:Particle3D = Particle3D( particle );
 			var angle:Number;
-			if( isNaN( _max ) )
+			if( isNaN( _max ) || _min == _max )
 			{
 				angle = _min;
 			}

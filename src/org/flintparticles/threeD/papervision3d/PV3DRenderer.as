@@ -33,13 +33,13 @@ package org.flintparticles.threeD.papervision3d
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.renderers.RendererBase;
 	import org.flintparticles.common.utils.Maths;
-	import org.flintparticles.threeD.papervision3d.utils.Convert;
 	import org.flintparticles.threeD.particles.Particle3D;
 	import org.papervision3d.core.math.Number3D;
+	import org.papervision3d.core.math.Quaternion;
 	import org.papervision3d.core.proto.DisplayObjectContainer3D;
 	import org.papervision3d.materials.MovieMaterial;
 	import org.papervision3d.objects.DisplayObject3D;
-	import org.papervision3d.objects.primitives.Plane;	
+	import org.papervision3d.objects.primitives.Plane;
 
 	/**
 	 * Renders the particles in a Papervision3D scene.
@@ -116,7 +116,8 @@ package org.flintparticles.threeD.papervision3d
 				o.material.fillColor = particle.color & 0xFFFFFF;
 				o.material.fillAlpha = particle.alpha;
 				// rotation
-				var r:Number3D = Convert.QuaternionToPV3D( particle.rotation ).toEuler();
+				var rotation:Quaternion = new Quaternion( particle.rotation.x, particle.rotation.y, particle.rotation.z, particle.rotation.w );
+				var r:Number3D = rotation.toEuler();
 				o.rotationX = Maths.asDegrees( r.x );
 				o.rotationY = Maths.asDegrees( r.y );
 				o.rotationZ = Maths.asDegrees( r.z );
