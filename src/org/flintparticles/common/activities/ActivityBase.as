@@ -39,13 +39,13 @@ package org.flintparticles.common.activities
 	 * 
 	 * <p>Instances of the ActivityBase class should not be directly created 
 	 * because the ActivityBase class itself simply implements the Activity 
-	 * interface with default methods that do nothing.
+	 * interface with default methods that do nothing.</p>
 	 * 
 	 * <p>Developers creating custom activities may either extend the ActivityBase
 	 * class or implement the Activity interface directly. Classes that extend the 
 	 * ActivityBase class need only to implement their own functionality for the 
 	 * methods they want to use, leaving other methods with their default empty
-	 * implementations.
+	 * implementations.</p>
  	 * 
 	 * @see org.flintparticles.common.emitters.Emitter#addActivity()
 	 */

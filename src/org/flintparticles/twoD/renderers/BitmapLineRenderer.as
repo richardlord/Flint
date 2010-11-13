@@ -47,9 +47,9 @@ package org.flintparticles.twoD.renderers
 	 * for the color of the current line segment, and uses the scale of
 	 * the particle for the line width.</p>
 	 * 
-	 * <b>The region of the particle system covered by this bitmap object must be defined
+	 * <p>The region of the particle system covered by this bitmap object must be defined
 	 * in the canvas property of the BitmapLineRenderer. Particles outside this region
-	 * are not drawn.
+	 * are not drawn.</p>
 	 * 
 	 * <p>The BitmapLineRenderer allows the use of BitmapFilters to modify the appearance
 	 * of the bitmap.</p>

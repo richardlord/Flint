@@ -64,7 +64,7 @@ package org.flintparticles.twoD.emitters
 	 * the Emitter itself.</p>
 	 * 
 	 * <p>The emitter also has position properties - x, y, rotation - that can be used to directly
-	 * affect its location in the particle system.
+	 * affect its location in the particle system.</p>
 	 */
 
 	public class Emitter2D extends Emitter

@@ -45,7 +45,7 @@ package org.flintparticles.common.initializers
 	 * particles created by that emitter. Initializers are applied to 
 	 * all particles created by an emitter by using the emitter's addInitializer 
 	 * method. Initializers are removed from the emitter by using the emitter's
-	 * removeInitializer method.<p>
+	 * removeInitializer method.</p>
 	 * 
 	 * <p>The key method in the Initializer interface is the initiaize method.
 	 * This is called for every particle and is where the initializer modifies 
@@ -60,7 +60,7 @@ package org.flintparticles.common.initializers
 		 * The initialize method is used by the emitter to apply the initialization
 		 * to every particle. It is the key feature of the initializers and is
 		 * used to initialize the state of every particle. This method 
-		 * is called within the emitter's createParticle met6hod for every particle 
+		 * is called within the emitter's createParticle method for every particle 
 		 * and need not be called by the user.
 		 * 
 		 * @param emitter The Emitter that created the particle.

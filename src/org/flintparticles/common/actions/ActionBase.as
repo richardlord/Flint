@@ -46,7 +46,7 @@ package org.flintparticles.common.actions
 	 * class or implement the Action interface directly. Classes that extend the 
 	 * ActionBase class need only to implement their own functionality for the 
 	 * methods they want to use, leaving other methods with their default empty
-	 * implementations.
+	 * implementations.</p>
 	 * 
 	 * @see org.flintparticles.common.emitters.Emitter#addAction()
 	 */
