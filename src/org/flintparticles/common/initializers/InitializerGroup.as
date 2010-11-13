@@ -56,7 +56,7 @@ package org.flintparticles.common.initializers
 		 */
 		public function InitializerGroup( ...initializers )
 		{
-			_initializers = new Array();
+			_initializers = new Vector.<Initializer>();
 			for each( var i:Initializer in initializers )
 			{
 				addInitializer( i );

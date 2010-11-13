@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <componentPackage>
 
-	<!-- GEOMETRY -->
-    <component class="org.flintparticles.threeD.geom.Point3D"/>
-    <component class="org.flintparticles.threeD.geom.Vector3D"/>
-
 	<!-- RENDERERS -->
     <component class="org.flintparticles.threeD.renderers.mxml.BitmapRenderer"/>
     <component class="org.flintparticles.threeD.renderers.mxml.DisplayObjectRenderer"/>
