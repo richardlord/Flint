@@ -17,6 +17,7 @@
 			<arg line='-source-path ../src'/>
 			<arg line='-output ../swc/Flint2d.swc'/>
 
+			<arg line='-target-player 10.0.0.0'/>
 			<arg line='-namespace http://flintparticles.org/2009/flint2d manifest2D.xml'/>
 			<arg line='-include-namespaces http://flintparticles.org/2009/flint2d'/>
 
