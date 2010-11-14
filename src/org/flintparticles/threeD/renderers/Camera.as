@@ -153,8 +153,6 @@ package org.flintparticles.threeD.renderers
 		 * The transform matrix that converts positions in world space to positions in camera space.
 		 * The projection transform is part of this transform - so vectors need only to have their
 		 * project method called to get their position in 2D camera space.
-		 * 
-		 * @see org.flintparticles.threeD.geom.Vector3D#project()
 		 */
 		public function get transform():Matrix3D
 		{
@@ -175,8 +173,6 @@ package org.flintparticles.threeD.renderers
 		/**
 		 * The transform matrix that converts positions in world space to positions in camera space.
 		 * The projection transform is not part of this transform.
-		 * 
-		 * @see org.flintparticles.threeD.geom.Vector3D#project()
 		 */
 		public function get spaceTransform():Matrix3D
 		{

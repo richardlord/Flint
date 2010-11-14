@@ -36,7 +36,6 @@ package org.flintparticles.common.initializers
 	/**
 	 * The AlphaInit Initializer sets the alpha transparency of the particle.
 	 */
-
 	public class AlphaInit extends InitializerBase
 	{
 		private var _min:Number;
@@ -60,7 +59,7 @@ package org.flintparticles.common.initializers
 		 * @param maxAlpha the maximum alpha for particles
 		 * initialized by the instance. The value should be between 1 and 0.
 		 * 
-		 * @see org.flintparticles.common.emitters.Emitter#addInitializer().
+		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
 		public function AlphaInit( minAlpha:Number= 1, maxAlpha:Number = NaN )
 		{

@@ -49,7 +49,7 @@ package org.flintparticles.common.initializers
 		 * @param mass the mass for particles
 		 * initialized by the instance.
 		 * 
-		 * @see org.flintparticles.common.emitters.Emitter#addInitializer().
+		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
 		public function MassInit( mass:Number = 1 )
 		{

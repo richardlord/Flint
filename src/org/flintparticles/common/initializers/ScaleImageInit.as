@@ -63,7 +63,7 @@ package org.flintparticles.common.initializers
 		 * @param maxScale the maximum scale factor for particles
 		 * initialized by the instance.
 		 * 
-		 * @see org.flintparticles.common.emitters.Emitter#addInitializer().
+		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
 		public function ScaleImageInit( minScale:Number = 1, maxScale:Number = NaN )
 		{

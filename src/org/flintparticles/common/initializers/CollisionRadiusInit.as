@@ -51,7 +51,7 @@ package org.flintparticles.common.initializers
 		 * @param radius The collision radius for particles
 		 * initialized by the instance.
 		 * 
-		 * @see org.flintparticles.common.emitters.Emitter#addInitializer().
+		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
 		public function CollisionRadiusInit( radius:Number= 1 )
 		{
