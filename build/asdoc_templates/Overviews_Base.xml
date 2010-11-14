@@ -12,9 +12,7 @@
 <!-- this file normally should not be edited.  Use the command-line
      parameters for ASDoc instead -->
 <overviews>
-
 	<all-packages>
-<!--		<description><![CDATA[&lt;img src="images/diagram.png" width="600" height="410" style="text-align:center" /&gt;]]></description>  -->
 		<description><![CDATA[Flint is divided into three major packages.
 &lt;ul&gt;
 &lt;li&gt;com.flintparticles.common contains classes used for both 2D and 3D particle systems.&lt;/li&gt;
@@ -31,7 +29,6 @@
 &lt;li&gt;Renderers draw the Particles created by one or more emitters.&lt;/li&gt;
 &lt;/ul&gt;]]></description>
 	</all-packages>
-
 	<all-classes>
 		<description><![CDATA[Documentation for classes includes syntax, usage information, and code samples for methods, properties, and event handlers and listeners for those APIs that belong to a specific class in ActionScript. The classes are listed alphabetically. If you are not sure to which class a certain method or property belongs, you can look it up in the Index.]]></description>
 	</all-classes>
@@ -147,5 +144,4 @@
 			<shortDescription><![CDATA[Utility classes and functions.]]></shortDescription>
 		</package>
 	</packages>
-
 </overviews>

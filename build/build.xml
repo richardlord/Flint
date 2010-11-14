@@ -15,7 +15,7 @@
 		<exec executable="${compc}" failonerror="true">
 
 			<arg line='-source-path ../src'/>
-			<arg line='-output ../swc/Flint2d.swc'/>
+			<arg line='-output ../swc/Flint2d_${version}.swc'/>
 
 			<arg line='-target-player 10.0.0.0'/>
 			<arg line='-namespace http://flintparticles.org/2009/flint2d manifest2D.xml'/>
@@ -38,7 +38,7 @@
 		<exec executable="${compc}" failonerror="true">
 
 			<arg line='-source-path ../src'/>
-			<arg line='-output ../swc/Flint3d.swc'/>
+			<arg line='-output ../swc/Flint3d_${version}.swc'/>
 
 			<arg line='-target-player 10.0.0.0'/>
 			<arg line='-namespace http://flintparticles.org/2009/flint3d manifest3D.xml'/>
