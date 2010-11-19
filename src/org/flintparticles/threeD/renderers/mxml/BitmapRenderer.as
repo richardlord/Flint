@@ -28,12 +28,11 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.threeD.renderers.mxml {
+package org.flintparticles.threeD.renderers.mxml
+{
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.renderers.FlexRendererBase;
-	import flash.geom.Matrix3D;
 	import org.flintparticles.threeD.geom.Quaternion;
-	import flash.geom.Vector3D;
 	import org.flintparticles.threeD.particles.Particle3D;
 	import org.flintparticles.threeD.renderers.Camera;
 
@@ -42,8 +41,10 @@ package org.flintparticles.threeD.renderers.mxml {
 	import flash.display.DisplayObject;
 	import flash.filters.BitmapFilter;
 	import flash.geom.Matrix;
+	import flash.geom.Matrix3D;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
+	import flash.geom.Vector3D;
 
 	/**
 	 * The BitmapRenderer is a native Flint 3D renderer that draws particles
@@ -93,6 +94,9 @@ package org.flintparticles.threeD.renderers.mxml {
 		 */
 		protected var _bitmap:Bitmap;
 		
+		/**
+		 * @private
+		 */
 		protected var _bitmapData:BitmapData;
 
 		/**
@@ -148,10 +152,11 @@ package org.flintparticles.threeD.renderers.mxml {
 		 */
 		public function BitmapRenderer( canvas:Rectangle = null, zSort:Boolean = true, smoothing:Boolean = false )
 		{
+			super();
+			_zSort = zSort;
 			_camera = new Camera();
 			mouseEnabled = false;
 			mouseChildren = false;
-			_zSort = zSort;
 			_smoothing = smoothing;
 			_preFilters = new Array();
 			_postFilters = new Array();

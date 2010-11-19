@@ -16,7 +16,7 @@ package org.flintparticles.threeD.geom
 		 */
 		public static function newScale( scaleX:Number, scaleY:Number, scaleZ:Number ):Matrix3D
 		{
-			return new Matrix3D( new <Number>[ scaleX,0,0,0,0,scaleY,0,0,0,0,scaleZ,0,0,0,0,1 ] );
+			return new Matrix3D( Vector.<Number>( [ scaleX,0,0,0,0,scaleY,0,0,0,0,scaleZ,0,0,0,0,1 ] ) );
 		}
 		
 		/**
@@ -30,7 +30,7 @@ package org.flintparticles.threeD.geom
 		 */
 		public static function newTranslate( x:Number, y:Number, z:Number ):Matrix3D
 		{
-			return new Matrix3D( new <Number>[ 1,0,0,0,0,1,0,0,0,0,1,0,x,y,z,1 ] );
+			return new Matrix3D( Vector.<Number>( [ 1,0,0,0,0,1,0,0,0,0,1,0,x,y,z,1 ] ) );
 		}
 	
 		/**
@@ -51,11 +51,11 @@ package org.flintparticles.threeD.geom
 			const sin:Number = Math.sin( angle );
 			const cos:Number = Math.cos( angle );
 			const oneMinCos:Number = 1 - cos;
-			var rotate:Matrix3D = new Matrix3D( new <Number>[
+			var rotate:Matrix3D = new Matrix3D( Vector.<Number>( [
 				cos + axis.x * axis.x * oneMinCos, axis.x * axis.y * oneMinCos + axis.z * sin, axis.x * axis.z  * oneMinCos - axis.y * sin, 0,
 				axis.x * axis.y * oneMinCos - axis.z * sin, cos + axis.y * axis.y * oneMinCos, axis.y * axis.z * oneMinCos + axis.x * sin, 0,
 				axis.x * axis.z  * oneMinCos + axis.y * sin, axis.y * axis.z * oneMinCos - axis.x * sin, cos + axis.z * axis.z * oneMinCos, 0,
-				0, 0, 0, 1 ] );
+				0, 0, 0, 1 ] ) );
 			
 			if( pivotPoint )
 			{
@@ -67,11 +67,11 @@ package org.flintparticles.threeD.geom
 
 		public static function newBasisTransform( axisX:Vector3D, axisY:Vector3D, axisZ:Vector3D ):Matrix3D
 		{
-			var m:Matrix3D = new Matrix3D( new <Number>[ 
+			var m:Matrix3D = new Matrix3D( Vector.<Number>( [ 
 				axisX.x, axisX.y, axisX.z, 0,
 				axisY.x, axisY.y, axisY.z, 0,
 				axisZ.x, axisZ.y, axisZ.z, 0,
-				0, 0, 0, 1 ] );
+				0, 0, 0, 1 ] ) );
 			m.invert();
 			return m;
 		}

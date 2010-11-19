@@ -159,12 +159,12 @@ package org.flintparticles.threeD.renderers
 			if( !_spaceTransform || !_transform )
 			{
 				_transform = spaceTransform.clone();
-				var projectionTransform:Matrix3D = new Matrix3D( new <Number>[
+				var projectionTransform:Matrix3D = new Matrix3D( Vector.<Number>( [
 					_projectionDistance, 0, 0, 0,
 					0, _projectionDistance, 0, 0,
 					0, 0, 1, 1,
 					0, 0, 0, 0
-				] );
+				] ) );
 				_transform.append( projectionTransform );
 			}
 			return _transform;

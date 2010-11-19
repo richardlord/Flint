@@ -126,7 +126,7 @@ package org.flintparticles.common.renderers
 					if( _emitters.length == 0 )
 					{
 						removeEventListener( Event.RENDER, updateParticles );
-						renderParticles( new <Particle>[] );
+						renderParticles( new Vector.<Particle>() );
 					}
 					else if( stage )
 					{
