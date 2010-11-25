@@ -58,7 +58,7 @@ package org.flintparticles.common.debug
 
 		private function onEnterFrame1( ev:Event ):void
 		{
-			if ( _times.push( getTimer() ) > 9 )
+			if ( _times.push( getTimer() ) > 29 )
 			{
 				removeEventListener( Event.ENTER_FRAME, onEnterFrame1 );
 				addEventListener( Event.ENTER_FRAME, onEnterFrame2, false, 0, true );
@@ -69,7 +69,7 @@ package org.flintparticles.common.debug
 		{
 			var t:Number;
 			_times.push( t = getTimer() );
-			text = ( Math.round( 10000 / ( t - _times.shift() ) ) ).toString() + " fps";
+			text = ( Math.round( 30000 / ( t - _times.shift() ) ) ).toString() + " fps";
 		}
 	}
 }
