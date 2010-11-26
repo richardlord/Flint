@@ -127,7 +127,13 @@ package org.flintparticles.threeD.renderers.mxml
 		 * @private
 		 */
 		protected var _halfHeight:Number;
-
+		/**
+		 * @private
+		 */
+		protected var _rawCameraTransform:Vector.<Number>;
+		/**
+		 * @private
+		 */
 		private var _canvasChanged:Boolean = true;
 
 		/**
@@ -413,7 +419,7 @@ package org.flintparticles.threeD.renderers.mxml
 			{
 				return;
 			}
-			var transform:Matrix3D = _camera.transform;
+			_rawCameraTransform = _camera.transform.rawData;
 			var i:int;
 			var len:int;
 			var particle:Particle3D;
@@ -431,7 +437,16 @@ package org.flintparticles.threeD.renderers.mxml
 			for( i = 0; i < len; ++i )
 			{
 				particle = Particle3D( particles[i] );
-				particle.projectedPosition = transform.transformVector( particle.position );
+				var p:Vector3D = particle.position;
+				var pp:Vector3D = particle.projectedPosition;
+				
+				// The following is very much more efficient than
+				// particle.projectedPosition = camera.transform.transformVector( particle.position );
+				pp.x = _rawCameraTransform[0] * p.x + _rawCameraTransform[4] * p.y + _rawCameraTransform[8] * p.z + _rawCameraTransform[12] * p.w;
+				pp.y = _rawCameraTransform[1] * p.x + _rawCameraTransform[5] * p.y + _rawCameraTransform[9] * p.z + _rawCameraTransform[13] * p.w;
+				pp.z = _rawCameraTransform[2] * p.x + _rawCameraTransform[6] * p.y + _rawCameraTransform[10] * p.z + _rawCameraTransform[14] * p.w;
+				pp.w = _rawCameraTransform[3] * p.x + _rawCameraTransform[7] * p.y + _rawCameraTransform[11] * p.z + _rawCameraTransform[15] * p.w;
+
 				particle.zDepth = particle.projectedPosition.z;
 			}
 			if( _zSort )

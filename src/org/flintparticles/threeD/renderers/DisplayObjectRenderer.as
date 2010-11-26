@@ -125,17 +125,26 @@ package org.flintparticles.threeD.renderers
 		 */
 		override protected function renderParticles( particles:Vector.<Particle> ):void
 		{
-			var pos:Vector3D;
-			var transform:Matrix3D = _camera.transform;
+			var pos:Vector3D = new Vector3D();
+			var rawCameraTransform:Vector.<Number> = _camera.transform.rawData;
 			var particle:Particle3D;
 			var img:DisplayObject;
 			var len:int = particles.length;
-			var facing:Vector3D;
+			var facing:Vector3D = new Vector3D();
+			var f:Vector3D;
 			for( var i:int = 0; i < len; ++i )
 			{
 				particle = Particle3D( particles[i] );
 				img = particle.image;
-				pos = transform.transformVector( particle.position );
+				
+				var p:Vector3D = particle.position;
+				// The following is very much more efficient than
+				// pos = camera.transform.transformVector( particle.position );
+				pos.x = rawCameraTransform[0] * p.x + rawCameraTransform[4] * p.y + rawCameraTransform[8] * p.z + rawCameraTransform[12] * p.w;
+				pos.y = rawCameraTransform[1] * p.x + rawCameraTransform[5] * p.y + rawCameraTransform[9] * p.z + rawCameraTransform[13] * p.w;
+				pos.z = rawCameraTransform[2] * p.x + rawCameraTransform[6] * p.y + rawCameraTransform[10] * p.z + rawCameraTransform[14] * p.w;
+				pos.w = rawCameraTransform[3] * p.x + rawCameraTransform[7] * p.y + rawCameraTransform[11] * p.z + rawCameraTransform[15] * p.w;
+				
 				particle.zDepth = pos.z;
 				if( pos.z < _camera.nearPlaneDistance || pos.z > _camera.farPlaneDistance )
 				{
@@ -153,14 +162,21 @@ package org.flintparticles.threeD.renderers
 					img.visible = true;
 					if( particle.rotation.equals( Quaternion.IDENTITY ) )
 					{
-						facing = particle.faceAxis.clone();
+						f = particle.faceAxis;
 					}
 					else
 					{
 						var m:Matrix3D = particle.rotation.toMatrixTransformation();
-						facing = m.transformVector( particle.faceAxis );
+						f = m.transformVector( particle.faceAxis );
 					}
-					facing = transform.transformVector( facing );
+					
+					// The following is very much more efficient than
+					// facing = camera.transform.transformVector( f );
+					facing.x = rawCameraTransform[0] * f.x + rawCameraTransform[4] * f.y + rawCameraTransform[8] * f.z + rawCameraTransform[12] * f.w;
+					facing.y = rawCameraTransform[1] * f.x + rawCameraTransform[5] * f.y + rawCameraTransform[9] * f.z + rawCameraTransform[13] * f.w;
+					facing.z = rawCameraTransform[2] * f.x + rawCameraTransform[6] * f.y + rawCameraTransform[10] * f.z + rawCameraTransform[14] * f.w;
+					facing.w = rawCameraTransform[3] * f.x + rawCameraTransform[7] * f.y + rawCameraTransform[11] * f.z + rawCameraTransform[15] * f.w;
+					
 					if( facing.x != 0 || facing.y != 0 )
 					{
 						var angle:Number = Math.atan2( -facing.y, facing.x );
@@ -196,6 +212,7 @@ package org.flintparticles.threeD.renderers
 		 */
 		override protected function addParticle( particle:Particle ):void
 		{
+			super.addParticle( particle );
 			var img:DisplayObject = particle.image as DisplayObject;
 			addChildAt( img, 0 );
 			img.visible = false;
@@ -212,6 +229,7 @@ package org.flintparticles.threeD.renderers
 		override protected function removeParticle( particle:Particle ):void
 		{
 			removeChild( particle.image );
+			super.removeParticle( particle );
 		}
 	}
 }

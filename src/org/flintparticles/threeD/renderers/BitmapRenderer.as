@@ -125,6 +125,10 @@ package org.flintparticles.threeD.renderers
 		 * @private
 		 */
 		protected var _halfHeight:Number;
+		/**
+		 * @private
+		 */
+		protected var _rawCameraTransform:Vector.<Number>;
 
 		/**
 		 * The constructor creates a BitmapRenderer. After creation it should be
@@ -367,7 +371,7 @@ package org.flintparticles.threeD.renderers
 			{
 				return;
 			}
-			var transform:Matrix3D = _camera.transform;
+			_rawCameraTransform = _camera.transform.rawData;
 			var i:int;
 			var len:int;
 			var particle:Particle3D;
@@ -385,8 +389,17 @@ package org.flintparticles.threeD.renderers
 			for( i = 0; i < len; ++i )
 			{
 				particle = Particle3D( particles[i] );
-				particle.projectedPosition = transform.transformVector( particle.position );
-				particle.zDepth = particle.projectedPosition.z;
+				var p:Vector3D = particle.position;
+				var pp:Vector3D = particle.projectedPosition;
+				
+				//The following is very much more efficient than
+				//particle.projectedPosition = camera.transform.transformVector( particle.position );
+				pp.x = _rawCameraTransform[0] * p.x + _rawCameraTransform[4] * p.y + _rawCameraTransform[8] * p.z + _rawCameraTransform[12] * p.w;
+				pp.y = _rawCameraTransform[1] * p.x + _rawCameraTransform[5] * p.y + _rawCameraTransform[9] * p.z + _rawCameraTransform[13] * p.w;
+				pp.z = _rawCameraTransform[2] * p.x + _rawCameraTransform[6] * p.y + _rawCameraTransform[10] * p.z + _rawCameraTransform[14] * p.w;
+				pp.w = _rawCameraTransform[3] * p.x + _rawCameraTransform[7] * p.y + _rawCameraTransform[11] * p.z + _rawCameraTransform[15] * p.w;
+
+				particle.zDepth = pp.z;
 			}
 			if( _zSort )
 			{
@@ -436,18 +449,25 @@ package org.flintparticles.threeD.renderers
 			pos.project();
 			
 			var rot:Number = 0;
-			var transform:Matrix3D = _camera.transform;			
-			var facing:Vector3D;
+			var f:Vector3D;
 			if( particle.rotation.equals( Quaternion.IDENTITY ) )
 			{
-				facing = particle.faceAxis.clone();
+				f = particle.faceAxis;
 			}
 			else
 			{
 				var m:Matrix3D = particle.rotation.toMatrixTransformation();
-				facing = m.transformVector( particle.faceAxis );
+				f = m.transformVector( particle.faceAxis );
 			}
-			facing = transform.transformVector( facing );
+			var facing:Vector3D = new Vector3D();
+			
+			// The following is very much more efficient than
+			// facing = transform.transformVector( f );
+			facing.x = _rawCameraTransform[0] * f.x + _rawCameraTransform[4] * f.y + _rawCameraTransform[8] * f.z + _rawCameraTransform[12] * f.w;
+			facing.y = _rawCameraTransform[1] * f.x + _rawCameraTransform[5] * f.y + _rawCameraTransform[9] * f.z + _rawCameraTransform[13] * f.w;
+			facing.z = _rawCameraTransform[2] * f.x + _rawCameraTransform[6] * f.y + _rawCameraTransform[10] * f.z + _rawCameraTransform[14] * f.w;
+			facing.w = _rawCameraTransform[3] * f.x + _rawCameraTransform[7] * f.y + _rawCameraTransform[11] * f.z + _rawCameraTransform[15] * f.w;
+			
 			if( facing.x != 0 || facing.y != 0 )
 			{
 				rot = Math.atan2( -facing.y, facing.x );
