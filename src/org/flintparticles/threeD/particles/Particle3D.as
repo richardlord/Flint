@@ -33,7 +33,6 @@ package org.flintparticles.threeD.particles
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.particles.ParticleFactory;
 	import org.flintparticles.threeD.geom.Quaternion;
-	import org.flintparticles.threeD.geom.Vector3DUtils;
 
 	import flash.geom.Vector3D;
 
@@ -111,12 +110,12 @@ package org.flintparticles.threeD.particles
 		public function Particle3D()
 		{
 			super();
-			position = Vector3DUtils.getPoint( 0, 0, 0 );
-			projectedPosition = Vector3DUtils.getPoint( 0, 0, 0 );
-			faceAxis = Vector3DUtils.getVector( 1, 0, 0 );
-			velocity = Vector3DUtils.getVector( 0, 0, 0 );
+			position = new Vector3D( 0, 0, 0, 1 );
+			projectedPosition = new Vector3D( 0, 0, 0, 1 );
+			faceAxis = new Vector3D( 1, 0, 0, 0 );
+			velocity = new Vector3D( 0, 0, 0, 0 );
 			rotation = new Quaternion( 1, 0, 0, 0 );
-			angVelocity = Vector3DUtils.getVector( 0, 0, 0 );
+			angVelocity = new Vector3D( 0, 0, 0, 0 );
 		}
 		
 		/**
@@ -125,12 +124,32 @@ package org.flintparticles.threeD.particles
 		override public function initialize():void
 		{
 			super.initialize();
-			Vector3DUtils.resetPoint( position, 0, 0, 0 );
-			Vector3DUtils.resetPoint( projectedPosition, 0, 0, 0 );
-			Vector3DUtils.resetVector( faceAxis, 1, 0, 0 );
-			Vector3DUtils.resetVector( velocity, 0, 0, 0 );
-			rotation.reset( 1, 0, 0, 0 );
-			Vector3DUtils.resetVector( angVelocity, 0, 0, 0 );
+			
+			position.x = 0;
+			position.y = 0;
+			position.z = 0;
+			
+			projectedPosition.x = 0;
+			projectedPosition.y = 0;
+			projectedPosition.z = 0;
+			
+			faceAxis.x = 1;
+			faceAxis.y = 0;
+			faceAxis.z = 0;
+			
+			velocity.x = 0;
+			velocity.y = 0;
+			velocity.z = 0;
+
+			rotation.w = 1;
+			rotation.x = 0;
+			rotation.y = 0;
+			rotation.z = 0;
+
+			angVelocity.x = 0;
+			angVelocity.y = 0;
+			angVelocity.z = 0;
+			
 			sortID = -1;
 			zDepth = 0;
 		}
