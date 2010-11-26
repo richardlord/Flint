@@ -139,7 +139,11 @@ package org.flintparticles.threeD.actions
 			var distanceInv:Number;
 			var distanceSq:Number;
 			var factor:Number;
-			Vector3DUtils.resetVector( move, 0, 0, 0 );
+			
+			move.x = 0;
+			move.y = 0;
+			move.z = 0;
+			
 			for( i = p.sortID - 1; i >= 0; --i )
 			{
 				other = Particle3D( particles[i] );

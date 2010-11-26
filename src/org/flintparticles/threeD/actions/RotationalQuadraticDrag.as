@@ -30,6 +30,7 @@
 
 package org.flintparticles.threeD.actions 
 {
+	import flash.geom.Vector3D;
 	import org.flintparticles.common.actions.ActionBase;
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.particles.Particle;
@@ -77,19 +78,21 @@ package org.flintparticles.threeD.actions
 		 */
 		override public function update( emitter:Emitter, particle:Particle, time:Number ):void
 		{
-			var p : Particle3D = Particle3D( particle );
-			if ( p.angVelocity.equals( Vector3DUtils.ZERO_VECTOR ) )
+			var v : Vector3D = Particle3D( particle ).angVelocity;
+			if ( v.equals( Vector3DUtils.ZERO_VECTOR ) )
 			{
 				return;
 			}
-			var scale:Number = 1 - _drag * time * p.angVelocity.length / p.inertia;
+			var scale:Number = 1 - _drag * time * v.length / Particle3D( particle ).inertia;
 			if( scale < 0 )
 			{
-				Vector3DUtils.resetVector( p.angVelocity, 0, 0, 0 );
+				v.x = 0;
+				v.y = 0;
+				v.z = 0;
 			}
 			else
 			{
-				p.angVelocity.scaleBy( scale );
+				v.scaleBy( scale );
 			}
 		}
 	}

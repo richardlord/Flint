@@ -67,22 +67,6 @@ package org.flintparticles.threeD.geom
 			return temp;
 		}
 
-		public static function resetVector( v:Vector3D, x:Number, y:Number, z:Number ):void
-		{
-			v.x = x;
-			v.y = y;
-			v.z = z;
-			v.w = 0;
-		}
-		
-		public static function resetPoint( v:Vector3D, x:Number, y:Number, z:Number ):void
-		{
-			v.x = x;
-			v.y = y;
-			v.z = z;
-			v.w = 1;
-		}
-		
 		public static function assignVector( v:Vector3D, u:Vector3D ):void
 		{
 			v.x = u.x;

@@ -33,7 +33,6 @@ package org.flintparticles.threeD.actions
 	import org.flintparticles.common.actions.ActionBase;
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.threeD.geom.Vector3DUtils;
 	import org.flintparticles.threeD.particles.Particle3D;
 
 	import flash.geom.Vector3D;
@@ -46,8 +45,6 @@ package org.flintparticles.threeD.actions
 	 */
 	public class Move extends ActionBase
 	{
-		private var _temp:Vector3D;
-		
 		/**
 		 * The constructor creates a Move action for use by 
 		 * an emitter. To add a Move to all particles created by an emitter, use the
@@ -58,7 +55,6 @@ package org.flintparticles.threeD.actions
 		public function Move()
 		{
 			priority = -10;
-			_temp = Vector3DUtils.getVector( 0, 0, 0 );
 		}
 
 		/**
@@ -66,10 +62,11 @@ package org.flintparticles.threeD.actions
 		 */
 		override public function update( emitter:Emitter, particle:Particle, time:Number ):void
 		{
-			var p:Particle3D = Particle3D( particle );
-			Vector3DUtils.assignVector( _temp, p.velocity );
-			_temp.scaleBy( time );
-			p.position.incrementBy( _temp );
+			var p:Vector3D = Particle3D( particle ).position;
+			var v:Vector3D = Particle3D( particle ).velocity;
+			p.x += v.x * time;
+			p.y += v.y * time;
+			p.z += v.z * time;
 		}
 	}
 }

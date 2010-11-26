@@ -66,7 +66,6 @@ package org.flintparticles.threeD.actions
 		 * Temporary variables created as class members to avoid creating new objects all the time
 		 */
 		private var d:Vector3D;
-		private var temp:Vector3D;
 
 		/**
 		 * The constructor creates a Collide action for use by  an emitter.
@@ -85,7 +84,6 @@ package org.flintparticles.threeD.actions
 			priority = -20;
 			_maxDistance = 0;
 			d = Vector3DUtils.getVector( 0, 0, 0 );
-			temp = Vector3DUtils.getVector( 0, 0, 0 );
 			this.bounce = bounce;
 		}
 		
@@ -216,12 +214,15 @@ package org.flintparticles.threeD.actions
 						factor = ( ( 1 + _bounce ) * relN ) / ( m1 + m2 );
 						f1 = factor * m2;
 						f2 = -factor * m1;
-						Vector3DUtils.assignVector( temp, d );
-						temp.scaleBy( f1 );
-						p.velocity.decrementBy( temp );
-						Vector3DUtils.assignVector( temp, d );
-						temp.scaleBy( f2 );
-						other.velocity.decrementBy( temp );
+						
+						p.velocity.x -= d.x * f1;
+						p.velocity.y -= d.y * f1;
+						p.velocity.z -= d.z * f1;
+						
+						other.velocity.x -= d.x * f2;
+						other.velocity.y -= d.y * f2;
+						other.velocity.z -= d.z * f2;
+						
 						var ev:ParticleEvent = new ParticleEvent( ParticleEvent.PARTICLES_COLLISION, p );
 						ev.otherObject = other;
 						emitter.dispatchEvent( ev );

@@ -36,6 +36,8 @@ package org.flintparticles.threeD.actions
 	import org.flintparticles.threeD.geom.Vector3DUtils;
 	import org.flintparticles.threeD.particles.Particle3D;
 
+	import flash.geom.Vector3D;
+
 	/**
 	 * The RotationalFriction action applies friction to the particle's rotational movement
 	 * to slow it down when it's rotating. The frictional force is constant, irrespective 
@@ -79,19 +81,21 @@ package org.flintparticles.threeD.actions
 		 */
 		override public function update( emitter:Emitter, particle:Particle, time:Number ):void
 		{
-			var p : Particle3D = Particle3D( particle );
-			if ( p.angVelocity.equals( Vector3DUtils.ZERO_VECTOR ) )
+			var v : Vector3D = Particle3D( particle ).angVelocity;
+			if ( v.equals( Vector3DUtils.ZERO_VECTOR ) )
 			{
 				return;
 			}
-			var scale:Number = 1 - ( _friction * time ) / ( p.angVelocity.length * p.inertia );
+			var scale:Number = 1 - ( _friction * time ) / ( v.length * Particle3D( particle ).inertia );
 			if( scale < 0 )
 			{
-				Vector3DUtils.resetVector( p.angVelocity, 0, 0, 0 );
+				v.x = 0;
+				v.y = 0;
+				v.z = 0;
 			}
 			else
 			{
-				p.angVelocity.scaleBy( scale );
+				v.scaleBy( scale );
 			}
 		}
 	}

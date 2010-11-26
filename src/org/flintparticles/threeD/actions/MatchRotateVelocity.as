@@ -129,7 +129,11 @@ package org.flintparticles.threeD.actions
 			var i:int;
 			var len:int = particles.length;
 			var distanceSq:Number;
-			Vector3DUtils.resetVector( vel, 0, 0, 0 );
+			
+			vel.x = 0;
+			vel.y = 0;
+			vel.z = 0;
+			
 			var count:int = 0;
 			var factor:Number;
 			for( i = p.sortID - 1; i >= 0; --i )

@@ -33,7 +33,6 @@ package org.flintparticles.threeD.actions
 	import org.flintparticles.common.actions.ActionBase;
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.threeD.geom.Vector3DUtils;
 	import org.flintparticles.threeD.particles.Particle3D;
 
 	import flash.geom.Vector3D;
@@ -46,7 +45,6 @@ package org.flintparticles.threeD.actions
 	public class Accelerate extends ActionBase
 	{
 		private var _acc:Vector3D;
-		private var _temp:Vector3D;
 		
 		/**
 		 * The constructor creates an Acceleration action for use by an emitter. 
@@ -60,8 +58,7 @@ package org.flintparticles.threeD.actions
 		 */
 		public function Accelerate( acceleration:Vector3D = null )
 		{
-			_temp = new Vector3D();
-			this.acceleration = acceleration ? acceleration : Vector3DUtils.getVector( 0, 0, 0 );
+			this.acceleration = acceleration ? acceleration : new Vector3D( 0, 0, 0, 0 );
 		}
 		
 		/**
@@ -130,11 +127,10 @@ package org.flintparticles.threeD.actions
 		 */
 		override public function update( emitter:Emitter, particle:Particle, time:Number ):void
 		{
-			_temp.x = _acc.x;
-			_temp.y = _acc.y;
-			_temp.z = _acc.z;
-			_temp.scaleBy( time );
-			Particle3D( particle ).velocity.incrementBy( _temp );
+			var v:Vector3D = Particle3D( particle ).velocity;
+			v.x += _acc.x * time;
+			v.y += _acc.y * time;
+			v.z += _acc.z * time;
 		}
 	}
 }
