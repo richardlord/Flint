@@ -95,6 +95,7 @@ package org.flintparticles.twoD.renderers.mxml
 		 */
 		override protected function addParticle( particle:Particle ):void
 		{
+			super.addParticle( particle );
 			var p:Particle2D = particle as Particle2D;
 			addChildAt( p.image, 0 );
 			var img:DisplayObject = p.image;
@@ -108,6 +109,7 @@ package org.flintparticles.twoD.renderers.mxml
 		override protected function removeParticle( particle:Particle ):void
 		{
 			removeChild( particle.image );
+			super.removeParticle( particle );
 		}
 	}
 }

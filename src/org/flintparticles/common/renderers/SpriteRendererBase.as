@@ -179,8 +179,6 @@ package org.flintparticles.common.renderers
 			renderParticles( particles );
 		}
 		
-		
-		
 		/**
 		 * The addParticle method is called when a particle is added to one of
 		 * the emitters that is being rendered by this renderer.
