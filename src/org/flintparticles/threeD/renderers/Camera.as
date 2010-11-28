@@ -72,10 +72,10 @@ package org.flintparticles.threeD.renderers
 		 */
 		public function Camera()
 		{
-			_position = Vector3DUtils.getPoint( 0, 0, 0 );
-			_target = Vector3DUtils.getPoint( 0, 0, 0 );
-			_up = Vector3DUtils.getVector( 0, 1 , 0 );
-			_pDirection = Vector3DUtils.getVector( 0, 0, 1 );
+			_position = new Vector3D( 0, 0, 0, 1 );
+			_target = new Vector3D( 0, 0, 0, 1 );
+			_up = new Vector3D( 0, 1 , 0 );
+			_pDirection = new Vector3D( 0, 0, 1 );
 		}
 
 		/**
@@ -366,7 +366,7 @@ package org.flintparticles.threeD.renderers
 		{
 			if( _pDirection == null && _target )
 			{
-				_pDirection = Vector3DUtils.vectorTo( _position, _target );
+				_pDirection = _target.subtract( _position );
 				_pDirection.normalize();
 			}
 			return _pDirection;

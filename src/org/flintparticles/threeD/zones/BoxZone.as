@@ -69,7 +69,7 @@ package org.flintparticles.threeD.zones
 			this.width = width;
 			this.height = height;
 			this.depth = depth;
-			this.center = center ? center : Vector3DUtils.ZERO_POINT;
+			this.center = center ? center : new Vector3D();
 			this.upAxis = upAxis ? upAxis : Vector3D.Y_AXIS;
 			this.depthAxis = depthAxis ? depthAxis : Vector3D.Z_AXIS;
 		}
@@ -196,7 +196,7 @@ package org.flintparticles.threeD.zones
 			{
 				init();
 			}
-			var p:Vector3D = Vector3DUtils.getPoint( Math.random() * _width, Math.random() * _height, Math.random() * _depth );
+			var p:Vector3D = new Vector3D( Math.random() * _width, Math.random() * _height, Math.random() * _depth, 1 );
 			p = _transformFrom.transformVector( p );
 			return p;
 		}

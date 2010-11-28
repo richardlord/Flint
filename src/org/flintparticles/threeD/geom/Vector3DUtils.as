@@ -36,20 +36,6 @@ package org.flintparticles.threeD.geom
 	 */
 	public class Vector3DUtils 
 	{
-		public static var ZERO_VECTOR:Vector3D = new Vector3D( 0, 0, 0, 0 );
-		public static var MINUS_Y_AXIS:Vector3D = new Vector3D( 0, -1, 0, 0 );
-		public static var ZERO_POINT:Vector3D = new Vector3D( 0, 0, 0, 1 );
-		
-		public static function getVector( x:Number, y:Number, z:Number ):Vector3D
-		{
-			return new Vector3D( x, y, z, 0 );
-		}
-		
-		public static function getPoint( x:Number, y:Number, z:Number ):Vector3D
-		{
-			return new Vector3D( x, y, z, 1 );
-		}
-		
 		public static function cloneVector( v:Vector3D ):Vector3D
 		{
 			return new Vector3D( v.x, v.y, v.z, 0 );
@@ -67,27 +53,6 @@ package org.flintparticles.threeD.geom
 			return temp;
 		}
 
-		public static function assignVector( v:Vector3D, u:Vector3D ):void
-		{
-			v.x = u.x;
-			v.y = u.y;
-			v.z = u.z;
-			v.w = 0;
-		}
-		
-		public static function assignPoint( v:Vector3D, u:Vector3D ):void
-		{
-			v.x = u.x;
-			v.y = u.y;
-			v.z = u.z;
-			v.w = 1;
-		}
-		
-		public static function vectorTo( v:Vector3D, u:Vector3D ):Vector3D
-		{
-			return new Vector3D( u.x - v.x, u.y - v.y, u.z - v.z, 0 );
-		}
-		
 		public static function distanceSquared( v:Vector3D, u:Vector3D ):Number
 		{
 			var dx:Number = v.x - u.x;

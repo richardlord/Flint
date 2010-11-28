@@ -34,7 +34,6 @@ package org.flintparticles.threeD.actions
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.threeD.emitters.Emitter3D;
-	import org.flintparticles.threeD.geom.Vector3DUtils;
 	import org.flintparticles.threeD.particles.Particle3D;
 
 	import flash.geom.Vector3D;
@@ -75,8 +74,8 @@ package org.flintparticles.threeD.actions
 		public function MatchRotateVelocity( maxDistance:Number = 0, acceleration:Number = 0 )
 		{
 			priority = 10;
-			d = Vector3DUtils.getVector( 0, 0, 0 );
-			vel = Vector3DUtils.getVector( 0, 0, 0 );
+			d = new Vector3D();
+			vel = new Vector3D();
 			this.maxDistance = maxDistance;
 			this.acceleration = acceleration;
 		}
@@ -170,7 +169,7 @@ package org.flintparticles.threeD.actions
 			{
 				vel.scaleBy( 1 / count );
 				vel.decrementBy( p.angVelocity );
-				if ( !vel.equals( Vector3DUtils.ZERO_VECTOR ) )
+				if ( vel.x != 0 || vel.y != 0 || vel.z != 0 )
 				{
 					factor = time * _acc / vel.length;
 					if( factor > 1 ) factor = 1;

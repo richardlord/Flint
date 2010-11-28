@@ -61,9 +61,9 @@ package org.flintparticles.threeD.zones
 		 */
 		public function ParallelogramZone( corner:Vector3D = null, side1:Vector3D = null, side2:Vector3D = null )
 		{
-			this.corner = corner ? corner : Vector3DUtils.ZERO_POINT;
+			this.corner = corner ? corner : new Vector3D();
 			this.side1 = side1 ? side1 : Vector3D.X_AXIS;
-			this.side2 = side2 ? side2 : Vector3DUtils.MINUS_Y_AXIS;
+			this.side2 = side2 ? side2 : new Vector3D( 0, -1, 0 );
 		}
 		
 		/**

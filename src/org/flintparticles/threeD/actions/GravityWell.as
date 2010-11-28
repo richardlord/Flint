@@ -69,7 +69,7 @@ package org.flintparticles.threeD.actions
 		public function GravityWell( power:Number = 0, position:Vector3D = null, epsilon:Number = 100 )
 		{
 			this.power = power;
-			this.position = position ? position : Vector3DUtils.ZERO_POINT;
+			this.position = position ? position : new Vector3D();
 			this.epsilon = epsilon;
 		}
 		
@@ -158,7 +158,7 @@ package org.flintparticles.threeD.actions
 				return;
 			}
 			var p:Particle3D = Particle3D( particle );
-			var offset:Vector3D = Vector3DUtils.vectorTo( p.position, _position );
+			var offset:Vector3D = _position.subtract( p.position );
 			var dSq:Number = offset.lengthSquared;
 			if( dSq == 0 )
 			{

@@ -30,7 +30,6 @@
 
 package org.flintparticles.threeD.actions 
 {
-	import org.flintparticles.threeD.geom.Vector3DUtils;
 	import org.flintparticles.common.actions.ActionBase;
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.particles.Particle;
@@ -75,8 +74,8 @@ package org.flintparticles.threeD.actions
 		public function ApproachNeighbours( maxDistance:Number = 0, acceleration:Number = 0 )
 		{
 			priority = 10;
-			d = Vector3DUtils.getVector( 0, 0, 0 );
-			move = Vector3DUtils.getVector( 0, 0, 0 );
+			d = new Vector3D();
+			move = new Vector3D();
 			this.maxDistance = maxDistance;
 			this.acceleration = acceleration;
 		}
@@ -176,7 +175,7 @@ package org.flintparticles.threeD.actions
 					move.incrementBy( d );
 				} 
 			}
-			if ( !move.equals( Vector3DUtils.ZERO_VECTOR ) )
+			if ( move.x != 0 || move.y != 0 || move.z != 0 )
 			{
 				factor = time * _acc / move.length;
 				move.scaleBy( factor );

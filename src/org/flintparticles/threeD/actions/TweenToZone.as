@@ -33,7 +33,6 @@ package org.flintparticles.threeD.actions
 	import org.flintparticles.common.actions.ActionBase;
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.threeD.geom.Vector3DUtils;
 	import org.flintparticles.threeD.particles.Particle3D;
 	import org.flintparticles.threeD.zones.Zone3D;
 
@@ -54,7 +53,6 @@ package org.flintparticles.threeD.actions
 	public class TweenToZone extends ActionBase
 	{
 		private var _zone:Zone3D;
-		private var _temp:Vector3D;
 		
 		/**
 		 * The constructor creates a TweenToZone action for use by an emitter. 
@@ -100,15 +98,16 @@ package org.flintparticles.threeD.actions
 				data = p.dictionary[this];
 			}
 			
-			Vector3DUtils.assignVector( _temp, data.diff );
-			_temp.scaleBy( p.energy );
-			_temp.incrementBy( data.end );
-			Vector3DUtils.assignVector( p.position, _temp );
+			var pos:Vector3D = p.position;
+			var diff:Vector3D = data.diff;
+			var end:Vector3D = data.end;
+			var energy:Number = p.energy;
+			pos.x = diff.x * energy + end.x;
+			pos.y = diff.y * energy + end.y;
+			pos.z = diff.z * energy + end.z;
 		}
 	}
 }
-import org.flintparticles.threeD.geom.Vector3DUtils;
-
 import flash.geom.Vector3D;
 
 class TweenToZoneData
@@ -118,7 +117,7 @@ class TweenToZoneData
 	
 	public function TweenToZoneData( start:Vector3D, end:Vector3D )
 	{
-		this.diff = Vector3DUtils.vectorTo( end, start );
+		this.diff = start.subtract( end );
 		this.end = end.clone();
 	}
 }

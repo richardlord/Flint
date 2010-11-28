@@ -48,7 +48,6 @@ package org.flintparticles.threeD.actions
 		private var _acc:Vector3D;
 		private var _zone:Zone3D;
 		private var _invert:Boolean;
-		private var _temp:Vector3D;
 		
 		/**
 		 * The constructor creates a Jet action for use by 
@@ -67,8 +66,7 @@ package org.flintparticles.threeD.actions
 		 */
 		public function Jet( acceleration:Vector3D = null, zone:Zone3D = null, invertZone:Boolean = false )
 		{
-			_temp = Vector3DUtils.getVector( 0, 0, 0 );
-			this.acceleration = acceleration ? acceleration : Vector3DUtils.ZERO_VECTOR;
+			this.acceleration = acceleration ? acceleration : new Vector3D();
 			this.zone = zone;
 			this.invertZone = invertZone;
 		}
@@ -153,22 +151,23 @@ package org.flintparticles.threeD.actions
 		override public function update( emitter:Emitter, particle:Particle, time:Number ):void
 		{
 			var p:Particle3D = Particle3D( particle );
+			var v:Vector3D = p.velocity;
 			if( _zone.contains( p.position ) )
 			{
 				if( !_invert )
 				{
-					Vector3DUtils.assignVector( _temp, _acc );
-					_temp.scaleBy( time );
-					p.velocity.incrementBy( _temp );
+					v.x += _acc.x * time;
+					v.y += _acc.y * time;
+					v.z += _acc.z * time;
 				}
 			}
 			else
 			{
 				if( _invert )
 				{
-					Vector3DUtils.assignVector( _temp, _acc );
-					_temp.scaleBy( time );
-					p.velocity.incrementBy( _temp );
+					v.x += _acc.x * time;
+					v.y += _acc.y * time;
+					v.z += _acc.z * time;
 				}
 			}
 		}

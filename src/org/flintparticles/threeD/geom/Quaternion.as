@@ -460,7 +460,7 @@ package org.flintparticles.threeD.geom
 		public function toAxisRotation():Vector3D
 		{
 			var angle:Number = 2 * Math.acos( w );
-			var axis:Vector3D = Vector3DUtils.getVector( x, y, z );
+			var axis:Vector3D = new Vector3D( x, y, z );
 			axis.normalize();
 			axis.scaleBy( angle );
 			return axis;

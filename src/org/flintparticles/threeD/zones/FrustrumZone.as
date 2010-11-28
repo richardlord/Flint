@@ -30,12 +30,11 @@
 
 package org.flintparticles.threeD.zones 
 {
-	import flash.geom.Matrix3D;
-	import org.flintparticles.threeD.geom.Vector3DUtils;
-	import flash.geom.Vector3D;
 	import org.flintparticles.threeD.renderers.Camera;
-	
-	import flash.geom.Rectangle;	
+
+	import flash.geom.Matrix3D;
+	import flash.geom.Rectangle;
+	import flash.geom.Vector3D;
 
 	/**
 	 * The FrustrumZone zone defines a zone in the shape of a camera frustrum. The
@@ -140,7 +139,7 @@ package org.flintparticles.threeD.zones
 			var scale:Number = z / _camera.projectionDistance;
 			var x:Number = ( ( Math.random() * _viewRect.width ) + _viewRect.left ) * scale;
 			var y:Number = ( ( Math.random() * _viewRect.height ) + _viewRect.top ) * scale;
-			var p:Vector3D = Vector3DUtils.getPoint( x, y, z );
+			var p:Vector3D = new Vector3D( x, y, z, 1 );
 			var transform:Matrix3D = _camera.spaceTransform.clone();
 			transform.invert();
 			return transform.transformVector( p );

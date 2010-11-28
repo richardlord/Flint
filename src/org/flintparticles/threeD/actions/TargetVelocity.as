@@ -45,7 +45,6 @@ package org.flintparticles.threeD.actions
 	{
 		private var _vel:Vector3D;
 		private var _rate:Number;
-		private var _temp:Vector3D;
 		
 		/**
 		 * The constructor creates a TargetVelocity action for use by 
@@ -61,8 +60,7 @@ package org.flintparticles.threeD.actions
 		 */
 		public function TargetVelocity( targetVelocity:Vector3D = null, rate:Number = 0.1 )
 		{
-			_temp = Vector3DUtils.getVector( 0, 0, 0 );
-			this.targetVelocity = targetVelocity ? targetVelocity : Vector3DUtils.ZERO_VECTOR;
+			this.targetVelocity = targetVelocity ? targetVelocity : new Vector3D();
 			this.rate = rate;
 		}
 		
@@ -132,11 +130,11 @@ package org.flintparticles.threeD.actions
 		 */
 		override public function update( emitter:Emitter, particle:Particle, time:Number ):void
 		{
-			var p:Particle3D = Particle3D( particle );
-			Vector3DUtils.assignVector( _temp, _vel );
-			_temp.decrementBy( p.velocity );
-			_temp.scaleBy( _rate * time );
-			p.velocity.incrementBy( _temp );
+			var v:Vector3D = Particle3D( particle ).velocity;
+			var c:Number = _rate * time;
+			v.x += ( _vel.x - v.x ) * c;
+			v.y += ( _vel.y - v.y ) * c;
+			v.z += ( _vel.z - v.z ) * c;
 		}
 	}
 }

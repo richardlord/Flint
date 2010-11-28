@@ -63,7 +63,7 @@ package org.flintparticles.threeD.zones
 		 */
 		public function ConeZone( apex:Vector3D = null, axis:Vector3D = null, angle:Number = 0, height:Number = 0, truncatedHeight:Number = 0 )
 		{
-			this.apex = apex ? apex : Vector3DUtils.ZERO_POINT;
+			this.apex = apex ? apex : new Vector3D();
 			this.axis = axis ? axis : Vector3D.Y_AXIS;
 			this.angle = angle;
 			this.truncatedHeight = truncatedHeight;
@@ -160,7 +160,7 @@ package org.flintparticles.threeD.zones
 				init();
 			}
 
-			var q:Vector3D = Vector3DUtils.vectorTo( _apex, p );
+			var q:Vector3D = p.subtract( _apex );
 			var d:Number = q.dotProduct( _axis );
 			if( d < _minDist || d > _maxDist )
 			{

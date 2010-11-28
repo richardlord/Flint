@@ -34,7 +34,6 @@ package org.flintparticles.threeD.emitters
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.particles.ParticleFactory;
 	import org.flintparticles.threeD.geom.Quaternion;
-	import org.flintparticles.threeD.geom.Vector3DUtils;
 	import org.flintparticles.threeD.particles.Particle3D;
 	import org.flintparticles.threeD.particles.ParticleCreator3D;
 
@@ -99,7 +98,7 @@ package org.flintparticles.threeD.emitters
 		{
 			super();
 			_particleFactory = _creator;
-			_position = Vector3DUtils.getPoint( 0, 0, 0 );
+			_position = new Vector3D( 0, 0, 0, 1 );
 			_rotation = Quaternion.IDENTITY.clone();
 			_rotationTransform = new Matrix3D();
 			_rotTransformRotation = Quaternion.IDENTITY.clone();

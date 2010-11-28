@@ -33,7 +33,6 @@ package org.flintparticles.threeD.actions
 	import org.flintparticles.common.actions.ActionBase;
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.threeD.geom.Vector3DUtils;
 	import org.flintparticles.threeD.particles.Particle3D;
 
 	/**
@@ -90,7 +89,9 @@ package org.flintparticles.threeD.actions
 			var scale:Number = 1 - ( _friction * time ) / ( Math.sqrt( len2 ) * p.mass );
 			if( scale < 0 )
 			{
-				Vector3DUtils.assignVector( p.velocity, Vector3DUtils.ZERO_VECTOR );
+				p.velocity.x = 0;
+				p.velocity.y = 0;
+				p.velocity.z = 0;
 			}
 			else
 			{

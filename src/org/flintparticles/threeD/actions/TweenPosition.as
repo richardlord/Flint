@@ -49,7 +49,6 @@ package org.flintparticles.threeD.actions
 		private var _start:Vector3D;
 		private var _end:Vector3D;
 		private var _diff:Vector3D;
-		private var _temp:Vector3D;
 		
 		/**
 		 * The constructor creates a TweenPosition action for use by 
@@ -69,9 +68,8 @@ package org.flintparticles.threeD.actions
 		 */
 		public function TweenPosition( start:Vector3D = null, end:Vector3D = null )
 		{
-			_temp = Vector3DUtils.getVector( 0, 0, 0 );
-			this.start = start ? start : Vector3DUtils.ZERO_POINT;
-			this.end = end ? end : Vector3DUtils.ZERO_POINT;
+			this.start = start ? start : new Vector3D();
+			this.end = end ? end : new Vector3D();
 		}
 		
 		/**
@@ -86,7 +84,7 @@ package org.flintparticles.threeD.actions
 			_start = Vector3DUtils.clonePoint( value );
 			if( _end )
 			{
-				_diff = Vector3DUtils.vectorTo( _end, _start );
+				_diff = _start.subtract( _end );
 			}
 		}
 		
@@ -102,7 +100,7 @@ package org.flintparticles.threeD.actions
 			_end = Vector3DUtils.clonePoint( value );
 			if( _start )
 			{
-				_diff = Vector3DUtils.vectorTo( _end, _start );
+				_diff = _start.subtract( _end );
 			}
 		}
 		
@@ -111,10 +109,11 @@ package org.flintparticles.threeD.actions
 		 */
 		override public function update( emitter:Emitter, particle:Particle, time:Number ):void
 		{
-			Vector3DUtils.assignVector( _temp, _diff );
-			_temp.scaleBy( particle.energy );
-			_temp.incrementBy( _end );
-			Vector3DUtils.assignVector( Particle3D( particle ).position, _temp );
+			var p:Vector3D = Particle3D( particle ).position;
+			var r:Number = particle.energy;
+			p.x = _diff.x * r + _end.x;
+			p.y = _diff.y * r + _end.y;
+			p.z = _diff.z * r + _end.z;
 		}
 	}
 }

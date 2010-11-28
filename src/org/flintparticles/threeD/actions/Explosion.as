@@ -83,7 +83,7 @@ package org.flintparticles.threeD.actions
 		public function Explosion( power:Number = 0, center:Vector3D = null, expansionRate:Number = 300, depth:Number = 10, epsilon:Number = 1 )
 		{
 			this.power = power;
-			this.center = center ? center : Vector3DUtils.ZERO_POINT;
+			this.center = center ? center : new Vector3D();
 			this.expansionRate = expansionRate;
 			this.depth = depth;
 			this.epsilon = epsilon;
@@ -260,7 +260,7 @@ package org.flintparticles.threeD.actions
 		override public function update( emitter:Emitter, particle:Particle, time:Number ):void
 		{
 			var p:Particle3D = Particle3D( particle );
-			var dist:Vector3D = Vector3DUtils.vectorTo( _center, p.position );
+			var dist:Vector3D = p.position.subtract( _center );
 			var dSq:Number = dist.lengthSquared;
 			if( dSq == 0 )
 			{

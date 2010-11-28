@@ -145,8 +145,10 @@ package org.flintparticles.threeD.initializers
 			{
 				angle = _min + Math.random() * ( _max - _min );
 			}
-			Vector3DUtils.assignVector( p.angVelocity, axis );
-			p.angVelocity.scaleBy( angle );
+			var v:Vector3D = p.angVelocity;
+			v.x = axis.x * angle;
+			v.y = axis.y * angle;
+			v.z = axis.z * angle;
 		}
 	}
 }

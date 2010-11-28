@@ -62,10 +62,10 @@ package org.flintparticles.threeD.actions
 		 */
 		public function TurnTowardsPoint( point:Vector3D = null, power:Number = 0 )
 		{
-			_velDirection = Vector3DUtils.getVector( 0, 0, 0 );
-			_toTarget = Vector3DUtils.getVector( 0, 0, 0 );
+			_velDirection = new Vector3D();
+			_toTarget = new Vector3D();
 			this.power = power;
-			this.point = point ? point : Vector3DUtils.ZERO_POINT;
+			this.point = point ? point : new Vector3D();
 		}
 		
 		/**
@@ -134,18 +134,26 @@ package org.flintparticles.threeD.actions
 		override public function update( emitter:Emitter, particle:Particle, time:Number ):void
 		{
 			var p:Particle3D = Particle3D( particle );
-			Vector3DUtils.assignVector( _velDirection, p.velocity );
-			_velDirection.normalize();
-			var velLength:Number = p.velocity.length;
-			var acc:Number = power * time;
-			Vector3DUtils.assignVector( _toTarget, _point );
-			_toTarget.decrementBy( p.position );
-			var len:Number = _toTarget.length;
-			if( len == 0 )
+			
+			var pos:Vector3D = p.position;
+			_toTarget.x = _point.x - pos.x;
+			_toTarget.y = _point.y - pos.y;
+			_toTarget.z = _point.z - pos.z;
+			
+			if( _toTarget.x == 0 &&  _toTarget.y == 0  && _toTarget.z == 0 )
 			{
 				return;
 			}
-			_toTarget.scaleBy( 1 / len );
+			_toTarget.normalize();
+			
+			var vel:Vector3D = p.velocity;
+			var velLength:Number = vel.length;
+			
+			_velDirection.x = vel.x / velLength;
+			_velDirection.y = vel.y / velLength;
+			_velDirection.z = vel.z / velLength;
+			
+			var acc:Number = power * time;
 			_velDirection.scaleBy( _toTarget.dotProduct( _velDirection ) );
 			_toTarget.decrementBy( _velDirection );
 			_toTarget.scaleBy( acc / _toTarget.length );

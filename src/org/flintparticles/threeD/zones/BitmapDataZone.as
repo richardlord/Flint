@@ -77,9 +77,9 @@ package org.flintparticles.threeD.zones
 		public function BitmapDataZone( bitmapData : BitmapData = null, corner:Vector3D = null, top:Vector3D = null, left:Vector3D = null )
 		{
 			_bitmapData = bitmapData;
-			this.corner = corner ? corner : Vector3DUtils.ZERO_POINT;
+			this.corner = corner ? corner : new Vector3D();
 			this.top = top ? top : Vector3D.X_AXIS;
-			this.left = left ? left : Vector3DUtils.MINUS_Y_AXIS;
+			this.left = left ? left : new Vector3D( 0, -1, 0 );
 			if( _bitmapData )
 			{
 				_dirty = true;

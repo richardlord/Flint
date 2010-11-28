@@ -58,7 +58,7 @@ package org.flintparticles.threeD.zones
 		 */
 		public function SphereZone( center:Vector3D = null, outerRadius:Number = 0, innerRadius:Number = 0 )
 		{
-			this.center = center ? center : Vector3DUtils.ZERO_POINT;
+			this.center = center ? center : new Vector3D();
 			this.innerRadius = innerRadius;
 			this.outerRadius = outerRadius;
 		}

@@ -43,7 +43,6 @@ package org.flintparticles.threeD.activities
 	public class MoveEmitter extends ActivityBase
 	{
 		private var _vel:Vector3D;
-		private var _temp:Vector3D;
 		
 		/**
 		 * The constructor creates a MoveEmitter activity for use by 
@@ -59,8 +58,7 @@ package org.flintparticles.threeD.activities
 		 */
 		public function MoveEmitter( velocity:Vector3D = null )
 		{
-			_temp = Vector3DUtils.getVector( 0, 0, 0 );
-			this.velocity = velocity ? velocity : Vector3DUtils.ZERO_VECTOR;
+			this.velocity = velocity ? velocity : new Vector3D();
 		}
 		
 		/**
@@ -116,9 +114,10 @@ package org.flintparticles.threeD.activities
 		 */
 		override public function update( emitter : Emitter, time : Number ) : void
 		{
-			Vector3DUtils.assignVector( _temp, _vel );
-			_temp.scaleBy( time );
-			Emitter3D( emitter ).position.incrementBy( _temp );
+			var p:Vector3D = Emitter3D( emitter ).position;
+			p.x += _vel.x * time;
+			p.y += _vel.y * time;
+			p.z += _vel.z * time;
 		}
 	}
 }

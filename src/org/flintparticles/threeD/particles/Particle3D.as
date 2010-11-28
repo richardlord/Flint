@@ -112,10 +112,10 @@ package org.flintparticles.threeD.particles
 			super();
 			position = new Vector3D( 0, 0, 0, 1 );
 			projectedPosition = new Vector3D( 0, 0, 0, 1 );
-			faceAxis = new Vector3D( 1, 0, 0, 0 );
-			velocity = new Vector3D( 0, 0, 0, 0 );
+			faceAxis = new Vector3D( 1, 0, 0 );
+			velocity = new Vector3D();
 			rotation = new Quaternion( 1, 0, 0, 0 );
-			angVelocity = new Vector3D( 0, 0, 0, 0 );
+			angVelocity = new Vector3D();
 		}
 		
 		/**

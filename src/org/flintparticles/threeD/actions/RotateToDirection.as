@@ -60,9 +60,9 @@ package org.flintparticles.threeD.actions
 		 */
 		public function RotateToDirection()
 		{
-			_axis = Vector3DUtils.getVector( 0, 0, 0 );
-			_temp = Vector3DUtils.getVector( 0, 0, 0 );
-			_target = Vector3DUtils.getVector( 0, 0, 0 );
+			_axis = new Vector3D();
+			_temp = new Vector3D();
+			_target = new Vector3D();
 		}
 
 		/**
@@ -71,22 +71,26 @@ package org.flintparticles.threeD.actions
 		override public function update( emitter : Emitter, particle : Particle, time : Number ) : void
 		{
 			var p : Particle3D = Particle3D( particle );
-			if ( p.velocity.equals( Vector3DUtils.ZERO_VECTOR ) )
+			var vel : Vector3D = p.velocity;
+			var len:Number = vel.length;
+			if ( len == 0 )
 			{
 				return;
 			}
-			Vector3DUtils.assignVector( _target, p.velocity );
-			_target.normalize();
-			if( _target.equals( p.faceAxis ) )
+			_target.x = vel.x / len;
+			_target.y = vel.y / len;
+			_target.z = vel.z / len;
+			
+			var faceAxis:Vector3D = p.faceAxis;
+			if( _target.x == faceAxis.x && _target.y == faceAxis.y && _target.z == faceAxis.z )
 			{
 				p.rotation.assign( Quaternion.IDENTITY );
 				return;
 			}
-			Vector3DUtils.assignVector( _temp, p.faceAxis );
-			_temp.negate();
-			if( _target.equals( _temp ) )
+			
+			if( _target.x == -faceAxis.x && _target.y == -faceAxis.y && _target.z == -faceAxis.z )
 			{
-				var v:Vector3D = Vector3DUtils.getPerpendicular( p.faceAxis );
+				var v:Vector3D = Vector3DUtils.getPerpendicular( faceAxis );
 				p.rotation.reset( 0, v.x, v.y, v.z );
 				return;
 			}

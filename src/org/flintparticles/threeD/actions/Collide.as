@@ -30,7 +30,6 @@
 
 package org.flintparticles.threeD.actions 
 {
-	import org.flintparticles.threeD.geom.Vector3DUtils;
 	import org.flintparticles.common.actions.ActionBase;
 	import org.flintparticles.common.activities.FrameUpdatable;
 	import org.flintparticles.common.activities.UpdateOnFrame;
@@ -83,7 +82,7 @@ package org.flintparticles.threeD.actions
 		{
 			priority = -20;
 			_maxDistance = 0;
-			d = Vector3DUtils.getVector( 0, 0, 0 );
+			d = new Vector3D();
 			this.bounce = bounce;
 		}
 		

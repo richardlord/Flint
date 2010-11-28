@@ -52,8 +52,8 @@ package org.flintparticles.threeD.zones
 		 */
 		public function LineZone( start:Vector3D = null, end:Vector3D = null )
 		{
-			this.start = start ? start : Vector3DUtils.ZERO_POINT;
-			this.end = end ? end : Vector3DUtils.ZERO_POINT;
+			this.start = start ? start : new Vector3D();
+			this.end = end ? end : new Vector3D();
 		}
 		
 		/**
@@ -86,7 +86,7 @@ package org.flintparticles.threeD.zones
 		{
 			if( _start && _end )
 			{
-				_length = Vector3DUtils.vectorTo( _start, _end );
+				_length = _end.subtract( _start );
 			}
 		}
 
@@ -100,14 +100,14 @@ package org.flintparticles.threeD.zones
 		 */
 		public function contains( p:Vector3D ):Boolean
 		{
-			var vectorToPoint:Vector3D = Vector3DUtils.vectorTo( _start, p );
+			var vectorToPoint:Vector3D = p.subtract( _start );
 			// is not on line through points if cross product is not zero
 			if( ! vectorToPoint.crossProduct( _length ).lengthSquared < 0.00001 )
 			{
 				return false;
 			}
 			// is not between points if dot product of line to each point is the same sign
-			return vectorToPoint.dotProduct( Vector3DUtils.vectorTo( _end, p ) ) <= 0;
+			return vectorToPoint.dotProduct( p.subtract( _end ) ) <= 0;
 		}
 		
 		/**

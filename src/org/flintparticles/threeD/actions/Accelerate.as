@@ -58,7 +58,7 @@ package org.flintparticles.threeD.actions
 		 */
 		public function Accelerate( acceleration:Vector3D = null )
 		{
-			this.acceleration = acceleration ? acceleration : new Vector3D( 0, 0, 0, 0 );
+			this.acceleration = acceleration ? acceleration : new Vector3D();
 		}
 		
 		/**
