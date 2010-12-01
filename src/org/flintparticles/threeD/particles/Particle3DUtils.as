@@ -104,7 +104,7 @@ package org.flintparticles.threeD.particles
 			var x:int;
 			var halfSize:Number = size * 0.5;
 			offset.x += halfSize;
-			offset.y -= halfSize;
+			offset.y += halfSize;
 			var p:Particle3D;
 			var b:BitmapData;
 			var m:Bitmap;
@@ -117,7 +117,7 @@ package org.flintparticles.threeD.particles
 					for( x = 0; x < width; x += size )
 					{
 						p = Particle3D( factory.createParticle() );
-						p.position = new Vector3D( x + offset.x, -y + offset.y, offset.z, 1 );
+						p.position = new Vector3D( x + offset.x, y + offset.y, offset.z, 1 );
 						b = new BitmapData( size, size, true, 0 );
 						b.copyPixels( bitmapData, new Rectangle( x, y, size, size ), zero );
 						m = new Bitmap( b );
@@ -138,7 +138,7 @@ package org.flintparticles.threeD.particles
 					for( x = 0; x < width; ++x )
 					{
 						p = new Particle3D();
-						p.position = new Vector3D( x + offset.x, -y + offset.y, offset.z, 1 );
+						p.position = new Vector3D( x + offset.x, y + offset.y, offset.z, 1 );
 						b = new BitmapData( size, size, true, 0 );
 						b.copyPixels( bitmapData, new Rectangle( x, y, size, size ), zero );
 						m = new Bitmap( b );

@@ -63,7 +63,7 @@ package org.flintparticles.threeD.zones
 		{
 			this.corner = corner ? corner : new Vector3D();
 			this.side1 = side1 ? side1 : Vector3D.X_AXIS;
-			this.side2 = side2 ? side2 : new Vector3D( 0, -1, 0 );
+			this.side2 = side2 ? side2 : new Vector3D( 0, 1, 0 );
 		}
 		
 		/**

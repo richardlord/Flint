@@ -52,7 +52,7 @@ package org.flintparticles.threeD.renderers
 		private var _spaceTransform:Matrix3D;
 		
 		private var _position:Vector3D;
-		private var _up:Vector3D;
+		private var _down:Vector3D;
 		private var _target:Vector3D;
 		
 		private var _controller:CameraController;
@@ -74,7 +74,7 @@ package org.flintparticles.threeD.renderers
 		{
 			_position = new Vector3D( 0, 0, 0, 1 );
 			_target = new Vector3D( 0, 0, 0, 1 );
-			_up = new Vector3D( 0, 1 , 0 );
+			_down = new Vector3D( 0, 1, 0 );
 			_pDirection = new Vector3D( 0, 0, 1 );
 		}
 
@@ -135,16 +135,16 @@ package org.flintparticles.threeD.renderers
 		}
 		
 		/**
-		 * The up direction for the camera. Is this is not perpendicular to the direction, the camera
-		 * is tilted down or up from this up direction to point in the direction or at the target.
+		 * The down direction for the camera. If this is not perpendicular to the direction the camera points, 
+		 * the camera is tilted down or up from this up direction to point in the direction or at the target.
 		 */
-		public function get up():Vector3D
+		public function get down():Vector3D
 		{
-			return _up.clone();
+			return _down.clone();
 		}
-		public function set up( value:Vector3D ):void
+		public function set down( value:Vector3D ):void
 		{
-			_up = Vector3DUtils.cloneUnit( value );
+			_down = Vector3DUtils.cloneUnit( value );
 			_spaceTransform = null;
 			_pTrack = null;
 		}
@@ -178,10 +178,10 @@ package org.flintparticles.threeD.renderers
 		{
 			if( !_spaceTransform )
 			{
-				var realUp:Vector3D = _direction.crossProduct( _track );
+				var realDown:Vector3D = _direction.crossProduct( _track );
 				_spaceTransform = Matrix3DUtils.newBasisTransform( 
 					Vector3DUtils.cloneUnit( _track ),
-					Vector3DUtils.cloneUnit( realUp ), 
+					Vector3DUtils.cloneUnit( realDown ), 
 					Vector3DUtils.cloneUnit( _direction ) );
 				_spaceTransform.prependTranslation( -_position.x, -_position.y, -_position.z );
 			}
@@ -210,8 +210,8 @@ package org.flintparticles.threeD.renderers
 		 */
 		public function lift( distance:Number ):void
 		{
-			var liftVector:Vector3D = _up.clone();
-			liftVector.scaleBy( distance );
+			var liftVector:Vector3D = _down.clone();
+			liftVector.scaleBy( -distance );
 			_position.incrementBy( liftVector );
 			_spaceTransform = null;
 		}
@@ -252,7 +252,7 @@ package org.flintparticles.threeD.renderers
 		 */
 		public function pan( angle:Number ):void
 		{
-			var m:Matrix3D = Matrix3DUtils.newRotate( angle, _up );
+			var m:Matrix3D = Matrix3DUtils.newRotate( angle, _down );
 			_pDirection = m.transformVector( _direction );
 			_pTrack = null;
 			_spaceTransform = null;
@@ -268,7 +268,7 @@ package org.flintparticles.threeD.renderers
 		public function roll( angle:Number ):void
 		{
 			var m:Matrix3D = Matrix3DUtils.newRotate( angle, _front );
-			_up = m.transformVector( _up );
+			_down = m.transformVector( _down );
 			_pTrack = null;
 			_spaceTransform = null;
 		}
@@ -285,7 +285,7 @@ package org.flintparticles.threeD.renderers
 			{
 				throw new Error( "Attempting to orbit camera when no target is set" );
 			}
-			var m:Matrix3D = Matrix3DUtils.newRotate( -angle, up );
+			var m:Matrix3D = Matrix3DUtils.newRotate( -angle, down );
 			_position = m.transformVector( _position );
 			_pDirection = null;
 			_pTrack = null;
@@ -347,7 +347,7 @@ package org.flintparticles.threeD.renderers
 		{
 			if( _pTrack == null )
 			{
-				_pTrack = _up.crossProduct( _direction );
+				_pTrack = _down.crossProduct( _direction );
 			}
 			_pFront == null;
 			return _pTrack;
@@ -357,7 +357,7 @@ package org.flintparticles.threeD.renderers
 		{
 			if( _pFront == null )
 			{
-				_pFront = _track.crossProduct( _up );
+				_pFront = _track.crossProduct( _down );
 			}
 			return _pFront;
 		}

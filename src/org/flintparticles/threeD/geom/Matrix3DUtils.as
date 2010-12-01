@@ -65,6 +65,15 @@ package org.flintparticles.threeD.geom
 			return rotate;
 		}
 
+		/**
+		 * Creates a coordinate system transformation such that the vectors
+		 * indicated are transformed to the x, y and z axes. The vectors need
+		 * not be perpendicular, but they must form a basis for 3D space.
+		 * 
+		 * @param axisX The vector that is translated to ( 1, 0, 0 ) by the transform.
+		 * @param axisY The vector that is translated to ( 0, 1, 0 ) by the transform.
+		 * @param axisZ The vector that is translated to ( 0, 0, 1 ) by the transform.
+		 */
 		public static function newBasisTransform( axisX:Vector3D, axisY:Vector3D, axisZ:Vector3D ):Matrix3D
 		{
 			var m:Matrix3D = new Matrix3D( Vector.<Number>( [ 

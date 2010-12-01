@@ -462,7 +462,7 @@ package org.flintparticles.threeD.renderers
 			var facing:Vector3D = new Vector3D();
 			
 			// The following is very much more efficient than
-			// facing = transform.transformVector( f );
+			// facing = camera.transform.transformVector( f );
 			facing.x = _rawCameraTransform[0] * f.x + _rawCameraTransform[4] * f.y + _rawCameraTransform[8] * f.z + _rawCameraTransform[12] * f.w;
 			facing.y = _rawCameraTransform[1] * f.x + _rawCameraTransform[5] * f.y + _rawCameraTransform[9] * f.z + _rawCameraTransform[13] * f.w;
 			facing.z = _rawCameraTransform[2] * f.x + _rawCameraTransform[6] * f.y + _rawCameraTransform[10] * f.z + _rawCameraTransform[14] * f.w;
@@ -470,7 +470,7 @@ package org.flintparticles.threeD.renderers
 			
 			if( facing.x != 0 || facing.y != 0 )
 			{
-				rot = Math.atan2( -facing.y, facing.x );
+				rot = Math.atan2( facing.y, facing.x );
 			}
 
 			var matrix:Matrix;
@@ -478,11 +478,11 @@ package org.flintparticles.threeD.renderers
 			{
 				var cos:Number = scale * Math.cos( rot );
 				var sin:Number = scale * Math.sin( rot );
-				matrix = new Matrix( cos, sin, -sin, cos, pos.x + _halfWidth, -pos.y + _halfHeight );
+				matrix = new Matrix( cos, sin, -sin, cos, pos.x + _halfWidth, pos.y + _halfHeight );
 			}
 			else
 			{
-				matrix = new Matrix( scale, 0, 0, scale, pos.x + _halfWidth, -pos.y + _halfHeight );
+				matrix = new Matrix( scale, 0, 0, scale, pos.x + _halfWidth, pos.y + _halfHeight );
 			}
 
 			_bitmapData.draw( particle.image, matrix, particle.colorTransform, DisplayObject( particle.image ).blendMode, null, _smoothing );

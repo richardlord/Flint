@@ -157,7 +157,7 @@ package org.flintparticles.threeD.renderers
 					img.scaleX = scale;
 					img.scaleY = scale;
 					img.x = pos.x;
-					img.y = -pos.y;
+					img.y = pos.y;
 					img.transform.colorTransform = particle.colorTransform;
 					img.visible = true;
 					if( particle.rotation.equals( Quaternion.IDENTITY ) )
@@ -179,7 +179,7 @@ package org.flintparticles.threeD.renderers
 					
 					if( facing.x != 0 || facing.y != 0 )
 					{
-						var angle:Number = Math.atan2( -facing.y, facing.x );
+						var angle:Number = Math.atan2( facing.y, facing.x );
 						img.rotation = angle * toDegrees;
 					}
 				}
