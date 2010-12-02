@@ -50,7 +50,7 @@ package org.flintparticles.common.counters
 		private var _particlesPassed : uint;
 		private var _timePassed : Number;
 		private var _easing : Function;
-		private var _stop : Boolean = false;
+		private var _running : Boolean = false;
 
 		/**
 		 * The constructor creates a TimePeriod counter for use by an emitter. To
@@ -134,6 +134,7 @@ package org.flintparticles.common.counters
 		 */
 		public function startEmitter( emitter:Emitter ) : uint
 		{
+			_running = true;
 			_particlesPassed = 0;
 			_timePassed = 0;
 			return 0;
@@ -154,7 +155,7 @@ package org.flintparticles.common.counters
 		 */
 		public function updateEmitter( emitter:Emitter, time : Number ) : uint
 		{
-			if( _stop || _timePassed >= _duration )
+			if( !_running || _timePassed >= _duration )
 			{
 				return 0;
 			}
@@ -179,7 +180,7 @@ package org.flintparticles.common.counters
 		 */
 		public function stop():void
 		{
-			_stop = true;
+			_running = false;
 		}
 		
 		/**
@@ -187,7 +188,7 @@ package org.flintparticles.common.counters
 		 */
 		public function resume():void
 		{
-			_stop = false;
+			_running = true;
 		}
 
 		/**
@@ -196,6 +197,14 @@ package org.flintparticles.common.counters
 		public function get complete():Boolean
 		{
 			return _particlesPassed == _particles;
+		}
+		
+		/**
+		 * Indicates if the counter is currently emitting particles
+		 */
+		public function get running():Boolean
+		{
+			return (_running && _timePassed < _duration);
 		}
 	}
 }

@@ -105,5 +105,13 @@ package org.flintparticles.common.counters
 		{
 			return true;
 		}
+		
+		/**
+		 * Indicates if the counter is currently emitting particles
+		 */
+		public function get running():Boolean
+		{
+			return false;
+		}
 	}
 }

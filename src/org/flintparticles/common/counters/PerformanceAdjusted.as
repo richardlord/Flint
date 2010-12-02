@@ -50,7 +50,7 @@ package org.flintparticles.common.counters
 		private var _rate:Number;
 		private var _times:Array;
 		private var _timeToRateCheck:Number;
-		private var _stop:Boolean;
+		private var _running:Boolean;
 		
 		/**
 		 * The constructor creates a PerformanceAdjusted counter for use by an 
@@ -70,7 +70,7 @@ package org.flintparticles.common.counters
 		 */
 		public function PerformanceAdjusted( rateMin:Number = 0, rateMax:Number = 0, targetFrameRate:Number = 24 )
 		{
-			_stop = false;
+			_running = false;
 			_rateMin = rateMin;
 			_rate = _rateMax = rateMax;
 			_target = targetFrameRate;
@@ -128,7 +128,7 @@ package org.flintparticles.common.counters
 		 */
 		public function stop():void
 		{
-			_stop = true;
+			_running = false;
 		}
 		
 		/**
@@ -136,7 +136,7 @@ package org.flintparticles.common.counters
 		 */
 		public function resume():void
 		{
-			_stop = false;
+			_running = true;
 		}
 		
 		/**
@@ -153,6 +153,7 @@ package org.flintparticles.common.counters
 		 */
 		public function startEmitter( emitter:Emitter ):uint
 		{
+			_running = true;
 			newTimeToNext();
 			return 0;
 		}
@@ -178,7 +179,7 @@ package org.flintparticles.common.counters
 		 */
 		public function updateEmitter( emitter:Emitter, time:Number ):uint
 		{
-			if( _stop )
+			if( !_running )
 			{
 				return 0;
 			}
@@ -224,6 +225,14 @@ package org.flintparticles.common.counters
 		public function get complete():Boolean
 		{
 			return false;
+		}
+		
+		/**
+		 * Indicates if the counter is currently emitting particles
+		 */
+		public function get running():Boolean
+		{
+			return _running;
 		}
 	}
 }
