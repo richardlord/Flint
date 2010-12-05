@@ -41,7 +41,7 @@ package org.flintparticles.common.counters
 		private var _timeToNext:Number;
 		private var _period:Number;
 		private var _quantity:Number;
-		private var _stop:Boolean;
+		private var _running:Boolean;
 		
 		/**
 		 * The constructor creates a Pulse counter for use by an emitter. To
@@ -54,7 +54,7 @@ package org.flintparticles.common.counters
 		 */
 		public function Pulse( period:Number = 1, quantity:uint = 0 )
 		{
-			_stop = false;
+			_running = false;
 			_quantity = quantity;
 			_period = period;
 		}
@@ -64,7 +64,7 @@ package org.flintparticles.common.counters
 		 */
 		public function stop():void
 		{
-			_stop = true;
+			_running = false;
 		}
 		
 		/**
@@ -72,7 +72,7 @@ package org.flintparticles.common.counters
 		 */
 		public function resume():void
 		{
-			_stop = false;
+			_running = true;
 		}
 		
 		/**
@@ -113,6 +113,7 @@ package org.flintparticles.common.counters
 		 */
 		public function startEmitter( emitter:Emitter ):uint
 		{
+			_running = true;
 			_timeToNext = _period;
 			return _quantity;
 		}
@@ -132,7 +133,7 @@ package org.flintparticles.common.counters
 		 */
 		public function updateEmitter( emitter:Emitter, time:Number ):uint
 		{
-			if( _stop )
+			if( !_running )
 			{
 				return 0;
 			}
@@ -153,6 +154,14 @@ package org.flintparticles.common.counters
 		public function get complete():Boolean
 		{
 			return false;
+		}
+		
+		/**
+		 * Indicates if the counter is currently emitting particles
+		 */
+		public function get running():Boolean
+		{
+			return _running;
 		}
 	}
 }

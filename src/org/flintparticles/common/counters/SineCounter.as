@@ -42,7 +42,7 @@ package org.flintparticles.common.counters
 		private var _rateMin:Number;
 		private var _rateMax:Number;
 		private var _period:Number;
-		private var _stop:Boolean;
+		private var _running:Boolean;
 		private var _timePassed:Number;
 		private var _factor:Number;
 		private var _scale:Number;
@@ -61,7 +61,7 @@ package org.flintparticles.common.counters
 		 */
 		public function SineCounter( period:Number = 1, rateMax:Number = 0, rateMin:Number = 0 )
 		{
-			_stop = false;
+			_running = false;
 			_period = period;
 			_rateMin = rateMin;
 			_rateMax = rateMax;
@@ -74,7 +74,7 @@ package org.flintparticles.common.counters
 		 */
 		public function stop():void
 		{
-			_stop = true;
+			_running = false;
 		}
 		
 		/**
@@ -82,7 +82,7 @@ package org.flintparticles.common.counters
 		 */
 		public function resume():void
 		{
-			_stop = false;
+			_running = true;
 			_emitted = 0;
 		}
 		
@@ -141,6 +141,7 @@ package org.flintparticles.common.counters
 		 */
 		public function startEmitter( emitter:Emitter ):uint
 		{
+			_running = true;
 			_timePassed = 0;
 			_emitted = 0;
 			return 0;
@@ -161,7 +162,7 @@ package org.flintparticles.common.counters
 		 */
 		public function updateEmitter( emitter:Emitter, time:Number ):uint
 		{
-			if( _stop )
+			if( !_running )
 			{
 				return 0;
 			}
@@ -179,6 +180,14 @@ package org.flintparticles.common.counters
 		public function get complete():Boolean
 		{
 			return false;
+		}
+		
+		/**
+		 * Indicates if the counter is currently emitting particles
+		 */
+		public function get running():Boolean
+		{
+			return _running;
 		}
 	}
 }

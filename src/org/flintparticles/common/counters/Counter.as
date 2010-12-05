@@ -85,5 +85,10 @@ package org.flintparticles.common.counters
 		 * Indicates if the counter has emitted all its particles
 		 */
 		function get complete():Boolean;
+		
+		/**
+		 * Indicates if the counter is currently emitting particles
+		 */
+		function get running():Boolean;
 	}
 }
