@@ -222,9 +222,12 @@ package org.flintparticles.threeD.actions
 						other.velocity.y -= d.y * f2;
 						other.velocity.z -= d.z * f2;
 						
-						var ev:ParticleEvent = new ParticleEvent( ParticleEvent.PARTICLES_COLLISION, p );
-						ev.otherObject = other;
-						emitter.dispatchEvent( ev );
+						if ( emitter.hasEventListener( ParticleEvent.PARTICLES_COLLISION ) )
+						{
+							var ev:ParticleEvent = new ParticleEvent( ParticleEvent.PARTICLES_COLLISION, p );
+							ev.otherObject = other;
+							emitter.dispatchEvent( ev );
+						}
 					}
 				} 
 			}

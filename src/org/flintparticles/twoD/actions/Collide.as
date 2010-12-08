@@ -223,9 +223,12 @@ package org.flintparticles.twoD.actions
 						p.velY -= f1 * dy;
 						other.velX -= f2 * dx;
 						other.velY -= f2 * dy;
-						var ev:ParticleEvent = new ParticleEvent( ParticleEvent.PARTICLES_COLLISION, p );
-						ev.otherObject = other;
-						emitter.dispatchEvent( ev );
+						if ( emitter.hasEventListener( ParticleEvent.PARTICLES_COLLISION ) )
+						{
+							var ev:ParticleEvent = new ParticleEvent( ParticleEvent.PARTICLES_COLLISION, p );
+							ev.otherObject = other;
+							emitter.dispatchEvent( ev );
+						}
 					}
 				} 
 			}

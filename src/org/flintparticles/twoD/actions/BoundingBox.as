@@ -167,25 +167,37 @@ package org.flintparticles.twoD.actions
 			{
 				p.velX = -p.velX * _bounce;
 				p.x += 2 * ( _right - position );
-				emitter.dispatchEvent( new ParticleEvent( ParticleEvent.BOUNDING_BOX_COLLISION, p ) );
+				if ( emitter.hasEventListener( ParticleEvent.BOUNDING_BOX_COLLISION ) )
+				{
+					emitter.dispatchEvent( new ParticleEvent( ParticleEvent.BOUNDING_BOX_COLLISION, p ) );
+				}
 			}
 			else if ( p.velX < 0 && ( position = p.x - radius ) <= _left )
 			{
 				p.velX = -p.velX * _bounce;
 				p.x += 2 * ( _left - position );
-				emitter.dispatchEvent( new ParticleEvent( ParticleEvent.BOUNDING_BOX_COLLISION, p ) );
+				if ( emitter.hasEventListener( ParticleEvent.BOUNDING_BOX_COLLISION ) )
+				{
+					emitter.dispatchEvent( new ParticleEvent( ParticleEvent.BOUNDING_BOX_COLLISION, p ) );
+				}
 			}
 			if ( p.velY > 0 && ( position = p.y + radius ) >= _bottom )
 			{
 				p.velY = -p.velY * _bounce;
 				p.y += 2 * ( _bottom - position );
-				emitter.dispatchEvent( new ParticleEvent( ParticleEvent.BOUNDING_BOX_COLLISION, p ) );
+				if ( emitter.hasEventListener( ParticleEvent.BOUNDING_BOX_COLLISION ) )
+				{
+					emitter.dispatchEvent( new ParticleEvent( ParticleEvent.BOUNDING_BOX_COLLISION, p ) );
+				}
 			}
 			else if ( p.velY < 0 && ( position = p.y - radius ) <= _top )
 			{
 				p.velY = -p.velY * _bounce;
 				p.y += 2 * ( _top - position );
-				emitter.dispatchEvent( new ParticleEvent( ParticleEvent.BOUNDING_BOX_COLLISION, p ) );
+				if ( emitter.hasEventListener( ParticleEvent.BOUNDING_BOX_COLLISION ) )
+				{
+					emitter.dispatchEvent( new ParticleEvent( ParticleEvent.BOUNDING_BOX_COLLISION, p ) );
+				}
 			}
 		}
 	}

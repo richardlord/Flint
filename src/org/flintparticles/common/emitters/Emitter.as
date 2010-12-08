@@ -643,7 +643,10 @@ package org.flintparticles.common.emitters {
 				Initializer( _initializers[i] ).initialize( this, particle );
 			}
 			_particles.push( particle );
-			dispatchEvent( new ParticleEvent( ParticleEvent.PARTICLE_CREATED, particle ) );
+			if( hasEventListener( ParticleEvent.PARTICLE_CREATED ) )
+			{
+				dispatchEvent( new ParticleEvent( ParticleEvent.PARTICLE_CREATED, particle ) );
+			}
 			return particle;
 		}
 		
@@ -684,20 +687,41 @@ package org.flintparticles.common.emitters {
 					}
 				}
 			}
-			for( i = 0; i < len; ++i )
+			if ( hasEventListener( ParticleEvent.PARTICLE_ADDED ) )
 			{
-				_particles.push( particles[i] );
-				dispatchEvent( new ParticleEvent( ParticleEvent.PARTICLE_ADDED, particles[i] ) );
+				for( i = 0; i < len; ++i )
+				{
+					_particles.push( particles[i] );
+					dispatchEvent( new ParticleEvent( ParticleEvent.PARTICLE_ADDED, particles[i] ) );
+				}
+			}
+			else
+			{
+				for ( i = 0; i < len; ++i )
+				{
+					_particles.push( particles[i] );
+				}
 			}
 		}
 
 		public function killAllParticles():void
 		{
 			var len:int = _particles.length;
-			for ( var i:int = 0; i < len; ++i )
+			var i:int;
+			if ( hasEventListener( ParticleEvent.PARTICLE_DEAD ) )
 			{
-				dispatchEvent( new ParticleEvent( ParticleEvent.PARTICLE_DEAD, _particles[i] ) );
-				_particleFactory.disposeParticle( _particles[i] );
+				for ( i = 0; i < len; ++i )
+				{
+					dispatchEvent( new ParticleEvent( ParticleEvent.PARTICLE_DEAD, _particles[i] ) );
+					_particleFactory.disposeParticle( _particles[i] );
+				}
+			}
+			else
+			{
+				for ( i = 0; i < len; ++i )
+				{
+					_particleFactory.disposeParticle( _particles[i] );
+				}
 			}
 			_particles.length = 0;
 		}
@@ -798,29 +822,56 @@ package org.flintparticles.common.emitters {
 					}
 				}
 				// remove dead particles
-				for ( i = len2; i--; )
+				if( hasEventListener( ParticleEvent.PARTICLE_DEAD ) )
 				{
-					particle = _particles[i];
-					if ( particle.isDead )
+					for ( i = len2; i--; )
 					{
-						_particles.splice( i, 1 );
-						dispatchEvent( new ParticleEvent( ParticleEvent.PARTICLE_DEAD, particle ) );
-						if( particle.isDead )
+						particle = _particles[i];
+						if ( particle.isDead )
 						{
-							_particleFactory.disposeParticle( particle );
+							_particles.splice( i, 1 );
+							dispatchEvent( new ParticleEvent( ParticleEvent.PARTICLE_DEAD, particle ) );
+							if( particle.isDead )
+							{
+								_particleFactory.disposeParticle( particle );
+							}
+						}
+					}
+				}
+				else 
+				{
+					for ( i = len2; i--; )
+					{
+						particle = _particles[i];
+						if ( particle.isDead )
+						{
+							_particles.splice( i, 1 );
+							if( particle.isDead )
+							{
+								_particleFactory.disposeParticle( particle );
+							}
 						}
 					}
 				}
 			}
 			else 
 			{
-				dispatchEvent( new EmitterEvent( EmitterEvent.EMITTER_EMPTY ) );
+				if( hasEventListener( EmitterEvent.EMITTER_EMPTY ) )
+				{
+					dispatchEvent( new EmitterEvent( EmitterEvent.EMITTER_EMPTY ) );
+				}
 			}
-			dispatchEvent( new EmitterEvent( EmitterEvent.EMITTER_UPDATED ) );
+			if( hasEventListener( EmitterEvent.EMITTER_UPDATED ) )
+			{
+				dispatchEvent( new EmitterEvent( EmitterEvent.EMITTER_UPDATED ) );
+			}
 			if( _dispatchCounterComplete )
 			{
 				_dispatchCounterComplete = false;
-				dispatchEvent( new EmitterEvent( EmitterEvent.COUNTER_COMPLETE ) );
+				if( hasEventListener( EmitterEvent.COUNTER_COMPLETE ) )
+				{
+					dispatchEvent( new EmitterEvent( EmitterEvent.COUNTER_COMPLETE ) );
+				}
 			}
 		}
 		
