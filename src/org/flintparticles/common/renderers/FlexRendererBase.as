@@ -61,13 +61,15 @@ package org.flintparticles.common.renderers
 		 */
 		protected var _emitters:Vector.<Emitter>;
 		
+		protected var _particles:Array;
+		
 		/**
 		 * The constructor creates a FlexRendererBase class.
 		 */
 		public function FlexRendererBase()
 		{
-			super();
 			_emitters = new Vector.<Emitter>();
+			_particles = [];
 			mouseEnabled = false;
 			mouseChildren = false;
 			addEventListener( Event.ADDED_TO_STAGE, addedToStage, false, 0, true );
@@ -173,12 +175,7 @@ package org.flintparticles.common.renderers
 		
 		protected function updateParticles( ev:Event ) : void
 		{
-			var particles:Array = new Array();
-			for( var i:int = 0; i < _emitters.length; ++i )
-			{
-				particles.push.apply( particles, Emitter( _emitters[i] ).particlesArray );
-			}
-			renderParticles( particles );
+			renderParticles( _particles );
 		}
 		
 		
@@ -191,6 +188,7 @@ package org.flintparticles.common.renderers
 		 */
 		protected function addParticle( particle:Particle ):void
 		{
+			_particles.push( particle );
 		}
 		
 		/**
@@ -201,6 +199,11 @@ package org.flintparticles.common.renderers
 		 */
 		protected function removeParticle( particle:Particle ):void
 		{
+			var index:int = _particles.indexOf( particle );
+			if( index != -1 )
+			{
+				_particles.splice( index, 1 );
+			}
 		}
 		
 		/**
