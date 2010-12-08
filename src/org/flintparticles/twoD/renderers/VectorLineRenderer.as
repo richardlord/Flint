@@ -28,10 +28,10 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.twoD.renderers {
+package org.flintparticles.twoD.renderers
+{
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.events.EmitterEvent;
-	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.renderers.SpriteRendererBase;
 	import org.flintparticles.twoD.particles.Particle2D;
 
@@ -69,7 +69,7 @@ package org.flintparticles.twoD.renderers {
 		/**
 		 * @inheritDoc
 		 */
-		override protected function renderParticles( particles:Vector.<Particle> ):void
+		override protected function renderParticles( particles:Array ):void
 		{
 			var particle:Particle2D;
 			var len:int = particles.length;
@@ -84,7 +84,7 @@ package org.flintparticles.twoD.renderers {
 
 		override protected function emitterUpdated( ev:EmitterEvent ):void
 		{
-			renderParticles( Emitter( ev.target ).particles );
+			renderParticles( Emitter( ev.target ).particlesArray );
 		}
 		override protected function updateParticles( ev:Event ):void
 		{

@@ -123,7 +123,7 @@ package org.flintparticles.threeD.renderers
 		 * 
 		 * @param particles The particles to be rendered.
 		 */
-		override protected function renderParticles( particles:Vector.<Particle> ):void
+		override protected function renderParticles( particles:Array ):void
 		{
 			var pos:Vector3D = new Vector3D();
 			var rawCameraTransform:Vector.<Number> = _camera.transform.rawData;

@@ -31,8 +31,9 @@
 package org.flintparticles.common.counters
 {
 	import org.flintparticles.common.emitters.Emitter;
-	
-	import flash.utils.getTimer;	
+	import org.flintparticles.common.particles.Particle;
+
+	import flash.utils.getTimer;
 
 	/**
 	 * The PerformanceAdjusted counter causes the emitter to emit particles 
@@ -195,7 +196,7 @@ package org.flintparticles.common.counters
 						_rate = Math.floor( ( _rate + _rateMin ) * 0.5 );
 						_times.length = 0;
 						
-						if( !( _timeToRateCheck = emitter.particles[0].lifetime ) )
+						if( !( _timeToRateCheck = Particle( emitter.particlesArray[0] ).lifetime ) )
 						{
 							_timeToRateCheck = 2;
 						}

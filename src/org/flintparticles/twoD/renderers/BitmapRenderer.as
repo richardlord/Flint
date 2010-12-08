@@ -28,8 +28,8 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.twoD.renderers {
-	import org.flintparticles.common.particles.Particle;
+package org.flintparticles.twoD.renderers
+{
 	import org.flintparticles.common.renderers.SpriteRendererBase;
 	import org.flintparticles.twoD.particles.Particle2D;
 
@@ -315,7 +315,7 @@ package org.flintparticles.twoD.renderers {
 		/**
 		 * @inheritDoc
 		 */
-		override protected function renderParticles( particles:Vector.<Particle> ):void
+		override protected function renderParticles( particles:Array ):void
 		{
 			if( !_bitmap )
 			{

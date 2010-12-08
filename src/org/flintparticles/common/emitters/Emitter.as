@@ -28,10 +28,11 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.common.emitters {
-	import org.flintparticles.common.behaviours.Behaviour;
+package org.flintparticles.common.emitters
+{
 	import org.flintparticles.common.actions.Action;
 	import org.flintparticles.common.activities.Activity;
+	import org.flintparticles.common.behaviours.Behaviour;
 	import org.flintparticles.common.counters.Counter;
 	import org.flintparticles.common.counters.ZeroCounter;
 	import org.flintparticles.common.events.EmitterEvent;
@@ -154,7 +155,7 @@ package org.flintparticles.common.emitters {
 		/**
 		 * @private
 		 */
-		protected var _particles:Vector.<Particle>;
+		protected var _particles:Array;
 		/**
 		 * @private
 		 */
@@ -195,7 +196,7 @@ package org.flintparticles.common.emitters {
 		 */
 		public function Emitter()
 		{
-			_particles = new Vector.<Particle>();
+			_particles = [];
 			_actions = new Vector.<Action>();
 			_initializers = new Vector.<Initializer>();
 			_activities = new Vector.<Activity>();
@@ -622,12 +623,20 @@ package org.flintparticles.common.emitters {
 		 */
 		public function get particles():Vector.<Particle>
 		{
-			return _particles;
+			return new Vector.<Particle>( _particles );
 		}
 		public function set particles( value:Vector.<Particle> ):void
 		{
 			killAllParticles();
 			addExistingParticles( value, false );
+		}
+
+		/**
+		 * @private
+		 */
+		public function get particlesArray():Array
+		{
+			return _particles;
 		}
 
 		/*

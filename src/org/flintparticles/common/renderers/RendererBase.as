@@ -79,7 +79,7 @@ package org.flintparticles.common.renderers
 			emitter.addEventListener( ParticleEvent.PARTICLE_CREATED, particleAdded, false, 0, true );
 			emitter.addEventListener( ParticleEvent.PARTICLE_ADDED, particleAdded, false, 0, true );
 			emitter.addEventListener( ParticleEvent.PARTICLE_DEAD, particleRemoved, false, 0, true );
-			for each( var p:Particle in emitter.particles )
+			for each( var p:Particle in emitter.particlesArray )
 			{
 				addParticle( p );
 			}
@@ -103,7 +103,7 @@ package org.flintparticles.common.renderers
 					emitter.removeEventListener( ParticleEvent.PARTICLE_CREATED, particleAdded );
 					emitter.removeEventListener( ParticleEvent.PARTICLE_ADDED, particleAdded );
 					emitter.removeEventListener( ParticleEvent.PARTICLE_DEAD, particleRemoved );
-					for each( var p:Particle in emitter.particles )
+					for each( var p:Particle in emitter.particlesArray )
 					{
 						removeParticle( p );
 					}
@@ -124,7 +124,7 @@ package org.flintparticles.common.renderers
 
 		private function emitterUpdated( ev:EmitterEvent ):void
 		{
-			renderParticles( Emitter( ev.target ).particles );
+			renderParticles( Emitter( ev.target ).particlesArray );
 		}
 		
 		/**
@@ -155,7 +155,7 @@ package org.flintparticles.common.renderers
 		 * being rendered by this renderer. The particles are in no particular
 		 * order.
 		 */
-		protected function renderParticles( particles:Vector.<Particle> ):void
+		protected function renderParticles( particles:Array ):void
 		{
 		}
 

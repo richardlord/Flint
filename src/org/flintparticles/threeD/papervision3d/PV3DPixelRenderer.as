@@ -56,7 +56,7 @@ package org.flintparticles.threeD.papervision3d
 		 * 
 		 * @param particles The particles to be rendered.
 		 */
-		override protected function renderParticles( particles:Vector.<Particle> ):void
+		override protected function renderParticles( particles:Array ):void
 		{
 			for each( var p:Particle3D in particles )
 			{

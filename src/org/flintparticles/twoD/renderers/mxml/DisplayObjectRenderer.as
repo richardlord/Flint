@@ -76,7 +76,7 @@ package org.flintparticles.twoD.renderers.mxml
 		/**
 		 * @inheritDoc
 		 */
-		override protected function renderParticles( particles:Vector.<Particle> ):void
+		override protected function renderParticles( particles:Array ):void
 		{
 			var particle:Particle2D;
 			var img:DisplayObject;

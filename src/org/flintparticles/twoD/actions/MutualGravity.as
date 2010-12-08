@@ -159,7 +159,7 @@ package org.flintparticles.twoD.actions
 			}
 			var p:Particle2D = Particle2D( particle );
 			var e:Emitter2D = Emitter2D( emitter );
-			var particles:Vector.<Particle> = e.particles;
+			var particles:Array = e.particlesArray;
 			var other:Particle2D;
 			var i:int;
 			var len:int = particles.length;
@@ -170,7 +170,7 @@ package org.flintparticles.twoD.actions
 			var dy:Number;
 			for( i = p.sortID + 1; i < len; ++i )
 			{
-				other = Particle2D( particles[i] );
+				other = particles[i];
 				if( other.mass == 0 )
 				{
 					continue;

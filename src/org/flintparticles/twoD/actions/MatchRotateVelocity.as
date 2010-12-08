@@ -129,7 +129,7 @@ package org.flintparticles.twoD.actions
 		{
 			var p:Particle2D = Particle2D( particle );
 			var e:Emitter2D = Emitter2D( emitter );
-			var particles:Vector.<Particle> = e.particles;
+			var particles:Array = e.particlesArray;
 			var other:Particle2D;
 			var i:int;
 			var len:int = particles.length;
@@ -141,7 +141,7 @@ package org.flintparticles.twoD.actions
 			var factor:Number;
 			for( i = p.sortID - 1; i >= 0; --i )
 			{
-				other = Particle2D( particles[i] );
+				other = particles[i];
 				if( ( dx = p.x - other.x ) > _max ) break;
 				dy = other.y - p.y;
 				if( dy > _max || dy < -_max ) continue;
@@ -154,7 +154,7 @@ package org.flintparticles.twoD.actions
 			}
 			for( i = p.sortID + 1; i < len; ++i )
 			{
-				other = Particle2D( particles[i] );
+				other = particles[i];
 				if( ( dx = other.x - p.x ) > _max ) break;
 				dy = other.y - p.y;
 				if( dy > _max || dy < -_max ) continue;

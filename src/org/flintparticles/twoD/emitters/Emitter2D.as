@@ -179,21 +179,13 @@ package org.flintparticles.twoD.emitters
 		{
 			if( spaceSort )
 			{
-				_particles.sort( sortParticlesOnX );
+				_particles.sortOn( "x", Array.NUMERIC );
 				var len:int = _particles.length;
 				for( var i:int = 0; i < len; ++i )
 				{
 					Particle2D( _particles[ i ] ).sortID = i;
 				}
 			}
-		}
-		
-		/**
-		 * @private
-		 */
-		protected function sortParticlesOnX( p1:Particle2D, p2:Particle2D ):Number
-		{
-			return p1.x - p2.x;
 		}
 	}
 }

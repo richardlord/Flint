@@ -170,22 +170,13 @@ package org.flintparticles.threeD.emitters
 		{
 			if( spaceSort )
 			{
-				_particles.sort( sortOnX );
+				_particles.sortOn( "x", Array.NUMERIC );
 				var len:int = _particles.length;
 				for( var i:int = 0; i < len; ++i )
 				{
 					Particle3D( _particles[ i ] ).sortID = i;
 				}
 			}
-		}
-		
-		/**
-		 * The custom sort function used when sorting the particles based on their
-		 * x coordinate.
-		 */
-		private function sortOnX( p1:Particle3D, p2:Particle3D ):Number
-		{
-			return p1.position.x - p2.position.x;
 		}
 	}
 }

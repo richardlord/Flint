@@ -28,8 +28,8 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.twoD.renderers.mxml {
-	import org.flintparticles.common.particles.Particle;
+package org.flintparticles.twoD.renderers.mxml
+{
 	import org.flintparticles.common.renderers.FlexRendererBase;
 	import org.flintparticles.twoD.particles.Particle2D;
 
@@ -361,7 +361,7 @@ package org.flintparticles.twoD.renderers.mxml {
 		/**
 		 * @inheritDoc
 		 */
-		override protected function renderParticles( particles:Vector.<Particle> ):void
+		override protected function renderParticles( particles:Array ):void
 		{
 			if( !_bitmap )
 			{

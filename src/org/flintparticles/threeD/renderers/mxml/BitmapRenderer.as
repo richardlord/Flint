@@ -30,7 +30,6 @@
 
 package org.flintparticles.threeD.renderers.mxml
 {
-	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.renderers.FlexRendererBase;
 	import org.flintparticles.threeD.geom.Quaternion;
 	import org.flintparticles.threeD.particles.Particle3D;
@@ -413,7 +412,7 @@ package org.flintparticles.threeD.renderers.mxml
 		 * 
 		 * @param particles The particles to be rendered.
 		 */
-		override protected function renderParticles( particles:Vector.<Particle> ):void
+		override protected function renderParticles( particles:Array ):void
 		{
 			if( !_bitmap )
 			{
