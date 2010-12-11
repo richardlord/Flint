@@ -156,8 +156,13 @@ package org.flintparticles.threeD.emitters
 		override protected function initParticle( particle:Particle ):void
 		{
 			var p:Particle3D = Particle3D( particle );
-			p.position = _position.clone();
-			p.rotation = _rotation.clone();
+			p.position.x = _position.x;
+			p.position.y = _position.y;
+			p.position.z = _position.z;
+			p.rotation.w = _rotation.w;
+			p.rotation.x = _rotation.x;
+			p.rotation.y = _rotation.y;
+			p.rotation.z = _rotation.z;
 		}
 		
 		/**
@@ -170,13 +175,18 @@ package org.flintparticles.threeD.emitters
 		{
 			if( spaceSort )
 			{
-				_particles.sortOn( "x", Array.NUMERIC );
+				_particles.sort( sortOnX );
 				var len:int = _particles.length;
 				for( var i:int = 0; i < len; ++i )
 				{
 					Particle3D( _particles[ i ] ).sortID = i;
 				}
 			}
+		}
+		
+		private function sortOnX( p1:Particle3D, p2:Particle3D ):int
+		{
+			return p1.position.x - p2.position.x;
 		}
 	}
 }
