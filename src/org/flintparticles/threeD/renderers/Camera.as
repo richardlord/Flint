@@ -66,6 +66,9 @@ package org.flintparticles.threeD.renderers
 		private var _pTrack:Vector3D;
 		private var _pFront:Vector3D;
 		
+		private var _realDown:Vector3D;
+		private var _projectionTransform:Matrix3D;
+		
 		/**
 		 * The constructor creates a Camera object. Usually, users don't need to create camera
 		 * objects, but will use the camera objects that are properties of Flint's renderers.
@@ -76,6 +79,8 @@ package org.flintparticles.threeD.renderers
 			_target = new Vector3D( 0, 0, 0, 1 );
 			_down = new Vector3D( 0, 1, 0 );
 			_pDirection = new Vector3D( 0, 0, 1 );
+			_realDown = new Vector3D();
+			_projectionTransform = new Matrix3D;
 		}
 
 		/**
@@ -159,13 +164,13 @@ package org.flintparticles.threeD.renderers
 			if( !_spaceTransform || !_transform )
 			{
 				_transform = spaceTransform.clone();
-				var projectionTransform:Matrix3D = new Matrix3D( Vector.<Number>( [
+				_projectionTransform.rawData = Vector.<Number>( [
 					_projectionDistance, 0, 0, 0,
 					0, _projectionDistance, 0, 0,
 					0, 0, 1, 1,
 					0, 0, 0, 0
-				] ) );
-				_transform.append( projectionTransform );
+				] );
+				_transform.append( _projectionTransform );
 			}
 			return _transform;
 		}
@@ -178,10 +183,15 @@ package org.flintparticles.threeD.renderers
 		{
 			if( !_spaceTransform )
 			{
-				var realDown:Vector3D = _direction.crossProduct( _track );
+				// This is more efficient than
+				//_realDown = _direction.crossProduct( _track );
+				_realDown.x = _direction.y * _track.z - _direction.z * _track.y;
+				_realDown.y = _direction.z * _track.x - _direction.x * _track.z;
+				_realDown.z = _direction.x * _track.y - _direction.y * _track.x;
+				
 				_spaceTransform = Matrix3DUtils.newBasisTransform( 
 					Vector3DUtils.cloneUnit( _track ),
-					Vector3DUtils.cloneUnit( realDown ), 
+					Vector3DUtils.cloneUnit( _realDown ), 
 					Vector3DUtils.cloneUnit( _direction ) );
 				_spaceTransform.prependTranslation( -_position.x, -_position.y, -_position.z );
 			}
