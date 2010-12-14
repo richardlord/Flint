@@ -628,7 +628,7 @@ package org.flintparticles.common.emitters
 		public function set particles( value:Vector.<Particle> ):void
 		{
 			killAllParticles();
-			addExistingParticles( value, false );
+			addParticles( value, false );
 		}
 
 		/**
@@ -672,6 +672,28 @@ package org.flintparticles.common.emitters
 		{
 		}
 		
+		public function addParticle( particle:Particle, applyInitializers:Boolean = false ):void
+		{
+			if( applyInitializers )
+			{
+				var len:int = _initializers.length;
+				for ( var i:int = 0; i < len; ++i )
+				{
+					_initializers[i].initialize( this, particle );
+				}
+			}
+			_particles.push( particle );
+			if ( hasEventListener( ParticleEvent.PARTICLE_ADDED ) )
+			{
+				dispatchEvent( new ParticleEvent( ParticleEvent.PARTICLE_ADDED, particle ) );
+			}
+		}
+		
+		public function addExistingParticles( particles:Vector.<Particle>, applyInitializers:Boolean = false ):void
+		{
+			addParticles( particles, applyInitializers );
+		}
+		
 		/**
 		 * Adds existing particles to the emitter. This enables users to create 
 		 * particles externally to the emitter and then pass the particles to the
@@ -681,7 +703,7 @@ package org.flintparticles.common.emitters
 		 * @param applyInitializers Indicates whether to apply the emitter's
 		 * initializer behaviours to the particle (true) or not (false).
 		 */
-		public function addExistingParticles( particles:Vector.<Particle>, applyInitializers:Boolean = false ):void
+		public function addParticles( particles:Vector.<Particle>, applyInitializers:Boolean = false ):void
 		{
 			var len:int = particles.length;
 			var i:int;
@@ -692,7 +714,7 @@ package org.flintparticles.common.emitters
 				{
 					for ( i = 0; i < len; ++i )
 					{
-						Initializer( _initializers[j] ).initialize( this, particles[i] );
+						_initializers[j].initialize( this, particles[i] );
 					}
 				}
 			}
@@ -709,6 +731,29 @@ package org.flintparticles.common.emitters
 				for ( i = 0; i < len; ++i )
 				{
 					_particles.push( particles[i] );
+				}
+			}
+		}
+		
+		public function removeParticle( particle:Particle ):Boolean
+		{
+			var index:int = _particles.indexOf( particle );
+			if( index != -1 )
+			{
+				_particles.splice( index, 1 );
+				return true;
+			}
+			return false;
+		}
+		
+		public function removeParticles( particles:Vector.<Particle> ):void
+		{
+			for( var i:int = 0, len:int = particles.length; i < len; ++i )
+			{
+				var index:int = _particles.indexOf( particles[i] );
+				if( index != -1 )
+				{
+					_particles.splice( index, 1 );
 				}
 			}
 		}
