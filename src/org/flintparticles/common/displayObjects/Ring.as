@@ -44,12 +44,12 @@ package org.flintparticles.common.displayObjects
 
         /**
          * The constructor creates a Ring with the specified inner and outer radius.
-         * @param outer Outer radius of the ring
          * @param inner Inner radius of the ring
+         * @param outer Outer radius of the ring
          * @param color Color of the ring
          * @param bm    Blend mode of the ring
          */
-        public function Ring( outer:Number = 0.9, inner:Number = 1.1, color:uint = 0xFFFFFF, bm:String = "normal" )
+        public function Ring( inner:Number = 1, outer:Number = 2, color:uint = 0xFFFFFF, bm:String = "normal" )
         {
             _outerRadius = outer;
             _innerRadius = inner;
@@ -61,8 +61,10 @@ package org.flintparticles.common.displayObjects
         private function draw():void
         {
             graphics.clear();
-            graphics.lineStyle( _outerRadius - _innerRadius, _color );
-            graphics.drawCircle( 0, 0, (_outerRadius + _innerRadius)/2 );
+            graphics.beginFill( _color );
+            graphics.drawCircle( 0, 0, _outerRadius );
+            graphics.drawCircle( 0, 0, _innerRadius );
+            graphics.endFill();
         }
 
         public function get outerRadius():Number
