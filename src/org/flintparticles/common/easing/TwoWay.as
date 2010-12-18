@@ -27,7 +27,7 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.common.energyEasing
+package org.flintparticles.common.easing
 {
 	/**
 	 * A set of easing equations for modifying the particle energy such that it starts
@@ -40,68 +40,68 @@ package org.flintparticles.common.energyEasing
 		/**
 		 * Gives a linear increase and decrease in energy either side of the centre point.
 		 */
-		public static function linear( age:Number, lifetime:Number ):Number
+		public static function linear( t : Number, b : Number, c : Number, d : Number ):Number
 		{
-			if( ( age = 2 * age / lifetime ) <= 1 )
+			if( ( t = 2 * t / d ) <= 1 )
 			{
-				return age;
+				return t * c + b;
 			}
-			return 2 - age;
+			return ( 2 - t ) * c + b;
 		}
 		
 		/**
 		 * Energy increases and then decreases as if following the top half of a circle.
 		 */
-		public static function circular( age:Number, lifetime:Number ):Number
+		public static function circular( t : Number, b : Number, c : Number, d : Number ):Number
 		{
-			age = 1 - (2 * age / lifetime);
-			return Math.sqrt( 1 - age * age );
+			t = 1 - (2 * t / d);
+			return Math.sqrt( 1 - t * t ) * c + b;
 		}
 		
 		/**
 		 * Energy follows the first half of a sine wave.
 		 */
-		public static function sine( age:Number, lifetime:Number ):Number
+		public static function sine( t : Number, b : Number, c : Number, d : Number ):Number
 		{
-			return Math.sin( Math.PI * age / lifetime );
+			return Math.sin( Math.PI * t / d ) * c + b;
 		}
 		
 		/**
 		 * Eases towards the middle using a quadratic curve.
 		 */
-		public static function quadratic( age:Number, lifetime:Number ):Number
+		public static function quadratic( t : Number, b : Number, c : Number, d : Number ):Number
 		{
-			age = 1 - (2 * age / lifetime);
-			return -( age * age - 1 );
+			t = 1 - (2 * t / d);
+			return ( 1 - t * t ) * c + b;
 		}
 		
 		/**
 		 * Eases towards the middle using a cubic curve.
 		 */
-		public static function cubic( age:Number, lifetime:Number ):Number
+		public static function cubic( t : Number, b : Number, c : Number, d : Number ):Number
 		{
-			age = 1 - (2 * age / lifetime);
-			if( age < 0 ) age = -age;
-			return -( age * age * age - 1 );
+			t = 1 - (2 * t / d);
+			if( t < 0 ) t = -t;
+			return ( 1 - t * t * t ) * c + b;
 		}
 		
 		/**
 		 * Eases towards the middle using a quartic curve.
 		 */
-		public static function quartic( age:Number, lifetime:Number ):Number
+		public static function quartic( t : Number, b : Number, c : Number, d : Number ):Number
 		{
-			age = 1 - (2 * age / lifetime);
-			return -( age * age * age * age - 1 );
+			t = 1 - (2 * t / d);
+			return ( 1 - t * t * t * t ) * c + b;
 		}
 		
 		/**
 		 * Eases towards the middle using a quintic curve.
 		 */
-		public static function quintic( age:Number, lifetime:Number ):Number
+		public static function quintic( t : Number, b : Number, c : Number, d : Number ):Number
 		{
-			age = 1 - (2 * age / lifetime);
-			if( age < 0 ) age = -age;
-			return -( age * age * age * age * age - 1 );
+			t = 1 - (2 * t / d);
+			if( t < 0 ) t = -t;
+			return ( 1 - t * t * t * t * t ) * c + b;
 		}
 	}
 }

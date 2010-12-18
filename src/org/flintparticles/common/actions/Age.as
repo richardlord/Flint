@@ -30,7 +30,7 @@
 package org.flintparticles.common.actions 
 {
 	import org.flintparticles.common.emitters.Emitter;
-	import org.flintparticles.common.energyEasing.Linear;
+	import org.flintparticles.common.easing.Linear;
 	import org.flintparticles.common.particles.Particle;	
 
 	/**
@@ -118,7 +118,7 @@ package org.flintparticles.common.actions
 			}
 			else
 			{
-				particle.energy = _easing( particle.age, particle.lifetime );
+				particle.energy = _easing( particle.age, 1, -1, particle.lifetime );
 			}
 		}
 	}
