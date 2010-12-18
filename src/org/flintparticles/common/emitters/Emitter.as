@@ -119,8 +119,8 @@ package org.flintparticles.common.emitters
 	 * it creates; to apply gravity, drag, fade etc. These are added to the emitter 
 	 * using the addAction method.</p>
 	 * 
-	 * <p>An emitter uses Activities to customise its own behaviour in an ongoing
-	 * manner, to move it or rotate it for example.</p>
+	 * <p>An emitter uses Activities to alter its own behaviour, to move it or rotate
+	 * it for example.</p>
 	 * 
 	 * <p>An emitter uses a Counter to know when and how many particles to emit.</p>
 	 * 
@@ -619,7 +619,7 @@ package org.flintparticles.common.emitters
 		}
 		
 		/**
-		 * The array of all particles created by this emitter.
+		 * The collection of all particles being managed by this emitter.
 		 */
 		public function get particles():Vector.<Particle>
 		{
@@ -632,7 +632,11 @@ package org.flintparticles.common.emitters
 		}
 
 		/**
-		 * @private
+		 * The actual array of particles used internally by this emitter. You may want to use this to manipulate
+		 * the particles array directly or to provide optimized access to the array inside a custom
+		 * behaviour. If you don't need the actual array, using the particles property is slightly safer.
+		 * 
+		 * @see #particles
 		 */
 		public function get particlesArray():Array
 		{
@@ -672,6 +676,18 @@ package org.flintparticles.common.emitters
 		{
 		}
 		
+		/**
+		 * Add a particle to the emitter. This enables users to create a
+		 * particle externally to the emitter and then pass the particle to this
+		 * emitter for management. Or remove a particle from one emitter and add
+		 * it to another.
+		 * 
+		 * @param particle The particle to add to this emitter
+		 * @param applyInitializers Indicates whether to apply the emitter's
+		 * initializer behaviours to the particle (true) or not (false).
+		 * 
+		 * @see #removeParticle()
+		 */
 		public function addParticle( particle:Particle, applyInitializers:Boolean = false ):void
 		{
 			if( applyInitializers )
@@ -689,19 +705,17 @@ package org.flintparticles.common.emitters
 			}
 		}
 		
-		public function addExistingParticles( particles:Vector.<Particle>, applyInitializers:Boolean = false ):void
-		{
-			addParticles( particles, applyInitializers );
-		}
-		
 		/**
 		 * Adds existing particles to the emitter. This enables users to create 
 		 * particles externally to the emitter and then pass the particles to the
-		 * emitter for management.
+		 * emitter for management. Or remove particles from one emitter and add
+		 * them to another.
 		 * 
-		 * @param particles An array of particles
+		 * @param particles The particles to add to this emitter
 		 * @param applyInitializers Indicates whether to apply the emitter's
 		 * initializer behaviours to the particle (true) or not (false).
+		 * 
+		 * @see #removeParticles()
 		 */
 		public function addParticles( particles:Vector.<Particle>, applyInitializers:Boolean = false ):void
 		{
@@ -735,6 +749,12 @@ package org.flintparticles.common.emitters
 			}
 		}
 		
+		/**
+		 * Remove a particle from this emitter.
+		 * 
+		 * @param particle The particle to remove.
+		 * @return true if the particle was removed, false if it wasn't on this emitter in the first place.
+		 */
 		public function removeParticle( particle:Particle ):Boolean
 		{
 			var index:int = _particles.indexOf( particle );
@@ -746,6 +766,11 @@ package org.flintparticles.common.emitters
 			return false;
 		}
 		
+		/**
+		 * Remove a collection of particles from this emitter.
+		 * 
+		 * @param particles The particles to remove.
+		 */
 		public function removeParticles( particles:Vector.<Particle> ):void
 		{
 			for( var i:int = 0, len:int = particles.length; i < len; ++i )
@@ -758,6 +783,9 @@ package org.flintparticles.common.emitters
 			}
 		}
 
+		/**
+		 * Kill all the particles on this emitter.
+		 */
 		public function killAllParticles():void
 		{
 			var len:int = _particles.length;
