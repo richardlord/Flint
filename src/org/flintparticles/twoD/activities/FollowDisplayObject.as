@@ -30,6 +30,7 @@
 
 package org.flintparticles.twoD.activities
 {
+	import org.flintparticles.common.utils.DisplayObjectUtils;
 	import org.flintparticles.common.activities.ActivityBase;
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.twoD.emitters.Emitter2D;
@@ -39,8 +40,8 @@ package org.flintparticles.twoD.activities
 
 	/**
 	 * The FollowDisplayObject activity causes the emitter to follow
-	 * the position of a DisplayObject. The purpose is for the emitter
-	 * to emit particles from the vicinity of the DisplayObject.
+	 * the position and rotation of a DisplayObject. The purpose is for the emitter
+	 * to emit particles from the location of the DisplayObject.
 	 */
 	public class FollowDisplayObject extends ActivityBase
 	{
@@ -97,8 +98,12 @@ package org.flintparticles.twoD.activities
 			var p:Point = new Point( 0, 0 );
 			p = _displayObject.localToGlobal( p );
 			p = _renderer.globalToLocal( p );
+			var r:Number = 0;
+			r = DisplayObjectUtils.localToGlobalRotation( _displayObject, r );
+			r = DisplayObjectUtils.globalToLocalRotation( _renderer, r );
 			e.x = p.x;
 			e.y = p.y;
+			e.rotation = r;
 		}
 	}
 }
