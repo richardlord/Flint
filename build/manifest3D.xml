@@ -67,6 +67,7 @@
     <component class="org.flintparticles.threeD.actions.TurnTowardsPoint"/>
     <component class="org.flintparticles.threeD.actions.TweenPosition"/>
     <component class="org.flintparticles.threeD.actions.TweenToZone"/>
+    <component class="org.flintparticles.threeD.actions.WrapAroundBox"/>
     <component class="org.flintparticles.threeD.actions.ZonedAction"/>
 
     <!-- INITIALIZERS -->
@@ -122,6 +123,7 @@
     <component class="org.flintparticles.common.displayObjects.Line"/>
     <component class="org.flintparticles.common.displayObjects.RadialDot"/>
     <component class="org.flintparticles.common.displayObjects.Rect"/>
+    <component class="org.flintparticles.common.displayObjects.Ring"/>
     <component class="org.flintparticles.common.displayObjects.Star"/>
     
 </componentPackage>
