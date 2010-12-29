@@ -30,8 +30,9 @@
 
 package org.flintparticles.twoD.particles 
 {
+	import org.flintparticles.common.debug.ParticleFactoryStats;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.common.particles.ParticleFactory;	
+	import org.flintparticles.common.particles.ParticleFactory;
 
 	/**
 	 * The ParticleCreator is used by the Emitter class to manage the creation and reuse of particles.
@@ -60,6 +61,7 @@ package org.flintparticles.twoD.particles
 		 */
 		public function createParticle():Particle
 		{
+			ParticleFactoryStats.numParticles++;
 			if ( _particles.length )
 			{
 				return _particles.pop();
@@ -77,6 +79,7 @@ package org.flintparticles.twoD.particles
 		 */
 		public function disposeParticle( particle:Particle ):void
 		{
+			ParticleFactoryStats.numParticles--;
 			if( particle is Particle2D )
 			{
 				particle.initialize();
