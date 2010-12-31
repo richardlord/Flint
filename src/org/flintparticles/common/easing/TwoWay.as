@@ -30,8 +30,9 @@
 package org.flintparticles.common.easing
 {
 	/**
-	 * A set of easing equations for modifying the particle energy such that it starts
-	 * and ends at zero and peaks at one half way through the particle's lifetime.
+	 * A set of easing equations that start and end at the end value and reach the start value 
+	 * at the half-time point. They are designed for modifying the particle energy such that it 
+	 * starts and ends at zero and peaks at half way through the particle's lifetime.
 	 * 
 	 * @see org.flintparticles.common.actions.Age
 	 */
@@ -44,9 +45,9 @@ package org.flintparticles.common.easing
 		{
 			if( ( t = 2 * t / d ) <= 1 )
 			{
-				return t * c + b;
+				return ( 1 - t ) * c + b;
 			}
-			return ( 2 - t ) * c + b;
+			return ( t - 1 ) * c + b;
 		}
 		
 		/**
@@ -55,7 +56,7 @@ package org.flintparticles.common.easing
 		public static function circular( t : Number, b : Number, c : Number, d : Number ):Number
 		{
 			t = 1 - (2 * t / d);
-			return Math.sqrt( 1 - t * t ) * c + b;
+			return ( 1 - Math.sqrt( 1 - t * t ) ) * c + b;
 		}
 		
 		/**
@@ -63,7 +64,7 @@ package org.flintparticles.common.easing
 		 */
 		public static function sine( t : Number, b : Number, c : Number, d : Number ):Number
 		{
-			return Math.sin( Math.PI * t / d ) * c + b;
+			return ( 1 - Math.sin( Math.PI * t / d ) ) * c + b;
 		}
 		
 		/**
@@ -72,7 +73,7 @@ package org.flintparticles.common.easing
 		public static function quadratic( t : Number, b : Number, c : Number, d : Number ):Number
 		{
 			t = 1 - (2 * t / d);
-			return ( 1 - t * t ) * c + b;
+			return t * t * c + b;
 		}
 		
 		/**
@@ -82,7 +83,7 @@ package org.flintparticles.common.easing
 		{
 			t = 1 - (2 * t / d);
 			if( t < 0 ) t = -t;
-			return ( 1 - t * t * t ) * c + b;
+			return t * t * t * c + b;
 		}
 		
 		/**
@@ -91,7 +92,7 @@ package org.flintparticles.common.easing
 		public static function quartic( t : Number, b : Number, c : Number, d : Number ):Number
 		{
 			t = 1 - (2 * t / d);
-			return ( 1 - t * t * t * t ) * c + b;
+			return t * t * t * t * c + b;
 		}
 		
 		/**
@@ -101,7 +102,7 @@ package org.flintparticles.common.easing
 		{
 			t = 1 - (2 * t / d);
 			if( t < 0 ) t = -t;
-			return ( 1 - t * t * t * t * t ) * c + b;
+			return t * t * t * t * t * c + b;
 		}
 	}
 }
