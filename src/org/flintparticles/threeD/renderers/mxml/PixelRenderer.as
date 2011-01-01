@@ -92,7 +92,7 @@ package org.flintparticles.threeD.renderers.mxml
 				return;
 			}
 			pos.project();
-			_bitmap.bitmapData.setPixel32( Math.round( pos.x + _halfWidth ), Math.round( -pos.y + _halfHeight ), particle.color );
+			_bitmap.bitmapData.setPixel32( Math.round( pos.x + _halfWidth ), Math.round( pos.y + _halfHeight ), particle.color );
 		}
 	}
 }

@@ -446,7 +446,7 @@ package org.flintparticles.threeD.renderers.mxml
 				pp.z = _rawCameraTransform[2] * p.x + _rawCameraTransform[6] * p.y + _rawCameraTransform[10] * p.z + _rawCameraTransform[14] * p.w;
 				pp.w = _rawCameraTransform[3] * p.x + _rawCameraTransform[7] * p.y + _rawCameraTransform[11] * p.z + _rawCameraTransform[15] * p.w;
 
-				particle.zDepth = particle.projectedPosition.z;
+				particle.zDepth = pp.z;
 			}
 			if( _zSort )
 			{
@@ -496,21 +496,28 @@ package org.flintparticles.threeD.renderers.mxml
 			pos.project();
 			
 			var rot:Number = 0;
-			var transform:Matrix3D = _camera.transform;			
-			var facing:Vector3D;
+			var f:Vector3D;
 			if( particle.rotation.equals( Quaternion.IDENTITY ) )
 			{
-				facing = particle.faceAxis.clone();
+				f = particle.faceAxis;
 			}
 			else
 			{
 				var m:Matrix3D = particle.rotation.toMatrixTransformation();
-				facing = m.transformVector( particle.faceAxis );
+				f = m.transformVector( particle.faceAxis );
 			}
-			facing = transform.transformVector( facing );
+			var facing:Vector3D = new Vector3D();
+			
+			// The following is very much more efficient than
+			// facing = camera.transform.transformVector( f );
+			facing.x = _rawCameraTransform[0] * f.x + _rawCameraTransform[4] * f.y + _rawCameraTransform[8] * f.z + _rawCameraTransform[12] * f.w;
+			facing.y = _rawCameraTransform[1] * f.x + _rawCameraTransform[5] * f.y + _rawCameraTransform[9] * f.z + _rawCameraTransform[13] * f.w;
+			facing.z = _rawCameraTransform[2] * f.x + _rawCameraTransform[6] * f.y + _rawCameraTransform[10] * f.z + _rawCameraTransform[14] * f.w;
+			facing.w = _rawCameraTransform[3] * f.x + _rawCameraTransform[7] * f.y + _rawCameraTransform[11] * f.z + _rawCameraTransform[15] * f.w;
+			
 			if( facing.x != 0 || facing.y != 0 )
 			{
-				rot = Math.atan2( -facing.y, facing.x );
+				rot = Math.atan2( facing.y, facing.x );
 			}
 
 			var matrix:Matrix;
@@ -518,11 +525,11 @@ package org.flintparticles.threeD.renderers.mxml
 			{
 				var cos:Number = scale * Math.cos( rot );
 				var sin:Number = scale * Math.sin( rot );
-				matrix = new Matrix( cos, sin, -sin, cos, pos.x + _halfWidth, -pos.y + _halfHeight );
+				matrix = new Matrix( cos, sin, -sin, cos, pos.x + _halfWidth, pos.y + _halfHeight );
 			}
 			else
 			{
-				matrix = new Matrix( scale, 0, 0, scale, pos.x + _halfWidth, -pos.y + _halfHeight );
+				matrix = new Matrix( scale, 0, 0, scale, pos.x + _halfWidth, pos.y + _halfHeight );
 			}
 
 			_bitmapData.draw( particle.image, matrix, particle.colorTransform, DisplayObject( particle.image ).blendMode, null, _smoothing );
