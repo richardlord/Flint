@@ -7,6 +7,9 @@ package org.flintparticles.common.debug
 	import flash.text.TextFormat;
 	import flash.utils.getTimer;
 
+	/**
+	 * A simple stats display object showing the frame-rate, the memory usage and the number of particles in use.
+	 */
 	public class Stats extends TextField
 	{
 		private const FACTOR : Number = 1 / ( 1024 * 1024 );

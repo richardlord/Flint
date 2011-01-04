@@ -41,6 +41,9 @@ package org.flintparticles.twoD.particles
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
 
+	/**
+	 * Utility methods for working with two-d particles.
+	 */
 	public class Particle2DUtils 
 	{
 		/**

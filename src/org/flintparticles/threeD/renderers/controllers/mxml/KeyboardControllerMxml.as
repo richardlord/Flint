@@ -38,18 +38,7 @@ package org.flintparticles.threeD.renderers.controllers.mxml
 	import flash.events.Event;
 
 	/**
-	 * Sets keyboard input to make a renderer's camera orbit around a point in response to 
-	 * keyboard input.
-	 * 
-	 * <p>After assigning a camera to an instance of this class, the camera responds to the
-	 * following keyboard input</p>
-	 * 
-	 * <ul>
-	 * <li>W or Up arrow keys - track towards the target.</li>
-	 * <li>S or Down arrow keys - track away from the target.</li>
-	 * <li>A or Left arrow keys - orbit left around the target.</li>
-	 * <li>D or Right arrow keys - orbit right around the target.</li>
-	 * </ul>
+	 * Base class for keyboard based camera controllers. Tracks the keyboard state for camera controllers.
 	 */
 	public class KeyboardControllerMxml extends KeyboardControllerBase implements IMXMLObject
 	{		

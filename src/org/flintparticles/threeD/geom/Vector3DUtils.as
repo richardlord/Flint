@@ -32,7 +32,7 @@ package org.flintparticles.threeD.geom
 	import flash.geom.Vector3D;		
 
 	/**
-	 * @author user
+	 * Utility methods for working with the Vector3D class.
 	 */
 	public class Vector3DUtils 
 	{

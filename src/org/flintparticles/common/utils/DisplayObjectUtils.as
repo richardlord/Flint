@@ -31,6 +31,9 @@ package org.flintparticles.common.utils
 {
 	import flash.display.DisplayObject;		
 
+	/**
+	 * Utility methods for use with display objects.
+	 */
 	public class DisplayObjectUtils 
 	{
 		/**

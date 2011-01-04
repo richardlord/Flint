@@ -49,6 +49,9 @@
 
 package org.flintparticles.common.easing
 {
+	/**
+	 * Easing functions for use with ageing of particles. Based on Robert Penner's easing functions.
+	 */
 	public class Back
 	{
 		public static function easeIn(t : Number, b : Number, c : Number, d : Number, s : Number = 1.70158 ) : Number

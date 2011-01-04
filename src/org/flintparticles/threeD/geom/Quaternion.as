@@ -33,7 +33,7 @@ package org.flintparticles.threeD.geom
 	import flash.geom.Vector3D;
 	
 	/**
-	 * 
+	 * Represents a quaternion, an alternative representation of a rotation in three-d space.
 	 */
 	public class Quaternion 
 	{

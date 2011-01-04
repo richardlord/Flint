@@ -3,6 +3,9 @@ package org.flintparticles.threeD.geom
 	import flash.geom.Matrix3D;
 	import flash.geom.Vector3D;
 	
+	/**
+	 * Utility methods for working with the Matrix3D class.
+	 */
 	public class Matrix3DUtils
 	{
 		/**

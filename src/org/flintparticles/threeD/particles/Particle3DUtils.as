@@ -39,6 +39,9 @@ package org.flintparticles.threeD.particles
 	import flash.geom.Rectangle;
 	import flash.geom.Vector3D;
 
+	/**
+	 * Utility methods for working with three-d particles.
+	 */
 	public class Particle3DUtils 
 	{
 		public static function createPixelParticlesFromBitmapData( bitmapData:BitmapData, factory:ParticleFactory = null, offset:Vector3D = null ):Vector.<Particle>

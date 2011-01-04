@@ -39,6 +39,9 @@ Version 3 features significant changes in the 3D API and minor changes in the 2D
 	</deprecated>
 
 	<packages>
+		<package name="org.flintparticles.common.behaviours">
+			<shortDescription><![CDATA[Base interfaces for actions, initializers and activities.]]></shortDescription>
+		</package>
 		<package name="org.flintparticles.common.actions">
 			<shortDescription><![CDATA[Actions are used to continuously modify the state of particles created by an Emitter.]]></shortDescription>
 		</package>
@@ -75,6 +78,12 @@ Version 3 features significant changes in the 3D API and minor changes in the 2D
 		<package name="org.flintparticles.threeD.emitters">
 			<shortDescription><![CDATA[Emitters create particles and are the core component of a particle system.]]></shortDescription>
 		</package>
+		<package name="org.flintparticles.twoD.emitters.mxml">
+			<shortDescription><![CDATA[Flex compatible versions of the two-d emitters.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.threeD.emitters.mxml">
+			<shortDescription><![CDATA[Flex compatible versions of the three-d emitters.]]></shortDescription>
+		</package>
 		<package name="org.flintparticles.common.events">
 			<shortDescription><![CDATA[Events dispatched by Flint]]></shortDescription>
 		</package>
@@ -105,6 +114,12 @@ Version 3 features significant changes in the 3D API and minor changes in the 2D
 		<package name="org.flintparticles.threeD.renderers">
 			<shortDescription><![CDATA[Flint's native renderers used to draw 3D particle systems on the stage.]]></shortDescription>
 		</package>
+		<package name="org.flintparticles.twoD.renderers.mxml">
+			<shortDescription><![CDATA[Flex compatible versions of the two-d renderers.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.threeD.renderers.mxml">
+			<shortDescription><![CDATA[Flex compatible versions of the three-d renderers.]]></shortDescription>
+		</package>
 		<package name="org.flintparticles.common.utils">
 			<shortDescription><![CDATA[Utility classes and functions.]]></shortDescription>
 		</package>
@@ -119,6 +134,9 @@ Version 3 features significant changes in the 3D API and minor changes in the 2D
 		</package>
 		<package name="org.flintparticles.threeD.renderers.controllers">
 			<shortDescription><![CDATA[Predefined camera controllers for letting users move within a 3D scene.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.threeD.renderers.controllers.mxml">
+			<shortDescription><![CDATA[Flex compatible versions of the three-d camera controllers.]]></shortDescription>
 		</package>
 		<package name="org.flintparticles.threeD.away3d">
 			<shortDescription><![CDATA[Renderers for displaying particle systems in Away3D]]></shortDescription>
@@ -137,6 +155,9 @@ Version 3 features significant changes in the 3D API and minor changes in the 2D
 		</package>
 		<package name="org.flintparticles.threeD.papervision3d.utils">
 			<shortDescription><![CDATA[Utility classes and functions.]]></shortDescription>
+		</package>
+		<package name="org.flintparticles.common.debug">
+			<shortDescription><![CDATA[Basic tools for displaying the status of particles systems.]]></shortDescription>
 		</package>
 	</packages>
 </overviews>
