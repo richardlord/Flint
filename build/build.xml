@@ -5,7 +5,7 @@
 		
 	<target name="all" depends="swc2d,swc3d,asdocs" description="Full build of swc library and asdocs"/>
 		
-	<target name="swc2d" description="Clean and build 2D swc library">
+	<target name="swc2d" description="Build 2D swc library">
 		
 		<fileset dir="../src" casesensitive="yes" includes="org/flintparticles/common/**/*.as org/flintparticles/twoD/**/*.as" id="classfiles2d"/>
 		<pathconvert property="classlist2d" refid="classfiles2d" pathsep=" " dirsep=".">
@@ -28,7 +28,7 @@
 		</exec>
 	</target>
 				
-	<target name="swc3d" description="Clean and build 3D swc library">
+	<target name="swc3d" description="Build 3D swc library">
 		
 		<fileset dir="../src" casesensitive="yes" includes="org/flintparticles/common/**/*.as org/flintparticles/threeD/**/*.as" id="classfiles3d"/>
 		<pathconvert property="classlist3d" refid="classfiles3d" pathsep=" " dirsep=".">
@@ -53,7 +53,7 @@
 		</exec>
 	</target>
 
-	<target name="asdocs" description="Clean and build asdocs">
+	<target name="asdocs" description="Build asdocs documentation">
 		<exec executable="${asdoc}" failonerror="true">
 			
 			<arg line='-output ../docs'/>
@@ -71,7 +71,7 @@
 			
 			<arg line='-main-title "Flint Particles documentation v${version}"'/>
 			<arg line='-window-title "Flint Particles documentation"'/>
-			<arg line='-footer "© Richard Lord 2010"'/>
+			<arg line='-footer "© Richard Lord 2008-2011"'/>
 			
 		</exec>
 	</target>
