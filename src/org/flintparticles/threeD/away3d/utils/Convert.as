@@ -3,7 +3,7 @@
  * .....................
  * 
  * Author: Richard Lord & Michael Ivanov
- * Copyright (c) Richard Lord 2008-2010
+ * Copyright (c) Richard Lord 2008-2011
  * http://flintparticles.org
  * 
  * 
