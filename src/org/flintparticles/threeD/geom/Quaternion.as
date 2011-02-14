@@ -33,13 +33,26 @@ package org.flintparticles.threeD.geom
 	import flash.geom.Vector3D;
 	
 	/**
-	 * Represents a quaternion, an alternative representation of a rotation in three-d space.
+	 * Quaternion represents a rotational transform in three-dimensional cartesian 
+	 * coordinate space in quaternion form.
 	 */
 	public class Quaternion 
 	{
-		public static var ZERO:Quaternion = new Quaternion( 0, 0, 0, 0 );
+		/**
+		 * A zero quaternion.
+		 */
+		public static function get ZERO() : Quaternion
+		{
+			return new Quaternion( 0, 0, 0, 0 );
+		}
 		
-		public static var IDENTITY:Quaternion = new Quaternion( 1, 0, 0, 0 );
+		/**
+		 * An identity quaternion.
+		 */
+		public static function get IDENTITY() : Quaternion
+		{
+			return new Quaternion( 1, 0, 0, 0 );
+		}
 		
 		/**
 		 * The w coordinate of the quaternion.
@@ -126,63 +139,118 @@ package org.flintparticles.threeD.geom
 		 * Adds another quaternion to this one, returning a new quaternion.
 		 * 
 		 * @param q the quaternion to add
+		 * @param result The quaternion to hold the result of the addition. If
+		 * no quaternion is passed, a new quaternion is created.
 		 * 
 		 * @return the result of the addition
 		 */
-		public function add( q:Quaternion ):Quaternion
+		public function add( q : Quaternion, result : Quaternion = null ) : Quaternion
 		{
+			if ( result == null )
+			{
 			return new Quaternion( w + q.w, x + q.x, y + q.y, z + q.z );
+		}
+			result.w = w + q.w;
+			result.x = x + q.x;
+			result.y = y + q.y;
+			result.z = z + q.z;
+			return result;
 		}
 		
 		/**
 		 * Subtract another quaternion from this one, returning a new quaternion.
 		 * 
 		 * @param q The quaternion to subtract
+		 * @param result The quaternion to hold the result of the subtraction. If
+		 * no quaternion is passed, a new quaternion is created.
 		 * 
 		 * @return The result of the subtraction
 		 */		
-		public function subtract( q:Quaternion ):Quaternion
+		public function subtract( q : Quaternion, result : Quaternion = null ) : Quaternion
+		{
+			if ( result == null )
 		{
 			return new Quaternion( w - q.w, x - q.x, y - q.y, z - q.z );
 		}
+			result.w = w - q.w;
+			result.x = x - q.x;
+			result.y = y - q.y;
+			result.z = z - q.z;
+			return result;
+		}
 		
-		public function scalarMultiply( s:Number ):Quaternion
+		/**
+		 * Multiply this quaternion by a number.
+		 * 
+		 * @param s The number to multiply the quaternion by
+		 * @param result The quaternion to hold the result of the multiplication. If
+		 * no quaternion is passed, a new quaternion is created.
+		 * 
+		 * @return The result of the multiplication
+		 */
+		public function scalarMultiply( s : Number, result : Quaternion = null ) : Quaternion
+		{
+			if ( result == null )
 		{
 			return new Quaternion( w * s, x * s, y * s, z * s );
+		}
+			result.w = w * s;
+			result.x = x * s;
+			result.y = y * s;
+			result.z = z * s;
+			return result;
 		}
 
 		/**
 		 * Pre multiply this quaternion by another quaternion, returning a new quaternion.
 		 * 
 		 * @param q The quaternion to multiply by.
+		 * @param result The quaternion to hold the result of the multiplication. If
+		 * no quaternion is passed, a new quaternion is created.
 		 * 
-		 * @return A result of the multiplication.
+		 * @return The result of the multiplication.
 		 */
-		public function preMultiply( q:Quaternion ):Quaternion
+		public function preMultiply( q : Quaternion, result : Quaternion = null ) : Quaternion
+		{
+			if ( result == null )
 		{
 			return new Quaternion( 
 				q.w * w - q.x * x - q.y * y - q.z * z,
 				q.w * x + q.x * w + q.y * z - q.z * y,
 				q.w * y - q.x * z + q.y * w + q.z * x,
-				q.w * z + q.x * y - q.y * x + q.z * w
-			 );
+					q.w * z + q.x * y - q.y * x + q.z * w );
+			}
+			result.w = q.w * w - q.x * x - q.y * y - q.z * z;
+			result.x = q.w * x + q.x * w + q.y * z - q.z * y;
+			result.y = q.w * y - q.x * z + q.y * w + q.z * x;
+			result.z = q.w * z + q.x * y - q.y * x + q.z * w;
+			return result;
 		}
 
 		/**
 		 * Post multiply this quaternion by another quaternion, returning a new quaternion.
 		 * 
 		 * @param q The quaternion to multiply by.
+		 * @param result The quaternion to hold the result of the multiplication. If
+		 * no quaternion is passed, a new quaternion is created.
 		 * 
-		 * @return A result of the multiplication.
+		 * @return The result of the multiplication.
 		 */
-		public function postMultiply( q:Quaternion ):Quaternion
+		public function postMultiply( q : Quaternion, result : Quaternion = null ) : Quaternion
+		{
+			if ( result == null )
 		{
 			return new Quaternion( 
 				w * q.w - x * q.x - y * q.y - z * q.z,
 				w * q.x + x * q.w + y * q.z - z * q.y,
 				w * q.y - x * q.z + y * q.w + z * q.x,
-				w * q.z + x * q.y - y * q.x + z * q.w
-			 );
+					w * q.z + x * q.y - y * q.x + z * q.w );
+		}
+			result.w = w * q.w - x * q.x - y * q.y - z * q.z;
+			result.x = w * q.x + x * q.w + y * q.z - z * q.y;
+			result.y = w * q.y - x * q.z + y * q.w + z * q.x;
+			result.z = w * q.z + x * q.y - y * q.x + z * q.w;
+			return result;
 		}
 
 		/**
@@ -296,7 +364,11 @@ package org.flintparticles.threeD.geom
 		 */
 		public function nearEquals( q:Quaternion, e:Number ):Boolean
 		{
-			return this.subtract( q ).magnitudeSquared < e * e;
+			var dw : Number = w - q.w;
+			var dx : Number = x - q.x;
+			var dy : Number = y - q.y;
+			var dz : Number = z - q.z;
+			return ( dw * dw + dx * dx + dy * dy + dz * dz ) <= e * e;
 		}
 		
 		/**
@@ -304,7 +376,7 @@ package org.flintparticles.threeD.geom
 		 */
 		public function get magnitude():Number
 		{
-			return Math.sqrt( magnitudeSquared );
+			return Math.sqrt( w * w + x * x + y * y + z * z );
 		}
 		
 		/**
@@ -329,10 +401,23 @@ package org.flintparticles.threeD.geom
 		
 		/**
 		 * The conjugate of this quaternion.
+		 * 
+		 * @param result The quaternion to hold the result of the conjugate. If
+		 * no quaternion is passed, a new quaternion is created.
+		 * 
+		 * @return The result of the conjugate
 		 */
-		public function get conjugate():Quaternion
+		public function conjugate( result : Quaternion = null ) : Quaternion
+		{
+			if( ! result )
 		{
 			return new Quaternion( w, -x, -y, -z );
+		}
+			result.w = w;
+			result.x = -x;
+			result.y = -y;
+			result.z = -z;
+			return result;
 		}
 		
 		/**
@@ -340,7 +425,7 @@ package org.flintparticles.threeD.geom
 		 * 
 		 * @return A reference to this quaternion.
 		 */
-		public function makeConjugate():Quaternion
+		public function selfConjugate() : Quaternion
 		{
 			x = -x;
 			y = -y;
@@ -350,10 +435,33 @@ package org.flintparticles.threeD.geom
 		
 		/**
 		 * The inverse of this quaternion.
+		 * 
+		 * @param result The quaternion to hold the result of the inverse. If
+		 * no quaternion is passed, a new quaternion is created.
+		 * 
+		 * @return The result of the inverse
 		 */
-		public function get inverse():Quaternion
+		public function inverse( result : Quaternion = null ) : Quaternion
 		{
-			return conjugate.scaleBy( 1 / magnitudeSquared );
+			var s : Number = w * w + x * x + y * y + z * z;
+			if( s == 0 )
+			{
+				if( result )
+				{
+					result.w = result.x = result.y = result.z = NaN;
+				}
+				return null;
+			}
+			s = 1 / s;
+			if( ! result )
+			{
+				return new Quaternion( w * s, -x * s, -y * s, -z * s );
+			}
+			result.w = w * s;
+			result.x = -x * s;
+			result.y = -y * s;
+			result.z = -z * s;
+			return result;
 		}
 		
 		/**
@@ -363,8 +471,17 @@ package org.flintparticles.threeD.geom
 		 */
 		public function invert():Quaternion
 		{
-			makeConjugate();
-			scaleBy( 1 / magnitudeSquared );
+			var s : Number = w * w + x * x + y * y + z * z;
+			if( s == 0 )
+			{
+				w = x = y = z = NaN;
+				return null;
+			}
+			s = 1 / s;
+			w *= s;
+			x *= -s;
+			y *= -s;
+			z *= -s;
 			return this;
 		}
 		
@@ -375,30 +492,44 @@ package org.flintparticles.threeD.geom
 		 */
 		public function normalize():Quaternion
 		{
-			var s:Number = magnitude;
-			if ( s != 0 )
+			var s : Number = ( w * w + x * x + y * y + z * z );
+			if ( s == 0 )
 			{
-				s = 1 / s;
+				throw new Error( "Cannot normalize the zero quaternion." );
+			}
+			s = 1 / Math.sqrt( s );
 				w *= s;
 				x *= s;
 				y *= s;
 				z *= s;
-			}
-			else
-			{
-				throw new Error( "Cannot make a unit quaternion from  the zero quaternion." );
-			}
 			return this;
 		}
 		
 		/**
 		 * Create a unit quaternion in the same direction as this one.
 		 * 
-		 * @return A unit quaternion in the same direction as this one.
+		 * @param result The quaternion to hold the result. If
+		 * no quaternion is passed, a new quaternion is created.
+		 * 
+		 * @return The unit quaternion in the same direction as this one.
 		 */
-		public function unit():Quaternion
+		public function unit( result : Quaternion = null ) : Quaternion
 		{
-			return clone().normalize();
+			var s : Number = ( w * w + x * x + y * y + z * z );
+			if( s == 0 )
+			{
+				throw new Error( "Cannot make a unit quaternion from the zero quaternion." );
+			}
+			s = 1 / Math.sqrt( s );
+			if( ! result )
+			{
+				return new Quaternion( w * s, x * s, y * s, z * s );
+			}
+			result.w = w * s;
+			result.x = x * s;
+			result.y = y * s;
+			result.z = z * s;
+			return result;
 		}
 		
 		/**
@@ -411,11 +542,29 @@ package org.flintparticles.threeD.geom
 		 * 
 		 * @return A Quaternion representing the rotation.
 		 */
-		public static function createFromAxisRotation( axis:Vector3D, angle:Number = NaN ):Quaternion
+		public static function newFromAxisRotation( axis : Vector3D, angle : Number = NaN ) : Quaternion
 		{
-			var q:Quaternion = new Quaternion();
-			q.setFromAxisRotation( axis, angle );
-			return q;
+			var lenSq : Number = axis.lengthSquared;
+			var unit : Boolean = Math.abs( lenSq - 1 ) < 0.000001;
+			var len : Number = unit ? 1 : Math.sqrt( lenSq );
+			if ( isNaN( angle ) )
+			{
+				angle = len * 0.5;
+			}
+			else
+			{
+				angle = angle * 0.5;
+			}
+			var sinOverLength : Number;
+			if( unit )
+			{
+				sinOverLength = Math.sin( angle );
+			}
+			else
+			{
+				sinOverLength = Math.sin( angle ) / len;
+			}
+			return new Quaternion( Math.cos( angle ), -sinOverLength * axis.x, -sinOverLength * axis.y, -sinOverLength * axis.z );
 		}
 		
 		/**
@@ -428,26 +577,32 @@ package org.flintparticles.threeD.geom
 		 * 
 		 * @return A reference to this Quaternion.
 		 */
-		public function setFromAxisRotation( axis:Vector3D, angle:Number = NaN ):Quaternion
+		public function setFromAxisRotation( axis : Vector3D, angle : Number = NaN ) : Quaternion
 		{
+			var lenSq : Number = axis.lengthSquared;
+			var unit : Boolean = Math.abs( lenSq - 1 ) < 0.000001;
+			var len : Number = unit ? 1 : Math.sqrt( lenSq );
 			if( isNaN( angle ) )
 			{
-				angle = axis.length * 0.5;
+				angle = len * 0.5;
 			}
 			else
 			{
 				angle = angle * 0.5;
 			}
-			if( axis.lengthSquared != 1 )
+			var sinOverLength : Number;
+			if( unit )
 			{
-				axis = axis.clone();
-				axis.normalize();
+				sinOverLength = Math.sin( angle );
 			}
-			const sin:Number = Math.sin( angle );
+			else
+			{
+				sinOverLength = Math.sin( angle ) / len;
+			}
 			w = Math.cos( angle );
-			x = -sin * axis.x;
-			y = -sin * axis.y;
-			z = -sin * axis.z;
+			x = -sinOverLength * axis.x;
+			y = -sinOverLength * axis.y;
+			z = -sinOverLength * axis.z;
 			return this;
 		}
 		
@@ -457,10 +612,10 @@ package org.flintparticles.threeD.geom
 		 * 
 		 * @return The axis/angle rotation.
 		 */
-		public function toAxisRotation():Vector3D
+		public function toAxisRotation() : Vector3D
 		{
 			var angle:Number = 2 * Math.acos( w );
-			var axis:Vector3D = new Vector3D( x, y, z );
+			var axis : Vector3D = new Vector3D( x, y, z );
 			axis.normalize();
 			axis.scaleBy( angle );
 			return axis;
@@ -471,7 +626,7 @@ package org.flintparticles.threeD.geom
 		 * 
 		 * @return The matrix transformation.
 		 */
-		public function toMatrixTransformation():Matrix3D
+		public function toMatrixTransformation() : Matrix3D
 		{
 			var xx:Number = x * x;
 			var yy:Number = y * y;
