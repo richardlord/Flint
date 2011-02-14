@@ -623,7 +623,7 @@ package org.flintparticles.common.emitters
 		 */
 		public function get particles():Vector.<Particle>
 		{
-			return new Vector.<Particle>( _particles );
+			return Vector.<Particle>( _particles );
 		}
 		public function set particles( value:Vector.<Particle> ):void
 		{
