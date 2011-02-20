@@ -113,6 +113,7 @@ package org.flintparticles.common.counters
 		 */
 		public function startEmitter( emitter:Emitter ):uint
 		{
+			_running = true;
 			_timeToNext = newTimeToNext();
 			return 0;
 		}
