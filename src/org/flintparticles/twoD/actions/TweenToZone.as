@@ -32,6 +32,7 @@ package org.flintparticles.twoD.actions
 {
 	import org.flintparticles.common.actions.ActionBase;
 	import org.flintparticles.common.emitters.Emitter;
+	import org.flintparticles.common.initializers.Initializer;
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.twoD.particles.Particle2D;
 	import org.flintparticles.twoD.zones.Zone2D;
@@ -50,7 +51,7 @@ package org.flintparticles.twoD.actions
 	 * function used. This action should be used in conjunction with the Age action.
 	 */
 
-	public class TweenToZone extends ActionBase
+	public class TweenToZone extends ActionBase implements Initializer
 	{
 		private var _zone:Zone2D;
 		
@@ -66,6 +67,7 @@ package org.flintparticles.twoD.actions
 		public function TweenToZone( zone:Zone2D )
 		{
 			_zone = zone;
+			priority = -10;
 		}
 		
 		/**
@@ -81,6 +83,33 @@ package org.flintparticles.twoD.actions
 		}
 		
 		/**
+		 * 
+		 */
+		override public function addedToEmitter( emitter:Emitter ):void
+		{
+			if( ! emitter.hasInitializer( this ) )
+			{
+				emitter.addInitializer( this );
+			}
+		}
+		
+		override public function removedFromEmitter( emitter:Emitter ):void
+		{
+			emitter.removeInitializer( this );
+		}
+
+		/**
+		 * 
+		 */
+		public function initialize( emitter:Emitter, particle:Particle ):void
+		{
+			var p:Particle2D = Particle2D( particle );
+			var pt:Point = _zone.getLocation();
+			var data:TweenToZoneData = new TweenToZoneData( p.x, p.y, pt.x, pt.y );
+			p.dictionary[this] = data;
+		}
+
+		/**
 		 * Calculates the current position of the particle based on it's energy.
 		 * 
 		 * <p>This method is called by the emitter and need not be called by the 
@@ -95,17 +124,11 @@ package org.flintparticles.twoD.actions
 		override public function update( emitter:Emitter, particle:Particle, time:Number ):void
 		{
 			var p:Particle2D = Particle2D( particle );
-			var data:TweenToZoneData;
 			if( ! p.dictionary[this] )
 			{
-				var pt:Point = _zone.getLocation();
-				data = new TweenToZoneData( p.x, p.y, pt.x, pt.y );
-				p.dictionary[this] = data;
+				initialize( emitter, particle );
 			}
-			else
-			{
-				data = p.dictionary[this];
-			}
+			var data:TweenToZoneData = p.dictionary[this];
 			p.x = data.endX + data.diffX * p.energy;
 			p.y = data.endY + data.diffY * p.energy;
 		}
