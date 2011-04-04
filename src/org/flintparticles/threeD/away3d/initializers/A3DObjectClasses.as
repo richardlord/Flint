@@ -27,26 +27,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
 package org.flintparticles.threeD.away3d.initializers
 {
-	import away3d.sprites.Sprite3D;
-
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.initializers.InitializerBase;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.common.utils.WeightedArray;
-
-	import flash.utils.getQualifiedClassName;
+	import org.flintparticles.common.utils.WeightedArray;	
 
 	/**
 	 * The ImageClass Initializer sets the DisplayObject to use to draw
 	 * the particle. It is used with the DisplayObjectRenderer. When using the
 	 * BitmapRenderer it is more efficient to use the SharedImage Initializer.
 	 */
+
 	public class A3DObjectClasses extends InitializerBase
 	{
-		private var _images : WeightedArray;
-
+		private var _images:WeightedArray;
+		
 		/**
 		 * The constructor creates a ImageClasses initializer for use by 
 		 * an emitter. To add a ImageClasses to all particles created by 
@@ -59,20 +57,20 @@ package org.flintparticles.threeD.away3d.initializers
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function A3DObjectClasses( images : Array, parameters : Array = null, weights : Array = null )
+		public function A3DObjectClasses( images:Array, parameters:Array = null, weights:Array = null )
 		{
 			_images = new WeightedArray;
-			if ( parameters == null )
+			if( parameters == null )
 			{
 				parameters = [];
 			}
-			var len : int = images.length;
-			var i : int;
-			if ( weights != null && weights.length == len )
+			var len:int = images.length;
+			var i:int;
+			if( weights != null && weights.length == len )
 			{
-				for ( i = 0; i < len; ++i )
+				for( i = 0; i < len; ++i )
 				{
-					if ( parameters[i] )
+					if( parameters[i] )
 					{
 						addImage( images[i], parameters[i], weights[i] );
 					}
@@ -84,9 +82,9 @@ package org.flintparticles.threeD.away3d.initializers
 			}
 			else
 			{
-				for ( i = 0; i < len; ++i )
+				for( i = 0; i < len; ++i )
 				{
-					if ( parameters[i] )
+					if( parameters[i] )
 					{
 						addImage( images[i], parameters[i], 1 );
 					}
@@ -97,13 +95,13 @@ package org.flintparticles.threeD.away3d.initializers
 				}
 			}
 		}
-
-		public function addImage( image : Class, parameters : Object = null, weight : Number = 1 ) : void
+		
+		public function addImage( image:Class, parameters:Object = null, weight:Number = 1 ):void
 		{
 			_images.add( new Pair( image, parameters ), weight );
 		}
-
-		public function removeImage( image : * ) : void
+		
+		public function removeImage( image:* ):void
 		{
 			_images.remove( image );
 		}
@@ -111,42 +109,27 @@ package org.flintparticles.threeD.away3d.initializers
 		/**
 		 * @inheritDoc
 		 */
-		override public function initialize( emitter : Emitter, particle : Particle ) : void
+		override public function initialize( emitter:Emitter, particle:Particle ):void
 		{
-			var img : Pair = _images.getRandomValue();
+			var img:Pair = _images.getRandomValue();
 
 			// copy the parameters object because the class will modify the object it's sent
-			var p : Object = new Object();
-			for ( var name:String in img.parameters )
+			var p:Object = new Object();
+			for( var name:String in img.parameters )
 			{
 				p[name] = img.parameters[name];
 			}
-			var imgClass : Class = img.image as Class;
-			// new Sprite3D(material,width,height,rotation,align,scaling,distanceScaling)
-			if (getQualifiedClassName( imgClass ) == "away3d.sprites::Sprite3D")
-			{
-				particle.image = new imgClass();
-				Sprite3D( particle.image ).material = p["material"] == null ? null : p["material"];
-				Sprite3D( particle.image ).width = p["width"] == null ? 10 : p["width"];
-				Sprite3D( particle.image ).height = p["height"] == null ? 10 : p["height"];
-				Sprite3D( particle.image ).rotation = p["rotation"] == null ? 0 : p["rotation"];
-				Sprite3D( particle.image ).align = p["align"] == null ? "center" : p["align"];
-				Sprite3D( particle.image ).scaling = p["scaling"] == null ? 1 : p["scaling"];
-				Sprite3D( particle.image ).distanceScaling = p["distanceScaling"] == null ? true : p["distanceScaling"];
-			}
-			else
-			{
-				particle.image = new imgClass( p );
-			}
+			var imgClass:Class = img.image as Class;
+			particle.image = new imgClass( p );
 		}
 	}
 }
 class Pair
 {
-	internal var image : Class;
-	internal var parameters : Object;
-
-	public function Pair( image : Class, parameters : Object )
+	internal var image:Class;
+	internal var parameters:Object;
+	
+	public function Pair( image:Class, parameters:Object )
 	{
 		this.image = image;
 		this.parameters = parameters;
