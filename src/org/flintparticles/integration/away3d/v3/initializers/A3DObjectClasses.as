@@ -28,20 +28,12 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.threeD.away3d.away4.initializers
+package org.flintparticles.integration.away3d.v3.initializers
 {
-	import away3d.entities.Mesh;
-	import away3d.entities.Sprite3D;
-	import away3d.primitives.Cube;
-	import away3d.primitives.Plane;
-	import away3d.primitives.Sphere;
-	
-	import flash.utils.getQualifiedClassName;
-	
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.initializers.InitializerBase;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.common.utils.WeightedArray;
+	import org.flintparticles.common.utils.WeightedArray;	
 
 	/**
 	 * The ImageClass Initializer sets the DisplayObject to use to draw
@@ -49,7 +41,7 @@ package org.flintparticles.threeD.away3d.away4.initializers
 	 * BitmapRenderer it is more efficient to use the SharedImage Initializer.
 	 */
 
-	public class A3D4ObjectClasses extends InitializerBase
+	public class A3DObjectClasses extends InitializerBase
 	{
 		private var _images:WeightedArray;
 		
@@ -65,7 +57,7 @@ package org.flintparticles.threeD.away3d.away4.initializers
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function A3D4ObjectClasses( images:Array, parameters:Array = null, weights:Array = null )
+		public function A3DObjectClasses( images:Array, parameters:Array = null, weights:Array = null )
 		{
 			_images = new WeightedArray;
 			if( parameters == null )
@@ -128,66 +120,7 @@ package org.flintparticles.threeD.away3d.away4.initializers
 				p[name] = img.parameters[name];
 			}
 			var imgClass:Class = img.image as Class;
-			if(getQualifiedClassName(imgClass)=="away3d.entities::Sprite3D"){
-				
-				particle.image = new imgClass(null,0,0);
-				initSprite3DProperties(particle.image,p);
-			}else{
-				particle.image = new imgClass();
-				//particle.image = new imgClass( p );
-				///common to all
-				Mesh(particle.image).material=p["material"]==null?null:p["material"];
-				Mesh(particle.image)["segmentsH"]=p["segmentsH"]==null?6:p["segmentsH"];
-				Mesh(particle.image)["segmentsW"]=p["segmentsW"]==null?6:p["segmentsW"];
-				///cube setup////
-				if(getQualifiedClassName(imgClass)=="away3d.primitives::Cube"){
-					initCubeProperties(particle.image,p);
-				}
-				////plane setup///
-				if(getQualifiedClassName(imgClass)=="away3d.primitives::Plane"){
-					initPlaneProperties(particle.image,p);
-				}
-				///sphere setup///
-				if(getQualifiedClassName(imgClass)=="away3d.primitives::Sphere"){
-					initSphereProperties(particle.image,p);
-				}
-				
-			}
-			
-		}
-		protected function initCubeProperties(cube:Cube,p:Object):void{
-			///cube specific
-			cube["width"]=p["width"]==null?100:p["width"];
-			cube["height"]=p["height"]==null?100:p["height"];
-			cube["depth"]=p["depth"]==null?100:p["depth"];
-			cube["segmentsD"]=p["segmentsD"]==null?6:p["segmentsD"];
-			cube["tile6"]=p["tile6"]==null?true:p["tile6"];
-			
-			
-		}
-		protected function initPlaneProperties(plane:Plane,p:Object):void{
-			
-			plane["width"]=p["width"]==null?100:p["width"];
-			plane["height"]=p["height"]==null?100:p["height"];
-			plane["yUp"]=p["yUp"]==null?true:p["yUp"];
-		}
-		protected function initSphereProperties(sphere:Sphere,p:Object):void{
-			
-			sphere["radius"]=p["radius"]==null?10:p["radius"];
-			sphere["yUp"]=p["yUp"]==null?true:p["yUp"];
-		}
-		protected function initSprite3DProperties(sprite:Sprite3D,p:Object):void{
-			sprite.material=p["material"]==null?null:p["material"];
-			sprite.width=p["width"]==null?10:p["width"];
-			sprite.height=p["height"]==null?10:p["height"];
-			///
-			sprite.rotationX=p["rotationX"]==null?0:p["rotationX"];
-			sprite.rotationY=p["rotationY"]==null?0:p["rotationY"];
-			sprite.rotationZ=p["rotationZ"]==null?0:p["rotationZ"];
-			///
-			sprite.scaleX=p["scaleX"]==null?1:p["scaleX"];
-			sprite.scaleY=p["scaleY"]==null?1:p["scaleY"];
-			sprite.scaleZ=p["scaleZ"]==null?1:p["scaleZ"];
+			particle.image = new imgClass( p );
 		}
 	}
 }

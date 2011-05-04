@@ -2,7 +2,7 @@
  * FLINT PARTICLE SYSTEM
  * .....................
  * 
- * Author: Richard Lord
+ * Author: Michael Ivanov & Richard Lord
  * Copyright (c) Richard Lord 2008-2011
  * http://flintparticles.org
  * 
@@ -28,9 +28,16 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.threeD.away3d.initializers
+package org.flintparticles.integration.away3d.v4.initializers
 {
-	import away3d.sprites.Sprite3D;
+	
+	
+	import away3d.entities.Mesh;
+	import away3d.entities.Sprite3D;
+	import away3d.materials.ColorMaterial;
+	import away3d.primitives.Cube;
+	import away3d.primitives.Plane;
+	import away3d.primitives.Sphere;
 	
 	import flash.utils.getQualifiedClassName;
 	
@@ -39,18 +46,17 @@ package org.flintparticles.threeD.away3d.initializers
 	import org.flintparticles.common.particles.Particle;
 
 	/**
-	 * The A3DObjectClass initializer sets the 3D Object to use to 
-	 * draw the particle in a 3D scene. It is used with the Away3D renderer when
+	 * The A3D4ObjectClass initializer sets the 3D Object to use to 
+	 * draw the particle in a 3D scene. It is used with the Away3D 4 renderer when
 	 * particles should be represented by a 3D object.
 	 */
-
-	public class A3DObjectClass extends InitializerBase
+	public class A3D4ObjectClass extends InitializerBase
 	{
 		private var _imageClass:Class;
 		private var _parameters:Object;
 		
 		/**
-		 * The constructor creates an A3DObjectClass initializer for use by 
+		 * The constructor creates an A3D4ObjectClass initializer for use by 
 		 * an emitter. To add an ImageClass to all particles created by an emitter, 
 		 * use the emitter's addInitializer method.
 		 * 
@@ -61,7 +67,7 @@ package org.flintparticles.threeD.away3d.initializers
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function A3DObjectClass( imageClass:Class, parameters:Object )
+		public function A3D4ObjectClass( imageClass:Class, parameters:Object )
 		{
 			_imageClass = imageClass;
 			_parameters = parameters;
@@ -96,6 +102,7 @@ package org.flintparticles.threeD.away3d.initializers
 		/**
 		 * @inheritDoc
 		 */
+	
 		override public function initialize( emitter:Emitter, particle:Particle ):void
 		{
 			// copy the parameters object because the class will modify the object it's sent
@@ -106,23 +113,76 @@ package org.flintparticles.threeD.away3d.initializers
 			}
 		
 			//new Sprite3D(material,width,height,rotation,align,scaling,distanceScaling)
-			if(getQualifiedClassName(_imageClass)=="away3d.sprites::Sprite3D"){
+			if(getQualifiedClassName(_imageClass)=="away3d.entities::Sprite3D"){
 				
-				particle.image = new _imageClass();
-				Sprite3D(particle.image).material=p["material"]==null?null:p["material"];
-				Sprite3D(particle.image).width=p["width"]==null?10:p["width"];
-				Sprite3D(particle.image).height=p["height"]==null?10:p["height"];
-				Sprite3D(particle.image).rotation=p["rotation"]==null?0:p["rotation"];
-				Sprite3D(particle.image).align=p["align"]==null?"center":p["align"];
-				Sprite3D(particle.image).scaling=p["scaling"]==null?1:p["scaling"];
-				Sprite3D(particle.image).distanceScaling=p["distanceScaling"]==null?true:p["distanceScaling"];
+				particle.image = new _imageClass(null,0,0);
+				initSprite3DProperties(particle.image,p);
+		
 			}else{
-				particle.image = new _imageClass( p );
+                
+		
+				
+				particle.image = new _imageClass(  );
+				///common to all
+				Mesh(particle.image).material=p["material"]==null?null:p["material"];
+				Mesh(particle.image)["segmentsH"]=p["segmentsH"]==null?6:p["segmentsH"];
+				Mesh(particle.image)["segmentsW"]=p["segmentsW"]==null?6:p["segmentsW"];
+				///cube setup////
+				if(getQualifiedClassName(_imageClass)=="away3d.primitives::Cube"){
+					initCubeProperties(particle.image,p);
+				}
+				////plane setup///
+				if(getQualifiedClassName(_imageClass)=="away3d.primitives::Plane"){
+					initPlaneProperties(particle.image,p);
+				}
+				///sphere setup///
+				if(getQualifiedClassName(_imageClass)=="away3d.primitives::Sphere"){
+					initSphereProperties(particle.image,p);
+				}
+
+		
+				
+			
+				
 			}
 			
 			
 		
 			
+		}
+		protected function initCubeProperties(cube:Cube,p:Object):void{
+			///cube specific
+			cube["width"]=p["width"]==null?100:p["width"];
+			cube["height"]=p["height"]==null?100:p["height"];
+			cube["depth"]=p["depth"]==null?100:p["depth"];
+			cube["segmentsD"]=p["segmentsD"]==null?6:p["segmentsD"];
+			cube["tile6"]=p["tile6"]==null?true:p["tile6"];
+				
+			
+		}
+		protected function initPlaneProperties(plane:Plane,p:Object):void{
+			
+			plane["width"]=p["width"]==null?100:p["width"];
+			plane["height"]=p["height"]==null?100:p["height"];
+			plane["yUp"]=p["yUp"]==null?true:p["yUp"];
+		}
+		protected function initSphereProperties(sphere:Sphere,p:Object):void{
+		
+			sphere["radius"]=p["radius"]==null?10:p["radius"];
+			sphere["yUp"]=p["yUp"]==null?true:p["yUp"];
+		}
+		protected function initSprite3DProperties(sprite:Sprite3D,p:Object):void{
+			sprite.material=p["material"]==null?null:p["material"];
+			sprite.width=p["width"]==null?10:p["width"];
+			sprite.height=p["height"]==null?10:p["height"];
+			///
+			sprite.rotationX=p["rotationX"]==null?0:p["rotationX"];
+			sprite.rotationY=p["rotationY"]==null?0:p["rotationY"];
+			sprite.rotationZ=p["rotationZ"]==null?0:p["rotationZ"];
+			///
+			sprite.scaleX=p["scaleX"]==null?1:p["scaleX"];
+			sprite.scaleY=p["scaleY"]==null?1:p["scaleY"];
+			sprite.scaleZ=p["scaleZ"]==null?1:p["scaleZ"];
 		}
 	}
 }

@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.threeD.away3d.away4.initializers
+package org.flintparticles.integration.away3d.v4.initializers
 {
 	import away3d.containers.ObjectContainer3D;
 	import away3d.core.base.Object3D;

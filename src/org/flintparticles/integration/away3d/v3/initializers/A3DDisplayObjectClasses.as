@@ -2,7 +2,7 @@
  * FLINT PARTICLE SYSTEM
  * .....................
  * 
- * Author: Richard Lord
+ * Author: Richard Lord & Michael Ivanov
  * Copyright (c) Richard Lord 2008-2011
  * http://flintparticles.org
  * 
@@ -28,17 +28,15 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.threeD.papervision3d.initializers
+package org.flintparticles.integration.away3d.v3.initializers
 {
+	import away3d.sprites.MovieClipSprite;
+	
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.initializers.InitializerBase;
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.utils.WeightedArray;
-	import org.flintparticles.common.utils.construct;
-	import org.papervision3d.materials.MovieMaterial;
-	import org.papervision3d.objects.primitives.Plane;
-	
-	import flash.display.DisplayObject;	
+	import org.flintparticles.common.utils.construct;	
 
 	/**
 	 * The ImageClass Initializer sets the DisplayObject to use to draw
@@ -46,7 +44,7 @@ package org.flintparticles.threeD.papervision3d.initializers
 	 * BitmapRenderer it is more efficient to use the SharedImage Initializer.
 	 */
 
-	public class PV3DDisplayObjectClasses extends InitializerBase
+	public class A3DDisplayObjectClasses extends InitializerBase
 	{
 		private var _images:WeightedArray;
 		
@@ -62,7 +60,7 @@ package org.flintparticles.threeD.papervision3d.initializers
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function PV3DDisplayObjectClasses( images:Array, weights:Array = null )
+		public function A3DDisplayObjectClasses( images:Array, weights:Array = null )
 		{
 			_images = new WeightedArray;
 			var len:int = images.length;
@@ -108,9 +106,7 @@ package org.flintparticles.threeD.papervision3d.initializers
 		override public function initialize( emitter:Emitter, particle:Particle ):void
 		{
 			var img:Pair = _images.getRandomValue();
-			var clip:DisplayObject = construct( img.image, img.parameters );
-			var material:MovieMaterial = new MovieMaterial( clip, true, true, false, clip.getBounds( clip ) );
-			particle.image = new Plane( material, clip.width, clip.height );
+			particle.image = new MovieClipSprite( construct( img.image, img.parameters ) ,"none", 1, true );
 		}
 	}
 }

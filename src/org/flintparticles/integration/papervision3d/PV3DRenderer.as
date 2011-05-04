@@ -28,36 +28,42 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.threeD.papervision3d 
+package org.flintparticles.integration.papervision3d 
 {
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.renderers.RendererBase;
+	import org.flintparticles.common.utils.Maths;
 	import org.flintparticles.threeD.particles.Particle3D;
-	import org.papervision3d.core.geom.Particles;
-	import org.papervision3d.core.geom.renderables.Particle;
+	import org.papervision3d.core.math.Number3D;
+	import org.papervision3d.core.math.Quaternion;
+	import org.papervision3d.core.proto.DisplayObjectContainer3D;
+	import org.papervision3d.materials.MovieMaterial;
+	import org.papervision3d.objects.DisplayObject3D;
+	import org.papervision3d.objects.primitives.Plane;
 
 	/**
-	 * Renders the particles in a Papervision3D Particles object.
+	 * Renders the particles in a Papervision3D scene.
 	 * 
 	 * <p>To use this renderer, the particles' image properties should be 
-	 * Papervision3D particles, renderable in a Papervision3D Particles object.
-	 * This renderer doesn't update the scene, but copies each particle's 
-	 * properties to its image object so next time the Papervision3D scene is 
-	 * rendered the image objects are drawn according to the state of the particle
+	 * Papervision3D objects, renderable in a Papervision3D scene. This renderer
+	 * doesn't update the scene, but copies each particle's properties
+	 * to its image object so next time the Papervision3D scene is rendered the 
+	 * image objects are drawn according to the state of the particle
 	 * system.</p>
 	 */
-	public class PV3DParticleRenderer extends RendererBase
+	public class PV3DRenderer extends RendererBase
 	{
-		private var _container:Particles;
+		private var _container:DisplayObjectContainer3D;
 		
 		/**
-		 * The constructor creates an Papervision3D particle renderer for displaying the
-		 * particles in a Papervision3D Particles object.
+		 * The constructor creates an Papervision3D renderer for displaying the
+		 * particles in a Papervision3D scene.
 		 * 
-		 * @param container A Papervision3D Particles object. The particle display
-		 * objects are created inside this Particles object.
+		 * @param container A Papervision3D object container. The particle display
+		 * objects are created inside this object container. This is usually
+		 * a scene object, but it may be any DisplayObjectContainer3D.
 		 */
-		public function PV3DParticleRenderer( container:Particles )
+		public function PV3DRenderer( container:DisplayObjectContainer3D )
 		{
 			super();
 			_container = container;
@@ -66,8 +72,8 @@ package org.flintparticles.threeD.papervision3d
 		/**
 		 * This method copies the particle's state to the associated image object.
 		 * 
-		 * <p>This method is called internally by Flint and shouldn't need to be called
-		 * by the user.</p>
+		 * <p>This method is called internally by Flint and shouldn't need to be 
+		 * called by the user.</p>
 		 * 
 		 * @param particles The particles to be rendered.
 		 */
@@ -87,33 +93,34 @@ package org.flintparticles.threeD.papervision3d
 		 * 
 		 * @param particle The particle being added to the emitter.
 		 */
-		override protected function addParticle( particle:org.flintparticles.common.particles.Particle ):void
+		override protected function addParticle( particle:Particle ):void
 		{
-			_container.addParticle( org.papervision3d.core.geom.renderables.Particle( particle.image ) );
+			_container.addChild( DisplayObject3D( particle.image ) );
 			renderParticle( particle as Particle3D );
 		}
 		
 		protected function renderParticle( particle:Particle3D ):void
 		{
-			var o:org.papervision3d.core.geom.renderables.Particle = particle.image;
+			var o:DisplayObject3D = particle.image;
 			o.x = particle.position.x;
 			o.y = particle.position.y;
 			o.z = particle.position.z;
-			if( particle.dictionary["pv3dBaseSize"] )
+			o.scaleX = o.scaleY = o.scaleZ = particle.scale;
+			if( o is Plane && o.material is MovieMaterial )
 			{
-				o.size = particle.scale * particle.dictionary["pv3dBaseSize"];
+				MovieMaterial( o.material ).movie.transform.colorTransform = particle.colorTransform;
 			}
 			else
-			{
-				o.size = particle.scale;
-			}
-			// TODO: rotation
-			
-			if( o.material )
 			{
 				// this only works for some materials
 				o.material.fillColor = particle.color & 0xFFFFFF;
 				o.material.fillAlpha = particle.alpha;
+				// rotation
+				var rotation:Quaternion = new Quaternion( particle.rotation.x, particle.rotation.y, particle.rotation.z, particle.rotation.w );
+				var r:Number3D = rotation.toEuler();
+				o.rotationX = Maths.asDegrees( r.x );
+				o.rotationY = Maths.asDegrees( r.y );
+				o.rotationZ = Maths.asDegrees( r.z );
 			}
 		}
 		
@@ -125,9 +132,9 @@ package org.flintparticles.threeD.papervision3d
 		 * 
 		 * @param particle The particle being removed from the emitter.
 		 */
-		override protected function removeParticle( particle:org.flintparticles.common.particles.Particle ):void
+		override protected function removeParticle( particle:Particle ):void
 		{
-			_container.removeParticle( org.papervision3d.core.geom.renderables.Particle( particle.image ) );
+			_container.removeChild( DisplayObject3D( particle.image ) );
 		}
 	}
 }

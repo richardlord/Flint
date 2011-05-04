@@ -28,61 +28,65 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.threeD.papervision3d.initializers
+package org.flintparticles.integration.papervision3d.initializers
 {
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.initializers.InitializerBase;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.common.utils.construct;	
+	import org.flintparticles.common.utils.construct;
+	import org.papervision3d.materials.MovieMaterial;
+	import org.papervision3d.objects.primitives.Plane;
+	
+	import flash.display.DisplayObject;	
 
 	/**
-	 * The ApplyMaterial initializer sets a material to apply to the Papervision3D
-	 * object that is used when rendering the particle. To use this initializer,
-	 * the particle's image object must be an Papervision3D object with a material
-	 * property.
+	 * The PV3DDisplayObjectClass initializer sets the DisplayObject to use to 
+	 * draw the particle in a 3D scene. It is used with the Papervision3D renderer when
+	 * particles should be represented by a display object.
 	 * 
-	 * <p>This initializer has a priority of -10 to ensure that it is applied after 
-	 * the ImageInit classes which define the image object.</p>
+	 * <p>The initializer creates an Papervision3D Plane object with the DisplayObject as its material
+	 * for rendering the display object in an Papervision3D scene.</p>
 	 */
-	public class ApplyMaterial extends InitializerBase
+
+	public class PV3DDisplayObjectClass extends InitializerBase
 	{
-		private var _materialClass:Class;
+		private var _imageClass:Class;
 		private var _parameters:Array;
 		
 		/**
-		 * The constructor creates an ApplyMaterial initializer for use by 
-		 * an emitter. To add an ApplyMaterial to all particles created by 
-		 * an emitter, use the emitter's addInitializer method.
+		 * The constructor creates an ImageClass initializer for use by 
+		 * an emitter. To add an ImageClass to all particles created by an emitter, use the
+		 * emitter's addInitializer method.
 		 * 
-		 * @param materialClass The class to use when creating
-		 * the particles' material.
+		 * @param imageClass The class to use when creating
+		 * the particles' DisplayObjects.
 		 * @param parameters The parameters to pass to the constructor
-		 * for the material class.
+		 * for the image class.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function ApplyMaterial( materialClass:Class, ...parameters )
+		public function PV3DDisplayObjectClass( imageClass:Class, ...parameters )
 		{
-			priority = -10;
-			_materialClass = materialClass;
+			_imageClass = imageClass;
 			_parameters = parameters;
 		}
 		
 		/**
-		 * The class to use when creating the particles' material.
+		 * The class to use when creating
+		 * the particles' DisplayObjects.
 		 */
-		public function get materialClass():Class
+		public function get imageClass():Class
 		{
-			return _materialClass;
+			return _imageClass;
 		}
-		public function set materialClass( value:Class ):void
+		public function set imageClass( value:Class ):void
 		{
-			_materialClass = value;
+			_imageClass = value;
 		}
 		
 		/**
 		 * The parameters to pass to the constructor
-		 * for the material class.
+		 * for the image class.
 		 */
 		public function get parameters():Array
 		{
@@ -96,12 +100,11 @@ package org.flintparticles.threeD.papervision3d.initializers
 		/**
 		 * @inheritDoc
 		 */
-		override public function initialize( emitter:Emitter, particle:Particle ):void
+		override public function initialize( emitter:Emitter, particle:org.flintparticles.common.particles.Particle ):void
 		{
-			if( particle.image && particle.image["hasOwnProperty"]( "material" ) )
-			{
-				particle.image["material"] = construct( _materialClass, _parameters );
-			}
+			var clip:DisplayObject = construct( _imageClass, _parameters );
+			var material:MovieMaterial = new MovieMaterial( clip, true, true, false, clip.getBounds( clip ) );
+			particle.image = new Plane( material, clip.width, clip.height );
 		}
 	}
 }

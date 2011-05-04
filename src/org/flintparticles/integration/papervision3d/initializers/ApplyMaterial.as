@@ -2,7 +2,7 @@
  * FLINT PARTICLE SYSTEM
  * .....................
  * 
- * Author: Richard Lord & Michael Ivanov
+ * Author: Richard Lord
  * Copyright (c) Richard Lord 2008-2011
  * http://flintparticles.org
  * 
@@ -28,64 +28,61 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.threeD.away3d.initializers
+package org.flintparticles.integration.papervision3d.initializers
 {
-	import away3d.sprites.MovieClipSprite;
-	
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.initializers.InitializerBase;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.common.utils.construct;
+	import org.flintparticles.common.utils.construct;	
 
 	/**
-	 * The A3DDisplayObjectClass initializer sets the DisplayObject to use to 
-	 * draw the particle in a 3D scene. It is used with the Away3D renderer when
-	 * particles should be represented by a display object.
+	 * The ApplyMaterial initializer sets a material to apply to the Papervision3D
+	 * object that is used when rendering the particle. To use this initializer,
+	 * the particle's image object must be an Papervision3D object with a material
+	 * property.
 	 * 
-	 * <p>The initializer creates an Away3D MovieClipSprite, with the display object
-	 * as the image source (the movieClip property), for rendering the display 
-	 * object in an Away3D scene.</p>
+	 * <p>This initializer has a priority of -10 to ensure that it is applied after 
+	 * the ImageInit classes which define the image object.</p>
 	 */
-
-	public class A3DDisplayObjectClass extends InitializerBase
+	public class ApplyMaterial extends InitializerBase
 	{
-		private var _imageClass:Class;
+		private var _materialClass:Class;
 		private var _parameters:Array;
 		
 		/**
-		 * The constructor creates an ImageClass initializer for use by 
-		 * an emitter. To add an ImageClass to all particles created by an emitter, use the
-		 * emitter's addInitializer method.
+		 * The constructor creates an ApplyMaterial initializer for use by 
+		 * an emitter. To add an ApplyMaterial to all particles created by 
+		 * an emitter, use the emitter's addInitializer method.
 		 * 
-		 * @param imageClass The class to use when creating
-		 * the particles' DisplayObjects.
+		 * @param materialClass The class to use when creating
+		 * the particles' material.
 		 * @param parameters The parameters to pass to the constructor
-		 * for the image class.
+		 * for the material class.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function A3DDisplayObjectClass( imageClass:Class, ...parameters )
+		public function ApplyMaterial( materialClass:Class, ...parameters )
 		{
-			_imageClass = imageClass;
+			priority = -10;
+			_materialClass = materialClass;
 			_parameters = parameters;
 		}
 		
 		/**
-		 * The class to use when creating
-		 * the particles' DisplayObjects.
+		 * The class to use when creating the particles' material.
 		 */
-		public function get imageClass():Class
+		public function get materialClass():Class
 		{
-			return _imageClass;
+			return _materialClass;
 		}
-		public function set imageClass( value:Class ):void
+		public function set materialClass( value:Class ):void
 		{
-			_imageClass = value;
+			_materialClass = value;
 		}
 		
 		/**
 		 * The parameters to pass to the constructor
-		 * for the image class.
+		 * for the material class.
 		 */
 		public function get parameters():Array
 		{
@@ -101,8 +98,10 @@ package org.flintparticles.threeD.away3d.initializers
 		 */
 		override public function initialize( emitter:Emitter, particle:Particle ):void
 		{
-			particle.image = new MovieClipSprite( construct( _imageClass, _parameters ) ,"none", 1, true );
-			
+			if( particle.image && particle.image["hasOwnProperty"]( "material" ) )
+			{
+				particle.image["material"] = construct( _materialClass, _parameters );
+			}
 		}
 	}
 }

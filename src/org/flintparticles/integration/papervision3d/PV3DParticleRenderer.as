@@ -4,7 +4,8 @@
  * 
  * Author: Richard Lord
  * Copyright (c) Richard Lord 2008-2011
- * http://flintparticles.org/
+ * http://flintparticles.org
+ * 
  * 
  * Licence Agreement
  * 
@@ -27,29 +28,43 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.threeD.papervision3d 
+package org.flintparticles.integration.papervision3d 
 {
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.renderers.RendererBase;
 	import org.flintparticles.threeD.particles.Particle3D;
-	import org.papervision3d.core.geom.Pixels;
-	import org.papervision3d.core.geom.renderables.Pixel3D;	
+	import org.papervision3d.core.geom.Particles;
+	import org.papervision3d.core.geom.renderables.Particle;
 
 	/**
-	 * Renders the particles as pixels in a Papervision3D Pixels object.
+	 * Renders the particles in a Papervision3D Particles object.
+	 * 
+	 * <p>To use this renderer, the particles' image properties should be 
+	 * Papervision3D particles, renderable in a Papervision3D Particles object.
+	 * This renderer doesn't update the scene, but copies each particle's 
+	 * properties to its image object so next time the Papervision3D scene is 
+	 * rendered the image objects are drawn according to the state of the particle
+	 * system.</p>
 	 */
-	public class PV3DPixelRenderer extends RendererBase
+	public class PV3DParticleRenderer extends RendererBase
 	{
-		private var _container:Pixels;
+		private var _container:Particles;
 		
-		public function PV3DPixelRenderer( container:Pixels )
+		/**
+		 * The constructor creates an Papervision3D particle renderer for displaying the
+		 * particles in a Papervision3D Particles object.
+		 * 
+		 * @param container A Papervision3D Particles object. The particle display
+		 * objects are created inside this Particles object.
+		 */
+		public function PV3DParticleRenderer( container:Particles )
 		{
 			super();
 			_container = container;
 		}
 		
 		/**
-		 * This method applies the particle's state to the associated image object.
+		 * This method copies the particle's state to the associated image object.
 		 * 
 		 * <p>This method is called internally by Flint and shouldn't need to be called
 		 * by the user.</p>
@@ -72,20 +87,34 @@ package org.flintparticles.threeD.papervision3d
 		 * 
 		 * @param particle The particle being added to the emitter.
 		 */
-		override protected function addParticle( particle:Particle ):void
+		override protected function addParticle( particle:org.flintparticles.common.particles.Particle ):void
 		{
-			particle.image = new Pixel3D( 0 );
-			_container.addPixel3D( Pixel3D( particle.image ) );
+			_container.addParticle( org.papervision3d.core.geom.renderables.Particle( particle.image ) );
 			renderParticle( particle as Particle3D );
 		}
 		
 		protected function renderParticle( particle:Particle3D ):void
 		{
-			var o:Pixel3D = particle.image;
+			var o:org.papervision3d.core.geom.renderables.Particle = particle.image;
 			o.x = particle.position.x;
 			o.y = particle.position.y;
 			o.z = particle.position.z;
-			o.color = particle.color;
+			if( particle.dictionary["pv3dBaseSize"] )
+			{
+				o.size = particle.scale * particle.dictionary["pv3dBaseSize"];
+			}
+			else
+			{
+				o.size = particle.scale;
+			}
+			// TODO: rotation
+			
+			if( o.material )
+			{
+				// this only works for some materials
+				o.material.fillColor = particle.color & 0xFFFFFF;
+				o.material.fillAlpha = particle.alpha;
+			}
 		}
 		
 		/**
@@ -96,9 +125,9 @@ package org.flintparticles.threeD.papervision3d
 		 * 
 		 * @param particle The particle being removed from the emitter.
 		 */
-		override protected function removeParticle( particle:Particle ):void
+		override protected function removeParticle( particle:org.flintparticles.common.particles.Particle ):void
 		{
-			_container.removePixel3D( Pixel3D( particle.image ) );
+			_container.removeParticle( org.papervision3d.core.geom.renderables.Particle( particle.image ) );
 		}
 	}
 }

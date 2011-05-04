@@ -28,13 +28,10 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.threeD.away3d.away4.initializers
+package org.flintparticles.integration.away3d.v4.initializers
 {
-	
-	
 	import away3d.entities.Mesh;
 	import away3d.entities.Sprite3D;
-	import away3d.materials.ColorMaterial;
 	import away3d.primitives.Cube;
 	import away3d.primitives.Plane;
 	import away3d.primitives.Sphere;
@@ -44,111 +41,118 @@ package org.flintparticles.threeD.away3d.away4.initializers
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.initializers.InitializerBase;
 	import org.flintparticles.common.particles.Particle;
+	import org.flintparticles.common.utils.WeightedArray;
 
 	/**
-	 * The A3D4ObjectClass initializer sets the 3D Object to use to 
-	 * draw the particle in a 3D scene. It is used with the Away3D 4 renderer when
-	 * particles should be represented by a 3D object.
+	 * The ImageClass Initializer sets the DisplayObject to use to draw
+	 * the particle. It is used with the DisplayObjectRenderer. When using the
+	 * BitmapRenderer it is more efficient to use the SharedImage Initializer.
 	 */
 
-	public class A3D4ObjectClass extends InitializerBase
+	public class A3D4ObjectClasses extends InitializerBase
 	{
-		private var _imageClass:Class;
-		private var _parameters:Object;
+		private var _images:WeightedArray;
 		
 		/**
-		 * The constructor creates an A3D4ObjectClass initializer for use by 
-		 * an emitter. To add an ImageClass to all particles created by an emitter, 
-		 * use the emitter's addInitializer method.
+		 * The constructor creates a ImageClasses initializer for use by 
+		 * an emitter. To add a ImageClasses to all particles created by 
+		 * an emitter, use the emitter's addInitializer method.
 		 * 
-		 * @param imageClass The class to use when creating
-		 * the particles' image object.
-		 * @param parameters The parameters to pass to the constructor
-		 * for the image class.
+		 * @param images An array containing the classes to use for 
+		 * each particle created by the emitter.
+		 * @param weights The weighting to apply to each displayObject. If no weighting
+		 * values are passed, the images are used with equal probability.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function A3D4ObjectClass( imageClass:Class, parameters:Object )
+		public function A3D4ObjectClasses( images:Array, parameters:Array = null, weights:Array = null )
 		{
-			_imageClass = imageClass;
-			_parameters = parameters;
+			_images = new WeightedArray;
+			if( parameters == null )
+			{
+				parameters = [];
+			}
+			var len:int = images.length;
+			var i:int;
+			if( weights != null && weights.length == len )
+			{
+				for( i = 0; i < len; ++i )
+				{
+					if( parameters[i] )
+					{
+						addImage( images[i], parameters[i], weights[i] );
+					}
+					else
+					{
+						addImage( images[i], null, weights[i] );
+					}
+				}
+			}
+			else
+			{
+				for( i = 0; i < len; ++i )
+				{
+					if( parameters[i] )
+					{
+						addImage( images[i], parameters[i], 1 );
+					}
+					else
+					{
+						addImage( images[i], null, 1 );
+					}
+				}
+			}
 		}
 		
-		/**
-		 * The class to use when creating
-		 * the particles' DisplayObjects.
-		 */
-		public function get imageClass():Class
+		public function addImage( image:Class, parameters:Object = null, weight:Number = 1 ):void
 		{
-			return _imageClass;
-		}
-		public function set imageClass( value:Class ):void
-		{
-			_imageClass = value;
+			_images.add( new Pair( image, parameters ), weight );
 		}
 		
-		/**
-		 * The parameters to pass to the constructor
-		 * for the image class.
-		 */
-		public function get parameters():Object
+		public function removeImage( image:* ):void
 		{
-			return _parameters;
+			_images.remove( image );
 		}
-		public function set parameters( value:Object ):void
-		{
-			_parameters = value;
-		}
-		
+
 		/**
 		 * @inheritDoc
 		 */
-	
 		override public function initialize( emitter:Emitter, particle:Particle ):void
 		{
+			var img:Pair = _images.getRandomValue();
+
 			// copy the parameters object because the class will modify the object it's sent
 			var p:Object = new Object();
-			for( var name:String in _parameters )
+			for( var name:String in img.parameters )
 			{
-				p[name] = _parameters[name];
+				p[name] = img.parameters[name];
 			}
-		
-			//new Sprite3D(material,width,height,rotation,align,scaling,distanceScaling)
-			if(getQualifiedClassName(_imageClass)=="away3d.entities::Sprite3D"){
+			var imgClass:Class = img.image as Class;
+			if(getQualifiedClassName(imgClass)=="away3d.entities::Sprite3D"){
 				
-				particle.image = new _imageClass(null,0,0);
+				particle.image = new imgClass(null,0,0);
 				initSprite3DProperties(particle.image,p);
-		
 			}else{
-                
-		
-				
-				particle.image = new _imageClass(  );
+				particle.image = new imgClass();
+				//particle.image = new imgClass( p );
 				///common to all
 				Mesh(particle.image).material=p["material"]==null?null:p["material"];
 				Mesh(particle.image)["segmentsH"]=p["segmentsH"]==null?6:p["segmentsH"];
 				Mesh(particle.image)["segmentsW"]=p["segmentsW"]==null?6:p["segmentsW"];
 				///cube setup////
-				if(getQualifiedClassName(_imageClass)=="away3d.primitives::Cube"){
+				if(getQualifiedClassName(imgClass)=="away3d.primitives::Cube"){
 					initCubeProperties(particle.image,p);
 				}
 				////plane setup///
-				if(getQualifiedClassName(_imageClass)=="away3d.primitives::Plane"){
+				if(getQualifiedClassName(imgClass)=="away3d.primitives::Plane"){
 					initPlaneProperties(particle.image,p);
 				}
 				///sphere setup///
-				if(getQualifiedClassName(_imageClass)=="away3d.primitives::Sphere"){
+				if(getQualifiedClassName(imgClass)=="away3d.primitives::Sphere"){
 					initSphereProperties(particle.image,p);
 				}
-
-		
-				
-			
 				
 			}
-			
-			
-		
 			
 		}
 		protected function initCubeProperties(cube:Cube,p:Object):void{
@@ -158,7 +162,7 @@ package org.flintparticles.threeD.away3d.away4.initializers
 			cube["depth"]=p["depth"]==null?100:p["depth"];
 			cube["segmentsD"]=p["segmentsD"]==null?6:p["segmentsD"];
 			cube["tile6"]=p["tile6"]==null?true:p["tile6"];
-				
+			
 			
 		}
 		protected function initPlaneProperties(plane:Plane,p:Object):void{
@@ -168,7 +172,7 @@ package org.flintparticles.threeD.away3d.away4.initializers
 			plane["yUp"]=p["yUp"]==null?true:p["yUp"];
 		}
 		protected function initSphereProperties(sphere:Sphere,p:Object):void{
-		
+			
 			sphere["radius"]=p["radius"]==null?10:p["radius"];
 			sphere["yUp"]=p["yUp"]==null?true:p["yUp"];
 		}
@@ -185,5 +189,16 @@ package org.flintparticles.threeD.away3d.away4.initializers
 			sprite.scaleY=p["scaleY"]==null?1:p["scaleY"];
 			sprite.scaleZ=p["scaleZ"]==null?1:p["scaleZ"];
 		}
+	}
+}
+class Pair
+{
+	internal var image:Class;
+	internal var parameters:Object;
+	
+	public function Pair( image:Class, parameters:Object )
+	{
+		this.image = image;
+		this.parameters = parameters;
 	}
 }

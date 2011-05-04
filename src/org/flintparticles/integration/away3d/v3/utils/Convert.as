@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.threeD.away3d.utils 
+package org.flintparticles.integration.away3d.v3.utils
 {
 	import away3d.core.math.Quaternion;
 

@@ -28,7 +28,7 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.threeD.away3d 
+package org.flintparticles.integration.away3d.v3
 {
 	import away3d.sprites.Sprite3D;
 	import away3d.containers.ObjectContainer3D;
@@ -42,7 +42,7 @@ package org.flintparticles.threeD.away3d
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.renderers.RendererBase;
 	import org.flintparticles.common.utils.Maths;
-	import org.flintparticles.threeD.away3d.utils.Convert;
+	import org.flintparticles.integration.away3d.v3.utils.Convert;
 	import org.flintparticles.threeD.particles.Particle3D;
 
 	/**

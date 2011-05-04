@@ -3,7 +3,7 @@
 	
 	<property file="build.config"/>
 		
-	<target name="all" depends="swc2d,swc3d,asdocs" description="Full build of swc library and asdocs"/>
+	<target name="all" depends="swc2d,swc3d,papervision3d,away3d_v3,away3d_v4,asdocs" description="Full build of swc library and asdocs"/>
 		
 	<target name="swc2d" description="Build 2D swc library">
 		
@@ -12,7 +12,7 @@
 			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
 		</pathconvert>
 		
-		<exec executable="${compc}" failonerror="true">
+		<exec executable="${flexsdk.dir}/bin/compc${bin.ext}" failonerror="true">
 
 			<arg line='-source-path ../src'/>
 			<arg line='-output ../swc/Flint2d_${version}.swc'/>
@@ -35,7 +35,7 @@
 			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
 		</pathconvert>
 		
-		<exec executable="${compc}" failonerror="true">
+		<exec executable="${flexsdk.dir}/bin/compc${bin.ext}" failonerror="true">
 
 			<arg line='-source-path ../src'/>
 			<arg line='-output ../swc/Flint3d_${version}.swc'/>
@@ -46,15 +46,81 @@
 
 			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/flex.swc"'/>
 			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/framework.swc"'/>
-			<arg line='-external-library-path+="${away3d.swc}"'/>
+			
+			<arg line='-include-classes ${classlist3d}'/>
+		</exec>
+	</target>
+
+	<target name="papervision3d" description="Build Papervision 3D v3 swc library">
+		
+		<fileset dir="../src" casesensitive="yes" includes="org/flintparticles/integration/papervision3d/*.as org/flintparticles/integration/papervision3d/**/*.as" id="classfilesPV3d"/>
+		<pathconvert property="classlistPV3d" refid="classfilesPV3d" pathsep=" " dirsep=".">
+			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
+		</pathconvert>
+		
+		<exec executable="${flexsdk.dir}/bin/compc${bin.ext}" failonerror="true">
+
+			<arg line='-source-path ../src'/>
+			<arg line='-output ../swc/FlintPapervision3d_${version}.swc'/>
+
+			<arg line='-target-player 10.0.0.0'/>
+
+			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/flex.swc"'/>
+			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/framework.swc"'/>
 			<arg line='-external-library-path+="${papervision3d.swc}"'/>
+			<arg line='-external-library-path+=../swc/Flint3d_${version}.swc'/>
+			
+			<arg line='-include-classes ${classlist3d}'/>
+		</exec>
+	</target>
+
+	<target name="away3d_v3" description="Build Away 3D v3 swc library">
+		
+		<fileset dir="../src" casesensitive="yes" includes="org/flintparticles/integration/away3d/v3/*.as org/flintparticles/integration/away3d/v3/**/*.as" id="classfilesA3d3"/>
+		<pathconvert property="classlistA3d3" refid="classfilesA3d3" pathsep=" " dirsep=".">
+			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
+		</pathconvert>
+		
+		<exec executable="${flexsdk.dir}/bin/compc${bin.ext}" failonerror="true">
+
+			<arg line='-source-path ../src'/>
+			<arg line='-output ../swc/FlintAway3d_v3_${version}.swc'/>
+
+			<arg line='-target-player 10.0.0.0'/>
+
+			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/flex.swc"'/>
+			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/framework.swc"'/>
+			<arg line='-external-library-path+="${away3d3.swc}"'/>
+			<arg line='-external-library-path+=../swc/Flint3d_${version}.swc'/>
+			
+			<arg line='-include-classes ${classlist3d}'/>
+		</exec>
+	</target>
+
+	<target name="away3d_v4" description="Build Away 3D v4 swc library">
+		
+		<fileset dir="../src" casesensitive="yes" includes="org/flintparticles/integration/away3d/v4/*.as org/flintparticles/integration/away3d/v4/**/*.as" id="classfilesA3d4"/>
+		<pathconvert property="classlistA3d4" refid="classfilesA3d4" pathsep=" " dirsep=".">
+			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
+		</pathconvert>
+		
+		<exec executable="${molehillsdk.dir}/bin/compc${bin.ext}" failonerror="true">
+
+			<arg line='-source-path ../src'/>
+			<arg line='-output ../swc/FlintAway3d_v4_${version}.swc'/>
+
+			<arg line='-target-player 10.2.0.0'/>
+
+			<arg line='-external-library-path+="${molehillsdk.dir}/frameworks/libs/framework.swc"'/>
+			<arg line='-external-library-path+="${away3d4.swc}"'/>
+			<arg line='-external-library-path+=../swc/Flint3d_${version}.swc'/>
 			
 			<arg line='-include-classes ${classlist3d}'/>
 		</exec>
 	</target>
 
 	<target name="asdocs" description="Build asdocs documentation">
-		<exec executable="${asdoc}" failonerror="true">
+		<exec executable="${molehillsdk.dir}/bin/asdoc${bin.ext}" failonerror="true">
 			
 			<arg line='-output ../docs'/>
 			<arg line='-templates-path asdoc_templates'/>
@@ -64,10 +130,11 @@
 			<arg line='-namespace http://flintparticles.org/2009/flint3d manifest3D.xml'/>
 			
 			<arg line='-library-path "${flexsdk.dir}/frameworks/libs/flex.swc"'/>
-			<arg line='-library-path "${flexsdk.dir}/frameworks/libs/framework.swc"'/>
-			<arg line='-library-path "${away3d.swc}"'/>
+			<arg line='-library-path "${molehillsdk.dir}/frameworks/libs/framework.swc"'/>
+			<arg line='-library-path "${away3d3.swc}"'/>
+			<arg line='-library-path "${away3d4.swc}"'/>
 			<arg line='-library-path "${papervision3d.swc}"'/>
-			<arg line='-target-player 10.0.0.0'/>
+			<arg line='-target-player 10.2.0.0'/>
 			
 			<arg line='-main-title "Flint Particles documentation v${version}"'/>
 			<arg line='-window-title "Flint Particles documentation"'/>

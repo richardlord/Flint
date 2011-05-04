@@ -28,44 +28,37 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.threeD.papervision3d.initializers
+package org.flintparticles.integration.papervision3d.initializers
 {
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.initializers.InitializerBase;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.common.utils.construct;
-	import org.papervision3d.materials.MovieMaterial;
-	import org.papervision3d.objects.primitives.Plane;
-	
-	import flash.display.DisplayObject;	
+	import org.flintparticles.common.utils.construct;	
 
 	/**
-	 * The PV3DDisplayObjectClass initializer sets the DisplayObject to use to 
+	 * The PV3DObjectClass initializer sets the 3D Object to use to 
 	 * draw the particle in a 3D scene. It is used with the Papervision3D renderer when
-	 * particles should be represented by a display object.
-	 * 
-	 * <p>The initializer creates an Papervision3D Plane object with the DisplayObject as its material
-	 * for rendering the display object in an Papervision3D scene.</p>
+	 * particles should be represented by a 3D object.
 	 */
 
-	public class PV3DDisplayObjectClass extends InitializerBase
+	public class PV3DObjectClass extends InitializerBase
 	{
 		private var _imageClass:Class;
 		private var _parameters:Array;
 		
 		/**
-		 * The constructor creates an ImageClass initializer for use by 
-		 * an emitter. To add an ImageClass to all particles created by an emitter, use the
-		 * emitter's addInitializer method.
+		 * The constructor creates an PV3DObjectClass initializer for use by 
+		 * an emitter. To add an ImageClass to all particles created by an emitter, 
+		 * use the emitter's addInitializer method.
 		 * 
 		 * @param imageClass The class to use when creating
-		 * the particles' DisplayObjects.
+		 * the particles' image object.
 		 * @param parameters The parameters to pass to the constructor
 		 * for the image class.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function PV3DDisplayObjectClass( imageClass:Class, ...parameters )
+		public function PV3DObjectClass( imageClass:Class, ...parameters )
 		{
 			_imageClass = imageClass;
 			_parameters = parameters;
@@ -100,11 +93,13 @@ package org.flintparticles.threeD.papervision3d.initializers
 		/**
 		 * @inheritDoc
 		 */
-		override public function initialize( emitter:Emitter, particle:org.flintparticles.common.particles.Particle ):void
+		override public function initialize( emitter:Emitter, particle:Particle ):void
 		{
-			var clip:DisplayObject = construct( _imageClass, _parameters );
-			var material:MovieMaterial = new MovieMaterial( clip, true, true, false, clip.getBounds( clip ) );
-			particle.image = new Plane( material, clip.width, clip.height );
+			particle.image = construct( _imageClass, _parameters );
+			if( particle.image["hasOwnProperty"]( "size" ) )
+			{
+				particle.dictionary["pv3dBaseSize"] = particle.image["size"];
+			}
 		}
 	}
 }

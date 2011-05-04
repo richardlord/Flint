@@ -28,21 +28,21 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.threeD.away3d.away4 
+package org.flintparticles.integration.away3d.v4
 {
 	import away3d.containers.ObjectContainer3D;
 	import away3d.core.base.Object3D;
 	import away3d.core.math.Vector3DUtils;
 	import away3d.entities.Mesh;
 	import away3d.entities.Sprite3D;
-	
 	import flash.geom.Vector3D;
-	
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.renderers.RendererBase;
 	import org.flintparticles.common.utils.Maths;
-	import org.flintparticles.threeD.away3d.utils.Convert;
+	import org.flintparticles.integration.away3d.v4.utils.Convert;
 	import org.flintparticles.threeD.particles.Particle3D;
+	
+	
 
 
 	/**

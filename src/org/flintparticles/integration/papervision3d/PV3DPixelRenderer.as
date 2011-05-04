@@ -4,8 +4,7 @@
  * 
  * Author: Richard Lord
  * Copyright (c) Richard Lord 2008-2011
- * http://flintparticles.org
- * 
+ * http://flintparticles.org/
  * 
  * Licence Agreement
  * 
@@ -28,52 +27,32 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.threeD.papervision3d 
+package org.flintparticles.integration.papervision3d 
 {
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.renderers.RendererBase;
-	import org.flintparticles.common.utils.Maths;
 	import org.flintparticles.threeD.particles.Particle3D;
-	import org.papervision3d.core.math.Number3D;
-	import org.papervision3d.core.math.Quaternion;
-	import org.papervision3d.core.proto.DisplayObjectContainer3D;
-	import org.papervision3d.materials.MovieMaterial;
-	import org.papervision3d.objects.DisplayObject3D;
-	import org.papervision3d.objects.primitives.Plane;
+	import org.papervision3d.core.geom.Pixels;
+	import org.papervision3d.core.geom.renderables.Pixel3D;	
 
 	/**
-	 * Renders the particles in a Papervision3D scene.
-	 * 
-	 * <p>To use this renderer, the particles' image properties should be 
-	 * Papervision3D objects, renderable in a Papervision3D scene. This renderer
-	 * doesn't update the scene, but copies each particle's properties
-	 * to its image object so next time the Papervision3D scene is rendered the 
-	 * image objects are drawn according to the state of the particle
-	 * system.</p>
+	 * Renders the particles as pixels in a Papervision3D Pixels object.
 	 */
-	public class PV3DRenderer extends RendererBase
+	public class PV3DPixelRenderer extends RendererBase
 	{
-		private var _container:DisplayObjectContainer3D;
+		private var _container:Pixels;
 		
-		/**
-		 * The constructor creates an Papervision3D renderer for displaying the
-		 * particles in a Papervision3D scene.
-		 * 
-		 * @param container A Papervision3D object container. The particle display
-		 * objects are created inside this object container. This is usually
-		 * a scene object, but it may be any DisplayObjectContainer3D.
-		 */
-		public function PV3DRenderer( container:DisplayObjectContainer3D )
+		public function PV3DPixelRenderer( container:Pixels )
 		{
 			super();
 			_container = container;
 		}
 		
 		/**
-		 * This method copies the particle's state to the associated image object.
+		 * This method applies the particle's state to the associated image object.
 		 * 
-		 * <p>This method is called internally by Flint and shouldn't need to be 
-		 * called by the user.</p>
+		 * <p>This method is called internally by Flint and shouldn't need to be called
+		 * by the user.</p>
 		 * 
 		 * @param particles The particles to be rendered.
 		 */
@@ -95,33 +74,18 @@ package org.flintparticles.threeD.papervision3d
 		 */
 		override protected function addParticle( particle:Particle ):void
 		{
-			_container.addChild( DisplayObject3D( particle.image ) );
+			particle.image = new Pixel3D( 0 );
+			_container.addPixel3D( Pixel3D( particle.image ) );
 			renderParticle( particle as Particle3D );
 		}
 		
 		protected function renderParticle( particle:Particle3D ):void
 		{
-			var o:DisplayObject3D = particle.image;
+			var o:Pixel3D = particle.image;
 			o.x = particle.position.x;
 			o.y = particle.position.y;
 			o.z = particle.position.z;
-			o.scaleX = o.scaleY = o.scaleZ = particle.scale;
-			if( o is Plane && o.material is MovieMaterial )
-			{
-				MovieMaterial( o.material ).movie.transform.colorTransform = particle.colorTransform;
-			}
-			else
-			{
-				// this only works for some materials
-				o.material.fillColor = particle.color & 0xFFFFFF;
-				o.material.fillAlpha = particle.alpha;
-				// rotation
-				var rotation:Quaternion = new Quaternion( particle.rotation.x, particle.rotation.y, particle.rotation.z, particle.rotation.w );
-				var r:Number3D = rotation.toEuler();
-				o.rotationX = Maths.asDegrees( r.x );
-				o.rotationY = Maths.asDegrees( r.y );
-				o.rotationZ = Maths.asDegrees( r.z );
-			}
+			o.color = particle.color;
 		}
 		
 		/**
@@ -134,7 +98,7 @@ package org.flintparticles.threeD.papervision3d
 		 */
 		override protected function removeParticle( particle:Particle ):void
 		{
-			_container.removeChild( DisplayObject3D( particle.image ) );
+			_container.removePixel3D( Pixel3D( particle.image ) );
 		}
 	}
 }
