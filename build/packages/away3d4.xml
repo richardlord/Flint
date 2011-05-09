@@ -1,12 +1,6 @@
 <overviews>
 	<all-packages>
-		<description><![CDATA[Flint is divided into three major packages.
-&lt;ul&gt;
-&lt;li&gt;com.flintparticles.common contains classes used for both 2D and 3D particle systems.&lt;/li&gt;
-&lt;li&gt;com.flintparticles.twoD contains classes used only for 2D particle systems.&lt;/li&gt;
-&lt;li&gt;com.flintparticles.threeD contains classes used only for 3D particle systems.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;A particle system in Flint is created by combining emitters, counters, initializers, actions, activities and renderers.&lt;/p&gt;
+		<description><![CDATA[A particle system in Flint is created by combining emitters, counters, initializers, actions, activities and renderers.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Emitters create and manage Particles.&lt;/li&gt;
 &lt;li&gt;Emitters use Counters to control how many particles are created.&lt;/li&gt;
@@ -15,7 +9,7 @@
 &lt;li&gt;Emitters use Activities to control their own behaviour over time.&lt;/li&gt;
 &lt;li&gt;Renderers draw the Particles managed by one or more emitters.&lt;/li&gt;
 &lt;/ul&gt;
-Version 3 features significant changes in the 3D API and minor changes in the 2D API. The library now requires version 10 of Flash Player. With this change some of the Arrays have changed to Vectors for improved performance and type safety. The 3D geometry has altered to use Flash's native Vector3D and Matrix3D. Flint's native renderers now use a right-hand coordinate system to match the system used in Flash's native 3D libraries.]]></description>
+&lt;p&gt;Flint's Away3D integration works with Away3D version 4.0 (broomstick). It uses renderers that draw the particle effect within an Away3D scene.]]></description>
 	</all-packages>
 
 	<packages>

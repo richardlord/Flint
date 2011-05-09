@@ -10,12 +10,12 @@
 	<target name="all_asdocs" depends="asdocs_2d,asdocs_3d,asdocs_papervision3d,asdocs_away3d3,asdocs_away3d4" description="Full build of all swc libraries"/>
 
 	<target name="swc_2d" description="Build 2D swc library">
-		<fileset dir="../src" casesensitive="yes" id="classfiles">
+		<fileset dir="../src" casesensitive="yes" id="classfiles1">
 			<include name="org/flintparticles/common/**/*.as"/>
 			<include name="org/flintparticles/twoD/**/*.as"/>
 		</fileset>
 
-		<pathconvert property="classlist" refid="classfiles" pathsep=" " dirsep=".">
+		<pathconvert property="classlist1" refid="classfiles1" pathsep=" " dirsep=".">
 			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
 		</pathconvert>
 		
@@ -27,17 +27,17 @@
 			<arg line='-include-namespaces http://flintparticles.org/2009/flint2d'/>
 			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/flex.swc"'/>
 			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/framework.swc"'/>
-			<arg line='-include-classes ${classlist}'/>
+			<arg line='-include-classes ${classlist1}'/>
 		</exec>
 	</target>
 				
 	<target name="swc_3d" description="Build 3D swc library">
-		<fileset dir="../src" casesensitive="yes" id="classfiles">
+		<fileset dir="../src" casesensitive="yes" id="classfiles2">
 			<include name="org/flintparticles/common/**/*.as"/>
 			<include name="org/flintparticles/threeD/**/*.as"/>
 		</fileset>
 
-		<pathconvert property="classlist" refid="classfiles" pathsep=" " dirsep=".">
+		<pathconvert property="classlist2" refid="classfiles2" pathsep=" " dirsep=".">
 			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
 		</pathconvert>
 		
@@ -49,16 +49,16 @@
 			<arg line='-include-namespaces http://flintparticles.org/2009/flint3d'/>
 			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/flex.swc"'/>
 			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/framework.swc"'/>
-			<arg line='-include-classes ${classlist}'/>
+			<arg line='-include-classes ${classlist2}'/>
 		</exec>
 	</target>
 
 	<target name="swc_papervision3d" description="Build Papervision 3D v3 swc library">
-		<fileset dir="../src" casesensitive="yes" id="classfiles">
+		<fileset dir="../src" casesensitive="yes" id="classfiles3">
 			<include name="org/flintparticles/integration/papervision3d/**/*.as"/>
 		</fileset>
 
-		<pathconvert property="classlist" refid="classfiles" pathsep=" " dirsep=".">
+		<pathconvert property="classlist3" refid="classfiles3" pathsep=" " dirsep=".">
 			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
 		</pathconvert>
 		
@@ -70,16 +70,16 @@
 			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/framework.swc"'/>
 			<arg line='-external-library-path+="${papervision3d.swc}"'/>
 			<arg line='-external-library-path+=../swc/Flint3d_${version}.swc'/>
-			<arg line='-include-classes ${classlist}'/>
+			<arg line='-include-classes ${classlist3}'/>
 		</exec>
 	</target>
 
 	<target name="swc_away3d3" description="Build Away 3D v3 swc library">
-		<fileset dir="../src" casesensitive="yes" id="classfiles">
+		<fileset dir="../src" casesensitive="yes" id="classfiles4">
 			<include name="org/flintparticles/integration/away3d/v3/**/*.as"/>
 		</fileset>
 
-		<pathconvert property="classlist" refid="classfiles" pathsep=" " dirsep=".">
+		<pathconvert property="classlist4" refid="classfiles4" pathsep=" " dirsep=".">
 			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
 		</pathconvert>
 		
@@ -91,16 +91,16 @@
 			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/framework.swc"'/>
 			<arg line='-external-library-path+="${away3d3.swc}"'/>
 			<arg line='-external-library-path+=../swc/Flint3d_${version}.swc'/>
-			<arg line='-include-classes ${classlist}'/>
+			<arg line='-include-classes ${classlist4}'/>
 		</exec>
 	</target>
 
 	<target name="swc_away3d4" description="Build Away 3D v4 swc library">
-		<fileset dir="../src" casesensitive="yes" id="classfiles">
+		<fileset dir="../src" casesensitive="yes" id="classfiles5">
 			<include name="org/flintparticles/integration/away3d/v4/**/*.as"/>
 		</fileset>
 
-		<pathconvert property="classlist" refid="classfiles" pathsep=" " dirsep=".">
+		<pathconvert property="classlist5" refid="classfiles5" pathsep=" " dirsep=".">
 			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
 		</pathconvert>
 		
@@ -111,17 +111,25 @@
 			<arg line='-external-library-path+="${molehillsdk.dir}/frameworks/libs/framework.swc"'/>
 			<arg line='-external-library-path+="${away3d4.swc}"'/>
 			<arg line='-external-library-path+=../swc/Flint3d_${version}.swc'/>
-			<arg line='-include-classes ${classlist}'/>
+			<arg line='-include-classes ${classlist5}'/>
 		</exec>
+	</target>
+	
+	<target name="asdocs_index" description="Copy the index file to the docs folder">
+		<copy file="docs.html" tofile="../docs/index.html" overwrite="true">
+			<filterset>
+				<filter token="VERSION" value="${version}"/>
+			</filterset>
+		</copy>
 	</target>
 
 	<target name="asdocs_2d" description="Build 2D swc library documentation">
-		<fileset dir="../src" casesensitive="yes" id="classfiles">
+		<fileset dir="../src" casesensitive="yes" id="classfiles11">
 			<include name="org/flintparticles/common/**/*.as"/>
 			<include name="org/flintparticles/twoD/**/*.as"/>
 		</fileset>
 		
-		<pathconvert property="classlist" refid="classfiles" pathsep=" " dirsep=".">
+		<pathconvert property="classlist11" refid="classfiles11" pathsep=" " dirsep=".">
 			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
 		</pathconvert>
 
@@ -137,17 +145,17 @@
 			<arg line='-window-title "Flint Particles documentation v${version}"'/>
 			<arg line='-footer "© Richard Lord 2008-2011"'/>
 			<arg line='-source-path ../src'/>
-			<arg line='-doc-classes ${classlist}'/>
+			<arg line='-doc-classes ${classlist11}'/>
 		</exec>
 	</target>
 
 	<target name="asdocs_3d" description="Build 3D swc library documentation">
-		<fileset dir="../src" casesensitive="yes" id="classfiles">
+		<fileset dir="../src" casesensitive="yes" id="classfiles12">
 			<include name="org/flintparticles/common/**/*.as"/>
 			<include name="org/flintparticles/threeD/**/*.as"/>
 		</fileset>
 		
-		<pathconvert property="classlist" refid="classfiles" pathsep=" " dirsep=".">
+		<pathconvert property="classlist12" refid="classfiles12" pathsep=" " dirsep=".">
 			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
 		</pathconvert>
 
@@ -163,12 +171,12 @@
 			<arg line='-window-title "Flint Particles documentation v${version}"'/>
 			<arg line='-footer "© Richard Lord 2008-2011"'/>
 			<arg line='-source-path ../src'/>
-			<arg line='-doc-classes ${classlist}'/>
+			<arg line='-doc-classes ${classlist12}'/>
 		</exec>
 	</target>
 
 	<target name="asdocs_papervision3d" description="Build Papervision 3D swc library documentation">
-		<fileset dir="../src" casesensitive="yes" id="classfiles">
+		<fileset dir="../src" casesensitive="yes" id="classfiles13">
 			<include name="org/flintparticles/integration/papervision3d/**/*.as"/>
 			<include name="org/flintparticles/common/**/*.as"/>
 			<include name="org/flintparticles/threeD/**/*.as"/>
@@ -177,7 +185,7 @@
 			<exclude name="org/flintparticles/threeD/zones/FrustrumZone.as"/>
 		</fileset>
 		
-		<pathconvert property="classlist" refid="classfiles" pathsep=" " dirsep=".">
+		<pathconvert property="classlist13" refid="classfiles13" pathsep=" " dirsep=".">
 			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
 		</pathconvert>
 
@@ -192,12 +200,12 @@
 			<arg line='-window-title "Flint Particles documentation v${version}"'/>
 			<arg line='-footer "© Richard Lord 2008-2011"'/>
 			<arg line='-source-path ../src'/>
-			<arg line='-doc-classes ${classlist}'/>
+			<arg line='-doc-classes ${classlist13}'/>
 		</exec>
 	</target>
 
 	<target name="asdocs_away3d3" description="Build Away 3D v3 swc library documentation">
-		<fileset dir="../src" casesensitive="yes" id="classfiles">
+		<fileset dir="../src" casesensitive="yes" id="classfiles14">
 			<include name="org/flintparticles/integration/away3d/v3/**/*.as"/>
 			<include name="org/flintparticles/common/**/*.as"/>
 			<include name="org/flintparticles/threeD/**/*.as"/>
@@ -206,27 +214,27 @@
 			<exclude name="org/flintparticles/threeD/zones/FrustrumZone.as"/>
 		</fileset>
 		
-		<pathconvert property="classlist" refid="classfiles" pathsep=" " dirsep=".">
+		<pathconvert property="classlist14" refid="classfiles14" pathsep=" " dirsep=".">
 			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
 		</pathconvert>
 
 		<exec executable="${flexsdk.dir}/bin/asdoc${bin.ext}" failonerror="true">
 			<arg line='-templates-path asdoc_templates'/>
-			<arg line='-output ../docs/away3d4/'/>
+			<arg line='-output ../docs/away3d3/'/>
 			<arg line='-target-player 10.0.0.0'/>
 			<arg line='-library-path "${flexsdk.dir}/frameworks/libs/framework.swc"'/>
-			<arg line='-library-path "${away3d4.swc}"'/>
-			<arg line='-package-description-file packages/away3d4.xml'/>
+			<arg line='-library-path "${away3d3.swc}"'/>
+			<arg line='-package-description-file packages/away3d3.xml'/>
 			<arg line='-main-title "Flint Particles documentation v${version} - Away3d 3.x integration"'/>
 			<arg line='-window-title "Flint Particles documentation v${version}"'/>
 			<arg line='-footer "© Richard Lord 2008-2011"'/>
 			<arg line='-source-path ../src'/>
-			<arg line='-doc-classes ${classlist}'/>
+			<arg line='-doc-classes ${classlist14}'/>
 		</exec>
 	</target>
 
 	<target name="asdocs_away3d4" description="Build Away 3D v4 swc library documentation">
-		<fileset dir="../src" casesensitive="yes" id="classfiles">
+		<fileset dir="../src" casesensitive="yes" id="classfiles15">
 			<include name="org/flintparticles/integration/away3d/v4/**/*.as"/>
 			<include name="org/flintparticles/common/**/*.as"/>
 			<include name="org/flintparticles/threeD/**/*.as"/>
@@ -235,7 +243,7 @@
 			<exclude name="org/flintparticles/threeD/zones/FrustrumZone.as"/>
 		</fileset>
 		
-		<pathconvert property="classlist" refid="classfiles" pathsep=" " dirsep=".">
+		<pathconvert property="classlist15" refid="classfiles15" pathsep=" " dirsep=".">
 			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
 		</pathconvert>
 
@@ -250,7 +258,7 @@
 			<arg line='-window-title "Flint Particles documentation v${version}"'/>
 			<arg line='-footer "© Richard Lord 2008-2011"'/>
 			<arg line='-source-path ../src'/>
-			<arg line='-doc-classes ${classlist}'/>
+			<arg line='-doc-classes ${classlist15}'/>
 		</exec>
 	</target>
 </project>
