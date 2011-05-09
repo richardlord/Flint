@@ -3,144 +3,254 @@
 	
 	<property file="build.config"/>
 		
-	<target name="all" depends="swc2d,swc3d,papervision3d,away3d_v3,away3d_v4,asdocs" description="Full build of swc library and asdocs"/>
+	<target name="all" depends="all_swcs,all_asdocs" description="Full build of all swc libraries and asdocs"/>
 		
-	<target name="swc2d" description="Build 2D swc library">
-		
-		<fileset dir="../src" casesensitive="yes" includes="org/flintparticles/common/**/*.as org/flintparticles/twoD/**/*.as" id="classfiles2d"/>
-		<pathconvert property="classlist2d" refid="classfiles2d" pathsep=" " dirsep=".">
+	<target name="all_swcs" depends="swc_2d,swc_3d,swc_papervision3d,swc_away3d3,swc_away3d4" description="Full build of all swc libraries"/>
+
+	<target name="all_asdocs" depends="asdocs_2d,asdocs_3d,asdocs_papervision3d,asdocs_away3d3,asdocs_away3d4" description="Full build of all swc libraries"/>
+
+	<target name="swc_2d" description="Build 2D swc library">
+		<fileset dir="../src" casesensitive="yes" id="classfiles">
+			<include name="org/flintparticles/common/**/*.as"/>
+			<include name="org/flintparticles/twoD/**/*.as"/>
+		</fileset>
+
+		<pathconvert property="classlist" refid="classfiles" pathsep=" " dirsep=".">
 			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
 		</pathconvert>
 		
 		<exec executable="${flexsdk.dir}/bin/compc${bin.ext}" failonerror="true">
-
 			<arg line='-source-path ../src'/>
 			<arg line='-output ../swc/Flint2d_${version}.swc'/>
-
 			<arg line='-target-player 10.0.0.0'/>
 			<arg line='-namespace http://flintparticles.org/2009/flint2d manifest2D.xml'/>
 			<arg line='-include-namespaces http://flintparticles.org/2009/flint2d'/>
-
 			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/flex.swc"'/>
 			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/framework.swc"'/>
-			
-			<arg line='-include-classes ${classlist2d}'/>
+			<arg line='-include-classes ${classlist}'/>
 		</exec>
 	</target>
 				
-	<target name="swc3d" description="Build 3D swc library">
-		
-		<fileset dir="../src" casesensitive="yes" includes="org/flintparticles/common/**/*.as org/flintparticles/threeD/**/*.as" id="classfiles3d"/>
-		<pathconvert property="classlist3d" refid="classfiles3d" pathsep=" " dirsep=".">
+	<target name="swc_3d" description="Build 3D swc library">
+		<fileset dir="../src" casesensitive="yes" id="classfiles">
+			<include name="org/flintparticles/common/**/*.as"/>
+			<include name="org/flintparticles/threeD/**/*.as"/>
+		</fileset>
+
+		<pathconvert property="classlist" refid="classfiles" pathsep=" " dirsep=".">
 			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
 		</pathconvert>
 		
 		<exec executable="${flexsdk.dir}/bin/compc${bin.ext}" failonerror="true">
-
 			<arg line='-source-path ../src'/>
 			<arg line='-output ../swc/Flint3d_${version}.swc'/>
-
 			<arg line='-target-player 10.0.0.0'/>
 			<arg line='-namespace http://flintparticles.org/2009/flint3d manifest3D.xml'/>
 			<arg line='-include-namespaces http://flintparticles.org/2009/flint3d'/>
-
 			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/flex.swc"'/>
 			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/framework.swc"'/>
-			
-			<arg line='-include-classes ${classlist3d}'/>
+			<arg line='-include-classes ${classlist}'/>
 		</exec>
 	</target>
 
-	<target name="papervision3d" description="Build Papervision 3D v3 swc library">
-		
-		<fileset dir="../src" casesensitive="yes" includes="org/flintparticles/integration/papervision3d/*.as org/flintparticles/integration/papervision3d/**/*.as" id="classfilesPV3d"/>
-		<pathconvert property="classlistPV3d" refid="classfilesPV3d" pathsep=" " dirsep=".">
+	<target name="swc_papervision3d" description="Build Papervision 3D v3 swc library">
+		<fileset dir="../src" casesensitive="yes" id="classfiles">
+			<include name="org/flintparticles/integration/papervision3d/**/*.as"/>
+		</fileset>
+
+		<pathconvert property="classlist" refid="classfiles" pathsep=" " dirsep=".">
 			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
 		</pathconvert>
 		
 		<exec executable="${flexsdk.dir}/bin/compc${bin.ext}" failonerror="true">
-
 			<arg line='-source-path ../src'/>
 			<arg line='-output ../swc/FlintPapervision3d_${version}.swc'/>
-
 			<arg line='-target-player 10.0.0.0'/>
-
 			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/flex.swc"'/>
 			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/framework.swc"'/>
 			<arg line='-external-library-path+="${papervision3d.swc}"'/>
 			<arg line='-external-library-path+=../swc/Flint3d_${version}.swc'/>
-			
-			<arg line='-include-classes ${classlist3d}'/>
+			<arg line='-include-classes ${classlist}'/>
 		</exec>
 	</target>
 
-	<target name="away3d_v3" description="Build Away 3D v3 swc library">
-		
-		<fileset dir="../src" casesensitive="yes" includes="org/flintparticles/integration/away3d/v3/*.as org/flintparticles/integration/away3d/v3/**/*.as" id="classfilesA3d3"/>
-		<pathconvert property="classlistA3d3" refid="classfilesA3d3" pathsep=" " dirsep=".">
+	<target name="swc_away3d3" description="Build Away 3D v3 swc library">
+		<fileset dir="../src" casesensitive="yes" id="classfiles">
+			<include name="org/flintparticles/integration/away3d/v3/**/*.as"/>
+		</fileset>
+
+		<pathconvert property="classlist" refid="classfiles" pathsep=" " dirsep=".">
 			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
 		</pathconvert>
 		
 		<exec executable="${flexsdk.dir}/bin/compc${bin.ext}" failonerror="true">
-
 			<arg line='-source-path ../src'/>
-			<arg line='-output ../swc/FlintAway3d_v3_${version}.swc'/>
-
+			<arg line='-output ../swc/FlintAway3d3_${version}.swc'/>
 			<arg line='-target-player 10.0.0.0'/>
-
 			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/flex.swc"'/>
 			<arg line='-external-library-path+="${flexsdk.dir}/frameworks/libs/framework.swc"'/>
 			<arg line='-external-library-path+="${away3d3.swc}"'/>
 			<arg line='-external-library-path+=../swc/Flint3d_${version}.swc'/>
-			
-			<arg line='-include-classes ${classlist3d}'/>
+			<arg line='-include-classes ${classlist}'/>
 		</exec>
 	</target>
 
-	<target name="away3d_v4" description="Build Away 3D v4 swc library">
-		
-		<fileset dir="../src" casesensitive="yes" includes="org/flintparticles/integration/away3d/v4/*.as org/flintparticles/integration/away3d/v4/**/*.as" id="classfilesA3d4"/>
-		<pathconvert property="classlistA3d4" refid="classfilesA3d4" pathsep=" " dirsep=".">
+	<target name="swc_away3d4" description="Build Away 3D v4 swc library">
+		<fileset dir="../src" casesensitive="yes" id="classfiles">
+			<include name="org/flintparticles/integration/away3d/v4/**/*.as"/>
+		</fileset>
+
+		<pathconvert property="classlist" refid="classfiles" pathsep=" " dirsep=".">
 			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
 		</pathconvert>
 		
 		<exec executable="${molehillsdk.dir}/bin/compc${bin.ext}" failonerror="true">
-
 			<arg line='-source-path ../src'/>
-			<arg line='-output ../swc/FlintAway3d_v4_${version}.swc'/>
-
+			<arg line='-output ../swc/FlintAway3d4_${version}.swc'/>
 			<arg line='-target-player 10.2.0.0'/>
-
 			<arg line='-external-library-path+="${molehillsdk.dir}/frameworks/libs/framework.swc"'/>
 			<arg line='-external-library-path+="${away3d4.swc}"'/>
 			<arg line='-external-library-path+=../swc/Flint3d_${version}.swc'/>
-			
-			<arg line='-include-classes ${classlist3d}'/>
+			<arg line='-include-classes ${classlist}'/>
 		</exec>
 	</target>
 
-	<target name="asdocs" description="Build asdocs documentation">
-		<exec executable="${molehillsdk.dir}/bin/asdoc${bin.ext}" failonerror="true">
-			
-			<arg line='-output ../docs'/>
+	<target name="asdocs_2d" description="Build 2D swc library documentation">
+		<fileset dir="../src" casesensitive="yes" id="classfiles">
+			<include name="org/flintparticles/common/**/*.as"/>
+			<include name="org/flintparticles/twoD/**/*.as"/>
+		</fileset>
+		
+		<pathconvert property="classlist" refid="classfiles" pathsep=" " dirsep=".">
+			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
+		</pathconvert>
+
+		<exec executable="${flexsdk.dir}/bin/asdoc${bin.ext}" failonerror="true">
 			<arg line='-templates-path asdoc_templates'/>
-			
-			<arg line='-doc-sources ../src/'/>
+			<arg line='-output ../docs/2d/'/>
+			<arg line='-target-player 10.0.0.0'/>
 			<arg line='-namespace http://flintparticles.org/2009/flint2d manifest2D.xml'/>
-			<arg line='-namespace http://flintparticles.org/2009/flint3d manifest3D.xml'/>
-			
 			<arg line='-library-path "${flexsdk.dir}/frameworks/libs/flex.swc"'/>
-			<arg line='-library-path "${molehillsdk.dir}/frameworks/libs/framework.swc"'/>
-			<arg line='-library-path "${away3d3.swc}"'/>
-			<arg line='-library-path "${away3d4.swc}"'/>
-			<arg line='-library-path "${papervision3d.swc}"'/>
-			<arg line='-target-player 10.2.0.0'/>
-			
-			<arg line='-main-title "Flint Particles documentation v${version}"'/>
-			<arg line='-window-title "Flint Particles documentation"'/>
+			<arg line='-library-path "${flexsdk.dir}/frameworks/libs/framework.swc"'/>
+			<arg line='-package-description-file packages/2d.xml'/>
+			<arg line='-main-title "Flint Particles documentation v${version} - 2d effects"'/>
+			<arg line='-window-title "Flint Particles documentation v${version}"'/>
 			<arg line='-footer "© Richard Lord 2008-2011"'/>
-			
+			<arg line='-source-path ../src'/>
+			<arg line='-doc-classes ${classlist}'/>
 		</exec>
 	</target>
 
+	<target name="asdocs_3d" description="Build 3D swc library documentation">
+		<fileset dir="../src" casesensitive="yes" id="classfiles">
+			<include name="org/flintparticles/common/**/*.as"/>
+			<include name="org/flintparticles/threeD/**/*.as"/>
+		</fileset>
+		
+		<pathconvert property="classlist" refid="classfiles" pathsep=" " dirsep=".">
+			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
+		</pathconvert>
+
+		<exec executable="${flexsdk.dir}/bin/asdoc${bin.ext}" failonerror="true">
+			<arg line='-templates-path asdoc_templates'/>
+			<arg line='-output ../docs/3d/'/>
+			<arg line='-target-player 10.0.0.0'/>
+			<arg line='-namespace http://flintparticles.org/2009/flint3d manifest3D.xml'/>
+			<arg line='-library-path "${flexsdk.dir}/frameworks/libs/flex.swc"'/>
+			<arg line='-library-path "${flexsdk.dir}/frameworks/libs/framework.swc"'/>
+			<arg line='-package-description-file packages/3d.xml'/>
+			<arg line='-main-title "Flint Particles documentation v${version} - 3d effects"'/>
+			<arg line='-window-title "Flint Particles documentation v${version}"'/>
+			<arg line='-footer "© Richard Lord 2008-2011"'/>
+			<arg line='-source-path ../src'/>
+			<arg line='-doc-classes ${classlist}'/>
+		</exec>
+	</target>
+
+	<target name="asdocs_papervision3d" description="Build Papervision 3D swc library documentation">
+		<fileset dir="../src" casesensitive="yes" id="classfiles">
+			<include name="org/flintparticles/integration/papervision3d/**/*.as"/>
+			<include name="org/flintparticles/common/**/*.as"/>
+			<include name="org/flintparticles/threeD/**/*.as"/>
+			<exclude name="org/flintparticles/threeD/renderers/**/*.as"/>
+			<exclude name="org/flintparticles/threeD/emitters/mxml/*.as"/>
+			<exclude name="org/flintparticles/threeD/zones/FrustrumZone.as"/>
+		</fileset>
+		
+		<pathconvert property="classlist" refid="classfiles" pathsep=" " dirsep=".">
+			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
+		</pathconvert>
+
+		<exec executable="${flexsdk.dir}/bin/asdoc${bin.ext}" failonerror="true">
+			<arg line='-templates-path asdoc_templates'/>
+			<arg line='-output ../docs/papervision3d/'/>
+			<arg line='-target-player 10.0.0.0'/>
+			<arg line='-library-path "${flexsdk.dir}/frameworks/libs/framework.swc"'/>
+			<arg line='-library-path "${papervision3d.swc}"'/>
+			<arg line='-package-description-file packages/papervision3d.xml'/>
+			<arg line='-main-title "Flint Particles documentation v${version} - Papervision 3d integration"'/>
+			<arg line='-window-title "Flint Particles documentation v${version}"'/>
+			<arg line='-footer "© Richard Lord 2008-2011"'/>
+			<arg line='-source-path ../src'/>
+			<arg line='-doc-classes ${classlist}'/>
+		</exec>
+	</target>
+
+	<target name="asdocs_away3d3" description="Build Away 3D v3 swc library documentation">
+		<fileset dir="../src" casesensitive="yes" id="classfiles">
+			<include name="org/flintparticles/integration/away3d/v3/**/*.as"/>
+			<include name="org/flintparticles/common/**/*.as"/>
+			<include name="org/flintparticles/threeD/**/*.as"/>
+			<exclude name="org/flintparticles/threeD/renderers/**/*.as"/>
+			<exclude name="org/flintparticles/threeD/emitters/mxml/*.as"/>
+			<exclude name="org/flintparticles/threeD/zones/FrustrumZone.as"/>
+		</fileset>
+		
+		<pathconvert property="classlist" refid="classfiles" pathsep=" " dirsep=".">
+			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
+		</pathconvert>
+
+		<exec executable="${flexsdk.dir}/bin/asdoc${bin.ext}" failonerror="true">
+			<arg line='-templates-path asdoc_templates'/>
+			<arg line='-output ../docs/away3d4/'/>
+			<arg line='-target-player 10.0.0.0'/>
+			<arg line='-library-path "${flexsdk.dir}/frameworks/libs/framework.swc"'/>
+			<arg line='-library-path "${away3d4.swc}"'/>
+			<arg line='-package-description-file packages/away3d4.xml'/>
+			<arg line='-main-title "Flint Particles documentation v${version} - Away3d 3.x integration"'/>
+			<arg line='-window-title "Flint Particles documentation v${version}"'/>
+			<arg line='-footer "© Richard Lord 2008-2011"'/>
+			<arg line='-source-path ../src'/>
+			<arg line='-doc-classes ${classlist}'/>
+		</exec>
+	</target>
+
+	<target name="asdocs_away3d4" description="Build Away 3D v4 swc library documentation">
+		<fileset dir="../src" casesensitive="yes" id="classfiles">
+			<include name="org/flintparticles/integration/away3d/v4/**/*.as"/>
+			<include name="org/flintparticles/common/**/*.as"/>
+			<include name="org/flintparticles/threeD/**/*.as"/>
+			<exclude name="org/flintparticles/threeD/renderers/**/*.as"/>
+			<exclude name="org/flintparticles/threeD/emitters/mxml/*.as"/>
+			<exclude name="org/flintparticles/threeD/zones/FrustrumZone.as"/>
+		</fileset>
+		
+		<pathconvert property="classlist" refid="classfiles" pathsep=" " dirsep=".">
+			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
+		</pathconvert>
+
+		<exec executable="${molehillsdk.dir}/bin/asdoc${bin.ext}" failonerror="true">
+			<arg line='-templates-path asdoc_templates'/>
+			<arg line='-output ../docs/away3d4/'/>
+			<arg line='-target-player 10.2.0.0'/>
+			<arg line='-library-path "${molehillsdk.dir}/frameworks/libs/framework.swc"'/>
+			<arg line='-library-path "${away3d4.swc}"'/>
+			<arg line='-package-description-file packages/away3d4.xml'/>
+			<arg line='-main-title "Flint Particles documentation v${version} - Away3d 4.x integration"'/>
+			<arg line='-window-title "Flint Particles documentation v${version}"'/>
+			<arg line='-footer "© Richard Lord 2008-2011"'/>
+			<arg line='-source-path ../src'/>
+			<arg line='-doc-classes ${classlist}'/>
+		</exec>
+	</target>
 </project>
