@@ -30,9 +30,8 @@
 
 package org.flintparticles.integration.away3d.v4.initializers
 {
-	import away3d.containers.ObjectContainer3D;
 	import away3d.core.base.Object3D;
-	
+
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.initializers.InitializerBase;
 	import org.flintparticles.common.particles.Particle;

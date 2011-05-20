@@ -61,7 +61,7 @@ package org.flintparticles.integration.away3d.v3.initializers
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function A3DObjectClass( imageClass:Class, parameters:Object )
+		public function A3DObjectClass( imageClass:Class, parameters:Object = null )
 		{
 			_imageClass = imageClass;
 			_parameters = parameters;

@@ -30,20 +30,17 @@
 
 package org.flintparticles.integration.away3d.v4.initializers
 {
-	
-	
 	import away3d.entities.Mesh;
 	import away3d.entities.Sprite3D;
-	import away3d.materials.ColorMaterial;
 	import away3d.primitives.Cube;
 	import away3d.primitives.Plane;
 	import away3d.primitives.Sphere;
-	
-	import flash.utils.getQualifiedClassName;
-	
+
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.initializers.InitializerBase;
 	import org.flintparticles.common.particles.Particle;
+
+	import flash.utils.getQualifiedClassName;
 
 	/**
 	 * The A3D4ObjectClass initializer sets the 3D Object to use to 

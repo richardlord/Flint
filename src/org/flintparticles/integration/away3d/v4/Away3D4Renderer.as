@@ -33,17 +33,14 @@ package org.flintparticles.integration.away3d.v4
 	import away3d.containers.ObjectContainer3D;
 	import away3d.core.base.Object3D;
 	import away3d.core.math.Vector3DUtils;
-	import away3d.entities.Mesh;
-	import away3d.entities.Sprite3D;
-	import flash.geom.Vector3D;
+
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.renderers.RendererBase;
 	import org.flintparticles.common.utils.Maths;
 	import org.flintparticles.integration.away3d.v4.utils.Convert;
 	import org.flintparticles.threeD.particles.Particle3D;
-	
-	
 
+	import flash.geom.Vector3D;
 
 	/**
 	 * Renders the particles in an Away3D4 scene.
@@ -89,64 +86,39 @@ package org.flintparticles.integration.away3d.v4
 				renderParticle( p );
 			}
 		}
-
+		
 		protected function renderParticle( particle:Particle3D ):void
 		{
-			var o:* = particle.image;
-			
-			if( o is Object3D ) {
-				Object3D( o ).x = particle.position.x;
-				Object3D( o ).y = particle.position.y;
-				Object3D( o ).z = particle.position.z;
-				Object3D( o ).scaleX = Object3D( o ).scaleY = Object3D( o ).scaleZ = particle.scale;
+			// N.B. Sprite3D is a subclass of Object3D so we don't need to treat it as a special case
+			if( particle.image is Object3D )
+			{
+				var obj:Object3D = particle.image as Object3D;
+				
+				obj.x = particle.position.x;
+				obj.y = particle.position.y;
+				obj.z = particle.position.z;
+				obj.scaleX = obj.scaleY = obj.scaleZ = particle.scale;
 				
 				var rotation:flash.geom.Vector3D = away3d.core.math.Vector3DUtils.quaternion2euler( Convert.QuaternionToA3D( particle.rotation ) );
-				Object3D( o ).rotationX = Maths.asDegrees( rotation.x );
-				Object3D( o ).rotationY = Maths.asDegrees( rotation.y );
-				Object3D( o ).rotationZ = Maths.asDegrees( rotation.z );
+				obj.rotationX = Maths.asDegrees( rotation.x );
+				obj.rotationY = Maths.asDegrees( rotation.y );
+				obj.rotationZ = Maths.asDegrees( rotation.z );
 			
-				// mesh rendering
-				if( o is Mesh )
+				// would we do better if we set the colorTransform of the material?
+				// Do we need special cases for different material types?
+				if( obj.hasOwnProperty("material") )
 				{
-					if( Mesh( o ).material["hasOwnProperty"]( "color" ) )
+					var material:Object = obj["material"];
+					if( material.hasOwnProperty( "color" ) )
 					{
-						Mesh( o ).material["color"] = particle.color & 0xFFFFFF;
+						material["color"] = particle.color & 0xFFFFFF;
 					}
-					if( Mesh( o ).material["hasOwnProperty"]( "alpha" ) )
+					if( material.hasOwnProperty( "alpha" ) )
 					{
-						Mesh( o ).material["alpha"] = particle.alpha;
+						material["alpha"] = particle.alpha;
 					}
 				}
-				else
-				{
-					// can't do color transform
-					// will try alpha - only works if objects have own canvas
-					//@Michael:no alpha property on Object3D
-				//	Object3D( o ).alpha = particle.alpha;
-					
-				}
 			}
-			
-			// display object rendering
-		
-			else if( o is Sprite3D )
-			{
-				Sprite3D( o ).x = particle.position.x;
-				Sprite3D( o ).y = particle.position.y;
-				Sprite3D( o ).z = particle.position.z;
-				/////changed/////
-				Sprite3D( o ).scaleX = particle.scale;
-				Sprite3D( o ).scaleY = particle.scale;
-				Sprite3D( o ).scaleZ = particle.scale;
-			
-				///@michael:currently there is no MovieClipSprite class
-				/*if( o is MovieClipSprite )
-				{
-					MovieClipSprite( o ).movieClip.transform.colorTransform = particle.colorTransform;
-				}*/
-			}
-		
-			// others
 		}
 				
 		/**
@@ -159,15 +131,9 @@ package org.flintparticles.integration.away3d.v4
 		 */
 		override protected function addParticle( particle:Particle ):void
 		{
-			if( particle.image is Object3D )
+			if( particle.image is ObjectContainer3D )
 			{
-				
-				_container.addChild( Object3D( particle.image )as ObjectContainer3D );
-				renderParticle( Particle3D( particle ) );
-			}
-			else if( particle.image is Sprite3D )
-			{
-				_container.addChild( Sprite3D( particle.image ) );
+				_container.addChild( ObjectContainer3D( particle.image ) );
 				renderParticle( Particle3D( particle ) );
 			}
 		}
@@ -182,29 +148,12 @@ package org.flintparticles.integration.away3d.v4
 		 */
 		override protected function removeParticle( particle:Particle ):void
 		{
-			if( particle.image is Mesh )
+			// We can't clean up the 3d object here because the particle may not be dead.
+			// We need to handle disposal elsewhere
+			if( particle.image is ObjectContainer3D )
 			{
-				_container.removeChild( Mesh( particle.image ) );
-		
-				
-		
-				
-				for(var i:int=0;i<Mesh( particle.image ).geometry.subGeometries.length;++i){
-				Mesh( particle.image ).geometry.subGeometries[i].dispose();
-				}
-				Mesh( particle.image ).material.dispose(false);
-				Mesh( particle.image ).dispose(false);
-			
-			
+				_container.removeChild( ObjectContainer3D( particle.image ) );
 			}
-			else if( particle.image is Sprite3D )
-			{
-				_container.removeChild( Sprite3D( particle.image ) );
-				Sprite3D( particle.image ).material.dispose(false);
-				Sprite3D( particle.image ).dispose(true);
-			
-			}
-			particle.image =null;
 		}
 	}
 }
