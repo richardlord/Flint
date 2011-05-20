@@ -54,7 +54,8 @@ package org.flintparticles.common.initializers
 		 * an emitter, use the emitter's addInitializer method.
 		 * 
 		 * @param images An array containing the classes to use for 
-		 * each particle created by the emitter.
+		 * each particle created by the emitter. Each item in the array may be a class or an array 
+		 * containing a class and a number of parameters to pass to the constructor.
 		 * @param weights The weighting to apply to each displayObject. If no weighting
 		 * values are passed, the images are used with equal probability.
 		 * 
