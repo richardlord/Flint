@@ -2,7 +2,7 @@
  * FLINT PARTICLE SYSTEM
  * .....................
  * 
- * Author: Richard Lord & Michael Ivanov
+ * Author: Michael Ivanov & Richard Lord
  * Copyright (c) Richard Lord 2008-2011
  * http://flintparticles.org
  * 
