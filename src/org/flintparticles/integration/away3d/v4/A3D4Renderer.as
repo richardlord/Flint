@@ -2,7 +2,7 @@
  * FLINT PARTICLE SYSTEM
  * .....................
  * 
- * Author: Michael Ivanov & Richard Lord
+ * Author: Richard Lord & Michael Ivanov
  * Copyright (c) Richard Lord 2008-2011
  * http://flintparticles.org
  * 
@@ -52,7 +52,7 @@ package org.flintparticles.integration.away3d.v4
 	 * image objects are drawn according to the state of the particle
 	 * system.</p>
 	 */
-	public class Away3D4Renderer extends RendererBase
+	public class A3D4Renderer extends RendererBase
 	{
 		private var _container:ObjectContainer3D;
 	
@@ -65,7 +65,7 @@ package org.flintparticles.integration.away3d.v4
 		 * objects are created inside this object container. This is usually
 		 * a scene object, but it may be any ObjectContainer3D.
 		 */
-		public function Away3D4Renderer( container:ObjectContainer3D )
+		public function A3D4Renderer( container:ObjectContainer3D )
 		{
 			super();
 			_container = container;
