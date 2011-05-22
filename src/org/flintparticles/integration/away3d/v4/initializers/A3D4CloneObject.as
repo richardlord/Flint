@@ -28,70 +28,48 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.integration.away3d.v4.initializers
+package org.flintparticles.integration.away3d.v4.initializers 
 {
 	import away3d.core.base.Object3D;
 
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.initializers.InitializerBase;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.common.utils.construct;
 
 	/**
-	 * The ApplyMaterial initializer sets a material to apply to the Away3D 4
-	 * object that is used when rendering the particle. To use this initializer,
-	 * the particle's image object must be an Away3D 4 Object3D.
-	 * 
-	 * <p>This initializer has a priority of -10 to ensure that it is applied after 
-	 * the ImageInit classes which define the image object.</p>
+	 * The A3D4CloneObject Initializer sets the object to use to draw
+	 * the particle. It calls the clone method of the object to create 
+	 * an instance for each particle.
 	 */
-	public class A3D4ApplyMaterial extends InitializerBase
+
+	public class A3D4CloneObject extends InitializerBase
 	{
-		private var _materialClass:Class;
-		private var _parameters:Array;
+		private var _object:Object3D;
 		
 		/**
-		 * The constructor creates an ApplyMaterial initializer for use by 
-		 * an emitter. To add an ApplyMaterial to all particles created by 
+		 * The constructor creates an A3D4CloneObject initializer for use by 
+		 * an emitter. To add an A3D4CloneObject to all particles created by 
 		 * an emitter, use the emitter's addInitializer method.
 		 * 
-		 * @param materialClass The class to use when creating
-		 * the particles' material.
-		 * @param parameters The parameters to pass to the constructor
-		 * for the material class.
+		 * @param object The Object3D to clone for each particle created by the emitter.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function A3D4ApplyMaterial( materialClass:Class, ...parameters )
+		public function A3D4CloneObject( object:Object3D = null )
 		{
-			priority = -10;
-			_materialClass = materialClass;
-			_parameters = parameters;
+			_object = object;
 		}
 		
 		/**
-		 * The class to use when creating the particles' material.
+		 * The Object3D to clone for each particle created by the emitter.
 		 */
-		public function get materialClass():Class
+		public function get object():Object3D
 		{
-			return _materialClass;
+			return _object;
 		}
-		public function set materialClass( value:Class ):void
+		public function set object( value:Object3D ):void
 		{
-			_materialClass = value;
-		}
-		
-		/**
-		 * The parameters to pass to the constructor
-		 * for the material class.
-		 */
-		public function get parameters():Array
-		{
-			return _parameters;
-		}
-		public function set parameters( value:Array ):void
-		{
-			_parameters = value;
+			_object = value;
 		}
 		
 		/**
@@ -99,13 +77,7 @@ package org.flintparticles.integration.away3d.v4.initializers
 		 */
 		override public function initialize( emitter:Emitter, particle:Particle ):void
 		{
-			if( particle.image && particle.image is Object3D )
-			{
-				if( Object3D( particle.image ).hasOwnProperty( "material" ) )
-				{
-					Object3D( particle.image )["material"] = construct( _materialClass, _parameters );
-				}
-			}
+			particle.image = _object.clone();
 		}
 	}
 }

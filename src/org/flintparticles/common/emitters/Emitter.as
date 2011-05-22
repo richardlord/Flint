@@ -928,10 +928,7 @@ package org.flintparticles.common.emitters
 						if ( particle.isDead )
 						{
 							_particles.splice( i, 1 );
-							if( particle.isDead )
-							{
-								_particleFactory.disposeParticle( particle );
-							}
+							_particleFactory.disposeParticle( particle );
 						}
 					}
 				}
