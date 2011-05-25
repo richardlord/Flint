@@ -60,6 +60,8 @@ package org.flintparticles.twoD.actions
 		private var _bounce:Number;
 		private var _maxDistance:Number;
 		private var _updateActivity:UpdateOnFrame;
+		// used to alternate the direction of parsing the collisions
+		private var _sign:int = 1;
 		
 		/**
 		 * The constructor creates a Collide action for use by  an emitter.
@@ -164,6 +166,7 @@ package org.flintparticles.twoD.actions
 				}
 			}
 			_maxDistance = max1 + max2;
+			_sign = - _sign;
 		}
 		
 		
@@ -195,12 +198,12 @@ package org.flintparticles.twoD.actions
 			var relN:Number;
 			var m1:Number, m2:Number;
 			var f1:Number, f2:Number;
-			for( i = p.sortID + 1; i < len; ++i )
+			for( i = p.sortID + _sign; i < len && i >= 0 ; i += _sign )
 			{
 				other = particles[i];
-				if( ( dx = other.x - p.x ) > _maxDistance ) break;
+				if( ( dx = other.x - p.x ) * _sign > _maxDistance ) break;
 				collisionDist = other.collisionRadius + p.collisionRadius;
-				if( dx > collisionDist ) continue;
+				if( dx * _sign > collisionDist ) continue;
 				dy = other.y - p.y;
 				if( dy > collisionDist || dy < -collisionDist ) continue;
 				distanceSq = dy * dy + dx * dx;
