@@ -117,19 +117,12 @@ package org.flintparticles.threeD.away3d.away4
 						Mesh( o ).material["alpha"] = particle.alpha;
 					}
 				}
-				else
-				{
-					// can't do color transform
-					// will try alpha - only works if objects have own canvas
-					//@Michael:no alpha property on Object3D
-				//	Object3D( o ).alpha = particle.alpha;
-					
-				}
+				
 			}
 			
 			// display object rendering
 		
-			else if( o is Sprite3D )
+			if( o is Sprite3D )
 			{
 				Sprite3D( o ).x = particle.position.x;
 				Sprite3D( o ).y = particle.position.y;
@@ -138,12 +131,17 @@ package org.flintparticles.threeD.away3d.away4
 				Sprite3D( o ).scaleX = particle.scale;
 				Sprite3D( o ).scaleY = particle.scale;
 				Sprite3D( o ).scaleZ = particle.scale;
-			
-				///@michael:currently there is no MovieClipSprite class
-				/*if( o is MovieClipSprite )
-				{
-					MovieClipSprite( o ).movieClip.transform.colorTransform = particle.colorTransform;
-				}*/
+				
+			if( Sprite3D( o ).material["hasOwnProperty"]( "color" ) )
+					{
+						Sprite3D( o ).material["color"] = particle.color & 0xFFFFFF;
+					}
+					if( Sprite3D( o ).material["hasOwnProperty"]( "alpha" ) )
+					{
+						Sprite3D( o ).material["alpha"] = particle.alpha;
+					}
+				//	trace(Sprite3D( o ).material["color"]);
+				
 			}
 		
 			// others
