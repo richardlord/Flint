@@ -60,6 +60,8 @@ package org.flintparticles.threeD.actions
 		private var _bounce:Number;
 		private var _maxDistance:Number;
 		private var _updateActivity:UpdateOnFrame;
+		// used to alternate the direction of parsing the collisions
+		private var _sign:int = 1;
 		
 		/*
 		 * Temporary variables created as class members to avoid creating new objects all the time
@@ -169,6 +171,7 @@ package org.flintparticles.threeD.actions
 				}
 			}
 			_maxDistance = max1 + max2;
+			_sign = - _sign;
 		}
 		
 		/**
@@ -189,12 +192,12 @@ package org.flintparticles.threeD.actions
 			var relN:Number;
 			var m1:Number, m2:Number;
 			var f1:Number, f2:Number;
-			for( i = p.sortID + 1; i < len; ++i )
+			for( i = p.sortID + _sign; i < len && i >= 0; i += _sign )
 			{
 				other = particles[i];
-				if( ( d.x = other.position.x - p.position.x ) > _maxDistance ) break;
+				if( ( d.x = other.position.x - p.position.x ) * _sign > _maxDistance ) break;
 				collisionDist = other.collisionRadius + p.collisionRadius;
-				if( d.x > collisionDist ) continue;
+				if( d.x * _sign > collisionDist ) continue;
 				d.y = other.position.y - p.position.y;
 				if( d.y > collisionDist || d.y < -collisionDist ) continue;
 				d.z = other.position.z - p.position.z;

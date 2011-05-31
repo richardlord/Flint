@@ -186,6 +186,12 @@ package org.flintparticles.common.emitters
 		 * end of the next update cycle.
 		 */
 		protected var _dispatchCounterComplete:Boolean = false;
+		/**
+		 * Used to alternate the direction in which the particles in the particles
+		 * array are processed, to iron out errors from always processing them in
+		 * the same order.
+		 */
+		protected var _processLastFirst:Boolean = false;
 
 		/**
 		 * The constructor creates an emitter.
@@ -893,16 +899,33 @@ package org.flintparticles.common.emitters
 				len = _actions.length;
 				var action:Action;
 				var len2:int = _particles.length;
-				
-				for( var j:int = 0; j < len; ++j )
+				var j:int;
+				if( _processLastFirst )
 				{
-					action = _actions[j];
-					for ( i = 0; i < len2; ++i )
+					for( j = 0; j < len; ++j )
 					{
-						particle = _particles[i];
-						action.update( this, particle, time );
+						action = _actions[j];
+						for ( i = len2; --i; )
+						{
+							particle = _particles[i];
+							action.update( this, particle, time );
+						}
 					}
 				}
+				else
+				{
+					for( j = 0; j < len; ++j )
+					{
+						action = _actions[j];
+						for ( i = 0; i < len2; ++i )
+						{
+							particle = _particles[i];
+							action.update( this, particle, time );
+						}
+					}
+				}
+				_processLastFirst = !_processLastFirst;
+				
 				// remove dead particles
 				if( hasEventListener( ParticleEvent.PARTICLE_DEAD ) )
 				{
