@@ -31,49 +31,67 @@
 package org.flintparticles.integration.away3d.v4.initializers
 {
 	import away3d.core.base.Object3D;
-	import away3d.materials.MaterialBase;
 
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.initializers.InitializerBase;
 	import org.flintparticles.common.particles.Particle;
+	import org.flintparticles.common.utils.construct;
 
 	/**
-	 * The ApplyMaterial initializer sets a material to apply to the Away3D 4
+	 * The ApplyMaterialClass initializer creates a material to apply to the Away3D 4
 	 * object that is used when rendering the particle. To use this initializer,
 	 * the particle's image object must be an Away3D 4 Object3D.
 	 * 
 	 * <p>This initializer has a priority of -10 to ensure that it is applied after 
 	 * the ImageInit classes which define the image object.</p>
 	 */
-	public class A3D4ApplyMaterial extends InitializerBase
+	public class A3D4ApplyMaterialClass extends InitializerBase
 	{
-		private var _material:MaterialBase;
+		private var _materialClass:Class;
+		private var _parameters:Array;
 		
 		/**
 		 * The constructor creates an ApplyMaterial initializer for use by 
 		 * an emitter. To add an ApplyMaterial to all particles created by 
 		 * an emitter, use the emitter's addInitializer method.
 		 * 
-		 * @param material The material to use for the particle.
+		 * @param materialClass The class to use when creating
+		 * the particles' material.
+		 * @param parameters The parameters to pass to the constructor
+		 * for the material class.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function A3D4ApplyMaterial( material:MaterialBase )
+		public function A3D4ApplyMaterialClass( materialClass:Class, ...parameters )
 		{
 			priority = -10;
-			_material = material;
+			_materialClass = materialClass;
+			_parameters = parameters;
 		}
 		
 		/**
 		 * The class to use when creating the particles' material.
 		 */
-		public function get material():MaterialBase
+		public function get materialClass():Class
 		{
-			return _material;
+			return _materialClass;
 		}
-		public function set material( value:MaterialBase ):void
+		public function set materialClass( value:Class ):void
 		{
-			_material = value;
+			_materialClass = value;
+		}
+		
+		/**
+		 * The parameters to pass to the constructor
+		 * for the material class.
+		 */
+		public function get parameters():Array
+		{
+			return _parameters;
+		}
+		public function set parameters( value:Array ):void
+		{
+			_parameters = value;
 		}
 		
 		/**
@@ -85,7 +103,7 @@ package org.flintparticles.integration.away3d.v4.initializers
 			{
 				if( Object3D( particle.image ).hasOwnProperty( "material" ) )
 				{
-					Object3D( particle.image )["material"] = _material;
+					Object3D( particle.image )["material"] = construct( _materialClass, _parameters );
 				}
 			}
 		}
