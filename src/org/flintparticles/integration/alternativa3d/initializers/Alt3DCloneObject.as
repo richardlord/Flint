@@ -1,0 +1,83 @@
+/*
+ * FLINT PARTICLE SYSTEM
+ * .....................
+ * 
+ * Author: Richard Lord & Michael Ivanov
+ * Copyright (c) Richard Lord 2008-2011
+ * http://flintparticles.org
+ * 
+ * 
+ * Licence Agreement
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+
+package org.flintparticles.integration.alternativa3d.initializers 
+{
+	import alternativa.engine3d.core.Object3D;
+
+	import org.flintparticles.common.emitters.Emitter;
+	import org.flintparticles.common.initializers.InitializerBase;
+	import org.flintparticles.common.particles.Particle;
+
+	/**
+	 * The Alt3DCloneObject Initializer sets the object to use to draw
+	 * the particle. It calls the clone method of the object to create 
+	 * an instance for each particle.
+	 */
+
+	public class Alt3DCloneObject extends InitializerBase
+	{
+		private var _object:Object3D;
+		
+		/**
+		 * The constructor creates an Alt3DCloneObject initializer for use by 
+		 * an emitter. To add an Alt3DCloneObject to all particles created by 
+		 * an emitter, use the emitter's addInitializer method.
+		 * 
+		 * @param object The Object3D to clone for each particle created by the emitter.
+		 * 
+		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
+		 */
+		public function Alt3DCloneObject( object:Object3D = null )
+		{
+			_object = object;
+		}
+		
+		/**
+		 * The Object3D to clone for each particle created by the emitter.
+		 */
+		public function get object():Object3D
+		{
+			return _object;
+		}
+		public function set object( value:Object3D ):void
+		{
+			_object = value;
+		}
+		
+		/**
+		 * @inheritDoc
+		 */
+		override public function initialize( emitter:Emitter, particle:Particle ):void
+		{
+			particle.image = _object.clone();
+		}
+	}
+}
