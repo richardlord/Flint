@@ -51,15 +51,15 @@ package org.flintparticles.integration.away3d.v4.initializers
 	public class A3D4ObjectClasses extends ImageClasses
 	{
 		/**
-		 * The constructor creates a ImageClasses initializer for use by 
-		 * an emitter. To add a ImageClasses to all particles created by 
+		 * The constructor creates an A3D4ObjectClasses initializer for use by 
+		 * an emitter. To add an A3D4ObjectClasses to all particles created by 
 		 * an emitter, use the emitter's addInitializer method.
 		 * 
 		 * @param objects An array containing the classes to use for each particle 
 		 * created by the emitter. Each item in the array may be a class or an array 
 		 * containing a class and a number of parameters to pass to the constructor.
 		 * @param weights The weighting to apply to each object class. If no weighting
-		 * values are passed, the images are used with equal probability.
+		 * values are passed, the objects are used with equal probability.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */

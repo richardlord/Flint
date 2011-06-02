@@ -55,15 +55,13 @@ package org.flintparticles.integration.away3d.v4
 	public class A3D4Renderer extends RendererBase
 	{
 		private var _container:ObjectContainer3D;
-	
 		
 		/**
 		 * The constructor creates an Away3D renderer for displaying the
 		 * particles in an Away3D scene.
 		 * 
 		 * @param container An Away3D object container. The particle display
-		 * objects are created inside this object container. This is usually
-		 * a scene object, but it may be any ObjectContainer3D.
+		 * objects are created inside this object container.
 		 */
 		public function A3D4Renderer( container:ObjectContainer3D )
 		{

@@ -28,47 +28,73 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.integration.away3d.v4.initializers 
+package org.flintparticles.integration.away3d.v4.initializers
 {
 	import away3d.core.base.Object3D;
 
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.initializers.InitializerBase;
 	import org.flintparticles.common.particles.Particle;
-
+	import org.flintparticles.common.utils.WeightedArray;
+	
 	/**
-	 * The A3D4CloneObject Initializer sets the object to use to draw
-	 * the particle. It calls the clone method of the object to create 
-	 * an instance for each particle.
+	 * The A3D4CloneObjects Initializer sets the 3D Object to use 
+	 * to draw the particle in a 3D scene. It selects one of multiple objects 
+	 * that are passed to it and calls the clone method of the object to create
+	 * the particle object. It is used with the Away3D 4 renderer when
+	 * particles should be represented by a 3D object.
+	 * 
+	 * @see org.flintparticles.common.Initializers.SetImageProperties
 	 */
-	public class A3D4CloneObject extends InitializerBase
+	public class A3D4CloneObjects extends InitializerBase
 	{
-		private var _object:Object3D;
+		private var _objects:WeightedArray;
 		
 		/**
-		 * The constructor creates an A3D4CloneObject initializer for use by 
-		 * an emitter. To add an A3D4CloneObject to all particles created by 
+		 * The constructor creates an A3D4CloneObjects initializer for use by 
+		 * an emitter. To add an A3D4CloneObjects to all particles created by 
 		 * an emitter, use the emitter's addInitializer method.
 		 * 
-		 * @param object The Object3D to clone for each particle created by the emitter.
+		 * @param objects An array containing the Object3Ds to use for 
+		 * each particle created by the emitter.
+		 * @param weights The weighting to apply to each Object3D. If no weighting
+		 * values are passed, the images are used with equal probability.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function A3D4CloneObject( object:Object3D = null )
+		public function A3D4CloneObjects( objects:Array = null, weights:Array = null )
 		{
-			_object = object;
+			_objects = new WeightedArray();
+			if( objects == null )
+			{
+				return;
+			}
+			var len:int = objects.length;
+			var i:int;
+			if( weights != null && weights.length == len )
+			{
+				for( i = 0; i < len; ++i )
+				{
+					_objects.add( objects[i], weights[i] );
+				}
+			}
+			else
+			{
+				for( i = 0; i < len; ++i )
+				{
+					_objects.add( objects[i], 1 );
+				}
+			}
 		}
 		
-		/**
-		 * The Object3D to clone for each particle created by the emitter.
-		 */
-		public function get object():Object3D
+		public function addObject( object:Object3D, weight:Number = 1 ):void
 		{
-			return _object;
+			_objects.add( object, weight );
 		}
-		public function set object( value:Object3D ):void
+		
+		public function removeObject( object:Object3D ):void
 		{
-			_object = value;
+			_objects.remove( object );
 		}
 		
 		/**
@@ -76,7 +102,7 @@ package org.flintparticles.integration.away3d.v4.initializers
 		 */
 		override public function initialize( emitter:Emitter, particle:Particle ):void
 		{
-			particle.image = _object.clone();
+			particle.image = Object3D( _objects.getRandomValue() ).clone();
 		}
 	}
 }
