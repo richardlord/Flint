@@ -39,8 +39,8 @@ package org.flintparticles.integration.alternativa3d.initializers
 	 * particles should be represented by a 3D object.
 	 * 
 	 * <p>This class is actually just a copy of the ImageClasses initializer. It is included
-	 * here to make it clear that this is the prefered way to initialize a 3d particle's
-	 * object for rendering in the 3d scene.</p>
+	 * here to make it clear that this is one way to initialize a 3d particle's
+	 * object for rendering in an Alternativa3d scene.</p>
 	 * 
 	 * <p>If you need to set properties of the object class that are not accessible through
 	 * the object constructor, you should use the SetImageProperties initializer to set

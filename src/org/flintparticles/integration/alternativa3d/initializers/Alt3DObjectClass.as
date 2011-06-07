@@ -38,12 +38,23 @@ package org.flintparticles.integration.alternativa3d.initializers
 	 * particles should be represented by a 3D object.
 	 * 
 	 * <p>This class is actually just a copy of the ImageClass initializer. It is included
-	 * here to make it clear that this is the prefered way to initialize a 3d particle's
-	 * object for rendering in the 3d scene.</p>
+	 * here to make it clear that this is one way to initialize a 3d particle's
+	 * object for rendering in an Alternativa3d scene.</p>
 	 * 
 	 * <p>If you need to set properties of the object class that are not accessible through
 	 * the object constructor, you should use the SetImageProperties initializer to set
 	 * these additional properties.</p>
+	 * 
+	 * <p>In situations where all the particles are the same, or are one of a small number of
+	 * objects, the Alt3DCloneObject and Alt3DCloneObjects initializers are more efficient
+	 * because they use one set of geometry and material data for all the similar particles.
+	 * This initializer creates new data for each particle.</p>
+	 * 
+	 * <p>This class is useful where a custom object class produces visually different
+	 * objects every time it is used.</p>
+	 * 
+	 * @see org.flintparticles.integration.away3d.initializers.Alt3DCloneObject
+	 * @see org.flintparticles.integration.away3d.initializers.Alt3DCloneObjects
 	 * 
 	 * @see org.flintparticles.common.Initializers.SetImageProperties
 	 */
