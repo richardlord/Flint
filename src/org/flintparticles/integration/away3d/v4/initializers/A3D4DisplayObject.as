@@ -38,7 +38,6 @@ package org.flintparticles.integration.away3d.v4.initializers
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.initializers.InitializerBase;
 	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.common.utils.construct;
 
 	import flash.display.BitmapData;
 	import flash.display.DisplayObject;
@@ -47,62 +46,43 @@ package org.flintparticles.integration.away3d.v4.initializers
 	import flash.geom.Rectangle;
 
 	/**
-	 * The A3DDisplayObjectClass initializer sets the DisplayObject to use to 
+	 * The A3D4DisplayObject initializer sets the DisplayObject to use to 
 	 * draw the particle in a 3D scene. It is used with the Away3D renderer when
 	 * particles should be represented by a display object.
 	 * 
-	 * <p>The initializer creates an Away3D MovieClipSprite, with the display object
-	 * as the image source (the movieClip property), for rendering the display 
+	 * <p>The initializer creates an Away3D Sprite3D and a BitmapMaterial, with the display object
+	 * as the image source for the material, for rendering the display 
 	 * object in an Away3D scene.</p>
 	 */
 
-	public class A3D4DisplayObjectClass extends InitializerBase
+	public class A3D4DisplayObject extends InitializerBase
 	{
-		private var _imageClass:Class;
-		private var _parameters:Array;
+		private var _displayObject:DisplayObject;
 		
 		/**
-		 * The constructor creates an ImageClass initializer for use by 
-		 * an emitter. To add an ImageClass to all particles created by an emitter, use the
+		 * The constructor creates an A3D4DisplayObject initializer for use by 
+		 * an emitter. To add an A3D4DisplayObject to all particles created by an emitter, use the
 		 * emitter's addInitializer method.
 		 * 
-		 * @param imageClass The class to use when creating
-		 * the particles' DisplayObjects.
-		 * @param parameters The parameters to pass to the constructor
-		 * for the image class.
+		 * @param displayObject The DisplayObject to use when rendering the particles.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function A3D4DisplayObjectClass( imageClass:Class, ...parameters )
+		public function A3D4DisplayObject( displayObject:DisplayObject )
 		{
-			_imageClass = imageClass;
-			_parameters = parameters;
+			_displayObject = displayObject;
 		}
 		
 		/**
-		 * The class to use when creating
-		 * the particles' DisplayObjects.
+		 * The DisplayObject to use when rendering the particles.
 		 */
-		public function get imageClass():Class
+		public function get displayObject():DisplayObject
 		{
-			return _imageClass;
+			return _displayObject;
 		}
-		public function set imageClass( value:Class ):void
+		public function set displayObject( value:DisplayObject ):void
 		{
-			_imageClass = value;
-		}
-		
-		/**
-		 * The parameters to pass to the constructor
-		 * for the image class.
-		 */
-		public function get parameters():Array
-		{
-			return _parameters;
-		}
-		public function set parameters( value:Array ):void
-		{
-			_parameters = value;
+			_displayObject = value;
 		}
 		
 		/**
@@ -110,25 +90,24 @@ package org.flintparticles.integration.away3d.v4.initializers
 		 */
 		override public function initialize( emitter:Emitter, particle:Particle ):void
 		{
-			var displayObject:DisplayObject = construct( _imageClass, _parameters );
 			var material:MaterialBase;
-			if( displayObject is MovieClip )
+			if( _displayObject is MovieClip )
 			{
-				material = new AnimatedBitmapMaterial( MovieClip( displayObject ), true, true );
+				material = new AnimatedBitmapMaterial( MovieClip( _displayObject ), true, true );
 			}
 			else
 			{
-				var bounds:Rectangle = displayObject.getBounds( displayObject );
+				var bounds:Rectangle = _displayObject.getBounds( _displayObject );
 				var width:int = textureSize( bounds.width );
 				var height:int = textureSize( bounds.height );
 				var bitmapData:BitmapData = new BitmapData( width, height, true, 0x00FFFFFF );
-				var matrix:Matrix = displayObject.transform.matrix.clone();
+				var matrix:Matrix = _displayObject.transform.matrix.clone();
 				matrix.translate( -bounds.left, -bounds.top );
 				matrix.scale( width / bounds.width, height / bounds.height );
-				bitmapData.draw( displayObject, matrix, displayObject.transform.colorTransform, null, null, true );
+				bitmapData.draw( _displayObject, matrix, _displayObject.transform.colorTransform, null, null, true );
 				material = new BitmapMaterial( bitmapData, true, true );
 			}
-			particle.image = new Sprite3D( material, displayObject.width, displayObject.height );
+			particle.image = new Sprite3D( material, _displayObject.width, _displayObject.height );
 		}
 		
 		private function textureSize( value:Number ):int

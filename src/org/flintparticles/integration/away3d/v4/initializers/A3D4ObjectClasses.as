@@ -39,13 +39,23 @@ package org.flintparticles.integration.away3d.v4.initializers
 	 * particles should be represented by a 3D object.
 	 * 
 	 * <p>This class is actually just a copy of the ImageClasses initializer. It is included
-	 * here to make it clear that this is the prefered way to initialize a 3d particle's
-	 * object for rendering in the 3d scene.</p>
+	 * here to make it clear that this is one way to initialize a 3d particle's
+	 * object for rendering in an Away 3d scene.</p>
 	 * 
 	 * <p>If you need to set properties of the object class that are not accessible through
 	 * the object constructor, you should use the SetImageProperties initializer to set
 	 * these additional properties.</p>
 	 * 
+	 * <p>In situations where all the particles are the same, or are one of a small number of
+	 * objects, the A3D4CloneObject and A3D4CloneObjects initializers are more efficient
+	 * because they use one set of geometry and material data for all the similar particles.
+	 * This initializer creates new data for each particle.</p>
+	 * 
+	 * <p>This class is useful where a custom object class produces visually different
+	 * objects every time it is used.</p>
+	 * 
+	 * @see org.flintparticles.integration.away3d.v4.initializers.A3D4CloneObject
+	 * @see org.flintparticles.integration.away3d.v4.initializers.A3D4CloneObjects
 	 * @see org.flintparticles.common.Initializers.SetImageProperties
 	 */
 	public class A3D4ObjectClasses extends ImageClasses

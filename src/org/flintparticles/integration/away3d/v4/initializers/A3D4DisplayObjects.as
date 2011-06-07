@@ -39,7 +39,6 @@ package org.flintparticles.integration.away3d.v4.initializers
 	import org.flintparticles.common.initializers.InitializerBase;
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.utils.WeightedArray;
-	import org.flintparticles.common.utils.construct;
 
 	import flash.display.BitmapData;
 	import flash.display.DisplayObject;
@@ -48,65 +47,60 @@ package org.flintparticles.integration.away3d.v4.initializers
 	import flash.geom.Rectangle;
 
 	/**
-	 * The ImageClass Initializer sets the DisplayObject to use to draw
-	 * the particle. It is used with the DisplayObjectRenderer. When using the
-	 * BitmapRenderer it is more efficient to use the SharedImage Initializer.
+	 * The A3D4DisplayObjects Initializer sets the DisplayObject to use to 
+	 * draw the particle in a 3D scene. It is used with the Away3D renderer when
+	 * particles should be represented by a display object.
+	 * 
+	 * <p>The initializer creates an Away3D Sprite3D and a BitmapMaterial, with the display object
+	 * as the image source for the material, for rendering the display 
+	 * object in an Away3D scene.</p>
 	 */
 
-	public class A3D4DisplayObjectClasses extends InitializerBase
+	public class A3D4DisplayObjects extends InitializerBase
 	{
-		private var _images:WeightedArray;
+		private var _displayObjects:WeightedArray;
 		
 		/**
-		 * The constructor creates a ImageClasses initializer for use by 
-		 * an emitter. To add a ImageClasses to all particles created by 
+		 * The constructor creates an A3D4DisplayObjects initializer for use by 
+		 * an emitter. To add an A3D4DisplayObjects to all particles created by 
 		 * an emitter, use the emitter's addInitializer method.
 		 * 
-		 * @param images An array containing the classes to use for 
+		 * @param displayObjects An array containing the DisplayObjects to use for 
 		 * each particle created by the emitter.
-		 * @param weights The weighting to apply to each displayObject. If no weighting
-		 * values are passed, the images are used with equal probability.
+		 * @param weights The weighting to apply to each DisplayObject. If no weighting
+		 * values are passed, the DisplayObjects are used with equal probability.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function A3D4DisplayObjectClasses( images:Array, weights:Array = null )
+		public function A3D4DisplayObjects( displayObjects:Array, weights:Array = null )
 		{
-			_images = new WeightedArray;
-			var len:int = images.length;
+			_displayObjects = new WeightedArray();
+			var len:int = displayObjects.length;
 			var i:int;
 			if( weights != null && weights.length == len )
 			{
 				for( i = 0; i < len; ++i )
 				{
-					addImage( images[i], weights[i] );
+					addDisplayObject( displayObjects[i], weights[i] );
 				}
 			}
 			else
 			{
 				for( i = 0; i < len; ++i )
 				{
-					addImage( images[i], 1 );
+					addDisplayObject( displayObjects[i], 1 );
 				}
 			}
 		}
 		
-		public function addImage( image:*, weight:Number = 1 ):void
+		public function addDisplayObject( displayObject:DisplayObject, weight:Number = 1 ):void
 		{
-			if( image is Array )
-			{
-				var parameters:Array = ( image as Array ).concat();
-				var img:Class = parameters.shift();
-				_images.add( new Pair( img, parameters ), weight );
-			}
-			else
-			{
-				_images.add( new Pair( image, [] ), weight );
-			}
+			_displayObjects.add( displayObject, weight );
 		}
 		
-		public function removeImage( image:* ):void
+		public function removeDisplayObject( displayObject:DisplayObject ):void
 		{
-			_images.remove( image );
+			_displayObjects.remove( displayObject );
 		}
 		
 		/**
@@ -114,8 +108,7 @@ package org.flintparticles.integration.away3d.v4.initializers
 		 */
 		override public function initialize( emitter:Emitter, particle:Particle ):void
 		{
-			var img:Pair = _images.getRandomValue();
-			var displayObject:DisplayObject = construct( img.image, img.parameters );
+			var displayObject:DisplayObject = _displayObjects.getRandomValue();
 			var material:MaterialBase;
 			if( displayObject is MovieClip )
 			{
@@ -147,16 +140,5 @@ package org.flintparticles.integration.away3d.v4.initializers
 			}
 			return 1 << count + 1;
 		}
-	}
-}
-class Pair
-{
-	internal var image:Class;
-	internal var parameters:Array;
-	
-	public function Pair( image:Class, parameters:Array )
-	{
-		this.image = image;
-		this.parameters = parameters;
 	}
 }
