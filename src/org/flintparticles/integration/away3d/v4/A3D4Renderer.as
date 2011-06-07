@@ -101,19 +101,24 @@ package org.flintparticles.integration.away3d.v4
 				obj.rotationX = Maths.asDegrees( rotation.x );
 				obj.rotationY = Maths.asDegrees( rotation.y );
 				obj.rotationZ = Maths.asDegrees( rotation.z );
-			
-				// would we do better if we set the colorTransform of the material?
-				// Do we need special cases for different material types?
+				
 				if( obj.hasOwnProperty("material") )
 				{
 					var material:Object = obj["material"];
-					if( material.hasOwnProperty( "color" ) )
+					if( material.hasOwnProperty( "colorTransform" ) )
 					{
-						material["color"] = particle.color & 0xFFFFFF;
+						material["colorTransform"] = particle.colorTransform;
 					}
-					if( material.hasOwnProperty( "alpha" ) )
+					else
 					{
-						material["alpha"] = particle.alpha;
+						if( material.hasOwnProperty( "color" ) )
+						{
+							material["color"] = particle.color & 0xFFFFFF;
+						}
+						if( material.hasOwnProperty( "alpha" ) )
+						{
+							material["alpha"] = particle.alpha;
+						}
 					}
 				}
 			}
