@@ -1,4 +1,4 @@
-package org.flintparticles.threeD.away3d.away4.initializers
+package org.flintparticles.integration.away3d.v4.initializers
 {
 	import away3d.containers.ObjectContainer3D;
 	import away3d.core.base.Object3D;
@@ -16,6 +16,16 @@ package org.flintparticles.threeD.away3d.away4.initializers
 		private var _parameters:Array;
 		private var _buffer:Vector.<Object3D>=new Vector.<Object3D>();
 		private var _bufferLength:uint=0;
+		/**
+		 * imageClass -is a regular Away3D object Class 
+		 * bufferLength- is the number of the image instance we want to hold in the buffer,
+		 * make sure that you take into account the life length of th particle when calculating 
+		 * buffer length.So that if your particles should live between 1 and 3 seconds and you spawn 
+		 * steady 300 per second the buffer should be around 900 objects in total.
+		 * parameters-are the rest of image Class constructor arguments
+		 * */
+		
+		
 		public function BufferInitializer(imageClass:Class,bufferLength:uint, parameters:Array)
 		{
 			//TODO: implement function
@@ -26,8 +36,7 @@ package org.flintparticles.threeD.away3d.away4.initializers
 		
 		}
 		private function init():void{
-			//var sph:Sphere=new Sphere(
-			//	var s:Sprite3D=new Sprite3D(
+			
 			var obj3d:Object3D=construct(_imageClass,_parameters);//new _imageClass(null,0,0);
 		
 			
@@ -52,7 +61,7 @@ package org.flintparticles.threeD.away3d.away4.initializers
 			//	trace(particle.image);
 			}
 			if(_buffer.length==0){
-			//	trace("out of particles");
+			//	do nothing
 			}
 		}
 		override public function removedFromEmitter(emitter:Emitter) : void{
