@@ -143,10 +143,10 @@ package org.flintparticles.integration.flare3d.v2
 								var 	g:Number =  ( ( pcolor >>> 8 ) & 255 ) / 255;
 								var 		b:Number =  ( ( pcolor ) & 255 ) / 255;
 								var a:Number =  ( ( pcolor >>> 24 ) & 255 ) / 255;
-								ColorFilter(currentLayer).r=r;
-								ColorFilter(currentLayer).g=g;
-								ColorFilter(currentLayer).b=b;
-								ColorFilter(currentLayer).a=a;
+								currentLayer["r"]=r;
+								currentLayer["g"]=g;
+								currentLayer["b"]=b;
+								currentLayer["a"]=a;
 	
 							}
 							////wait till Flare has clone ,currently need to create a new material each time and also clone the bitmapdata
