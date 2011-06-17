@@ -2,6 +2,7 @@ package org.flintparticles.integration.away3d.v4.initializers
 {
 	import away3d.containers.ObjectContainer3D;
 	import away3d.core.base.Object3D;
+	import away3d.entities.Mesh;
 	import away3d.entities.Sprite3D;
 	
 	import org.flintparticles.common.emitters.Emitter;
@@ -46,6 +47,7 @@ package org.flintparticles.integration.away3d.v4.initializers
 		}
 		private function initBuffer(obj3d:Object3D):void{
 			for(var i:uint=0;i<_bufferLength;++i){
+
 				_buffer.push(obj3d.clone()as Object3D);
 			}
 		}
