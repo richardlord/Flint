@@ -63,13 +63,10 @@ package org.flintparticles.integration.away3d.v4
 		 * @param container An Away3D object container. The particle display
 		 * objects are created inside this object container.
 		 */
-		///Added by Michael--second param defines recycling mode
-		private var _recycleParticles:Boolean=false;
-		public function A3D4Renderer( container:ObjectContainer3D ,recycleParticles:Boolean=false)
+		public function A3D4Renderer( container:ObjectContainer3D )
 		{
 			super();
 			_container = container;
-			_recycleParticles=recycleParticles;
 		}
 		
 		/**
