@@ -35,9 +35,7 @@ package org.flintparticles.integration.away3d.v4.initializers
 	import away3d.materials.BitmapMaterial;
 	import away3d.materials.MaterialBase;
 
-	import org.flintparticles.common.emitters.Emitter;
-	import org.flintparticles.common.initializers.InitializerBase;
-	import org.flintparticles.common.particles.Particle;
+	import org.flintparticles.common.initializers.ImageInitializerBase;
 	import org.flintparticles.common.utils.WeightedArray;
 
 	import flash.display.BitmapData;
@@ -54,9 +52,10 @@ package org.flintparticles.integration.away3d.v4.initializers
 	 * <p>The initializer creates an Away3D Sprite3D and a BitmapMaterial, with the display object
 	 * as the image source for the material, for rendering the display 
 	 * object in an Away3D scene.</p>
+	 * 
+	 * <p>This class includes an object pool for reusing objects when particles die.</p>
 	 */
-
-	public class A3D4DisplayObjects extends InitializerBase
+	public class A3D4DisplayObjects extends ImageInitializerBase
 	{
 		private var _displayObjects:WeightedArray;
 		
@@ -69,11 +68,15 @@ package org.flintparticles.integration.away3d.v4.initializers
 		 * each particle created by the emitter.
 		 * @param weights The weighting to apply to each DisplayObject. If no weighting
 		 * values are passed, the DisplayObjects are used with equal probability.
+		 * @param usePool Indicates whether particles should be reused when a particle dies.
+		 * @param fillPool Indicates how many particles to create immediately in the pool, to
+		 * avoid creating them when the particle effect is running.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function A3D4DisplayObjects( displayObjects:Array, weights:Array = null )
+		public function A3D4DisplayObjects( displayObjects:Array, weights:Array = null, usePool:Boolean = false, fillPool:uint = 0 )
 		{
+			super( usePool );
 			_displayObjects = new WeightedArray();
 			var len:int = displayObjects.length;
 			var i:int;
@@ -91,6 +94,10 @@ package org.flintparticles.integration.away3d.v4.initializers
 					addDisplayObject( displayObjects[i], 1 );
 				}
 			}
+			if( fillPool > 0 )
+			{
+				this.fillPool( fillPool );
+			}
 		}
 		
 		public function addDisplayObject( displayObject:DisplayObject, weight:Number = 1 ):void
@@ -104,9 +111,10 @@ package org.flintparticles.integration.away3d.v4.initializers
 		}
 		
 		/**
-		 * @inheritDoc
+		 * Used internally, this method creates an image object for displaying the particle 
+		 * by cloning one of the original Object3D objects.
 		 */
-		override public function initialize( emitter:Emitter, particle:Particle ):void
+		override public function createImage():Object
 		{
 			var displayObject:DisplayObject = _displayObjects.getRandomValue();
 			var material:MaterialBase;
@@ -126,7 +134,7 @@ package org.flintparticles.integration.away3d.v4.initializers
 				bitmapData.draw( displayObject, matrix, displayObject.transform.colorTransform, null, null, true );
 				material = new BitmapMaterial( bitmapData, true, true );
 			}
-			particle.image = new Sprite3D( material, displayObject.width, displayObject.height );
+			return new Sprite3D( material, displayObject.width, displayObject.height );
 		}
 		
 		private function textureSize( value:Number ):int

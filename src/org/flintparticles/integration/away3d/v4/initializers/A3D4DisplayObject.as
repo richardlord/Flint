@@ -35,9 +35,7 @@ package org.flintparticles.integration.away3d.v4.initializers
 	import away3d.materials.BitmapMaterial;
 	import away3d.materials.MaterialBase;
 
-	import org.flintparticles.common.emitters.Emitter;
-	import org.flintparticles.common.initializers.InitializerBase;
-	import org.flintparticles.common.particles.Particle;
+	import org.flintparticles.common.initializers.ImageInitializerBase;
 
 	import flash.display.BitmapData;
 	import flash.display.DisplayObject;
@@ -53,9 +51,10 @@ package org.flintparticles.integration.away3d.v4.initializers
 	 * <p>The initializer creates an Away3D Sprite3D and a BitmapMaterial, with the display object
 	 * as the image source for the material, for rendering the display 
 	 * object in an Away3D scene.</p>
+	 * 
+	 * <p>This class includes an object pool for reusing objects when particles die.</p>
 	 */
-
-	public class A3D4DisplayObject extends InitializerBase
+	public class A3D4DisplayObject extends ImageInitializerBase
 	{
 		private var _displayObject:DisplayObject;
 		
@@ -65,12 +64,20 @@ package org.flintparticles.integration.away3d.v4.initializers
 		 * emitter's addInitializer method.
 		 * 
 		 * @param displayObject The DisplayObject to use when rendering the particles.
+		 * @param usePool Indicates whether particles should be reused when a particle dies.
+		 * @param fillPool Indicates how many particles to create immediately in the pool, to
+		 * avoid creating them when the particle effect is running.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function A3D4DisplayObject( displayObject:DisplayObject )
+		public function A3D4DisplayObject( displayObject:DisplayObject, usePool:Boolean = false, fillPool:uint = 0 )
 		{
+			super( usePool );
 			_displayObject = displayObject;
+			if( fillPool > 0 )
+			{
+				this.fillPool( fillPool );
+			}
 		}
 		
 		/**
@@ -85,10 +92,11 @@ package org.flintparticles.integration.away3d.v4.initializers
 			_displayObject = value;
 		}
 		
-		/**
-		 * @inheritDoc
+/**
+		 * Used internally, this method creates an image object for displaying the particle 
+		 * by creating a Sprite3D and using the given DisplayObject as its material.
 		 */
-		override public function initialize( emitter:Emitter, particle:Particle ):void
+		override public function createImage():Object
 		{
 			var material:MaterialBase;
 			if( _displayObject is MovieClip )
@@ -107,7 +115,7 @@ package org.flintparticles.integration.away3d.v4.initializers
 				bitmapData.draw( _displayObject, matrix, _displayObject.transform.colorTransform, null, null, true );
 				material = new BitmapMaterial( bitmapData, true, true );
 			}
-			particle.image = new Sprite3D( material, _displayObject.width, _displayObject.height );
+			return new Sprite3D( material, _displayObject.width, _displayObject.height );
 		}
 		
 		private function textureSize( value:Number ):int

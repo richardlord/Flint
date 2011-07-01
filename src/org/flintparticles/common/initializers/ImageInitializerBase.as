@@ -43,6 +43,7 @@ package org.flintparticles.common.initializers
 	{
 		protected var _usePool:Boolean;
 		protected var _pool:Array;
+		protected var _emitters:Array;
 		
 		/**
 		 * The constructor is usually called by the constructor of the class that extends this.
@@ -55,6 +56,7 @@ package org.flintparticles.common.initializers
 		public function ImageInitializerBase( usePool:Boolean = false, fillPool:uint = 0 )
 		{
 			_usePool = usePool;
+			_emitters = new Array();
 			if( _usePool )
 			{
 				clearPool();
@@ -79,6 +81,7 @@ package org.flintparticles.common.initializers
 		 */
 		override public function addedToEmitter( emitter:Emitter ) : void
 		{
+			_emitters.push( emitter );
 			if( _usePool )
 			{
 				emitter.addEventListener( ParticleEvent.PARTICLE_DEAD, particleDying, false, -1000, true );
@@ -90,6 +93,7 @@ package org.flintparticles.common.initializers
 			if( event.particle.isDead && event.particle.dictionary[this] )
 			{
 				_pool.push( event.particle.image );
+				delete event.particle.dictionary[this];
 			}
 		}
 		
@@ -99,6 +103,11 @@ package org.flintparticles.common.initializers
 		override public function removedFromEmitter( emitter:Emitter ) : void
 		{
 			emitter.removeEventListener( ParticleEvent.PARTICLE_DEAD, particleDying );
+			var index:int = _emitters.indexOf( emitter );
+			if( index != -1 )
+			{
+				_emitters.splice( index, 1 );
+			}
 		}
 		
 		/**
@@ -119,6 +128,36 @@ package org.flintparticles.common.initializers
 			for( var i:int = 0; i < count; ++i )
 			{
 				_pool[i] = createImage();
+			}
+		}
+		
+		/**
+		 * Whether the images should be pooled for reuse when a particle dies
+		 */
+		public function get usePool():Boolean
+		{
+			return _usePool;
+		}
+		public function set usePool( value:Boolean ) : void
+		{
+			if( _usePool != value )
+			{
+				_usePool = value;
+				var emitter:Emitter;
+				if( _usePool )
+				{
+					for each( emitter in _emitters )
+					{
+						emitter.addEventListener( ParticleEvent.PARTICLE_DEAD, particleDying, false, -1000, true );
+					}
+				}
+				else
+				{
+					for each( emitter in _emitters )
+					{
+						emitter.removeEventListener( ParticleEvent.PARTICLE_DEAD, particleDying );
+					}
+				}
 			}
 		}
 		
