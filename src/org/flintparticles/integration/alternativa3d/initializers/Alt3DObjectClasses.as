@@ -46,6 +46,8 @@ package org.flintparticles.integration.alternativa3d.initializers
 	 * the object constructor, you should use the SetImageProperties initializer to set
 	 * these additional properties.</p>
 	 * 
+	 * <p>This class includes an object pool for reusing objects when particles die.</p>
+	 * 
 	 * @see org.flintparticles.common.Initializers.SetImageProperties
 	 */
 	public class Alt3DObjectClasses extends ImageClasses
@@ -60,12 +62,15 @@ package org.flintparticles.integration.alternativa3d.initializers
 		 * containing a class and a number of parameters to pass to the constructor.
 		 * @param weights The weighting to apply to each object class. If no weighting
 		 * values are passed, the objects are used with equal probability.
+		 * @param usePool Indicates whether particles should be reused when a particle dies.
+		 * @param fillPool Indicates how many particles to create immediately in the pool, to
+		 * avoid creating them when the particle effect is running.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function Alt3DObjectClasses( objects:Array, weights:Array = null )
+		public function Alt3DObjectClasses( objects:Array, weights:Array = null, usePool:Boolean = false, fillPool:uint = 0 )
 		{
-			super( objects, weights );
+			super( objects, weights, usePool, fillPool );
 		}
 	}
 }

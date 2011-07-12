@@ -32,9 +32,7 @@ package org.flintparticles.integration.alternativa3d.initializers
 {
 	import alternativa.engine3d.core.Object3D;
 
-	import org.flintparticles.common.emitters.Emitter;
-	import org.flintparticles.common.initializers.InitializerBase;
-	import org.flintparticles.common.particles.Particle;
+	import org.flintparticles.common.initializers.ImageInitializerBase;
 	import org.flintparticles.common.utils.WeightedArray;
 	
 	/**
@@ -44,9 +42,11 @@ package org.flintparticles.integration.alternativa3d.initializers
 	 * the particle object. It is used with the Away3D 4 renderer when
 	 * particles should be represented by a 3D object.
 	 * 
+	 * <p>This class includes an object pool for reusing objects when particles die.</p>
+	 * 
 	 * @see org.flintparticles.common.Initializers.SetImageProperties
 	 */
-	public class Alt3DCloneObjects extends InitializerBase
+	public class Alt3DCloneObjects extends ImageInitializerBase
 	{
 		private var _objects:WeightedArray;
 		
@@ -59,11 +59,15 @@ package org.flintparticles.integration.alternativa3d.initializers
 		 * each particle created by the emitter.
 		 * @param weights The weighting to apply to each Object3D. If no weighting
 		 * values are passed, the images are used with equal probability.
+		 * @param usePool Indicates whether particles should be reused when a particle dies.
+		 * @param fillPool Indicates how many particles to create immediately in the pool, to
+		 * avoid creating them when the particle effect is running.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function Alt3DCloneObjects( objects:Array = null, weights:Array = null )
+		public function Alt3DCloneObjects( objects:Array = null, weights:Array = null, usePool:Boolean = false, fillPool:uint = 0 )
 		{
+			super( usePool );
 			_objects = new WeightedArray();
 			if( objects == null )
 			{
@@ -85,24 +89,37 @@ package org.flintparticles.integration.alternativa3d.initializers
 					_objects.add( objects[i], 1 );
 				}
 			}
+			if( fillPool > 0 )
+			{
+				this.fillPool( fillPool );
+			}
 		}
 		
 		public function addObject( object:Object3D, weight:Number = 1 ):void
 		{
 			_objects.add( object, weight );
+			if( _usePool )
+			{
+				clearPool();
+			}
 		}
 		
 		public function removeObject( object:Object3D ):void
 		{
 			_objects.remove( object );
+			if( _usePool )
+			{
+				clearPool();
+			}
 		}
 		
 		/**
-		 * @inheritDoc
+		 * Used internally, this method creates an image object for displaying the particle 
+		 * by cloning one of the original Object3D objects.
 		 */
-		override public function initialize( emitter:Emitter, particle:Particle ):void
+		override public function createImage():Object
 		{
-			particle.image = Object3D( _objects.getRandomValue() ).clone();
+			return Object3D( _objects.getRandomValue() ).clone();
 		}
 	}
 }

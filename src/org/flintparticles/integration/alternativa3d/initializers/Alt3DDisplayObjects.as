@@ -34,9 +34,7 @@ package org.flintparticles.integration.alternativa3d.initializers
 	import alternativa.engine3d.objects.Sprite3D;
 	import alternativa.engine3d.resources.BitmapTextureResource;
 
-	import org.flintparticles.common.emitters.Emitter;
-	import org.flintparticles.common.initializers.InitializerBase;
-	import org.flintparticles.common.particles.Particle;
+	import org.flintparticles.common.initializers.ImageInitializerBase;
 	import org.flintparticles.common.utils.WeightedArray;
 
 	import flash.display.BitmapData;
@@ -51,9 +49,10 @@ package org.flintparticles.integration.alternativa3d.initializers
 	 * 
 	 * <p>The initializer creates an Alternativa3D Sprite3D and a TextureMaterial, with the display object
 	 * as the image source for the material, for rendering the display object in an Alternativa3D scene.</p>
+	 * 
+	 * <p>This class includes an object pool for reusing objects when particles die.</p>
 	 */
-
-	public class Alt3DDisplayObjects extends InitializerBase
+	public class Alt3DDisplayObjects extends ImageInitializerBase
 	{
 		private var _displayObjects:WeightedArray;
 		
@@ -66,11 +65,15 @@ package org.flintparticles.integration.alternativa3d.initializers
 		 * each particle created by the emitter.
 		 * @param weights The weighting to apply to each DisplayObject. If no weighting
 		 * values are passed, the DisplayObjects are used with equal probability.
+		 * @param usePool Indicates whether particles should be reused when a particle dies.
+		 * @param fillPool Indicates how many particles to create immediately in the pool, to
+		 * avoid creating them when the particle effect is running.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function Alt3DDisplayObjects( displayObjects:Array, weights:Array = null )
+		public function Alt3DDisplayObjects( displayObjects:Array, weights:Array = null, usePool:Boolean = false, fillPool:uint = 0 )
 		{
+			super( usePool );
 			_displayObjects = new WeightedArray();
 			var len:int = displayObjects.length;
 			var i:int;
@@ -88,22 +91,35 @@ package org.flintparticles.integration.alternativa3d.initializers
 					addDisplayObject( displayObjects[i], 1 );
 				}
 			}
+			if( fillPool > 0 )
+			{
+				this.fillPool( fillPool );
+			}
 		}
 		
 		public function addDisplayObject( displayObject:DisplayObject, weight:Number = 1 ):void
 		{
 			_displayObjects.add( displayObject, weight );
+			if( _usePool )
+			{
+				clearPool();
+			}
 		}
 		
 		public function removeDisplayObject( displayObject:DisplayObject ):void
 		{
 			_displayObjects.remove( displayObject );
+			if( _usePool )
+			{
+				clearPool();
+			}
 		}
 		
 		/**
-		 * @inheritDoc
+		 * Used internally, this method creates an image object for displaying the particle 
+		 * by cloning one of the original Object3D objects.
 		 */
-		override public function initialize( emitter:Emitter, particle:Particle ):void
+		override public function createImage():Object
 		{
 			var displayObject:DisplayObject = _displayObjects.getRandomValue();
 			var material:TextureMaterial;
@@ -116,7 +132,7 @@ package org.flintparticles.integration.alternativa3d.initializers
 			matrix.scale( width / bounds.width, height / bounds.height );
 			bitmapData.draw( displayObject, matrix, displayObject.transform.colorTransform, null, null, true );
 			material = new TextureMaterial( new BitmapTextureResource( bitmapData ) );
-			particle.image = new Sprite3D( displayObject.width, displayObject.height, material );
+			return new Sprite3D( displayObject.width, displayObject.height, material );
 		}
 		
 		private function textureSize( value:Number ):int

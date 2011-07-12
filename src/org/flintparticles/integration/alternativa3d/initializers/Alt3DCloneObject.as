@@ -32,17 +32,17 @@ package org.flintparticles.integration.alternativa3d.initializers
 {
 	import alternativa.engine3d.core.Object3D;
 
-	import org.flintparticles.common.emitters.Emitter;
-	import org.flintparticles.common.initializers.InitializerBase;
-	import org.flintparticles.common.particles.Particle;
+	import org.flintparticles.common.initializers.ImageInitializerBase;
 
 	/**
 	 * The Alt3DCloneObject Initializer sets the object to use to draw
 	 * the particle. It calls the clone method of the object to create 
 	 * an instance for each particle.
+	 * 
+	 * <p>This class includes an object pool for reusing objects when particles die.</p>
 	 */
 
-	public class Alt3DCloneObject extends InitializerBase
+	public class Alt3DCloneObject extends ImageInitializerBase
 	{
 		private var _object:Object3D;
 		
@@ -52,12 +52,20 @@ package org.flintparticles.integration.alternativa3d.initializers
 		 * an emitter, use the emitter's addInitializer method.
 		 * 
 		 * @param object The Object3D to clone for each particle created by the emitter.
+		 * @param usePool Indicates whether particles should be reused when a particle dies.
+		 * @param fillPool Indicates how many particles to create immediately in the pool, to
+		 * avoid creating them when the particle effect is running.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function Alt3DCloneObject( object:Object3D = null )
+		public function Alt3DCloneObject( object:Object3D = null, usePool:Boolean = false, fillPool:uint = 0 )
 		{
+			super( usePool );
 			_object = object;
+			if( fillPool > 0 )
+			{
+				this.fillPool( fillPool );
+			}
 		}
 		
 		/**
@@ -70,14 +78,19 @@ package org.flintparticles.integration.alternativa3d.initializers
 		public function set object( value:Object3D ):void
 		{
 			_object = value;
+			if( _usePool )
+			{
+				clearPool();
+			}
 		}
 		
 		/**
-		 * @inheritDoc
+		 * Used internally, this method creates an image object for displaying the particle 
+		 * by cloning the original Object3D.
 		 */
-		override public function initialize( emitter:Emitter, particle:Particle ):void
+		override public function createImage():Object
 		{
-			particle.image = _object.clone();
+			return _object.clone();
 		}
 	}
 }
