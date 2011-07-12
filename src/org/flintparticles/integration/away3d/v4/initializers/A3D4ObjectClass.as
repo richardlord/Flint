@@ -53,6 +53,8 @@ package org.flintparticles.integration.away3d.v4.initializers
 	 * <p>This class is useful where a custom object class produces visually different
 	 * objects every time it is used.</p>
 	 * 
+	 * <p>This class includes an object pool for reusing objects when particles die.</p>
+	 * 
 	 * @see org.flintparticles.integration.away3d.v4.initializers.A3D4CloneObject
 	 * @see org.flintparticles.integration.away3d.v4.initializers.A3D4CloneObjects
 	 * @see org.flintparticles.common.initializers.SetImageProperties
@@ -68,13 +70,15 @@ package org.flintparticles.integration.away3d.v4.initializers
 		 * the particles' 3d object for rendering.
 		 * @param parameters The parameters to pass to the constructor
 		 * for the object class.
+		 * @param usePool Indicates whether particles should be reused when a particle dies.
+		 * @param fillPool Indicates how many particles to create immediately in the pool, to
+		 * avoid creating them when the particle effect is running.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function A3D4ObjectClass( objectClass:Class = null, ...parameters )
+		public function A3D4ObjectClass( objectClass:Class = null, parameters:Array = null, usePool:Boolean = false, fillPool:uint = 0 )
 		{
-			this.imageClass = objectClass;
-			this.parameters = parameters;
+			super( objectClass, parameters, usePool, fillPool );
 		}
 	}
 }

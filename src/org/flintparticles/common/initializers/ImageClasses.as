@@ -31,18 +31,18 @@
 package org.flintparticles.common.initializers 
 {
 	import org.flintparticles.common.emitters.Emitter;
-	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.utils.WeightedArray;
-	import org.flintparticles.common.utils.construct;	
+	import org.flintparticles.common.utils.construct;
 
 	/**
 	 * The ImageClasses Initializer sets the DisplayObject to use to draw
 	 * the particle. It selects one of multiple images that are passed to it.
 	 * It is used with the DisplayObjectRenderer. When using the
 	 * BitmapRenderer it is more efficient to use the SharedImage Initializer.
+	 * 
+	 * <p>This class includes an object pool for reusing DisplayObjects when particles die.</p>
 	 */
-
-	public class ImageClasses extends InitializerBase
+	public class ImageClasses extends ImageInitializerBase
 	{
 		private var _images:WeightedArray;
 		private var _mxmlImages:Array;
@@ -58,21 +58,31 @@ package org.flintparticles.common.initializers
 		 * containing a class and a number of parameters to pass to the constructor.
 		 * @param weights The weighting to apply to each displayObject. If no weighting
 		 * values are passed, the images are used with equal probability.
+		 * @param usePool Indicates whether particles should be reused when a particle dies.
+		 * @param fillPool Indicates how many particles to create immediately in the pool, to
+		 * avoid creating them when the particle effect is running.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function ImageClasses( images:Array = null, weights:Array = null )
+		public function ImageClasses( images:Array = null, weights:Array = null, usePool:Boolean = false, fillPool:uint = 0 )
 		{
+			super( usePool );
 			_images = new WeightedArray();
 			if( images == null )
 			{
 				return;
 			}
 			init( images, weights );
+			if( fillPool > 0 )
+			{
+				this.fillPool( fillPool );
+			}
+			
 		}
 		
 		override public function addedToEmitter( emitter:Emitter ):void
 		{
+			super.addedToEmitter( emitter );
 			if( _mxmlImages )
 			{
 				init( _mxmlImages, _mxmlWeights );
@@ -114,17 +124,29 @@ package org.flintparticles.common.initializers
 			{
 				_images.add( new Pair( image, [] ), weight );
 			}
+			if( _usePool )
+			{
+				clearPool();
+			}
 		}
 		
 		public function removeImage( image:* ):void
 		{
 			_images.remove( image );
+			if( _usePool )
+			{
+				clearPool();
+			}
 		}
 
 		public function set images( value:Array ):void
 		{
 			_mxmlImages = value;
 			checkStartValues();
+			if( _usePool )
+			{
+				clearPool();
+			}
 		}
 		
 		public function set weights( value:Array ):void
@@ -138,6 +160,10 @@ package org.flintparticles.common.initializers
 				_mxmlWeights = value;
 			}
 			checkStartValues();
+			if( _usePool )
+			{
+				clearPool();
+			}
 		}
 		
 		private function checkStartValues():void
@@ -151,12 +177,13 @@ package org.flintparticles.common.initializers
 		}
 
 		/**
-		 * @inheritDoc
+		 * Used internally, this method creates an image object for displaying the particle 
+		 * by calling the constructor of one of the supplied image classes.
 		 */
-		override public function initialize( emitter:Emitter, particle:Particle ):void
+		override public function createImage() : Object
 		{
 			var img:Pair = _images.getRandomValue();
-			particle.image = construct( img.image, img.parameters );
+			return construct( img.image, img.parameters );
 		}
 	}
 }

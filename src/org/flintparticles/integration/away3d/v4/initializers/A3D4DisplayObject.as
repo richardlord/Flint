@@ -90,9 +90,13 @@ package org.flintparticles.integration.away3d.v4.initializers
 		public function set displayObject( value:DisplayObject ):void
 		{
 			_displayObject = value;
+			if( _usePool )
+			{
+				clearPool();
+			}
 		}
 		
-/**
+		/**
 		 * Used internally, this method creates an image object for displaying the particle 
 		 * by creating a Sprite3D and using the given DisplayObject as its material.
 		 */

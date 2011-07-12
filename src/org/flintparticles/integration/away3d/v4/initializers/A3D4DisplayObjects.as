@@ -103,11 +103,19 @@ package org.flintparticles.integration.away3d.v4.initializers
 		public function addDisplayObject( displayObject:DisplayObject, weight:Number = 1 ):void
 		{
 			_displayObjects.add( displayObject, weight );
+			if( _usePool )
+			{
+				clearPool();
+			}
 		}
 		
 		public function removeDisplayObject( displayObject:DisplayObject ):void
 		{
 			_displayObjects.remove( displayObject );
+			if( _usePool )
+			{
+				clearPool();
+			}
 		}
 		
 		/**

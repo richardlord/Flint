@@ -98,11 +98,19 @@ package org.flintparticles.integration.away3d.v4.initializers
 		public function addObject( object:Object3D, weight:Number = 1 ):void
 		{
 			_objects.add( object, weight );
+			if( _usePool )
+			{
+				clearPool();
+			}
 		}
 		
 		public function removeObject( object:Object3D ):void
 		{
 			_objects.remove( object );
+			if( _usePool )
+			{
+				clearPool();
+			}
 		}
 		
 		/**

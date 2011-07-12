@@ -30,17 +30,19 @@
 
 package org.flintparticles.common.initializers
 {
-	import org.flintparticles.common.emitters.Emitter;
-	import org.flintparticles.common.particles.Particle;
-	import org.flintparticles.common.utils.construct;	
+	import org.flintparticles.common.utils.construct;
 
 	/**
 	 * The ImageClass Initializer sets the DisplayObject to use to draw
 	 * the particle. It is used with the DisplayObjectRenderer. When using the
 	 * BitmapRenderer it is more efficient to use the SharedImage Initializer.
+	 * 
+	 * <p>This class includes an object pool for reusing DisplayObjects when particles die.</p>
+	 * 
+	 * <p>To enable use of the object pool, it was necessary to alter the constructor so the 
+	 * parameters for the image class are passed as an array rather than as plain values.</p>
 	 */
-
-	public class ImageClass extends InitializerBase
+	public class ImageClass extends ImageInitializerBase
 	{
 		private var _imageClass:Class;
 		private var _parameters:Array;
@@ -54,13 +56,22 @@ package org.flintparticles.common.initializers
 		 * the particles' DisplayObjects.
 		 * @param parameters The parameters to pass to the constructor
 		 * for the image class.
+		 * @param usePool Indicates whether particles should be reused when a particle dies.
+		 * @param fillPool Indicates how many particles to create immediately in the pool, to
+		 * avoid creating them when the particle effect is running.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function ImageClass( imageClass:Class = null, ...parameters )
+		public function ImageClass( imageClass:Class = null, parameters : Array = null, usePool:Boolean = false, fillPool:uint = 0 )
 		{
+			super( usePool );
 			_imageClass = imageClass;
-			_parameters = parameters;
+			_parameters = parameters ? parameters : [];
+			if( fillPool > 0 )
+			{
+				this.fillPool( fillPool );
+			}
+			
 		}
 		
 		/**
@@ -74,6 +85,10 @@ package org.flintparticles.common.initializers
 		public function set imageClass( value:Class ):void
 		{
 			_imageClass = value;
+			if( _usePool )
+			{
+				clearPool();
+			}
 		}
 		
 		/**
@@ -87,14 +102,19 @@ package org.flintparticles.common.initializers
 		public function set parameters( value:Array ):void
 		{
 			_parameters = value;
+			if( _usePool )
+			{
+				clearPool();
+			}
 		}
 		
 		/**
-		 * @inheritDoc
+		 * Used internally, this method creates an image object for displaying the particle 
+		 * by calling the image class constructor with the supplied parameters.
 		 */
-		override public function initialize( emitter:Emitter, particle:Particle ):void
+		override public function createImage() : Object
 		{
-			particle.image = construct( _imageClass, _parameters );
+			return construct( _imageClass, _parameters );
 		}
 	}
 }
