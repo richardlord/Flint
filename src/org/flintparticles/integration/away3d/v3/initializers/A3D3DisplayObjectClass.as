@@ -2,7 +2,7 @@
  * FLINT PARTICLE SYSTEM
  * .....................
  * 
- * Author: Richard Lord
+ * Author: Richard Lord & Michael Ivanov
  * Copyright (c) Richard Lord 2008-2011
  * http://flintparticles.org
  * 
@@ -30,41 +30,51 @@
 
 package org.flintparticles.integration.away3d.v3.initializers
 {
-	import away3d.sprites.Sprite3D;
+	import away3d.sprites.MovieClipSprite;
 	
-	import flash.utils.getQualifiedClassName;
-	
-	import org.flintparticles.common.emitters.Emitter;
-	import org.flintparticles.common.initializers.InitializerBase;
-	import org.flintparticles.common.particles.Particle;
+	import org.flintparticles.common.initializers.ImageInitializerBase;
+	import org.flintparticles.common.utils.construct;
 
 	/**
-	 * The A3DObjectClass initializer sets the 3D Object to use to 
+	 * The A3D3DisplayObjectClass initializer sets the DisplayObject to use to 
 	 * draw the particle in a 3D scene. It is used with the Away3D renderer when
-	 * particles should be represented by a 3D object.
+	 * particles should be represented by a display object.
+	 * 
+	 * <p>The initializer creates an Away3D MovieClipSprite, with the display object
+	 * as the image source (the movieClip property), for rendering the display 
+	 * object in an Away3D scene.</p>
+	 * 
+	 * <p>This class includes an object pool for reusing objects when particles die.</p>
 	 */
-
-	public class A3DObjectClass extends InitializerBase
+	public class A3D3DisplayObjectClass extends ImageInitializerBase
 	{
 		private var _imageClass:Class;
-		private var _parameters:Object;
+		private var _parameters:Array;
 		
 		/**
-		 * The constructor creates an A3DObjectClass initializer for use by 
-		 * an emitter. To add an ImageClass to all particles created by an emitter, 
-		 * use the emitter's addInitializer method.
+		 * The constructor creates an A3D3DisplayObjectClass initializer for use by 
+		 * an emitter. To add an A3D3DisplayObjectClass to all particles created by an emitter, use the
+		 * emitter's addInitializer method.
 		 * 
 		 * @param imageClass The class to use when creating
-		 * the particles' image object.
+		 * the particles' DisplayObjects.
 		 * @param parameters The parameters to pass to the constructor
 		 * for the image class.
+		 * @param usePool Indicates whether particles should be reused when a particle dies.
+		 * @param fillPool Indicates how many particles to create immediately in the pool, to
+		 * avoid creating them when the particle effect is running.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function A3DObjectClass( imageClass:Class, parameters:Object = null )
+		public function A3D3DisplayObjectClass( imageClass:Class, parameters:Array = null, usePool:Boolean = false, fillPool:uint = 0 )
 		{
+			super( usePool );
 			_imageClass = imageClass;
-			_parameters = parameters;
+			_parameters = parameters ? parameters : [];
+			if( fillPool > 0 )
+			{
+				this.fillPool( fillPool );
+			}
 		}
 		
 		/**
@@ -78,50 +88,36 @@ package org.flintparticles.integration.away3d.v3.initializers
 		public function set imageClass( value:Class ):void
 		{
 			_imageClass = value;
+			if( _usePool )
+			{
+				clearPool();
+			}
 		}
 		
 		/**
 		 * The parameters to pass to the constructor
 		 * for the image class.
 		 */
-		public function get parameters():Object
+		public function get parameters():Array
 		{
 			return _parameters;
 		}
-		public function set parameters( value:Object ):void
+		public function set parameters( value:Array ):void
 		{
 			_parameters = value;
+			if( _usePool )
+			{
+				clearPool();
+			}
 		}
 		
 		/**
-		 * @inheritDoc
+		 * Used internally, this method creates an image object for displaying the particle 
+		 * by creating a MovieClipSprite and using the given DisplayObject as its movie clip source.
 		 */
-		override public function initialize( emitter:Emitter, particle:Particle ):void
+		override public function createImage():Object
 		{
-			// copy the parameters object because the class will modify the object it's sent
-			var p:Object = new Object();
-			for( var name:String in _parameters )
-			{
-				p[name] = _parameters[name];
-			}
-		
-			//new Sprite3D(material,width,height,rotation,align,scaling,distanceScaling)
-			if(getQualifiedClassName(_imageClass)=="away3d.sprites::Sprite3D"){
-				
-				particle.image = new _imageClass();
-				Sprite3D(particle.image).material=p["material"]==null?null:p["material"];
-				Sprite3D(particle.image).width=p["width"]==null?10:p["width"];
-				Sprite3D(particle.image).height=p["height"]==null?10:p["height"];
-				Sprite3D(particle.image).rotation=p["rotation"]==null?0:p["rotation"];
-				Sprite3D(particle.image).align=p["align"]==null?"center":p["align"];
-				Sprite3D(particle.image).scaling=p["scaling"]==null?1:p["scaling"];
-				Sprite3D(particle.image).distanceScaling=p["distanceScaling"]==null?true:p["distanceScaling"];
-			}else{
-				particle.image = new _imageClass( p );
-			}
-			
-			
-		
+			return new MovieClipSprite( construct( _imageClass, _parameters ) ,"none", 1, true );
 			
 		}
 	}

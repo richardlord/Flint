@@ -47,7 +47,7 @@ package org.flintparticles.integration.away3d.v4.initializers
 	/**
 	 * The A3D4DisplayObjects Initializer sets the DisplayObject to use to 
 	 * draw the particle in a 3D scene. It is used with the Away3D renderer when
-	 * particles should be represented by a display object.
+	 * particles should be represented by one of a number of display objects.
 	 * 
 	 * <p>The initializer creates an Away3D Sprite3D and a BitmapMaterial, with the display object
 	 * as the image source for the material, for rendering the display 
@@ -120,7 +120,7 @@ package org.flintparticles.integration.away3d.v4.initializers
 		
 		/**
 		 * Used internally, this method creates an image object for displaying the particle 
-		 * by cloning one of the original Object3D objects.
+		 * by creating a Sprite3D and using one of the display objects as its material.
 		 */
 		override public function createImage():Object
 		{

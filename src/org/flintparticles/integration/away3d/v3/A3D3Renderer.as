@@ -55,7 +55,7 @@ package org.flintparticles.integration.away3d.v3
 	 * image objects are drawn according to the state of the particle
 	 * system.</p>
 	 */
-	public class Away3DRenderer extends RendererBase
+	public class A3D3Renderer extends RendererBase
 	{
 		private var _container:ObjectContainer3D;
 		
@@ -67,7 +67,7 @@ package org.flintparticles.integration.away3d.v3
 		 * objects are created inside this object container. This is usually
 		 * a scene object, but it may be any ObjectContainer3D.
 		 */
-		public function Away3DRenderer( container:ObjectContainer3D )
+		public function A3D3Renderer( container:ObjectContainer3D )
 		{
 			super();
 			_container = container;

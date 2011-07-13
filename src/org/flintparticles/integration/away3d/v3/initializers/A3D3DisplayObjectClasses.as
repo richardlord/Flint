@@ -32,36 +32,44 @@ package org.flintparticles.integration.away3d.v3.initializers
 {
 	import away3d.sprites.MovieClipSprite;
 	
-	import org.flintparticles.common.emitters.Emitter;
-	import org.flintparticles.common.initializers.InitializerBase;
-	import org.flintparticles.common.particles.Particle;
+	import org.flintparticles.common.initializers.ImageInitializerBase;
 	import org.flintparticles.common.utils.WeightedArray;
 	import org.flintparticles.common.utils.construct;	
 
 	/**
-	 * The ImageClass Initializer sets the DisplayObject to use to draw
-	 * the particle. It is used with the DisplayObjectRenderer. When using the
-	 * BitmapRenderer it is more efficient to use the SharedImage Initializer.
+	 * The A3D3DisplayObjectClasses Initializer sets the DisplayObject to use to draw
+	 * the particle in a 3D scene. It is used with the Away3D renderer when
+	 * particles should be represented by one of a number of display objects.
+	 * 
+	 * <p>The initializer creates an Away3D MovieClipSprite, with the display object
+	 * as the image source (the movieClip property), for rendering a display 
+	 * object in an Away3D scene.</p>
+	 * 
+	 * <p>This class includes an object pool for reusing objects when particles die.</p>
 	 */
 
-	public class A3DDisplayObjectClasses extends InitializerBase
+	public class A3D3DisplayObjectClasses extends ImageInitializerBase
 	{
 		private var _images:WeightedArray;
 		
 		/**
-		 * The constructor creates a ImageClasses initializer for use by 
-		 * an emitter. To add a ImageClasses to all particles created by 
+		 * The constructor creates a A3D3DisplayObjectClasses initializer for use by 
+		 * an emitter. To add a A3D3DisplayObjectClasses to all particles created by 
 		 * an emitter, use the emitter's addInitializer method.
 		 * 
 		 * @param images An array containing the classes to use for 
 		 * each particle created by the emitter.
-		 * @param weights The weighting to apply to each displayObject. If no weighting
-		 * values are passed, the images are used with equal probability.
+		 * @param weights The weighting to apply to each image class. If no weighting
+		 * values are passed, the image classes are used with equal probability.
+		 * @param usePool Indicates whether particles should be reused when a particle dies.
+		 * @param fillPool Indicates how many particles to create immediately in the pool, to
+		 * avoid creating them when the particle effect is running.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function A3DDisplayObjectClasses( images:Array, weights:Array = null )
+		public function A3D3DisplayObjectClasses( images:Array, weights:Array = null, usePool:Boolean = false, fillPool:uint = 0 )
 		{
+			super( usePool );
 			_images = new WeightedArray;
 			var len:int = images.length;
 			var i:int;
@@ -79,6 +87,10 @@ package org.flintparticles.integration.away3d.v3.initializers
 					addImage( images[i], 1 );
 				}
 			}
+			if( fillPool > 0 )
+			{
+				this.fillPool( fillPool );
+			}
 		}
 		
 		public function addImage( image:*, weight:Number = 1 ):void
@@ -93,20 +105,29 @@ package org.flintparticles.integration.away3d.v3.initializers
 			{
 				_images.add( new Pair( image, [] ), weight );
 			}
+			if( _usePool )
+			{
+				clearPool();
+			}
 		}
 		
 		public function removeImage( image:* ):void
 		{
 			_images.remove( image );
+			if( _usePool )
+			{
+				clearPool();
+			}
 		}
 		
 		/**
-		 * @inheritDoc
+		 * Used internally, this method creates an image object for displaying the particle 
+		 * by creating aninstance of one of the display objects and wrapping it in a MovieClipSprite.
 		 */
-		override public function initialize( emitter:Emitter, particle:Particle ):void
+		override public function createImage():Object
 		{
 			var img:Pair = _images.getRandomValue();
-			particle.image = new MovieClipSprite( construct( img.image, img.parameters ) ,"none", 1, true );
+			return new MovieClipSprite( construct( img.image, img.parameters ) ,"none", 1, true );
 		}
 	}
 }
