@@ -44,7 +44,7 @@ package org.flintparticles.integration.papervision3d.initializers
 	 * <p>This initializer has a priority of -10 to ensure that it is applied after 
 	 * the ImageInit classes which define the image object.</p>
 	 */
-	public class ApplyMaterial extends InitializerBase
+	public class PV3DApplyMaterial extends InitializerBase
 	{
 		private var _materialClass:Class;
 		private var _parameters:Array;
@@ -61,7 +61,7 @@ package org.flintparticles.integration.papervision3d.initializers
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function ApplyMaterial( materialClass:Class, ...parameters )
+		public function PV3DApplyMaterial( materialClass:Class, ...parameters )
 		{
 			priority = -10;
 			_materialClass = materialClass;
