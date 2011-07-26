@@ -2,7 +2,7 @@
  * FLINT PARTICLE SYSTEM
  * .....................
  * 
- * Author: Richard Lord
+ * Author: Richard Lord & Michael Ivanov
  * Copyright (c) Richard Lord 2008-2011
  * http://flintparticles.org
  * 
@@ -28,48 +28,68 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.integration.away3d.v3.initializers
+package org.flintparticles.integration.flare3d.initializers
 {
-	import org.flintparticles.common.initializers.ImageClass;
+	import flare.core.Pivot3D;
+
+	import org.flintparticles.common.initializers.ImageInitializerBase;
 
 	/**
-	 * The A3D3ObjectClass initializer sets the class of the 3D Object to use to 
-	 * draw the particle in a 3D scene. It is used with the Away3D 3 renderer when
-	 * particles should be represented by a 3D object.
-	 * 
-	 * <p>This class is actually just a copy of the ImageClass initializer. It is included
-	 * here to make it clear that this is one way to initialize a 3d particle's
-	 * object for rendering in an Away3d scene.</p>
-	 * 
-	 * <p>If you need to set properties of the object class that are not accessible through
-	 * the object constructor, you should use the SetImageProperties initializer to set
-	 * these additional properties.</p>
+	 * The F3DCloneObject Initializer sets the object to use to draw
+	 * the particle. It calls the clone method of the object to create 
+	 * an instance for each particle.
 	 * 
 	 * <p>This class includes an object pool for reusing objects when particles die.</p>
-	 * 
-	 * @see org.flintparticles.common.initializers.ImageClass
-	 * @see org.flintparticles.common.initializers.SetImageProperties
 	 */
-	public class A3D3ObjectClass extends ImageClass
+	public class F3DCloneObject extends ImageInitializerBase
 	{
+		private var _object:Pivot3D;
+		
 		/**
-		 * The constructor creates an A3D3ObjectClass initializer for use by 
-		 * an emitter. To add an A3D3ObjectClass to all particles created by an emitter, use the
-		 * emitter's addInitializer method.
+		 * The constructor creates an F3DCloneObject initializer for use by 
+		 * an emitter. To add an F3DCloneObject to all particles created by 
+		 * an emitter, use the emitter's addInitializer method.
 		 * 
-		 * @param objectClass The class to use when creating
-		 * the particles' 3d object for rendering.
-		 * @param parameters The parameters to pass to the constructor
-		 * for the object class.
+		 * @param object The Object3D to clone for each particle created by the emitter.
 		 * @param usePool Indicates whether particles should be reused when a particle dies.
 		 * @param fillPool Indicates how many particles to create immediately in the pool, to
 		 * avoid creating them when the particle effect is running.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function A3D3ObjectClass( objectClass:Class = null, parameters:Array = null, usePool:Boolean = false, fillPool:uint = 0 )
+		public function F3DCloneObject( object:Pivot3D = null, usePool:Boolean = false, fillPool:uint = 0 )
 		{
-			super( objectClass, parameters, usePool, fillPool );
+			super( usePool );
+			_object = object;
+			if( fillPool > 0 )
+			{
+				this.fillPool( fillPool );
+			}
+		}
+		
+		/**
+		 * The Object3D to clone for each particle created by the emitter.
+		 */
+		public function get object():Pivot3D
+		{
+			return _object;
+		}
+		public function set object( value:Pivot3D ):void
+		{
+			_object = value;
+			if( _usePool )
+			{
+				clearPool();
+			}
+		}
+		
+		/**
+		 * Used internally, this method creates an image object for displaying the particle 
+		 * by cloning the original Object3D.
+		 */
+		override public function createImage():Object
+		{
+			return _object.clone();
 		}
 	}
 }

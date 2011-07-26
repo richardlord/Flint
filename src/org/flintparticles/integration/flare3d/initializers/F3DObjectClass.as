@@ -28,25 +28,25 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.integration.away3d.v4.initializers
+package org.flintparticles.integration.flare3d.initializers
 {
 	import org.flintparticles.common.initializers.ImageClass;
 
 	/**
-	 * The A3D4ObjectClass initializer sets the class of the 3D Object to use to 
-	 * draw the particle in a 3D scene. It is used with the Away3D 4 renderer when
+	 * The F3DObjectClass initializer sets the class of the 3D Object to use to 
+	 * draw the particle in a 3D scene. It is used with the Flare3D renderer when
 	 * particles should be represented by a 3D object.
 	 * 
 	 * <p>This class is actually just a copy of the ImageClass initializer. It is included
 	 * here to make it clear that this is one way to initialize a 3d particle's
-	 * object for rendering in an Away3d scene.</p>
+	 * object for rendering in a Flare3D scene.</p>
 	 * 
 	 * <p>If you need to set properties of the object class that are not accessible through
 	 * the object constructor, you should use the SetImageProperties initializer to set
 	 * these additional properties.</p>
 	 * 
 	 * <p>In situations where all the particles are the same, or are one of a small number of
-	 * objects, the A3D4CloneObject and A3D4CloneObjects initializers are more efficient
+	 * objects, the other Flare3D initializers are usually more efficient
 	 * because they use one set of geometry and material data for all the similar particles.
 	 * This initializer creates new data for each particle.</p>
 	 * 
@@ -55,16 +55,16 @@ package org.flintparticles.integration.away3d.v4.initializers
 	 * 
 	 * <p>This class includes an object pool for reusing objects when particles die.</p>
 	 * 
-	 * @see org.flintparticles.integration.away3d.v4.initializers.A3D4CloneObject
-	 * @see org.flintparticles.integration.away3d.v4.initializers.A3D4CloneObjects
+	 * @see org.flintparticles.integration.flare3d.initializers.F3DCloneObject
+	 * @see org.flintparticles.integration.flare3d.initializers.F3DCloneObjects
 	 * @see org.flintparticles.common.initializers.ImageClass
 	 * @see org.flintparticles.common.initializers.SetImageProperties
 	 */
-	public class A3D4ObjectClass extends ImageClass
+	public class F3DObjectClass extends ImageClass
 	{
 		/**
-		 * The constructor creates an A3D4ObjectClass initializer for use by 
-		 * an emitter. To add an A3D4ObjectClass to all particles created by an emitter, use the
+		 * The constructor creates a F3DObjectClass initializer for use by 
+		 * an emitter. To add a F3DObjectClass to all particles created by an emitter, use the
 		 * emitter's addInitializer method.
 		 * 
 		 * @param objectClass The class to use when creating
@@ -77,9 +77,9 @@ package org.flintparticles.integration.away3d.v4.initializers
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function A3D4ObjectClass( objectClass:Class = null, parameters:Array = null, usePool:Boolean = false, fillPool:uint = 0 )
+		public function F3DObjectClass( imageClass : Class = null, parameters : Array = null, usePool : Boolean = false, fillPool : uint = 0 )
 		{
-			super( objectClass, parameters, usePool, fillPool );
+			super( imageClass, parameters, usePool, fillPool );
 		}
 	}
 }

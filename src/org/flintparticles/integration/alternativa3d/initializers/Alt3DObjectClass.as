@@ -57,6 +57,7 @@ package org.flintparticles.integration.alternativa3d.initializers
 	 * 
 	 * @see org.flintparticles.integration.alternativa3d.initializers.Alt3DCloneObject
 	 * @see org.flintparticles.integration.alternativa3d.initializers.Alt3DCloneObjects
+	 * @see org.flintparticles.common.initializers.ImageClass
 	 * @see org.flintparticles.common.Initializers.SetImageProperties
 	 */
 	public class Alt3DObjectClass extends ImageClass

@@ -28,42 +28,29 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.integration.away3d.v4
+package org.flintparticles.integration.flare3d
 {
-	import away3d.containers.ObjectContainer3D;
-	import away3d.core.base.Object3D;
-	import away3d.core.math.Vector3DUtils;
-
+	import flare.core.Mesh3D;
+	import flare.core.Pivot3D;
+	import flare.core.Surface3D;
+	import flare.materials.Material3D;
+	import flare.materials.Shader3D;
+	import flare.materials.flsl.FLSLFilter;
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.renderers.RendererBase;
 	import org.flintparticles.common.utils.Maths;
-	import org.flintparticles.integration.away3d.v4.utils.Convert;
+	import org.flintparticles.integration.flare3d.utils.Convert;
 	import org.flintparticles.threeD.particles.Particle3D;
-
 	import flash.geom.Vector3D;
 
 	/**
-	 * Renders the particles in an Away3D4 scene.
-	 * 
-	 * <p>To use this renderer, the particles' image properties should be 
-	 * Away3D v4(Molehill API based) objects, renderable in an Away3D scene. This renderer
-	 * doesn't update the scene, but copies each particle's properties
-	 * to its image object so next time the Away3D scene is rendered the 
-	 * image objects are drawn according to the state of the particle
-	 * system.</p>
+	 * @author Richard
 	 */
-	public class A3D4Renderer extends RendererBase
+	public class F3DRenderer extends RendererBase
 	{
-		private var _container:ObjectContainer3D;
+		private var _container:Pivot3D;
 		
-		/**
-		 * The constructor creates an Away3D renderer for displaying the
-		 * particles in an Away3D scene.
-		 * 
-		 * @param container An Away3D object container. The particle display
-		 * objects are created inside this object container.
-		 */
-		public function A3D4Renderer( container:ObjectContainer3D )
+		public function F3DRenderer( container:Pivot3D )
 		{
 			super();
 			_container = container;
@@ -87,43 +74,42 @@ package org.flintparticles.integration.away3d.v4
 		
 		protected function renderParticle( particle:Particle3D ):void
 		{
-			// N.B. Sprite3D is a subclass of Object3D so we don't need to treat it as a special case
-			if( particle.image is Object3D )
+			if( particle.image is Pivot3D )
 			{
-				var obj:Object3D = particle.image as Object3D;
+				var obj:Pivot3D = particle.image as Pivot3D;
 				
-				obj.x = particle.position.x;
-				obj.y = particle.position.y;
-				obj.z = particle.position.z;
-				obj.scaleX = obj.scaleY = obj.scaleZ = particle.scale;
+				obj.setPosition( particle.position.x, particle.position.y, particle.position.z );
+				obj.setScale( particle.scale, particle.scale, particle.scale );
 				
-				var rotation:Vector3D = away3d.core.math.Vector3DUtils.quaternion2euler( Convert.QuaternionToA3D( particle.rotation ) );
-				obj.rotationX = Maths.asDegrees( rotation.x );
-				obj.rotationY = Maths.asDegrees( rotation.y );
-				obj.rotationZ = Maths.asDegrees( rotation.z );
-				
-				if( obj.hasOwnProperty("material") )
+				var rotation:Vector3D = Convert.quaternion2euler( particle.rotation );
+				obj.setRotation( Maths.asDegrees( rotation.x ), Maths.asDegrees( rotation.y ), Maths.asDegrees( rotation.z ) );
+			
+				if( obj is Mesh3D )
 				{
-					var material:Object = obj["material"];
-					if( material.hasOwnProperty( "colorTransform" ) )
+					var mesh : Mesh3D = obj as Mesh3D;
+					for each( var surface:Surface3D in mesh.surfaces )
 					{
-						material["colorTransform"] = particle.colorTransform;
-					}
-					else
-					{
-						if( material.hasOwnProperty( "color" ) )
+						var material:Material3D = surface.material;
+						if( material is Shader3D )
 						{
-							material["color"] = particle.color & 0xFFFFFF;
-						}
-						if( material.hasOwnProperty( "alpha" ) )
-						{
-							material["alpha"] = particle.alpha;
+							var shader : Shader3D = material as Shader3D;
+							for each( var filter:FLSLFilter in shader.filters )
+							{
+								if( filter.hasOwnProperty( "color" ) )
+								{
+									filter["color"] = particle.color;
+								}
+								if( filter.hasOwnProperty( "alpha" ) )
+								{
+									filter["alpha"] = Number( ( particle.color >>> 24 ) & 255 ) / 255;
+								}
+							}
 						}
 					}
 				}
 			}
 		}
-				
+		
 		/**
 		 * This method is called when a particle is added to an emitter -
 		 * usually because the emitter has just created the particle. The
@@ -134,10 +120,9 @@ package org.flintparticles.integration.away3d.v4
 		 */
 		override protected function addParticle( particle:Particle ):void
 		{
-			
-			if( particle.image is ObjectContainer3D )
+			if( particle.image is Pivot3D )
 			{
-				_container.addChild( ObjectContainer3D( particle.image ) );
+				_container.addChild( Pivot3D( particle.image ) );
 				renderParticle( Particle3D( particle ) );
 			}
 		}
@@ -152,12 +137,11 @@ package org.flintparticles.integration.away3d.v4
 		 */
 		override protected function removeParticle( particle:Particle ):void
 		{
-			// We can't clean up the 3d object here because the particle may not be dead.
-			// We need to handle disposal elsewhere
-			if( particle.image is ObjectContainer3D )
+			if( particle.image is Pivot3D )
 			{
-				_container.removeChild( ObjectContainer3D( particle.image ) );
+				_container.removeChild( Pivot3D( particle.image ) );
 			}
 		}
+		
 	}
 }

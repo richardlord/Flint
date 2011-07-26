@@ -28,50 +28,50 @@
  * THE SOFTWARE.
  */
 
-package org.flintparticles.integration.away3d.v4.initializers
+package org.flintparticles.integration.flare3d.initializers
 {
-	import away3d.core.base.Object3D;
-	import away3d.materials.MaterialBase;
+	import flare.core.Pivot3D;
+	import flare.materials.Material3D;
 
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.initializers.InitializerBase;
 	import org.flintparticles.common.particles.Particle;
 
 	/**
-	 * The A3D4ApplyMaterial initializer sets a material to apply to the Away3D 4
+	 * The F3DApplyMaterial initializer sets a material to apply to the Flare3D
 	 * object that is used when rendering the particle. To use this initializer,
-	 * the particle's image object must be an Away3D 4 Object3D.
+	 * the particle's image object must be a Flare3D Pivot3D object.
 	 * 
 	 * <p>This initializer has a priority of -10 to ensure that it is applied after 
 	 * the ImageInit classes which define the image object.</p>
 	 */
-	public class A3D4ApplyMaterial extends InitializerBase
+	public class F3DApplyMaterial extends InitializerBase
 	{
-		private var _material:MaterialBase;
+		private var _material:Material3D;
 		
 		/**
-		 * The constructor creates an A3D4ApplyMaterial initializer for use by 
-		 * an emitter. To add an A3D4ApplyMaterial to all particles created by 
+		 * The constructor creates an F3DApplyMaterial initializer for use by 
+		 * an emitter. To add an F3DApplyMaterial to all particles created by 
 		 * an emitter, use the emitter's addInitializer method.
 		 * 
 		 * @param material The material to use for the particle.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
-		public function A3D4ApplyMaterial( material:MaterialBase )
+		public function F3DApplyMaterial( material:Material3D )
 		{
 			priority = -10;
 			_material = material;
 		}
 		
 		/**
-		 * The material to apply to the particles.
+		 * The material to use for the particle.
 		 */
-		public function get material():MaterialBase
+		public function get material():Material3D
 		{
 			return _material;
 		}
-		public function set material( value:MaterialBase ):void
+		public function set material( value:Material3D ):void
 		{
 			_material = value;
 		}
@@ -81,12 +81,9 @@ package org.flintparticles.integration.away3d.v4.initializers
 		 */
 		override public function initialize( emitter:Emitter, particle:Particle ):void
 		{
-			if( particle.image && particle.image is Object3D )
+			if( particle.image && particle.image is Pivot3D )
 			{
-				if( Object3D( particle.image ).hasOwnProperty( "material" ) )
-				{
-					Object3D( particle.image )["material"] = _material;
-				}
+				Pivot3D( particle.image ).setMaterial( _material );
 			}
 		}
 	}
