@@ -9,11 +9,11 @@
 &lt;li&gt;Emitters use Activities to control their own behaviour over time.&lt;/li&gt;
 &lt;li&gt;Renderers draw the Particles managed by one or more emitters.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Flint's Away3D 4 integration works with Away3D version 4.0 (broomstick). It uses renderers that draw the particle effect within an Away3D scene.&lt;/p&gt;
+&lt;p&gt;Flint's Flare3D integration works with Flare3D version 2.0. It uses renderers that draw the particle effect within a Flare3D scene.&lt;/p&gt;
 &lt;p&gt;If using the swc files, you will need&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Flint3d.swc&lt;/li&gt;
-&lt;li&gt;FlintAway3d4.swc&lt;/li&gt;
+&lt;li&gt;FlintFlare3d.swc&lt;/li&gt;
 &lt;/ul&gt;
 ]]></description>
 	</all-packages>
@@ -79,13 +79,13 @@
 		<package name="org.flintparticles.threeD.geom">
 			<shortDescription><![CDATA[Geometry classes for working in 3D]]></shortDescription>
 		</package>
-		<package name="org.flintparticles.integration.away3d.v4">
-			<shortDescription><![CDATA[Renderers for displaying particle systems in Away3D version 4.x]]></shortDescription>
+		<package name="org.flintparticles.integration.flare3d">
+			<shortDescription><![CDATA[Renderers for displaying particle systems in Flare3D version 2.x]]></shortDescription>
 		</package>
-		<package name="org.flintparticles.integration.away3d.v4.initializers">
+		<package name="org.flintparticles.integration.flare3d.initializers">
 			<shortDescription><![CDATA[Initializers are used to modify the initial state of particles created by an Emitter.]]></shortDescription>
 		</package>
-		<package name="org.flintparticles.integration.away3d.v4.utils">
+		<package name="org.flintparticles.integration.flare3d.utils">
 			<shortDescription><![CDATA[Utility classes and functions.]]></shortDescription>
 		</package>
 	</packages>

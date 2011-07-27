@@ -9,7 +9,12 @@
 &lt;li&gt;Emitters use Activities to control their own behaviour over time.&lt;/li&gt;
 &lt;li&gt;Renderers draw the Particles managed by one or more emitters.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Version 3 features significant changes in the 3D API. The 3D geometry has altered to use Flash's native Vector3D and Matrix3D and Flint's native renderers now use a right-hand coordinate system to match the system used in Flash's native 3D libraries. The library now requires version 10 of Flash Player.]]></description>
+&lt;p&gt;Version 3 features significant changes in the 3D API. The 3D geometry has altered to use Flash's native Vector3D and Matrix3D and Flint's native renderers now use a right-hand coordinate system to match the system used in Flash's native 3D libraries. The library now requires version 10 of Flash Player.&lt;/p&gt;
+&lt;p&gt;If using the swc files, you will need&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Flint3d.swc&lt;/li&gt;
+&lt;/ul&gt;
+]]></description>
 	</all-packages>
 
 	<packages>

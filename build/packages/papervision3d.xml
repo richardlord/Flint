@@ -9,7 +9,13 @@
 &lt;li&gt;Emitters use Activities to control their own behaviour over time.&lt;/li&gt;
 &lt;li&gt;Renderers draw the Particles managed by one or more emitters.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Flint's Papervision3D integration works with Papervision3D version 2. It uses renderers that draw the particle effect within a Papervision3D scene.]]></description>
+&lt;p&gt;Flint's Papervision3D integration works with Papervision3D version 2. It uses renderers that draw the particle effect within a Papervision3D scene.&lt;/p&gt;
+&lt;p&gt;If using the swc files, you will need&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Flint3d.swc&lt;/li&gt;
+&lt;li&gt;FlintPapervision3d.swc&lt;/li&gt;
+&lt;/ul&gt;
+]]></description>
 	</all-packages>
 
 	<packages>

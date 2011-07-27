@@ -5,9 +5,9 @@
 		
 	<target name="all" depends="all_swcs,all_asdocs" description="Full build of all swc libraries and asdocs"/>
 		
-	<target name="all_swcs" depends="swc_2d,swc_3d,swc_papervision3d,swc_away3d3,swc_away3d4,swc_alternativa3d" description="Full build of all swc libraries"/>
+	<target name="all_swcs" depends="swc_2d,swc_3d,swc_papervision3d,swc_away3d3,swc_away3d4,swc_alternativa3d,swc_flare3d" description="Full build of all swc libraries"/>
 
-	<target name="all_asdocs" depends="asdocs_index,asdocs_2d,asdocs_3d,asdocs_papervision3d,asdocs_away3d3,asdocs_away3d4,asdocs_alternativa3d" description="Full build of all swc libraries"/>
+	<target name="all_asdocs" depends="asdocs_index,asdocs_2d,asdocs_3d,asdocs_papervision3d,asdocs_away3d3,asdocs_away3d4,asdocs_alternativa3d,asdocs_flare3d" description="Full build of all swc libraries"/>
 
 	<target name="swc_2d" description="Build 2D swc library">
 		<fileset dir="../src" casesensitive="yes" id="classfiles1">
@@ -132,6 +132,26 @@
 			<arg line='-external-library-path+="${alternativa3d.swc}"'/>
 			<arg line='-external-library-path+=../swc/Flint3d_${version}.swc'/>
 			<arg line='-include-classes ${classlist6}'/>
+		</exec>
+	</target>
+	
+	<target name="swc_flare3d" description="Build Flare 3D swc library">
+		<fileset dir="../src" casesensitive="yes" id="classfiles7">
+			<include name="org/flintparticles/integration/flare3d/**/*.as"/>
+		</fileset>
+
+		<pathconvert property="classlist7" refid="classfiles7" pathsep=" " dirsep=".">
+			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
+		</pathconvert>
+		
+		<exec executable="${molehillsdk.dir}/bin/compc${bin.ext}" failonerror="true">
+			<arg line='-source-path ../src'/>
+			<arg line='-output ../swc/FlintFlare3d_${version}.swc'/>
+			<arg line='-target-player 10.2.0.0'/>
+			<arg line='-external-library-path+="${molehillsdk.dir}/frameworks/libs/framework.swc"'/>
+			<arg line='-external-library-path+="${flare3d.swc}"'/>
+			<arg line='-external-library-path+=../swc/Flint3d_${version}.swc'/>
+			<arg line='-include-classes ${classlist7}'/>
 		</exec>
 	</target>
 	
@@ -303,11 +323,40 @@
 			<arg line='-library-path "${molehillsdk.dir}/frameworks/libs/framework.swc"'/>
 			<arg line='-library-path "${alternativa3d.swc}"'/>
 			<arg line='-package-description-file packages/alternativa3d.xml'/>
-			<arg line='-main-title "Flint Particles documentation v${version} - Alternativa 3d integration"'/>
+			<arg line='-main-title "Flint Particles documentation v${version} - Alternativa3d integration"'/>
 			<arg line='-window-title "Flint Particles documentation v${version}"'/>
 			<arg line='-footer "© Richard Lord 2008-2011"'/>
 			<arg line='-source-path ../src'/>
 			<arg line='-doc-classes ${classlist16}'/>
+		</exec>
+	</target>
+	
+	<target name="asdocs_flare3d" description="Build Flare 3D swc library documentation">
+		<fileset dir="../src" casesensitive="yes" id="classfiles17">
+			<include name="org/flintparticles/integration/flare3d/**/*.as"/>
+			<include name="org/flintparticles/common/**/*.as"/>
+			<include name="org/flintparticles/threeD/**/*.as"/>
+			<exclude name="org/flintparticles/threeD/renderers/**/*.as"/>
+			<exclude name="org/flintparticles/threeD/emitters/mxml/*.as"/>
+			<exclude name="org/flintparticles/threeD/zones/FrustrumZone.as"/>
+		</fileset>
+		
+		<pathconvert property="classlist17" refid="classfiles17" pathsep=" " dirsep=".">
+			<regexpmapper from=".*src.(.*)\.as" to="\1"/>
+		</pathconvert>
+
+		<exec executable="${molehillsdk.dir}/bin/asdoc${bin.ext}" failonerror="true">
+			<arg line='-templates-path asdoc_templates'/>
+			<arg line='-output ../docs/flare3d/'/>
+			<arg line='-target-player 10.2.0.0'/>
+			<arg line='-library-path "${molehillsdk.dir}/frameworks/libs/framework.swc"'/>
+			<arg line='-library-path "${flare3d.swc}"'/>
+			<arg line='-package-description-file packages/flare3d.xml'/>
+			<arg line='-main-title "Flint Particles documentation v${version} - Flare3d integration"'/>
+			<arg line='-window-title "Flint Particles documentation v${version}"'/>
+			<arg line='-footer "© Richard Lord 2008-2011"'/>
+			<arg line='-source-path ../src'/>
+			<arg line='-doc-classes ${classlist17}'/>
 		</exec>
 	</target>
 </project>
