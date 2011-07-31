@@ -53,6 +53,11 @@ package org.flintparticles.common.events
 		 * The event dispatched by an emitter when a pre-existing particle is added to it.
 		 */
 		public static var PARTICLE_ADDED:String = "particleAdded";
+		
+		/**
+		 * The event dispatched by an emitter when a particle is removed from it (but doesn't die).
+		 */
+		public static var PARTICLE_REMOVED:String = "particleAdded";
 
 		/**
 		 * The event dispatched by an emitter when a particle collides with another particle.

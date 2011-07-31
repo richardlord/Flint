@@ -180,6 +180,10 @@ package org.flintparticles.common.emitters
 		/**
 		 * @private
 		 */
+		protected var _updating:Boolean = false;
+		/**
+		 * @private
+		 */
 		protected var _maximumFrameTime:Number = 0.1;
 		/**
 		 * Indicates if the emitter should dispatch a counterComplete event at the
@@ -766,7 +770,19 @@ package org.flintparticles.common.emitters
 			var index:int = _particles.indexOf( particle );
 			if( index != -1 )
 			{
-				_particles.splice( index, 1 );
+				if( _updating )
+				{
+					addEventListener( EmitterEvent.EMITTER_UPDATED, function( e:EmitterEvent ) : void
+					{
+						removeEventListener( EmitterEvent.EMITTER_UPDATED, arguments.callee );
+						removeParticle( particle );
+					});
+				}
+				else
+				{
+					_particles.splice( index, 1 );
+					dispatchEvent( new ParticleEvent( ParticleEvent.PARTICLE_REMOVED, particle ) );
+				}
 				return true;
 			}
 			return false;
@@ -779,12 +795,24 @@ package org.flintparticles.common.emitters
 		 */
 		public function removeParticles( particles:Vector.<Particle> ):void
 		{
-			for( var i:int = 0, len:int = particles.length; i < len; ++i )
+			if( _updating )
 			{
-				var index:int = _particles.indexOf( particles[i] );
-				if( index != -1 )
+				addEventListener( EmitterEvent.EMITTER_UPDATED, function( e:EmitterEvent ) : void
 				{
-					_particles.splice( index, 1 );
+					removeEventListener( EmitterEvent.EMITTER_UPDATED, arguments.callee );
+					removeParticles( particles );
+				});
+			}
+			else
+			{
+				for( var i:int = 0, len:int = particles.length; i < len; ++i )
+				{
+					var index:int = _particles.indexOf( particles[i] );
+					if( index != -1 )
+					{
+						_particles.splice( index, 1 );
+						dispatchEvent( new ParticleEvent( ParticleEvent.PARTICLE_REMOVED, particles[i] ) );
+					}
 				}
 			}
 		}
@@ -881,6 +909,7 @@ package org.flintparticles.common.emitters
 			}
 			var i:int;
 			var particle:Particle;
+			_updating = true;
 			var len:int = _counter.updateEmitter( this, time );
 			for( i = 0; i < len; ++i )
 			{
@@ -966,6 +995,7 @@ package org.flintparticles.common.emitters
 					dispatchEvent( new EmitterEvent( EmitterEvent.EMITTER_EMPTY ) );
 				}
 			}
+			_updating = false;
 			if( hasEventListener( EmitterEvent.EMITTER_UPDATED ) )
 			{
 				dispatchEvent( new EmitterEvent( EmitterEvent.EMITTER_UPDATED ) );
