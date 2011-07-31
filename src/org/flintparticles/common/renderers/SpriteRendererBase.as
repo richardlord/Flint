@@ -92,6 +92,7 @@ package org.flintparticles.common.renderers
 			emitter.addEventListener( ParticleEvent.PARTICLE_CREATED, particleAdded, false, 0, true );
 			emitter.addEventListener( ParticleEvent.PARTICLE_ADDED, particleAdded, false, 0, true );
 			emitter.addEventListener( ParticleEvent.PARTICLE_DEAD, particleRemoved, false, 0, true );
+			emitter.addEventListener( ParticleEvent.PARTICLE_REMOVED, particleRemoved, false, 0, true );
 			for each( var p:Particle in emitter.particlesArray )
 			{
 				addParticle( p );
@@ -120,6 +121,7 @@ package org.flintparticles.common.renderers
 					emitter.removeEventListener( ParticleEvent.PARTICLE_CREATED, particleAdded );
 					emitter.removeEventListener( ParticleEvent.PARTICLE_ADDED, particleAdded );
 					emitter.removeEventListener( ParticleEvent.PARTICLE_DEAD, particleRemoved );
+					emitter.removeEventListener( ParticleEvent.PARTICLE_REMOVED, particleRemoved );
 					for each( var p:Particle in emitter.particlesArray )
 					{
 						removeParticle( p );
