@@ -32,15 +32,19 @@ package org.flintparticles.integration.alternativa3d
 {
 	import alternativa.engine3d.core.Object3D;
 	import alternativa.engine3d.materials.Material;
+	import alternativa.engine3d.materials.TextureMaterial;
 	import alternativa.engine3d.objects.AnimSprite;
 	import alternativa.engine3d.objects.Mesh;
 	import alternativa.engine3d.objects.Sprite3D;
-
-	import flash.geom.Vector3D;
+	import alternativa.engine3d.resources.BitmapTextureResource;
+	import alternativa.engine3d.resources.TextureResource;
 
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.common.renderers.RendererBase;
 	import org.flintparticles.threeD.particles.Particle3D;
+
+	import flash.display.BitmapData;
+	import flash.geom.Vector3D;
 
 	/**
 	 * Renders the particles in an Alternativa3D scene.

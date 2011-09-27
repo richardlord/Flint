@@ -55,6 +55,7 @@ package org.flintparticles.integration.alternativa3d.initializers
 	public class Alt3DDisplayObject extends ImageInitializerBase
 	{
 		private var _displayObject:DisplayObject;
+		private var _textureMaterial : TextureMaterial;
 		
 		/**
 		 * The constructor creates an A3D4DisplayObject initializer for use by 
@@ -88,6 +89,7 @@ package org.flintparticles.integration.alternativa3d.initializers
 		public function set displayObject( value:DisplayObject ):void
 		{
 			_displayObject = value;
+			_textureMaterial = null;
 			if( _usePool )
 			{
 				clearPool();
@@ -100,17 +102,20 @@ package org.flintparticles.integration.alternativa3d.initializers
 		 */
 		override public function createImage():Object
 		{
-			var material:TextureMaterial;
-			var bounds:Rectangle = _displayObject.getBounds( _displayObject );
-			var width:int = textureSize( bounds.width );
-			var height:int = textureSize( bounds.height );
-			var bitmapData:BitmapData = new BitmapData( width, height, true, 0x00FFFFFF );
-			var matrix:Matrix = _displayObject.transform.matrix.clone();
-			matrix.translate( -bounds.left, -bounds.top );
-			matrix.scale( width / bounds.width, height / bounds.height );
-			bitmapData.draw( _displayObject, matrix, _displayObject.transform.colorTransform, null, null, true );
-			material = new TextureMaterial( new BitmapTextureResource( bitmapData ) );
-			return new Sprite3D( _displayObject.width, _displayObject.height, material );
+			if( ! _textureMaterial )
+			{
+				var bounds:Rectangle = _displayObject.getBounds( _displayObject );
+				var width:int = textureSize( bounds.width );
+				var height:int = textureSize( bounds.height );
+				var bitmapData:BitmapData = new BitmapData( width, height, true, 0x00FFFFFF );
+				var matrix:Matrix = _displayObject.transform.matrix.clone();
+				matrix.translate( -bounds.left, -bounds.top );
+				matrix.scale( width / bounds.width, height / bounds.height );
+				bitmapData.draw( _displayObject, matrix, _displayObject.transform.colorTransform, null, null, true );
+				var resource : BitmapTextureResource = new BitmapTextureResource( bitmapData );
+				_textureMaterial = new TextureMaterial( resource, resource );
+			}
+			return new Sprite3D( _displayObject.width, _displayObject.height, _textureMaterial );
 		}
 		
 		private function textureSize( value:Number ):int

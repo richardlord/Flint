@@ -41,6 +41,7 @@ package org.flintparticles.integration.alternativa3d.initializers
 	import flash.display.DisplayObject;
 	import flash.geom.Matrix;
 	import flash.geom.Rectangle;
+	import flash.utils.Dictionary;
 
 	/**
 	 * The Alt3DDisplayObjects Initializer sets the DisplayObject to use to 
@@ -55,6 +56,7 @@ package org.flintparticles.integration.alternativa3d.initializers
 	public class Alt3DDisplayObjects extends ImageInitializerBase
 	{
 		private var _displayObjects:WeightedArray;
+		private var _textures : Dictionary;
 		
 		/**
 		 * The constructor creates an A3D4DisplayObjects initializer for use by 
@@ -75,6 +77,7 @@ package org.flintparticles.integration.alternativa3d.initializers
 		{
 			super( usePool );
 			_displayObjects = new WeightedArray();
+			_textures = new Dictionary( true );
 			var len:int = displayObjects.length;
 			var i:int;
 			if( weights != null && weights.length == len )
@@ -122,17 +125,20 @@ package org.flintparticles.integration.alternativa3d.initializers
 		override public function createImage():Object
 		{
 			var displayObject:DisplayObject = _displayObjects.getRandomValue();
-			var material:TextureMaterial;
-			var bounds:Rectangle = displayObject.getBounds( displayObject );
-			var width:int = textureSize( bounds.width );
-			var height:int = textureSize( bounds.height );
-			var bitmapData:BitmapData = new BitmapData( width, height, true, 0x00FFFFFF );
-			var matrix:Matrix = displayObject.transform.matrix.clone();
-			matrix.translate( -bounds.left, -bounds.top );
-			matrix.scale( width / bounds.width, height / bounds.height );
-			bitmapData.draw( displayObject, matrix, displayObject.transform.colorTransform, null, null, true );
-			material = new TextureMaterial( new BitmapTextureResource( bitmapData ) );
-			return new Sprite3D( displayObject.width, displayObject.height, material );
+			if( !_textures[displayObject] )
+			{
+				var bounds:Rectangle = displayObject.getBounds( displayObject );
+				var width:int = textureSize( bounds.width );
+				var height:int = textureSize( bounds.height );
+				var bitmapData:BitmapData = new BitmapData( width, height, true, 0x00FFFFFF );
+				var matrix:Matrix = displayObject.transform.matrix.clone();
+				matrix.translate( -bounds.left, -bounds.top );
+				matrix.scale( width / bounds.width, height / bounds.height );
+				bitmapData.draw( displayObject, matrix, displayObject.transform.colorTransform, null, null, true );
+				var resource : BitmapTextureResource = new BitmapTextureResource( bitmapData );
+				_textures[displayObject] = new TextureMaterial( resource, resource );
+			}
+			return new Sprite3D( displayObject.width, displayObject.height, _textures[displayObject] );
 		}
 		
 		private function textureSize( value:Number ):int
