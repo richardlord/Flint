@@ -300,7 +300,7 @@ package org.flintparticles.twoD.zones
 		 */
 		public function getArea():Number
 		{
-			return ( Math.PI * _outerSq - Math.PI * _innerSq );
+			return ( _outerSq - _innerSq ) * ( _maxAngle - _minAngle ) * 0.5;
 		}
 
 		/**
