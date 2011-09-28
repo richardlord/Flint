@@ -57,7 +57,7 @@ package org.flintparticles.common.events
 		/**
 		 * The event dispatched by an emitter when a particle is removed from it (but doesn't die).
 		 */
-		public static var PARTICLE_REMOVED:String = "particleAdded";
+		public static var PARTICLE_REMOVED:String = "particleRemoved";
 
 		/**
 		 * The event dispatched by an emitter when a particle collides with another particle.
