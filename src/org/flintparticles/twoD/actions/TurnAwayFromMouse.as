@@ -30,15 +30,23 @@
 
 package org.flintparticles.twoD.actions 
 {
-	import flash.display.DisplayObject;		
+	import org.flintparticles.common.actions.ActionBase;
+	import org.flintparticles.common.emitters.Emitter;
+	import org.flintparticles.common.particles.Particle;
+	import org.flintparticles.twoD.particles.Particle2D;
+	
+	import flash.display.DisplayObject;	
 
 	/**
-	 * The TurnAwayFromMouse action causes the particle to constantly adjust its 
-	 * direction so that it travels away from the mouse pointer.
+	 * The TurnAwayFromMouse action causes the particle to constantly adjust its direction
+	 * so that it travels away from the mouse pointer.
 	 */
 
-	public class TurnAwayFromMouse extends TurnTowardsMouse
+	public class TurnAwayFromMouse extends ActionBase
 	{
+		private var _power:Number;
+		private var _renderer:DisplayObject;
+		
 		/**
 		 * The constructor creates a TurnAwayFromMouse action for use by an emitter. 
 		 * To add a TurnAwayFromMouse to all particles created by an emitter, use the
@@ -52,19 +60,74 @@ package org.flintparticles.twoD.actions
 		 */
 		public function TurnAwayFromMouse( power:Number = 0, renderer:DisplayObject = null )
 		{
-			super( -power, renderer );
+			this.power = power;
+			this.renderer = renderer;
 		}
 		
 		/**
 		 * The strength of the turn action. Higher values produce a sharper turn.
 		 */
-		override public function get power():Number
+		public function get power():Number
 		{
-			return -super.power;
+			return _power;
 		}
-		override public function set power( value:Number ):void
+		public function set power( value:Number ):void
 		{
-			super.power = -value;
+			_power = value;
+		}
+
+		/**
+		 * The display object whose coordinate system the mouse position is converted to. This
+		 * is usually the renderer for the particle system created by the emitter.
+		 */
+		public function get renderer():DisplayObject
+		{
+			return _renderer;
+		}
+		public function set renderer( value:DisplayObject ):void
+		{
+			_renderer = value;
+		}
+		
+		/**
+		 * Calculates the direction to the mouse and turns the particle towards 
+		 * this direction.
+		 * 
+		 * <p>This method is called by the emitter and need not be called by the 
+		 * user.</p>
+		 * 
+		 * @param emitter The Emitter that created the particle.
+		 * @param particle The particle to be updated.
+		 * @param time The duration of the frame - used for time based updates.
+		 * 
+		 * @see org.flintparticles.common.actions.Action#update()
+		 */
+		override public function update( emitter:Emitter, particle:Particle, time:Number ):void
+		{
+			var p:Particle2D = Particle2D( particle );
+			var turnLeft:Boolean = ( ( p.y - _renderer.mouseY ) * p.velX + ( _renderer.mouseX - p.x ) * p.velY < 0 );
+			var newAngle:Number;
+			if ( turnLeft )
+			{
+				newAngle = Math.atan2( p.velY, p.velX ) - _power * time;
+				
+			}
+			else
+			{
+				newAngle = Math.atan2( p.velY, p.velX ) + _power * time;
+			}
+			var len:Number = Math.sqrt( p.velX * p.velX + p.velY * p.velY );
+			p.velX = len * Math.cos( newAngle );
+			p.velY = len * Math.sin( newAngle );
+			var overturned:Boolean = ( ( p.y - _renderer.mouseY ) * p.velX + ( _renderer.mouseX - p.x ) * p.velY < 0 ) != turnLeft;
+			if( overturned )
+			{
+				var dx:Number = p.x - _renderer.mouseX;
+				var dy:Number = p.y - _renderer.mouseY;
+				var factor:Number = len / Math.sqrt( dx * dx + dy * dy );
+				p.velX = dx * factor;
+				p.velY = dy * factor;
+			}
 		}
 	}
 }
