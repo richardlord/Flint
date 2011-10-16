@@ -51,12 +51,9 @@ package org.flintparticles.common.initializers
 		private var _clickHandler:Function;
 		
 		/**
-		 * The constructor creates a MassInit initializer for use by 
-		 * an emitter. To add a MassInit to all particles created by an emitter, use the
+		 * The constructor creates a MouseEventHandlers initializer for use by 
+		 * an emitter. To add a MouseEventHandlers to all particles created by an emitter, use the
 		 * emitter's addInitializer method.
-		 * 
-		 * @param mass the mass for particles
-		 * initialized by the instance.
 		 * 
 		 * @see org.flintparticles.common.emitters.Emitter#addInitializer()
 		 */
