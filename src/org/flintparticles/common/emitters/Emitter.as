@@ -934,7 +934,7 @@ package org.flintparticles.common.emitters
 					for( j = 0; j < len; ++j )
 					{
 						action = _actions[j];
-						for ( i = len2; --i; )
+						for ( i = len2 - 1; i >= 0; --i )
 						{
 							particle = _particles[i];
 							action.update( this, particle, time );
