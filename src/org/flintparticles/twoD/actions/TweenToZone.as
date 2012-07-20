@@ -64,7 +64,7 @@ package org.flintparticles.twoD.actions
 		 * 
 		 * @param zone The zone for the particle's position when its energy is 0.
 		 */
-		public function TweenToZone( zone:Zone2D )
+		public function TweenToZone( zone:Zone2D=null )
 		{
 			_zone = zone;
 			priority = -10;
