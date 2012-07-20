@@ -68,6 +68,7 @@
     <component class="org.flintparticles.twoD.actions.TurnTowardsMouse"/>
     <component class="org.flintparticles.twoD.actions.TurnTowardsPoint"/>
     <component class="org.flintparticles.twoD.actions.TweenPosition"/>
+    <component class="org.flintparticles.twoD.actions.TweenToCurrentPosition"/>
     <component class="org.flintparticles.twoD.actions.TweenToZone"/>
     <component class="org.flintparticles.twoD.actions.WrapAroundBox"/>
     <component class="org.flintparticles.twoD.actions.ZonedAction"/>
