@@ -232,15 +232,25 @@ package org.flintparticles.common.renderers
 		}
 		public function set emitters( value:Vector.<Emitter> ):void
 		{
-			var e:Emitter;
-			for each( e in _emitters )
+			if ( value != emitters )
 			{
-				removeEmitter( e );
+				clearEmitters();				
+				for each( var e:Emitter in value )
+				{
+					addEmitter( e );
+				}
 			}
-			for each( e in value )
+		}
+		
+		/**
+		 * Removes every emitter rendered by this renderer.
+		 */
+		public function clearEmitters():void
+		{
+			while ( _emitters.length > 0 )
 			{
-				addEmitter( e );
-			}
+				removeEmitter(_emitters[0]);
+			}			
 		}
 		
 		/**
