@@ -34,19 +34,15 @@ package org.flintparticles.twoD.actions
 	import org.flintparticles.common.emitters.Emitter;
 	import org.flintparticles.common.particles.Particle;
 	import org.flintparticles.twoD.particles.Particle2D;
-	import org.flintparticles.twoD.zones.Zone2D;	
 
 	/**
-	 * The Jet Action applies an acceleration to particles only if they are in 
-	 * the specified zone. 
+	 * The Jet Action applies an acceleration to particles.
 	 */
 
 	public class Jet extends ActionBase
 	{
 		private var _x:Number;
 		private var _y:Number;
-		private var _zone:Zone2D;
-		private var _invert:Boolean;
 		
 		/**
 		 * The constructor creates a Jet action for use by an emitter. 
@@ -59,17 +55,11 @@ package org.flintparticles.twoD.actions
 		 * pixels per second per second.
 		 * @param accelerationY The y component of the acceleration to apply, in 
 		 * pixels per second per second.
-		 * @param zone The zone in which to apply the acceleration.
-		 * @param invertZone If false (the default) the acceleration is applied 
-		 * only to particles inside the zone. If true the acceleration is applied 
-		 * only to particles outside the zone.
 		 */
-		public function Jet( accelerationX:Number = 0, accelerationY:Number = 0, zone:Zone2D = null, invertZone:Boolean = false )
+		public function Jet( accelerationX:Number = 0, accelerationY:Number = 0 )
 		{
 			this.x = accelerationX;
 			this.y = accelerationY;
-			this.zone = zone;
-			this.invertZone = invertZone;
 		}
 		
 		/**
@@ -99,34 +89,7 @@ package org.flintparticles.twoD.actions
 		}
 		
 		/**
-		 * The zone in which to apply the acceleration.
-		 */
-		public function get zone():Zone2D
-		{
-			return _zone;
-		}
-		public function set zone( value:Zone2D ):void
-		{
-			_zone = value;
-		}
-		
-		/**
-		 * If false (the default) the acceleration is applied 
-		 * only to particles inside the zone. If true the acceleration is applied 
-		 * only to particles outside the zone.
-		 */
-		public function get invertZone():Boolean
-		{
-			return _invert;
-		}
-		public function set invertZone( value:Boolean ):void
-		{
-			_invert = value;
-		}
-		
-		/**
-		 * Checks if the particle is inside the zone and, if so, applies the 
-		 * acceleration to the particle for the period of time indicated.
+		 * Applies the acceleration to the particle for the period of time indicated.
 		 * 
 		 * <p>This method is called by the emitter and need not be called by the 
 		 * user.</p>
@@ -140,22 +103,8 @@ package org.flintparticles.twoD.actions
 		override public function update( emitter:Emitter, particle:Particle, time:Number ):void
 		{
 			var p:Particle2D = Particle2D( particle );
-			if( _zone.contains( p.x, p.y ) )
-			{
-				if( !_invert )
-				{
-					p.velX += _x * time;
-					p.velY += _y * time;
-				}
-			}
-			else
-			{
-				if( _invert )
-				{
-					p.velX += _x * time;
-					p.velY += _y * time;
-				}
-			}
+			p.velX += _x * time;
+			p.velY += _y * time;
 		}
 	}
 }
