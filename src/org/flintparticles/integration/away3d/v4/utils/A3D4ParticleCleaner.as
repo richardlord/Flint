@@ -64,9 +64,8 @@ package org.flintparticles.integration.away3d.v4.utils
 					if( obj is Sprite3D && Sprite3D(obj).material is MaterialBase )
 					{
 						var material:MaterialBase = MaterialBase( Sprite3D(obj).material );
-						material.dispose( true );
+						material.dispose();
 					}
-					obj.dispose( true );
 				}
 				catch(e:Error)
 				{
