@@ -31,9 +31,11 @@
 package org.flintparticles.integration.away3d.v4.initializers
 {
 	import away3d.entities.Sprite3D;
-	import away3d.materials.AnimatedBitmapMaterial;
-	import away3d.materials.BitmapMaterial;
+//	import away3d.materials.AnimatedBitmapMaterial;
+//	import away3d.materials.BitmapMaterial;
 	import away3d.materials.MaterialBase;
+	import away3d.materials.TextureMaterial;
+	import away3d.textures.BitmapTexture;
 
 	import org.flintparticles.common.initializers.ImageInitializerBase;
 	import org.flintparticles.common.utils.WeightedArray;
@@ -128,7 +130,7 @@ package org.flintparticles.integration.away3d.v4.initializers
 			var material:MaterialBase;
 			if( displayObject is MovieClip )
 			{
-				material = new AnimatedBitmapMaterial( MovieClip( displayObject ), true, true );
+				//material = new AnimatedBitmapMaterial( MovieClip( displayObject ), true, true );
 			}
 			else
 			{
@@ -140,7 +142,8 @@ package org.flintparticles.integration.away3d.v4.initializers
 				matrix.translate( -bounds.left, -bounds.top );
 				matrix.scale( width / bounds.width, height / bounds.height );
 				bitmapData.draw( displayObject, matrix, displayObject.transform.colorTransform, null, null, true );
-				material = new BitmapMaterial( bitmapData, true, true );
+				//material = new BitmapMaterial( bitmapData, true, true );
+				material = new TextureMaterial(new BitmapTexture(bitmapData), true, true);
 			}
 			return new Sprite3D( material, displayObject.width, displayObject.height );
 		}
