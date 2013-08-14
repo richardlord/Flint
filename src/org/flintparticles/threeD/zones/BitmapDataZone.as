@@ -222,14 +222,14 @@ package org.flintparticles.threeD.zones
 				init();
 			}
 			var point:Point =  Point( _validPoints.getRandomValue() ).clone();
-			var d1:Vector3D = _scaledWidth;
+			var d1:Vector3D = _scaledWidth.clone();
 			d1.scaleBy( point.x );
-			var d2:Vector3D = _scaledHeight;
+			var d2:Vector3D = _scaledHeight.clone();
 			d2.scaleBy( point.y );
 			d1.incrementBy( d2 );
 			return _corner.add( d1 );
 		}
-		
+
 		/**
 		 * The getVolume method returns the size of the zone.
 		 * This method is used by the MultiZone class. Usually, 
