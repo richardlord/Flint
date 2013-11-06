@@ -307,24 +307,30 @@ package org.flintparticles.threeD.renderers
 			{
 				return;
 			}
-			if( _bitmap && _bitmapData )
-			{
-				_bitmapData.dispose();
-				_bitmapData = null;
+
+			//Do not recreate image if it already created and has same size
+            if (!_bitmap || _bitmap.width != _canvas.width || _bitmap.height != _canvas.height) 
+            {
+				if( _bitmap && _bitmapData )
+				{
+					_bitmapData.dispose();
+					_bitmapData = null;
+				}
+				if( _bitmap )
+				{
+					removeChild( _bitmap );
+					_bitmap = null;
+				}
+				_bitmap = new Bitmap( null, "auto", _smoothing);
+				_bitmapData = new BitmapData( Math.ceil( _canvas.width ), Math.ceil( _canvas.height ), true, 0 );
+				_bitmap.bitmapData = _bitmapData;
+				addChild( _bitmap );				
+				_halfWidth = _bitmapData.width * 0.5;
+				_halfHeight = _bitmapData.height * 0.5;
 			}
-			if( _bitmap )
-			{
-				removeChild( _bitmap );
-				_bitmap = null;
-			}
-			_bitmap = new Bitmap( null, "auto", _smoothing);
-			_bitmapData = new BitmapData( Math.ceil( _canvas.width ), Math.ceil( _canvas.height ), true, 0 );
-			_bitmap.bitmapData = _bitmapData;
-			addChild( _bitmap );
+			
 			_bitmap.x = _canvas.x;
 			_bitmap.y = _canvas.y;
-			_halfWidth = _bitmapData.width * 0.5;
-			_halfHeight = _bitmapData.height * 0.5;
 		}
 		
 		/**
