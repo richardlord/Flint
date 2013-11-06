@@ -5,7 +5,15 @@
  * Author: Richard Lord
  * Copyright (c) Richard Lord 2008-2011
  * http://flintparticles.org
- * 
+ *
+ *
+ * FLINT PARTICLE SYSTEM + EXTENSIONS
+ * ..................................
+ *
+ * Author: Sergey Dvoynikov
+ * Copyright (c) Sergey Dvoynikov 2013
+ * http://oroborogames.net
+ *
  * 
  * Licence Agreement
  * 
@@ -31,9 +39,10 @@
 package org.flintparticles.common.particles
 {
 	import flash.geom.ColorTransform;
-	import flash.utils.Dictionary;	
+	import flash.utils.Dictionary;
+    import org.flintparticles.common.paths.Path;
 
-	/**
+/**
 	 * The Particle class is a set of public properties shared by all particles.
 	 * It is deliberately lightweight, with only one method. The Initializers
 	 * and Actions modify these properties directly. This means that the same
@@ -94,7 +103,12 @@ package org.flintparticles.common.particles
 		 * Whether the particle is dead and should be removed from the stage.
 		 */
 		public var isDead:Boolean = false;
-		
+
+        /**
+         * Particle path
+         */
+        public var path:Path = null;
+
 		/**
 		 * The dictionary object enables actions and activities to add additional properties to the particle.
 		 * Any object adding properties to the particle should use a reference to itself as the dictionary
