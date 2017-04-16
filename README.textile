@@ -2,27 +2,23 @@ h1. Flint: A Particle Engine for Flash and Flex
 
 Flint is an Actionscript 3 Particle Engine for use in Flash and Flex projects.
 
-"Flint Website":http://flintparticles.org
+"Flint Website":http://www.richardlord.net/flint-particles/
 
 h3. Getting Started
 
-* "Beginners Tutorial":http://flintparticles.org/tutorials/snowfall
-* "Other Tutorials":http://flintparticles.org/documentation
-* "API Documentation":http://flintparticles.org/docs/
-* "Examples":http://flintparticles.org/examples
+* "Beginners Tutorial":http://www.richardlord.net/flint-particles/tutorial.html
+* "Other Tutorials":http://www.richardlord.net/flint-particles/documentation.html
+* "API Documentation":http://www.richardlord.net/flint-particles/docs/
+* "Examples":http://www.richardlord.net/flint-particles/examples/
 
 h3. Source Code
 
 * "Flint":http://github.com/richardlord/Flint
 * "Flint Examples":http://github.com/richardlord/Flint-examples
 
-h3. Help, Support, Collaboration
-
-* "Flint forum":http://flintparticles.org/forum/
-
 h3. News
 
-* "Flint Blog":http://flintparticles.org/blog/
+* "Flint Blog":http://www.richardlord.net/flint-particles/blog/
 
 h3. Developers
 
